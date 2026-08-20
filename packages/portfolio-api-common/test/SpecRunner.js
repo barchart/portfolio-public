@@ -9601,8 +9601,8 @@
           data.periodGainPrevious2 = calculatePeriodGain(position.instrument, data.initiate, previousSummary2, previousSummary3);
           data.periodIncome = currentSummary !== null ? currentSummary.period.income : Decimal8.ZERO;
           data.periodIncomePrevious = previousSummary1 !== null ? previousSummary1.period.income : Decimal8.ZERO;
-          data.periodDividends = currentSummary === null ? Decimal8.ZERO : currentSummary.period.dividends || Decimal8.ZERO;
-          data.periodDividendsPrevious = previousSummary1 === null ? Decimal8.ZERO : previousSummary1.period.dividends || Decimal8.ZERO;
+          data.periodDividends = currentSummary !== null ? currentSummary.period.dividends || Decimal8.ZERO : Decimal8.ZERO;
+          data.periodDividendsPrevious = previousSummary1 !== null ? previousSummary1.period.dividends || Decimal8.ZERO : Decimal8.ZERO;
           data.periodRealized = currentSummary !== null ? currentSummary.period.realized : Decimal8.ZERO;
           data.periodUnrealized = calculatePeriodUnrealized(position.instrument.type, data.periodGain, data.periodRealized, data.periodIncome);
           data.periodDivisor = calculatePeriodDivisor(position.instrument.type, data.initiate, currentSummary, previousSummary1);
@@ -9985,7 +9985,7 @@
             snapshot.gain = currentSummary.period.realized;
             snapshot.basis = currentSummary.end.basis;
             snapshot.income = currentSummary.period.income;
-            snapshot.dividends = currentSummary.period.dividends || Decimal8.ZERO;
+            snapshot.dividends = currentSummary.period.dividends;
             snapshot.value = currentSummary.end.value;
           } else {
             snapshot = position.snapshot;
