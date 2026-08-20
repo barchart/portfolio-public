@@ -177,7 +177,9 @@ module.exports = (() => {
 					.withLiteralParameter('impersonate', 'impersonate')
 					.withLiteralParameter('service', 'portfolio')
 					.withLiteralParameter('environment', environment)
-			)
+			).withQueryBuilder((qb) => {
+				qb.withLiteralParameter('expirationInMinutes', 'expirationInMinutes', '15');
+			})
 			.withBody()
 			.withResponseInterceptor(ResponseInterceptor.DATA)
 			.endpoint;
