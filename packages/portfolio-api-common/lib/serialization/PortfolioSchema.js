@@ -108,6 +108,7 @@ module.exports = (() => {
 
 		.withField('defaults.cash', DataType.BOOLEAN, true)
 		.withField('defaults.currency', DataType.forEnum(Currency, 'Currency'))
+		.withField('defaults.taxable', DataType.BOOLEAN, true)
 		.withField('defaults.reinvest', DataType.BOOLEAN, true)
 		.withField('defaults.valuation', DataType.forEnum(ValuationType, 'ValuationType'))
 
@@ -152,6 +153,7 @@ module.exports = (() => {
 
 		.withField('defaults.cash', DataType.BOOLEAN, true)
 		.withField('defaults.currency', DataType.forEnum(Currency, 'Currency'))
+		.withField('defaults.taxable', DataType.BOOLEAN, true)
 		.withField('defaults.reinvest', DataType.BOOLEAN, true)
 		.withField('defaults.valuation', DataType.forEnum(ValuationType, 'ValuationType'))
 
@@ -196,6 +198,7 @@ module.exports = (() => {
 
 		.withField('defaults.cash', DataType.BOOLEAN, true)
 		.withField('defaults.currency', DataType.forEnum(Currency, 'Currency'), true)
+		.withField('defaults.taxable', DataType.BOOLEAN, true)
 		.withField('defaults.reinvest', DataType.BOOLEAN, true)
 		.withField('defaults.valuation', DataType.forEnum(ValuationType, 'ValuationType'), true)
 
@@ -212,6 +215,7 @@ module.exports = (() => {
 
 		.withField('defaults.cash', DataType.BOOLEAN, true)
 		.withField('defaults.currency', DataType.forEnum(Currency, 'Currency'), true)
+		.withField('defaults.taxable', DataType.BOOLEAN, true)
 		.withField('defaults.reinvest', DataType.BOOLEAN, true)
 
 		.schema
