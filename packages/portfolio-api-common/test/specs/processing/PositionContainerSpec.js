@@ -152,6 +152,110 @@ describe('When a position container data is gathered', () => {
 	});
 });
 
+describe('When an aggregation tree is replaced', () => {
+	'use strict';
+
+	const treeName = 'positions';
+
+	const createPortfolioTreeDefinition = () => {
+		return new PositionTreeDefinition(treeName, [
+			new PositionLevelDefinition('Total', PositionLevelType.OTHER, x => 'totals', x => 'Total', x => Currency.USD),
+			new PositionLevelDefinition('Portfolio', PositionLevelType.PORTFOLIO, x => x.portfolio.portfolio, x => x.portfolio.name, x => Currency.USD),
+			new PositionLevelDefinition('Position', PositionLevelType.POSITION, x => x.position.position, x => x.position.instrument.symbol.barchart, x => x.position.instrument.currency)
+		]);
+	};
+
+	const createAssetTreeDefinition = () => {
+		return new PositionTreeDefinition(treeName, [
+			new PositionLevelDefinition('Total', PositionLevelType.OTHER, x => 'totals', x => 'Total', x => Currency.USD),
+			new PositionLevelDefinition('Asset', PositionLevelType.OTHER, x => PositionLevelDefinition.getKeyForAssetClassGroup(x.position.instrument.type, x.position.instrument.currency), x => x.position.instrument.type.alternateDescription, x => x.position.instrument.currency),
+			new PositionLevelDefinition('Position', PositionLevelType.POSITION, x => x.position.position, x => x.position.instrument.symbol.barchart, x => x.position.instrument.currency)
+		]);
+	};
+
+	beforeEach(() => {
+		positionTestFactory.resetPositionCounter();
+	});
+
+	it('should expose groups from the replacement definition', () => {
+		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
+		const position = positionTestFactory.createPosition(portfolio.portfolio, 'AAPL', Currency.USD);
+
+		const container = new PositionContainer([ createPortfolioTreeDefinition() ], [ portfolio ], [ position ], [ ]);
+
+		container.replaceTree(createAssetTreeDefinition());
+
+		const groups = container.getGroups(treeName, [ 'totals' ]);
+
+		expect(groups.map(group => group.data.key)).toEqual([
+			PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType.EQUITY, Currency.USD)
+		]);
+	});
+
+	it('should inject new positions into the replacement definition', () => {
+		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
+		const position = positionTestFactory.createPosition(portfolio.portfolio, 'AAPL', Currency.USD);
+
+		const container = new PositionContainer([ createPortfolioTreeDefinition() ], [ portfolio ], [ position ], [ ]);
+
+		container.replaceTree(createAssetTreeDefinition());
+
+		const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType.EQUITY, Currency.USD);
+
+		const groups = container.getGroups(treeName, [ 'totals', assetKey ]);
+
+		container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, 'TSLA', Currency.USD), [ ]);
+
+		expect(groups.length).toEqual(2);
+	});
+
+	it('should dispose bindings from the replaced tree', () => {
+		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
+		const position = positionTestFactory.createPosition(portfolio.portfolio, 'AAPL', Currency.USD);
+
+		const container = new PositionContainer([ createPortfolioTreeDefinition() ], [ portfolio ], [ position ], [ ]);
+
+		const group = container.getGroup(treeName, [ 'totals', portfolio.portfolio, position.position ]);
+
+		const currentPrice = group.data.currentPrice;
+
+		container.replaceTree(createAssetTreeDefinition());
+		container.setQuotes([ { lastPrice: 200, symbol: 'AAPL' } ], [ ]);
+
+		expect(group.data.currentPrice).toEqual(currentPrice);
+	});
+
+	it('should preserve top-level group bindings when requested', () => {
+		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
+		const position = positionTestFactory.createPosition(portfolio.portfolio, 'AAPL', Currency.USD);
+
+		const totalDefinition = new PositionLevelDefinition('Total', PositionLevelType.OTHER, x => 'totals', x => 'Total', x => Currency.USD);
+
+		const initialDefinition = new PositionTreeDefinition(treeName, [
+			totalDefinition,
+			new PositionLevelDefinition('Portfolio', PositionLevelType.PORTFOLIO, x => x.portfolio.portfolio, x => x.portfolio.name, x => Currency.USD),
+			new PositionLevelDefinition('Position', PositionLevelType.POSITION, x => x.position.position, x => x.position.instrument.symbol.barchart, x => x.position.instrument.currency)
+		]);
+
+		const replacementDefinition = new PositionTreeDefinition(treeName, [
+			totalDefinition,
+			new PositionLevelDefinition('Asset', PositionLevelType.OTHER, x => PositionLevelDefinition.getKeyForAssetClassGroup(x.position.instrument.type, x.position.instrument.currency), x => x.position.instrument.type.alternateDescription, x => x.position.instrument.currency),
+			new PositionLevelDefinition('Position', PositionLevelType.POSITION, x => x.position.position, x => x.position.instrument.symbol.barchart, x => x.position.instrument.currency)
+		]);
+
+		const container = new PositionContainer([ initialDefinition ], [ portfolio ], [ position ], [ ]);
+		const total = container.getGroup(treeName, [ 'totals' ]);
+
+		container.replaceTree(replacementDefinition, true);
+
+		expect(container.getGroup(treeName, [ 'totals' ])).toBe(total);
+	});
+});
+
 describe('When a position container uses currencies outside its default currency list', () => {
 	'use strict';
 
@@ -184,7 +288,9 @@ describe('When a position container uses currencies outside its default currency
 
 	it('should register the forex symbol required by an initial ILS position', () => {
 		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
 		const position = positionTestFactory.createPosition(portfolio.portfolio, 'ILS', Currency.ILS);
+
 		const container = new PositionContainer(createDefinitions(), [ portfolio ], [ position ], [ ]);
 
 		expect(container.getForexSymbols()).toContain('^USDILS');
@@ -192,7 +298,9 @@ describe('When a position container uses currencies outside its default currency
 
 	it('should notify observers when an SGD position is added after construction', () => {
 		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
 		const container = new PositionContainer(createDefinitions(), [ portfolio ], [ ], [ ]);
+
 		const symbols = [ ];
 
 		container.registerForexSymbolAddedHandler(symbol => symbols.push(symbol));
@@ -203,8 +311,11 @@ describe('When a position container uses currencies outside its default currency
 
 	it('should expose a new ILS asset group through existing bindings when a position is added', () => {
 		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
 		const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, 'USD', Currency.USD);
+
 		const container = new PositionContainer(createAssetDefinitions(), [ portfolio ], [ initialPosition ], [ ]);
+
 		const assetGroups = container.getGroups(treeName, [ 'totals', portfolio.portfolio ]);
 
 		container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, 'ILS', Currency.ILS), [ ]);
@@ -217,8 +328,11 @@ describe('When a position container uses currencies outside its default currency
 
 	it('should sort asset groups when a position creates a group after construction', () => {
 		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
 		const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, 'USD', Currency.USD);
+
 		const container = new PositionContainer(createAssetDefinitions(), [ portfolio ], [ initialPosition ], [ ]);
+
 		const assetGroups = container.getGroups(treeName, [ 'totals', portfolio.portfolio ]);
 
 		container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, 'ILS', Currency.ILS), [ ]);
@@ -228,9 +342,13 @@ describe('When a position container uses currencies outside its default currency
 
 	it('should sort position groups when a position is added after construction', () => {
 		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
 		const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, 'USD', Currency.USD);
+
 		const container = new PositionContainer(createAssetDefinitions(), [ portfolio ], [ initialPosition ], [ ]);
+
 		const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType.EQUITY, Currency.USD);
+
 		const positionGroups = container.getGroups(treeName, [ 'totals', portfolio.portfolio, assetKey ]);
 
 		container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, 'AA', Currency.USD), [ ]);
@@ -240,10 +358,14 @@ describe('When a position container uses currencies outside its default currency
 
 	it('should preserve position group ordering when an existing position is updated', () => {
 		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
 		const firstPosition = positionTestFactory.createPosition(portfolio.portfolio, 'AA', Currency.USD);
 		const secondPosition = positionTestFactory.createPosition(portfolio.portfolio, 'USD', Currency.USD);
+
 		const container = new PositionContainer(createAssetDefinitions(), [ portfolio ], [ firstPosition, secondPosition ], [ ]);
+
 		const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType.EQUITY, Currency.USD);
+
 		const positionGroups = container.getGroups(treeName, [ 'totals', portfolio.portfolio, assetKey ]);
 
 		container.updatePosition(firstPosition, [ ]);
@@ -253,18 +375,23 @@ describe('When a position container uses currencies outside its default currency
 
 	it('should preserve required group ordering when a position creates a group after construction', () => {
 		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
 		const requiredGroups = [
 			{ key: Currency.USD.code, description: 'Z USD', currency: Currency.USD },
 			{ key: Currency.CAD.code, description: 'Y CAD', currency: Currency.CAD }
 		];
+
 		const definitions = [
 			new PositionTreeDefinition(treeName, [
 				new PositionLevelDefinition('Total', PositionLevelType.OTHER, x => 'totals', x => 'Total', x => Currency.USD),
 				new PositionLevelDefinition('Currency', PositionLevelType.OTHER, x => x.position.instrument.currency.code, x => `Z ${x.position.instrument.currency.code}`, x => x.position.instrument.currency, requiredGroups)
 			])
 		];
+
 		const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, 'USD', Currency.USD);
+
 		const container = new PositionContainer(definitions, [ portfolio ], [ initialPosition ], [ ]);
+
 		const groups = container.getGroups(treeName, [ 'totals' ]);
 
 		container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, 'ILS', Currency.ILS), [ ]);
@@ -274,7 +401,9 @@ describe('When a position container uses currencies outside its default currency
 
 	it('should notify observers only once for multiple positions using the same new currency', () => {
 		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+
 		const container = new PositionContainer(createDefinitions(), [ portfolio ], [ ], [ ]);
+
 		const symbols = [ ];
 
 		container.registerForexSymbolAddedHandler(symbol => symbols.push(symbol));
@@ -287,7 +416,9 @@ describe('When a position container uses currencies outside its default currency
 	it('should preserve known exchange rates when a new currency is registered', () => {
 		const firstPortfolio = positionTestFactory.createPortfolio('first', 'First');
 		const secondPortfolio = positionTestFactory.createPortfolio('second', 'Second');
+
 		const firstPosition = positionTestFactory.createPosition(firstPortfolio.portfolio, 'ILS', Currency.ILS);
+
 		const container = new PositionContainer(createDefinitions(), [ firstPortfolio, secondPortfolio ], [ firstPosition ], [ ]);
 
 		container.setQuotes([ ], [ { symbol: '^USDILS', lastPrice: 4 } ]);

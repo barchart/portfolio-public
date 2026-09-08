@@ -2188,7 +2188,7 @@
       var Enum = require_Enum();
       module.exports = (() => {
         "use strict";
-        class InstrumentType6 extends Enum {
+        class InstrumentType7 extends Enum {
           constructor(code, description, alternateDescription, canExistEmpty, canReinvest, canShort, canSwitchDirection, usesSymbols, hasCorporateActions, allowFractional, closeFractional, roundQuantity, strictOrdering, generator) {
             super(code, description);
             assert.argumentIsRequired(alternateDescription, "alternateDescription", String);
@@ -2438,7 +2438,7 @@
            * @returns {InstrumentType|null}
            */
           static parse(code) {
-            return Enum.fromCode(InstrumentType6, code);
+            return Enum.fromCode(InstrumentType7, code);
           }
           /**
            * Generates an identifier for the instrument.
@@ -2449,7 +2449,7 @@
            * @returns {String}
            */
           static generateIdentifier(instrument) {
-            const type = Enum.fromCode(InstrumentType6, instrument.type.code);
+            const type = Enum.fromCode(InstrumentType7, instrument.type.code);
             return type.generateIdentifier(instrument);
           }
           /**
@@ -2462,17 +2462,17 @@
           static fromSymbolType(code) {
             assert.argumentIsRequired(code, "code", Number);
             if (code === 1 || code === 6 || code === 7 || code === 11) {
-              return InstrumentType6.EQUITY;
+              return InstrumentType7.EQUITY;
             } else if (code === 34) {
-              return InstrumentType6.EQUITY_OPTION;
+              return InstrumentType7.EQUITY_OPTION;
             } else if (code === 5 || code === 15) {
-              return InstrumentType6.FUND;
+              return InstrumentType7.FUND;
             } else if (code === 2) {
-              return InstrumentType6.FUTURE;
+              return InstrumentType7.FUTURE;
             } else if (code === 12) {
-              return InstrumentType6.FUTURE_OPTION;
+              return InstrumentType7.FUTURE_OPTION;
             } else if (code === 999) {
-              return InstrumentType6.CRYPTO;
+              return InstrumentType7.CRYPTO;
             } else {
               throw new Error(`Unable to determine InstrumentType for [ ${code} ]`);
             }
@@ -2481,15 +2481,15 @@
             return `[InstrumentType (code=${this.code})]`;
           }
         }
-        const cash = new InstrumentType6("CASH", "cash", "Cash", true, false, false, true, false, false, true, false, false, false, (instrument) => `BARCHART-${instrument.type.code}-${instrument.currency.code}`);
-        const crypto2 = new InstrumentType6("CRYPTO", "crypto", "Crypto", false, false, true, false, true, false, true, false, false, true, (instrument) => `BARCHART-CRYPTO-${instrument.name.toUpperCase()}`);
-        const equity = new InstrumentType6("EQUITY", "equity", "Equities", false, true, true, false, true, true, true, true, true, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
-        const equityOption = new InstrumentType6("EQUITY_OPTION", "equity option", "Equity Options", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
-        const fund = new InstrumentType6("FUND", "mutual fund", "Funds", false, true, false, false, true, true, true, false, true, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
-        const future = new InstrumentType6("FUTURE", "futures contract", "Futures", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
-        const futureOption = new InstrumentType6("FUTURE_OPTION", "futures option", "Futures Options", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
-        const other = new InstrumentType6("OTHER", "other", "Other", false, false, false, false, false, false, true, false, true, true, (instrument) => `BARCHART-${instrument.type.code}-${uuid.v4()}`);
-        return InstrumentType6;
+        const cash = new InstrumentType7("CASH", "cash", "Cash", true, false, false, true, false, false, true, false, false, false, (instrument) => `BARCHART-${instrument.type.code}-${instrument.currency.code}`);
+        const crypto2 = new InstrumentType7("CRYPTO", "crypto", "Crypto", false, false, true, false, true, false, true, false, false, true, (instrument) => `BARCHART-CRYPTO-${instrument.name.toUpperCase()}`);
+        const equity = new InstrumentType7("EQUITY", "equity", "Equities", false, true, true, false, true, true, true, true, true, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
+        const equityOption = new InstrumentType7("EQUITY_OPTION", "equity option", "Equity Options", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
+        const fund = new InstrumentType7("FUND", "mutual fund", "Funds", false, true, false, false, true, true, true, false, true, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
+        const future = new InstrumentType7("FUTURE", "futures contract", "Futures", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
+        const futureOption = new InstrumentType7("FUTURE_OPTION", "futures option", "Futures Options", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
+        const other = new InstrumentType7("OTHER", "other", "Other", false, false, false, false, false, false, true, false, true, true, (instrument) => `BARCHART-${instrument.type.code}-${uuid.v4()}`);
+        return InstrumentType7;
       })();
     }
   });
@@ -2499,7 +2499,7 @@
     "lib/calculators/AveragePriceCalculator.js"(exports, module) {
       var Decimal8 = require_Decimal();
       var is = require_is();
-      var InstrumentType6 = require_InstrumentType();
+      var InstrumentType7 = require_InstrumentType();
       module.exports = (() => {
         "use strict";
         class AveragePriceCalculator2 {
@@ -2586,14 +2586,14 @@
           return basis.divide(quantity).opposite();
         }
         const calculators = /* @__PURE__ */ new Map();
-        calculators.set(InstrumentType6.CASH, calculateForCash);
-        calculators.set(InstrumentType6.CRYPTO, calculateForCrypto);
-        calculators.set(InstrumentType6.EQUITY, calculateForEquity);
-        calculators.set(InstrumentType6.EQUITY_OPTION, calculateForEquityOption);
-        calculators.set(InstrumentType6.FUND, calculateForFund);
-        calculators.set(InstrumentType6.FUTURE, calculateForFuture);
-        calculators.set(InstrumentType6.FUTURE_OPTION, calculateForFutureOption);
-        calculators.set(InstrumentType6.OTHER, calculateForOther);
+        calculators.set(InstrumentType7.CASH, calculateForCash);
+        calculators.set(InstrumentType7.CRYPTO, calculateForCrypto);
+        calculators.set(InstrumentType7.EQUITY, calculateForEquity);
+        calculators.set(InstrumentType7.EQUITY_OPTION, calculateForEquityOption);
+        calculators.set(InstrumentType7.FUND, calculateForFund);
+        calculators.set(InstrumentType7.FUTURE, calculateForFuture);
+        calculators.set(InstrumentType7.FUTURE_OPTION, calculateForFutureOption);
+        calculators.set(InstrumentType7.OTHER, calculateForOther);
         return AveragePriceCalculator2;
       })();
     }
@@ -2604,7 +2604,7 @@
     "lib/calculators/ValuationCalculator.js"(exports, module) {
       var Decimal8 = require_Decimal();
       var is = require_is();
-      var InstrumentType6 = require_InstrumentType();
+      var InstrumentType7 = require_InstrumentType();
       module.exports = (() => {
         "use strict";
         class ValuationCalculator2 {
@@ -2667,14 +2667,14 @@
           return price.multiply(quantity);
         }
         const calculators = /* @__PURE__ */ new Map();
-        calculators.set(InstrumentType6.CASH, calculateForCash);
-        calculators.set(InstrumentType6.CRYPTO, calculateForCrypto);
-        calculators.set(InstrumentType6.EQUITY, calculateForEquity);
-        calculators.set(InstrumentType6.EQUITY_OPTION, calculateForEquityOption);
-        calculators.set(InstrumentType6.FUND, calculateForFund);
-        calculators.set(InstrumentType6.FUTURE, calculateForFuture);
-        calculators.set(InstrumentType6.FUTURE_OPTION, calculateForFutureOption);
-        calculators.set(InstrumentType6.OTHER, calculateForOther);
+        calculators.set(InstrumentType7.CASH, calculateForCash);
+        calculators.set(InstrumentType7.CRYPTO, calculateForCrypto);
+        calculators.set(InstrumentType7.EQUITY, calculateForEquity);
+        calculators.set(InstrumentType7.EQUITY_OPTION, calculateForEquityOption);
+        calculators.set(InstrumentType7.FUND, calculateForFund);
+        calculators.set(InstrumentType7.FUTURE, calculateForFuture);
+        calculators.set(InstrumentType7.FUTURE_OPTION, calculateForFutureOption);
+        calculators.set(InstrumentType7.OTHER, calculateForOther);
         return ValuationCalculator2;
       })();
     }
@@ -4873,7 +4873,7 @@
       var array = require_array();
       var Decimal8 = require_Decimal();
       var is = require_is();
-      var InstrumentType6 = require_InstrumentType();
+      var InstrumentType7 = require_InstrumentType();
       var PositionDirection2 = require_PositionDirection();
       var TransactionType5 = require_TransactionType();
       module.exports = (() => {
@@ -4967,7 +4967,7 @@
            */
           static getSwitchIndex(transactions, instrumentType, position) {
             assert.argumentIsArray(transactions, "transactions");
-            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType6, "InstrumentType");
+            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType7, "InstrumentType");
             assert.argumentIsOptional(position, "position");
             let open = position ? position.snapshot.open : Decimal8.ZERO;
             let currentDirection = open.getIsZero() ? null : PositionDirection2.for(open);
@@ -4999,7 +4999,7 @@
            */
           static getPositionViolationIndex(transactions, instrumentType, position) {
             assert.argumentIsArray(transactions, "transactions");
-            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType6, "InstrumentType");
+            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType7, "InstrumentType");
             assert.argumentIsOptional(position, "position");
             let open = position ? position.snapshot.open : Decimal8.ZERO;
             let currentDirection = open.getIsZero() ? PositionDirection2.EVEN : PositionDirection2.for(open);
@@ -5030,7 +5030,7 @@
           * @returns {TransactionType[]}
           */
           static getTransactionTypesFor(instrumentType, userInitiated, currentDirection) {
-            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType6, "InstrumentType");
+            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType7, "InstrumentType");
             assert.argumentIsOptional(userInitiated, "userInitiated", Boolean);
             let valid = validTransactionTypes[instrumentType.code] || [];
             if (userInitiated) {
@@ -5097,7 +5097,7 @@
            * @returns {Boolean}
            */
           static validateDirection(instrumentType, direction) {
-            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType6, "InstrumentType");
+            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType7, "InstrumentType");
             assert.argumentIsRequired(direction, "direction", PositionDirection2, "PositionDirection");
             return validDirections[instrumentType.code].some((d) => d === direction);
           }
@@ -5127,58 +5127,58 @@
           }
           validTransactionTypes[instrumentTypeCode].push({ type: transactionType, user: userInitiated, directions: directions || [PositionDirection2.LONG, PositionDirection2.SHORT, PositionDirection2.EVEN] });
         }
-        associateTypes(InstrumentType6.CRYPTO, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.CRYPTO, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.CRYPTO, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.CRYPTO, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.FEE, true, [PositionDirection2.LONG, PositionDirection2.SHORT]);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.DIVIDEND, false);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.DIVIDEND_REINVEST, false);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.DIVIDEND_STOCK, false);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.SPLIT, false);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.DELIST, false);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.MERGER_OPEN, false);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.MERGER_CLOSE, false);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.SPINOFF, false);
-        associateTypes(InstrumentType6.EQUITY, TransactionType5.SPINOFF_OPEN, false);
-        associateTypes(InstrumentType6.EQUITY_OPTION, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.EQUITY_OPTION, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.EQUITY_OPTION, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.EQUITY_OPTION, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
-        associateTypes(InstrumentType6.FUND, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.FUND, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.FUND, TransactionType5.FEE, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.FUND, TransactionType5.FEE_UNITS, false);
-        associateTypes(InstrumentType6.FUND, TransactionType5.DISTRIBUTION_CASH, false);
-        associateTypes(InstrumentType6.FUND, TransactionType5.DISTRIBUTION_REINVEST, false);
-        associateTypes(InstrumentType6.FUND, TransactionType5.DISTRIBUTION_FUND, false);
-        associateTypes(InstrumentType6.FUND, TransactionType5.SPLIT, false);
-        associateTypes(InstrumentType6.FUND, TransactionType5.DELIST, false);
-        associateTypes(InstrumentType6.FUND, TransactionType5.MERGER_OPEN, false);
-        associateTypes(InstrumentType6.FUND, TransactionType5.MERGER_CLOSE, false);
-        associateTypes(InstrumentType6.FUND, TransactionType5.SPINOFF, false);
-        associateTypes(InstrumentType6.FUND, TransactionType5.SPINOFF_OPEN, false);
-        associateTypes(InstrumentType6.FUTURE, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.FUTURE, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.FUTURE, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.FUTURE, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
-        associateTypes(InstrumentType6.FUTURE_OPTION, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.FUTURE_OPTION, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.FUTURE_OPTION, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.FUTURE_OPTION, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
-        associateTypes(InstrumentType6.OTHER, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType6.OTHER, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.OTHER, TransactionType5.INCOME, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.OTHER, TransactionType5.FEE, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.OTHER, TransactionType5.VALUATION, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType6.CASH, TransactionType5.DEPOSIT, true);
-        associateTypes(InstrumentType6.CASH, TransactionType5.WITHDRAWAL, true);
-        associateTypes(InstrumentType6.CASH, TransactionType5.DEBIT, false);
-        associateTypes(InstrumentType6.CASH, TransactionType5.CREDIT, false);
+        associateTypes(InstrumentType7.CRYPTO, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.CRYPTO, TransactionType5.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.CRYPTO, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.CRYPTO, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.FEE, true, [PositionDirection2.LONG, PositionDirection2.SHORT]);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.DIVIDEND, false);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.DIVIDEND_REINVEST, false);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.DIVIDEND_STOCK, false);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.SPLIT, false);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.DELIST, false);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.MERGER_OPEN, false);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.MERGER_CLOSE, false);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.SPINOFF, false);
+        associateTypes(InstrumentType7.EQUITY, TransactionType5.SPINOFF_OPEN, false);
+        associateTypes(InstrumentType7.EQUITY_OPTION, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.EQUITY_OPTION, TransactionType5.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.EQUITY_OPTION, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.EQUITY_OPTION, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
+        associateTypes(InstrumentType7.FUND, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.FUND, TransactionType5.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.FUND, TransactionType5.FEE, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.FUND, TransactionType5.FEE_UNITS, false);
+        associateTypes(InstrumentType7.FUND, TransactionType5.DISTRIBUTION_CASH, false);
+        associateTypes(InstrumentType7.FUND, TransactionType5.DISTRIBUTION_REINVEST, false);
+        associateTypes(InstrumentType7.FUND, TransactionType5.DISTRIBUTION_FUND, false);
+        associateTypes(InstrumentType7.FUND, TransactionType5.SPLIT, false);
+        associateTypes(InstrumentType7.FUND, TransactionType5.DELIST, false);
+        associateTypes(InstrumentType7.FUND, TransactionType5.MERGER_OPEN, false);
+        associateTypes(InstrumentType7.FUND, TransactionType5.MERGER_CLOSE, false);
+        associateTypes(InstrumentType7.FUND, TransactionType5.SPINOFF, false);
+        associateTypes(InstrumentType7.FUND, TransactionType5.SPINOFF_OPEN, false);
+        associateTypes(InstrumentType7.FUTURE, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.FUTURE, TransactionType5.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.FUTURE, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.FUTURE, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
+        associateTypes(InstrumentType7.FUTURE_OPTION, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.FUTURE_OPTION, TransactionType5.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.FUTURE_OPTION, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.FUTURE_OPTION, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
+        associateTypes(InstrumentType7.OTHER, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType7.OTHER, TransactionType5.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.OTHER, TransactionType5.INCOME, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.OTHER, TransactionType5.FEE, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.OTHER, TransactionType5.VALUATION, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType7.CASH, TransactionType5.DEPOSIT, true);
+        associateTypes(InstrumentType7.CASH, TransactionType5.WITHDRAWAL, true);
+        associateTypes(InstrumentType7.CASH, TransactionType5.DEBIT, false);
+        associateTypes(InstrumentType7.CASH, TransactionType5.CREDIT, false);
         const validDirections = {};
         function associateDirections(instrumentType, positionDirection) {
           const instrumentTypeCode = instrumentType.code;
@@ -5187,28 +5187,28 @@
           }
           validDirections[instrumentTypeCode].push(positionDirection);
         }
-        associateDirections(InstrumentType6.CRYPTO, PositionDirection2.EVEN);
-        associateDirections(InstrumentType6.CRYPTO, PositionDirection2.LONG);
-        associateDirections(InstrumentType6.CRYPTO, PositionDirection2.SHORT);
-        associateDirections(InstrumentType6.EQUITY, PositionDirection2.EVEN);
-        associateDirections(InstrumentType6.EQUITY, PositionDirection2.LONG);
-        associateDirections(InstrumentType6.EQUITY, PositionDirection2.SHORT);
-        associateDirections(InstrumentType6.EQUITY_OPTION, PositionDirection2.EVEN);
-        associateDirections(InstrumentType6.EQUITY_OPTION, PositionDirection2.LONG);
-        associateDirections(InstrumentType6.EQUITY_OPTION, PositionDirection2.SHORT);
-        associateDirections(InstrumentType6.FUND, PositionDirection2.EVEN);
-        associateDirections(InstrumentType6.FUND, PositionDirection2.LONG);
-        associateDirections(InstrumentType6.FUTURE, PositionDirection2.EVEN);
-        associateDirections(InstrumentType6.FUTURE, PositionDirection2.LONG);
-        associateDirections(InstrumentType6.FUTURE, PositionDirection2.SHORT);
-        associateDirections(InstrumentType6.FUTURE_OPTION, PositionDirection2.EVEN);
-        associateDirections(InstrumentType6.FUTURE_OPTION, PositionDirection2.LONG);
-        associateDirections(InstrumentType6.FUTURE_OPTION, PositionDirection2.SHORT);
-        associateDirections(InstrumentType6.OTHER, PositionDirection2.EVEN);
-        associateDirections(InstrumentType6.OTHER, PositionDirection2.LONG);
-        associateDirections(InstrumentType6.CASH, PositionDirection2.EVEN);
-        associateDirections(InstrumentType6.CASH, PositionDirection2.LONG);
-        associateDirections(InstrumentType6.CASH, PositionDirection2.SHORT);
+        associateDirections(InstrumentType7.CRYPTO, PositionDirection2.EVEN);
+        associateDirections(InstrumentType7.CRYPTO, PositionDirection2.LONG);
+        associateDirections(InstrumentType7.CRYPTO, PositionDirection2.SHORT);
+        associateDirections(InstrumentType7.EQUITY, PositionDirection2.EVEN);
+        associateDirections(InstrumentType7.EQUITY, PositionDirection2.LONG);
+        associateDirections(InstrumentType7.EQUITY, PositionDirection2.SHORT);
+        associateDirections(InstrumentType7.EQUITY_OPTION, PositionDirection2.EVEN);
+        associateDirections(InstrumentType7.EQUITY_OPTION, PositionDirection2.LONG);
+        associateDirections(InstrumentType7.EQUITY_OPTION, PositionDirection2.SHORT);
+        associateDirections(InstrumentType7.FUND, PositionDirection2.EVEN);
+        associateDirections(InstrumentType7.FUND, PositionDirection2.LONG);
+        associateDirections(InstrumentType7.FUTURE, PositionDirection2.EVEN);
+        associateDirections(InstrumentType7.FUTURE, PositionDirection2.LONG);
+        associateDirections(InstrumentType7.FUTURE, PositionDirection2.SHORT);
+        associateDirections(InstrumentType7.FUTURE_OPTION, PositionDirection2.EVEN);
+        associateDirections(InstrumentType7.FUTURE_OPTION, PositionDirection2.LONG);
+        associateDirections(InstrumentType7.FUTURE_OPTION, PositionDirection2.SHORT);
+        associateDirections(InstrumentType7.OTHER, PositionDirection2.EVEN);
+        associateDirections(InstrumentType7.OTHER, PositionDirection2.LONG);
+        associateDirections(InstrumentType7.CASH, PositionDirection2.EVEN);
+        associateDirections(InstrumentType7.CASH, PositionDirection2.LONG);
+        associateDirections(InstrumentType7.CASH, PositionDirection2.SHORT);
         return TransactionValidator2;
       })();
     }
@@ -7257,7 +7257,7 @@
       var assert = require_assert();
       var Currency5 = require_Currency();
       var is = require_is();
-      var InstrumentType6 = require_InstrumentType();
+      var InstrumentType7 = require_InstrumentType();
       var PositionLevelType5 = require_PositionLevelType();
       module.exports = (() => {
         "use strict";
@@ -7446,12 +7446,12 @@
            * @returns {String}
            */
           static getKeyForAssetClassGroup(type, currency) {
-            assert.argumentIsRequired(type, "type", InstrumentType6, "InstrumentType");
+            assert.argumentIsRequired(type, "type", InstrumentType7, "InstrumentType");
             assert.argumentIsRequired(currency, "currency", Currency5, "Currency");
             return `${type.code}|${currency.code}`;
           }
           static getDescriptionForAssetClassGroup(type, currency, defaultCurrency) {
-            assert.argumentIsRequired(type, "type", InstrumentType6, "InstrumentType");
+            assert.argumentIsRequired(type, "type", InstrumentType7, "InstrumentType");
             assert.argumentIsRequired(currency, "currency", Currency5, "Currency");
             assert.argumentIsOptional(defaultCurrency, "defaultCurrency", Currency5, "Currency");
             return `${type.alternateDescription}${currency === (defaultCurrency || Currency5.CAD) ? "" : ` (${currency.alternateDescription})`}`;
@@ -7800,6 +7800,7 @@
     "lib/processing/PositionGroup.js"(exports, module) {
       var array = require_array();
       var assert = require_assert();
+      var DisposableStack = require_DisposableStack();
       var Currency5 = require_Currency();
       var CurrencyTranslator2 = require_CurrencyTranslator();
       var Decimal8 = require_Decimal();
@@ -7808,7 +7809,7 @@
       var formatter = require_formatter();
       var is = require_is();
       var fractionFormatter = require_fraction();
-      var InstrumentType6 = require_InstrumentType();
+      var InstrumentType7 = require_InstrumentType();
       var FilterMode2 = require_FilterMode();
       var PositionLevelDefinition5 = require_PositionLevelDefinition();
       var PositionLevelType5 = require_PositionLevelType();
@@ -7847,6 +7848,7 @@
             this._excludedItems = [];
             this._excludedItemMap = {};
             this._consideredItems = this._items.slice(0);
+            this._itemBindings = /* @__PURE__ */ new Map();
             this._dataFormat = {};
             this._dataActual = {};
             this._dataFormat.key = this._key;
@@ -8373,6 +8375,15 @@
             return this._groupExcludedChangeEvent.register(handler);
           }
           /**
+           * Releases bindings to the group's position items.
+           *
+           * @public
+           */
+          dispose() {
+            this._itemBindings.forEach((bindings) => bindings.dispose());
+            this._itemBindings.clear();
+          }
+          /**
            * Changes rules for price formatting.
            *
            * @public
@@ -8498,15 +8509,18 @@
             const currencySelector = this._definition.currencySelector;
             this.changeCurrency(currencySelector({ portfolio }));
           });
-          let disposalBinding = null;
+          const bindings = DisposableStack.fromArray([
+            quoteBinding,
+            fundamentalBinding,
+            newsBinding,
+            lockedBinding,
+            calculatingBinding,
+            portfolioChangeBinding
+          ]);
+          let disposalBinding;
           disposalBinding = item.registerPositionItemDisposeHandler(() => {
-            quoteBinding.dispose();
-            fundamentalBinding.dispose();
-            newsBinding.dispose();
-            lockedBinding.dispose();
-            calculatingBinding.dispose();
-            portfolioChangeBinding.dispose();
-            disposalBinding.dispose();
+            bindings.dispose();
+            this._itemBindings.delete(item);
             array.remove(this._items, (i) => i === item);
             array.remove(this._excludedItems, (i) => i === item);
             array.remove(this._consideredItems, (i) => i === item);
@@ -8514,6 +8528,8 @@
             this._dataFormat.empty = this._items.length === 0;
             this.refresh();
           });
+          bindings.push(disposalBinding);
+          this._itemBindings.set(item, bindings);
         }
         function setPositionsFormat(format, items) {
           const includePositions = format.single || format.homogeneous;
@@ -8603,7 +8619,7 @@
           if (instrument && value !== null) {
             const type = instrument.type;
             const code = instrument.code;
-            if (code && code.supportsFractions && (type === InstrumentType6.FUTURE || type === InstrumentType6.FUTURE_OPTION)) {
+            if (code && code.supportsFractions && (type === InstrumentType7.FUTURE || type === InstrumentType7.FUTURE_OPTION)) {
               const rounded = code.roundToNearestTick(decimal ? value.toFloat() : value, instrument.future ? instrument.future.tick : instrument.option.tick, true);
               return fractionFormatter(rounded, code.fractionFactor, code.fractionDigits, "-", true);
             }
@@ -8659,7 +8675,7 @@
           };
           const updates = items.reduce((updates2, item) => {
             updates2.basis = updates2.basis.add(translate(item, item.data.basis));
-            if (item.position.instrument.type === InstrumentType6.FUTURE) {
+            if (item.position.instrument.type === InstrumentType7.FUTURE) {
               if (group.single) {
                 updates2.basis2 = null;
               }
@@ -8682,7 +8698,7 @@
             updates2.periodDividendsPrevious = updates2.periodDividendsPrevious.add(translate(item, item.data.periodDividendsPrevious));
             updates2.periodRealized = updates2.periodRealized.add(translate(item, item.data.periodRealized));
             updates2.periodUnrealized = updates2.periodUnrealized.add(translate(item, item.data.periodUnrealized));
-            if (item.position.instrument.type === InstrumentType6.CASH) {
+            if (item.position.instrument.type === InstrumentType7.CASH) {
               updates2.cashTotal = updates2.cashTotal.add(translate(item, item.data.market));
             }
             updates2.totalDivisor = updates2.totalDivisor.add(translate(item, item.data.totalDivisor));
@@ -8757,7 +8773,7 @@
           const holdingItem = group.single && items.length === 1 ? items[0] : null;
           actual.daysHeld = holdingItem === null ? null : holdingItem.data.daysHeld;
           actual.weeksHeld = holdingItem === null ? null : holdingItem.data.weeksHeld;
-          const nonCashItems = items.filter((item) => item.position.instrument.type !== InstrumentType6.CASH);
+          const nonCashItems = items.filter((item) => item.position.instrument.type !== InstrumentType7.CASH);
           actual.holdingPeriodComplete = nonCashItems.length !== 0 && nonCashItems.every((item) => item.data.daysHeld !== null);
           actual.annualizedDaysHeld = nonCashItems.reduce((daysHeld, item) => {
             if (item.data.daysHeld === null) {
@@ -8882,7 +8898,7 @@
             const items = group._consideredItems;
             updates = items.reduce((updates2, item2) => {
               updates2.market = updates2.market.add(translate(item2, item2.data.market));
-              if (item2.position.instrument.type === InstrumentType6.FUTURE) {
+              if (item2.position.instrument.type === InstrumentType7.FUTURE) {
                 updates2.market2 = updates2.market2.add(translate(item2, item2.data.unrealized));
               } else {
                 updates2.market2 = updates2.market2.add(translate(item2, item2.data.market));
@@ -8916,7 +8932,7 @@
           } else {
             updates = {};
             updates.market = actual.market.add(translate(item, item.data.marketChange));
-            if (item.position.instrument.type === InstrumentType6.FUTURE) {
+            if (item.position.instrument.type === InstrumentType7.FUTURE) {
               updates.market2 = actual.market2.add(translate(item, item.data.unrealizedChange));
             } else {
               updates.market2 = actual.market2.add(translate(item, item.data.marketChange));
@@ -9164,7 +9180,7 @@
       var Disposable = require_Disposable();
       var Event = require_Event();
       var is = require_is();
-      var InstrumentType6 = require_InstrumentType();
+      var InstrumentType7 = require_InstrumentType();
       var PositionDirection2 = require_PositionDirection();
       var OptionsValuationType = require_OptionsValuationType();
       var AveragePriceCalculator2 = require_AveragePriceCalculator();
@@ -9655,11 +9671,11 @@
           const position = item.position;
           const snapshot = getSnapshot(position, item.currentSummary, item._reporting);
           const data = item._data;
-          const worthless = data.expired && (position.instrument.type === InstrumentType6.EQUITY_OPTION || position.instrument.type === InstrumentType6.FUTURE_OPTION);
+          const worthless = data.expired && (position.instrument.type === InstrumentType7.EQUITY_OPTION || position.instrument.type === InstrumentType7.FUTURE_OPTION);
           let market;
-          if (position.instrument.type === InstrumentType6.OTHER) {
+          if (position.instrument.type === InstrumentType7.OTHER) {
             market = snapshot.value;
-          } else if (position.instrument.type === InstrumentType6.CASH) {
+          } else if (position.instrument.type === InstrumentType7.CASH) {
             market = snapshot.open;
           } else {
             let priceToUse;
@@ -9750,7 +9766,7 @@
           const weekToDateSummary = item._periodSummaries.weekToDate || null;
           const monthToDateSummary = item._periodSummaries.monthToDate || null;
           let currentPriceToUse = null;
-          if (currentSummary && position.instrument.type !== InstrumentType6.CASH) {
+          if (currentSummary && position.instrument.type !== InstrumentType7.CASH) {
             let priceToUse;
             if (worthless) {
               priceToUse = Decimal8.ZERO;
@@ -9812,7 +9828,7 @@
             data.weekToDateGainChange = Decimal8.ZERO;
             data.monthToDateGainChange = Decimal8.ZERO;
           }
-          if (position.instrument.type !== InstrumentType6.CASH) {
+          if (position.instrument.type !== InstrumentType7.CASH) {
             if (currentPriceToUse === null) {
               if (worthless) {
                 currentPriceToUse = Decimal8.ZERO;
@@ -9864,7 +9880,7 @@
         function calculatePeriodGain(instrument, direction, currentSummary, previousSummary, overridePrice, useCurrentStart) {
           let returnRef;
           const type = instrument.type;
-          if (currentSummary && type !== InstrumentType6.CASH) {
+          if (currentSummary && type !== InstrumentType7.CASH) {
             let startValue;
             if (previousSummary) {
               startValue = previousSummary.end.value;
@@ -9890,7 +9906,7 @@
         }
         function calculatePeriodDivisor(type, direction, currentSummary, previousSummary, useCurrentStart) {
           let returnRef;
-          if (currentSummary && type !== InstrumentType6.CASH) {
+          if (currentSummary && type !== InstrumentType7.CASH) {
             let startValue;
             if (previousSummary) {
               startValue = previousSummary.end.value;
@@ -9911,7 +9927,7 @@
         }
         function calculatePeriodUnrealized(type, periodGain, periodRealized, periodIncome) {
           let returnRef;
-          if (type !== InstrumentType6.CASH) {
+          if (type !== InstrumentType7.CASH) {
             returnRef = periodRealized.add(periodIncome).subtract(periodGain).opposite();
           } else {
             returnRef = Decimal8.ZERO;
@@ -9919,7 +9935,7 @@
           return returnRef;
         }
         function calculateTotalDivisor(type, direction, position) {
-          if (type === InstrumentType6.CASH) {
+          if (type === InstrumentType7.CASH) {
             return Decimal8.ZERO;
           }
           let divisor;
@@ -9936,7 +9952,7 @@
           return divisor.getIsApproximate(Decimal8.ZERO, 4) ? Decimal8.ZERO : gain.divide(divisor);
         }
         function calculateAnnualizedReturnPercent(type, totalPercent, totalDivisor, daysHeld) {
-          if (type === InstrumentType6.CASH || totalDivisor.getIsApproximate(Decimal8.ZERO, 4) || daysHeld === null || daysHeld < DAYS_PER_YEAR || totalPercent.toFloat() < -1) {
+          if (type === InstrumentType7.CASH || totalDivisor.getIsApproximate(Decimal8.ZERO, 4) || daysHeld === null || daysHeld < DAYS_PER_YEAR || totalPercent.toFloat() < -1) {
             return null;
           }
           const annualizedReturn = Math.pow(1 + totalPercent.toFloat(), DAYS_PER_YEAR / daysHeld) - 1;
@@ -9964,9 +9980,9 @@
           assert.argumentIsRequired(position, "position");
           const type = position.instrument.type;
           let expiration;
-          if (type === InstrumentType6.FUTURE) {
+          if (type === InstrumentType7.FUTURE) {
             expiration = position.instrument.future.expiration;
-          } else if (type === InstrumentType6.FUTURE_OPTION || type === InstrumentType6.EQUITY_OPTION) {
+          } else if (type === InstrumentType7.FUTURE_OPTION || type === InstrumentType7.EQUITY_OPTION) {
             expiration = position.instrument.option.expiration;
           } else {
             expiration = null;
@@ -10239,6 +10255,41 @@
           }
           getCalculationsSuspended() {
             return this._calculationSuspensions.size !== 0;
+          }
+          /**
+           * Rebuilds an existing aggregation tree using a new definition.
+           *
+           * @public
+           * @param {PositionTreeDefinition} definition
+           * @param {Boolean=} preserveTopLevelGroups
+           */
+          replaceTree(definition, preserveTopLevelGroups) {
+            assert.argumentIsRequired(definition, "definition", PositionTreeDefinition3, "PositionTreeDefinition");
+            assert.argumentIsOptional(preserveTopLevelGroups, "preserveTopLevelGroups", Boolean);
+            const definitionIndex = this._definitions.findIndex((candidate) => candidate.name === definition.name);
+            assert.argumentIsValid(definitionIndex, "definition.name", (index) => index !== -1, "matches an existing tree");
+            const previousDefinition = this._definitions[definitionIndex];
+            const previousTree = this._trees[definition.name];
+            let tree;
+            if (preserveTopLevelGroups) {
+              assert.argumentIsValid(definition.definitions[0], "definition.definitions[0]", (candidate) => candidate === previousDefinition.definitions[0], "matches the existing top-level definition");
+              tree = previousTree;
+              tree.getChildren().forEach((groupTree) => {
+                groupTree.getChildren().slice().forEach((child) => disposeGroupTree.call(this, child));
+                this._groupObservers[groupTree.getValue().id].dispose();
+                delete this._groupObservers[groupTree.getValue().id];
+                initializeGroupObservers.call(this, groupTree, definition);
+                createGroups.call(this, groupTree, groupTree.getValue().items, definition, array.dropLeft(definition.definitions));
+              });
+            } else {
+              tree = new BindingTree2();
+              createGroups.call(this, tree, this._items, definition, definition.definitions);
+              disposeTree.call(this, previousTree);
+            }
+            this._definitions.splice(definitionIndex, 1, definition);
+            this._trees[definition.name] = tree;
+            Object.keys(this._portfolios).forEach((key) => updateEmptyPortfolioGroups.call(this, this._portfolios[key]));
+            recalculatePercentages.call(this);
           }
           /**
            * Returns Barchart's user identifier for the container's portfolios. If
@@ -11153,6 +11204,20 @@
             }
           }, false, true);
         }
+        function disposeTree(tree) {
+          tree.getChildren().slice().forEach((child) => disposeGroupTree.call(this, child));
+        }
+        function disposeGroupTree(groupTree) {
+          groupTree.walk((group) => {
+            delete this._nodes[group.id];
+            if (Object.prototype.hasOwnProperty.call(this._groupObservers, group.id)) {
+              this._groupObservers[group.id].dispose();
+              delete this._groupObservers[group.id];
+            }
+            group.dispose();
+          }, false, true);
+          groupTree.sever();
+        }
         function recalculatePercentages() {
           if (this.getCalculationsSuspended()) {
             return;
@@ -11171,7 +11236,7 @@
     "test/utils/processing/PositionTestFactory.js"(exports, module) {
       var Currency5 = require_Currency();
       var Decimal8 = require_Decimal();
-      var InstrumentType6 = require_InstrumentType();
+      var InstrumentType7 = require_InstrumentType();
       var PositionDirection2 = require_PositionDirection();
       var positionCounter = 0;
       function resetPositionCounter() {
@@ -11192,7 +11257,7 @@
               barchart: symbol
             },
             currency: currency || Currency5.USD,
-            type: InstrumentType6.EQUITY
+            type: InstrumentType7.EQUITY
           },
           snapshot: {
             basis: new Decimal8(123),
@@ -21950,7 +22015,7 @@
       var Enum = require_Enum();
       var SchemaBuilder = require_SchemaBuilder();
       var UnitCode = require_UnitCode();
-      var InstrumentType6 = require_InstrumentType();
+      var InstrumentType7 = require_InstrumentType();
       var OptionSide = require_OptionSide();
       var PositionDirection2 = require_PositionDirection();
       var ValuationType = require_ValuationType();
@@ -22015,13 +22080,13 @@
           }
         }
         const complete = new PositionSchema2(
-          SchemaBuilder.withName("complete").withField("user", DataType.STRING).withField("portfolio", DataType.STRING).withField("instrument.id", DataType.STRING).withField("instrument.name", DataType.STRING).withField("instrument.type", DataType.forEnum(InstrumentType6, "InstrumentType")).withField("instrument.code", DataType.forEnum(UnitCode, "UnitCode"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency")).withField("instrument.exchange", DataType.STRING, true).withField("instrument.delist", DataType.DAY, true).withField("instrument.future.expiration", DataType.DAY, true).withField("instrument.future.tick", DataType.DECIMAL, true).withField("instrument.future.value", DataType.DECIMAL, true).withField("instrument.option.expiration", DataType.DAY, true).withField("instrument.option.side", DataType.forEnum(OptionSide, "OptionSide"), true).withField("instrument.option.strike", DataType.DECIMAL, true).withField("instrument.option.multiplier", DataType.DECIMAL, true).withField("instrument.option.tick", DataType.DECIMAL, true).withField("instrument.option.value", DataType.DECIMAL, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("position", DataType.STRING).withField("transaction", DataType.NUMBER).withField("opening.date", DataType.DAY, true).withField("closing.date", DataType.DAY, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).withField("valuation", DataType.forEnum(ValuationType, "ValuationType")).withField("snapshot.date", DataType.DAY).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("snapshot.initial", DataType.forEnum(PositionDirection2, "PositionDirection"), true).withField("latest.date", DataType.DAY).withField("latest.gain", DataType.DECIMAL).withField("legacy.system", DataType.STRING, true).withField("legacy.user", DataType.STRING, true).withField("legacy.portfolio", DataType.STRING, true).withField("legacy.position", DataType.STRING, true).withField("system.version", DataType.NUMBER, true).withField("system.calculate.processors", DataType.NUMBER, true).withField("system.locked", DataType.BOOLEAN, true).withField("root", DataType.STRING, true).schema
+          SchemaBuilder.withName("complete").withField("user", DataType.STRING).withField("portfolio", DataType.STRING).withField("instrument.id", DataType.STRING).withField("instrument.name", DataType.STRING).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType")).withField("instrument.code", DataType.forEnum(UnitCode, "UnitCode"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency")).withField("instrument.exchange", DataType.STRING, true).withField("instrument.delist", DataType.DAY, true).withField("instrument.future.expiration", DataType.DAY, true).withField("instrument.future.tick", DataType.DECIMAL, true).withField("instrument.future.value", DataType.DECIMAL, true).withField("instrument.option.underlying", DataType.STRING, true).withField("instrument.option.expiration", DataType.DAY, true).withField("instrument.option.side", DataType.forEnum(OptionSide, "OptionSide"), true).withField("instrument.option.strike", DataType.DECIMAL, true).withField("instrument.option.multiplier", DataType.DECIMAL, true).withField("instrument.option.tick", DataType.DECIMAL, true).withField("instrument.option.value", DataType.DECIMAL, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("position", DataType.STRING).withField("transaction", DataType.NUMBER).withField("opening.date", DataType.DAY, true).withField("closing.date", DataType.DAY, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).withField("valuation", DataType.forEnum(ValuationType, "ValuationType")).withField("snapshot.date", DataType.DAY).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("snapshot.initial", DataType.forEnum(PositionDirection2, "PositionDirection"), true).withField("latest.date", DataType.DAY).withField("latest.gain", DataType.DECIMAL).withField("legacy.system", DataType.STRING, true).withField("legacy.user", DataType.STRING, true).withField("legacy.portfolio", DataType.STRING, true).withField("legacy.position", DataType.STRING, true).withField("system.version", DataType.NUMBER, true).withField("system.calculate.processors", DataType.NUMBER, true).withField("system.locked", DataType.BOOLEAN, true).withField("root", DataType.STRING, true).schema
         );
         const client = new PositionSchema2(
-          SchemaBuilder.withName("client").withField("user", DataType.STRING).withField("portfolio", DataType.STRING).withField("instrument.id", DataType.STRING).withField("instrument.name", DataType.STRING).withField("instrument.type", DataType.forEnum(InstrumentType6, "InstrumentType")).withField("instrument.code", DataType.forEnum(UnitCode, "UnitCode"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency")).withField("instrument.exchange", DataType.STRING, true).withField("instrument.delist", DataType.DAY, true).withField("instrument.future.expiration", DataType.DAY, true).withField("instrument.future.tick", DataType.DECIMAL, true).withField("instrument.future.value", DataType.DECIMAL, true).withField("instrument.option.expiration", DataType.DAY, true).withField("instrument.option.side", DataType.forEnum(OptionSide, "OptionSide"), true).withField("instrument.option.strike", DataType.DECIMAL, true).withField("instrument.option.multiplier", DataType.DECIMAL, true).withField("instrument.option.tick", DataType.DECIMAL, true).withField("instrument.option.value", DataType.DECIMAL, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("position", DataType.STRING).withField("transaction", DataType.NUMBER).withField("opening.date", DataType.DAY, true).withField("closing.date", DataType.DAY, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).withField("valuation", DataType.forEnum(ValuationType, "ValuationType")).withField("snapshot.date", DataType.DAY).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("snapshot.initial", DataType.forEnum(PositionDirection2, "PositionDirection"), true).withField("latest.date", DataType.DAY).withField("latest.gain", DataType.DECIMAL).withField("system.calculate.processors", DataType.NUMBER, true).withField("system.locked", DataType.BOOLEAN, true).withField("previous", DataType.NUMBER, true).schema
+          SchemaBuilder.withName("client").withField("user", DataType.STRING).withField("portfolio", DataType.STRING).withField("instrument.id", DataType.STRING).withField("instrument.name", DataType.STRING).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType")).withField("instrument.code", DataType.forEnum(UnitCode, "UnitCode"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency")).withField("instrument.exchange", DataType.STRING, true).withField("instrument.delist", DataType.DAY, true).withField("instrument.future.expiration", DataType.DAY, true).withField("instrument.future.tick", DataType.DECIMAL, true).withField("instrument.future.value", DataType.DECIMAL, true).withField("instrument.option.underlying", DataType.STRING, true).withField("instrument.option.expiration", DataType.DAY, true).withField("instrument.option.side", DataType.forEnum(OptionSide, "OptionSide"), true).withField("instrument.option.strike", DataType.DECIMAL, true).withField("instrument.option.multiplier", DataType.DECIMAL, true).withField("instrument.option.tick", DataType.DECIMAL, true).withField("instrument.option.value", DataType.DECIMAL, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("position", DataType.STRING).withField("transaction", DataType.NUMBER).withField("opening.date", DataType.DAY, true).withField("closing.date", DataType.DAY, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).withField("valuation", DataType.forEnum(ValuationType, "ValuationType")).withField("snapshot.date", DataType.DAY).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("snapshot.initial", DataType.forEnum(PositionDirection2, "PositionDirection"), true).withField("latest.date", DataType.DAY).withField("latest.gain", DataType.DECIMAL).withField("system.calculate.processors", DataType.NUMBER, true).withField("system.locked", DataType.BOOLEAN, true).withField("previous", DataType.NUMBER, true).schema
         );
         const update = new PositionSchema2(
-          SchemaBuilder.withName("update").withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("mapping.name", DataType.STRING, true).withField("mapping.type", DataType.forEnum(InstrumentType6, "InstrumentType"), true).withField("mapping.currency", DataType.forEnum(Currency5, "Currency"), true).withField("mapping.symbol.barchart", DataType.STRING, true).withField("mapping.symbol.display", DataType.STRING, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName("update").withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("mapping.name", DataType.STRING, true).withField("mapping.type", DataType.forEnum(InstrumentType7, "InstrumentType"), true).withField("mapping.currency", DataType.forEnum(Currency5, "Currency"), true).withField("mapping.symbol.barchart", DataType.STRING, true).withField("mapping.symbol.display", DataType.STRING, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).schema
         );
         const simple = new PositionSchema2(
           SchemaBuilder.withName("simple").withField("user", DataType.STRING).withField("portfolio", DataType.STRING).withField("instrument.id", DataType.STRING).withField("instrument.name", DataType.STRING).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("position", DataType.STRING).schema
@@ -22039,7 +22104,7 @@
       var DataType = require_DataType();
       var Enum = require_Enum();
       var SchemaBuilder = require_SchemaBuilder();
-      var InstrumentType6 = require_InstrumentType();
+      var InstrumentType7 = require_InstrumentType();
       var PositionDirection2 = require_PositionDirection();
       var TransactionType5 = require_TransactionType();
       module.exports = (() => {
@@ -22140,7 +22205,7 @@
           SchemaBuilder.withName("client").withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("transaction", DataType.STRING).withField("sequence", DataType.NUMBER).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("description", DataType.STRING, true).withField("amount", DataType.DECIMAL).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("gain", DataType.DECIMAL).withField("reference.position", DataType.STRING, true).withField("reference.transaction", DataType.NUMBER, true).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("trade.price", DataType.DECIMAL, true).withField("dividend.rate", DataType.DECIMAL, true).withField("dividend.effective", DataType.DAY, true).withField("dividend.price", DataType.DECIMAL, true).withField("dividend.amount", DataType.DECIMAL, true).withField("split.numerator", DataType.DECIMAL, true).withField("split.denominator", DataType.DECIMAL, true).withField("split.effective", DataType.DAY, true).withField("split.reference", DataType.STRING, true).withField("merger.numerator", DataType.DECIMAL, true).withField("merger.denominator", DataType.DECIMAL, true).withField("spinoff.numerator", DataType.DECIMAL, true).withField("spinoff.denominator", DataType.DECIMAL, true).withField("charge.amount", DataType.DECIMAL, true).withField("income.amount", DataType.DECIMAL, true).withField("valuation.rate", DataType.DECIMAL, true).withField("valuation.value", DataType.DECIMAL, true).schema
         );
         const buy = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.BUY.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.id", DataType.STRING, true).withField("instrument.name", DataType.STRING, true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.code", DataType.NUMBER, true).withField("instrument.type", DataType.forEnum(InstrumentType6, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("date", DataType.DAY).withField("price", DataType.DECIMAL, true).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("reinvest", DataType.BOOLEAN, true).withField("cash", DataType.BOOLEAN, true).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType5.BUY.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.id", DataType.STRING, true).withField("instrument.name", DataType.STRING, true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.code", DataType.NUMBER, true).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("date", DataType.DAY).withField("price", DataType.DECIMAL, true).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("reinvest", DataType.BOOLEAN, true).withField("cash", DataType.BOOLEAN, true).withField("force", DataType.BOOLEAN, true).schema
         );
         const sell = new TransactionSchema2(
           SchemaBuilder.withName(TransactionType5.SELL.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("price", DataType.DECIMAL, true).withField("quantity", DataType.DECIMAL, true).withField("fee", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).withField("close", DataType.BOOLEAN, true).schema
@@ -22149,16 +22214,16 @@
           SchemaBuilder.withName(TransactionType5.BUY_SHORT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("price", DataType.DECIMAL).withField("quantity", DataType.DECIMAL, true).withField("fee", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).withField("close", DataType.BOOLEAN, true).schema
         );
         const sellShort = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.SELL_SHORT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.id", DataType.STRING, true).withField("instrument.name", DataType.STRING, true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.code", DataType.NUMBER, true).withField("instrument.type", DataType.forEnum(InstrumentType6, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("date", DataType.DAY).withField("price", DataType.DECIMAL).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("reinvest", DataType.BOOLEAN, true).withField("cash", DataType.BOOLEAN, true).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType5.SELL_SHORT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.id", DataType.STRING, true).withField("instrument.name", DataType.STRING, true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.code", DataType.NUMBER, true).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("date", DataType.DAY).withField("price", DataType.DECIMAL).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("reinvest", DataType.BOOLEAN, true).withField("cash", DataType.BOOLEAN, true).withField("force", DataType.BOOLEAN, true).schema
         );
         const fee = new TransactionSchema2(
           SchemaBuilder.withName(TransactionType5.FEE.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("fee", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
         );
         const deposit = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.DEPOSIT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.type", DataType.forEnum(InstrumentType6, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("date", DataType.DAY).withField("amount", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType5.DEPOSIT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("date", DataType.DAY).withField("amount", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
         );
         const withdrawal = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.WITHDRAWAL.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.type", DataType.forEnum(InstrumentType6, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("date", DataType.DAY).withField("amount", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType5.WITHDRAWAL.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("date", DataType.DAY).withField("amount", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
         );
         const valuation = new TransactionSchema2(
           SchemaBuilder.withName(TransactionType5.VALUATION.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("rate", DataType.DECIMAL, true).withField("value", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).schema
@@ -23513,6 +23578,76 @@
       });
     });
   });
+  describe("When an aggregation tree is replaced", () => {
+    "use strict";
+    const treeName = "positions";
+    const createPortfolioTreeDefinition = () => {
+      return new PositionTreeDefinition(treeName, [
+        new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency.USD),
+        new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency.USD),
+        new PositionLevelDefinition("Position", PositionLevelType.POSITION, (x) => x.position.position, (x) => x.position.instrument.symbol.barchart, (x) => x.position.instrument.currency)
+      ]);
+    };
+    const createAssetTreeDefinition = () => {
+      return new PositionTreeDefinition(treeName, [
+        new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency.USD),
+        new PositionLevelDefinition("Asset", PositionLevelType.OTHER, (x) => PositionLevelDefinition.getKeyForAssetClassGroup(x.position.instrument.type, x.position.instrument.currency), (x) => x.position.instrument.type.alternateDescription, (x) => x.position.instrument.currency),
+        new PositionLevelDefinition("Position", PositionLevelType.POSITION, (x) => x.position.position, (x) => x.position.instrument.symbol.barchart, (x) => x.position.instrument.currency)
+      ]);
+    };
+    beforeEach(() => {
+      positionTestFactory.resetPositionCounter();
+    });
+    it("should expose groups from the replacement definition", () => {
+      const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
+      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency.USD);
+      const container = new PositionContainer([createPortfolioTreeDefinition()], [portfolio], [position], []);
+      container.replaceTree(createAssetTreeDefinition());
+      const groups = container.getGroups(treeName, ["totals"]);
+      expect(groups.map((group) => group.data.key)).toEqual([
+        PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType4.EQUITY, Currency.USD)
+      ]);
+    });
+    it("should inject new positions into the replacement definition", () => {
+      const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
+      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency.USD);
+      const container = new PositionContainer([createPortfolioTreeDefinition()], [portfolio], [position], []);
+      container.replaceTree(createAssetTreeDefinition());
+      const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType4.EQUITY, Currency.USD);
+      const groups = container.getGroups(treeName, ["totals", assetKey]);
+      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "TSLA", Currency.USD), []);
+      expect(groups.length).toEqual(2);
+    });
+    it("should dispose bindings from the replaced tree", () => {
+      const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
+      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency.USD);
+      const container = new PositionContainer([createPortfolioTreeDefinition()], [portfolio], [position], []);
+      const group = container.getGroup(treeName, ["totals", portfolio.portfolio, position.position]);
+      const currentPrice = group.data.currentPrice;
+      container.replaceTree(createAssetTreeDefinition());
+      container.setQuotes([{ lastPrice: 200, symbol: "AAPL" }], []);
+      expect(group.data.currentPrice).toEqual(currentPrice);
+    });
+    it("should preserve top-level group bindings when requested", () => {
+      const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
+      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency.USD);
+      const totalDefinition = new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency.USD);
+      const initialDefinition = new PositionTreeDefinition(treeName, [
+        totalDefinition,
+        new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency.USD),
+        new PositionLevelDefinition("Position", PositionLevelType.POSITION, (x) => x.position.position, (x) => x.position.instrument.symbol.barchart, (x) => x.position.instrument.currency)
+      ]);
+      const replacementDefinition = new PositionTreeDefinition(treeName, [
+        totalDefinition,
+        new PositionLevelDefinition("Asset", PositionLevelType.OTHER, (x) => PositionLevelDefinition.getKeyForAssetClassGroup(x.position.instrument.type, x.position.instrument.currency), (x) => x.position.instrument.type.alternateDescription, (x) => x.position.instrument.currency),
+        new PositionLevelDefinition("Position", PositionLevelType.POSITION, (x) => x.position.position, (x) => x.position.instrument.symbol.barchart, (x) => x.position.instrument.currency)
+      ]);
+      const container = new PositionContainer([initialDefinition], [portfolio], [position], []);
+      const total = container.getGroup(treeName, ["totals"]);
+      container.replaceTree(replacementDefinition, true);
+      expect(container.getGroup(treeName, ["totals"])).toBe(total);
+    });
+  });
   describe("When a position container uses currencies outside its default currency list", () => {
     "use strict";
     const treeName = "positions";
@@ -24626,6 +24761,7 @@
   // test/specs/serialization/PositionSchemaSpec.js
   var Day5 = require_Day();
   var PositionSchema = require_PositionSchema();
+  var InstrumentType6 = require_InstrumentType();
   describe("When positions are serialized", () => {
     "use strict";
     describe("for a read operation (user error #1)", () => {
@@ -24675,6 +24811,24 @@
           }
         };
         serialized = JSON.stringify(position);
+      });
+      [PositionSchema.COMPLETE, PositionSchema.CLIENT].forEach((schema) => {
+        it(`should preserve the option underlying through the ${schema.code} schema`, () => {
+          const optionPosition = JSON.parse(serialized, PositionSchema.CLIENT.schema.getReviver());
+          optionPosition.instrument.type = InstrumentType6.EQUITY_OPTION;
+          optionPosition.instrument.option = { underlying: "NVDA" };
+          const formatted = schema.schema.format(optionPosition);
+          const restored = JSON.parse(JSON.stringify(formatted), schema.schema.getReviver());
+          expect(restored.instrument.option.underlying).toEqual("NVDA");
+        });
+        it(`should accept an older option without an underlying through the ${schema.code} schema`, () => {
+          const optionPosition = JSON.parse(serialized, PositionSchema.CLIENT.schema.getReviver());
+          optionPosition.instrument.type = InstrumentType6.EQUITY_OPTION;
+          optionPosition.instrument.option = { expiration: new Day5(2026, 9, 18) };
+          const formatted = schema.schema.format(optionPosition);
+          const restored = JSON.parse(JSON.stringify(formatted), schema.schema.getReviver());
+          expect(restored.instrument.option).toEqual(optionPosition.instrument.option);
+        });
       });
       describe("and the data is deserialized", () => {
         let deserialized;

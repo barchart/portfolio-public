@@ -1,6 +1,7 @@
 const Day = require('@barchart/common-js/lang/Day');
 
 const PositionSchema = require('./../../../lib/serialization/PositionSchema');
+const InstrumentType = require('./../../../lib/data/InstrumentType');
 
 describe('When positions are serialized', () => {
 	'use strict';
@@ -54,6 +55,32 @@ describe('When positions are serialized', () => {
 			};
 
 			serialized = JSON.stringify(position);
+		});
+
+		[ PositionSchema.COMPLETE, PositionSchema.CLIENT ].forEach((schema) => {
+			it(`should preserve the option underlying through the ${schema.code} schema`, () => {
+				const optionPosition = JSON.parse(serialized, PositionSchema.CLIENT.schema.getReviver());
+
+				optionPosition.instrument.type = InstrumentType.EQUITY_OPTION;
+				optionPosition.instrument.option = { underlying: 'NVDA' };
+
+				const formatted = schema.schema.format(optionPosition);
+				const restored = JSON.parse(JSON.stringify(formatted), schema.schema.getReviver());
+
+				expect(restored.instrument.option.underlying).toEqual('NVDA');
+			});
+
+			it(`should accept an older option without an underlying through the ${schema.code} schema`, () => {
+				const optionPosition = JSON.parse(serialized, PositionSchema.CLIENT.schema.getReviver());
+
+				optionPosition.instrument.type = InstrumentType.EQUITY_OPTION;
+				optionPosition.instrument.option = { expiration: new Day(2026, 9, 18) };
+
+				const formatted = schema.schema.format(optionPosition);
+				const restored = JSON.parse(JSON.stringify(formatted), schema.schema.getReviver());
+
+				expect(restored.instrument.option).toEqual(optionPosition.instrument.option);
+			});
 		});
 
 		describe('and the data is deserialized', () => {
