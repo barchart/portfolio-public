@@ -1,5 +1,6 @@
 const array = require('@barchart/common-js/lang/array'),
 	assert = require('@barchart/common-js/lang/assert'),
+	DisposableStack = require('@barchart/common-js/collections/specialized/DisposableStack'),
 	Currency = require('@barchart/common-js/lang/Currency'),
 	CurrencyTranslator = require('@barchart/common-js/lang/CurrencyTranslator'),
 	Decimal = require('@barchart/common-js/lang/Decimal'),
@@ -82,6 +83,7 @@ module.exports = (() => {
 			this._excludedItems = [ ];
 			this._excludedItemMap = { };
 			this._consideredItems = this._items.slice(0);
+			this._itemBindings = new Map();
 
 			this._dataFormat = { };
 			this._dataActual = { };
@@ -694,6 +696,16 @@ module.exports = (() => {
 		}
 
 		/**
+		 * Releases bindings to the group's position items.
+		 *
+		 * @public
+		 */
+		dispose() {
+			this._itemBindings.forEach(bindings => bindings.dispose());
+			this._itemBindings.clear();
+		}
+
+		/**
 		 * Changes rules for price formatting.
 		 *
 		 * @public
@@ -862,19 +874,21 @@ module.exports = (() => {
 			this.changeCurrency(currencySelector({ portfolio }));
 		});
 
-		let disposalBinding = null;
+		const bindings = DisposableStack.fromArray([
+			quoteBinding,
+			fundamentalBinding,
+			newsBinding,
+			lockedBinding,
+			calculatingBinding,
+			portfolioChangeBinding
+		]);
+
+		let disposalBinding;
 
 		disposalBinding = item.registerPositionItemDisposeHandler(() => {
-			quoteBinding.dispose();
-			fundamentalBinding.dispose();
+			bindings.dispose();
 
-			newsBinding.dispose();
-			lockedBinding.dispose();
-			calculatingBinding.dispose();
-
-			portfolioChangeBinding.dispose();
-
-			disposalBinding.dispose();
+			this._itemBindings.delete(item);
 
 			array.remove(this._items, i => i === item);
 			array.remove(this._excludedItems, i => i === item);
@@ -886,6 +900,10 @@ module.exports = (() => {
 
 			this.refresh();
 		});
+
+		bindings.push(disposalBinding);
+
+		this._itemBindings.set(item, bindings);
 	}
 
 	function setPositionsFormat(format, items) {

@@ -290,6 +290,56 @@ module.exports = (() => {
 		}
 
 		/**
+		 * Rebuilds an existing aggregation tree using a new definition.
+		 *
+		 * @public
+		 * @param {PositionTreeDefinition} definition
+		 * @param {Boolean=} preserveTopLevelGroups
+		 */
+		replaceTree(definition, preserveTopLevelGroups) {
+			assert.argumentIsRequired(definition, 'definition', PositionTreeDefinition, 'PositionTreeDefinition');
+			assert.argumentIsOptional(preserveTopLevelGroups, 'preserveTopLevelGroups', Boolean);
+
+			const definitionIndex = this._definitions.findIndex(candidate => candidate.name === definition.name);
+
+			assert.argumentIsValid(definitionIndex, 'definition.name', index => index !== -1, 'matches an existing tree');
+
+			const previousDefinition = this._definitions[definitionIndex];
+			const previousTree = this._trees[definition.name];
+
+			let tree;
+
+			if (preserveTopLevelGroups) {
+				assert.argumentIsValid(definition.definitions[0], 'definition.definitions[0]', candidate => candidate === previousDefinition.definitions[0], 'matches the existing top-level definition');
+
+				tree = previousTree;
+
+				tree.getChildren().forEach(groupTree => {
+					groupTree.getChildren().slice().forEach(child => disposeGroupTree.call(this, child));
+
+					this._groupObservers[groupTree.getValue().id].dispose();
+
+					delete this._groupObservers[groupTree.getValue().id];
+
+					initializeGroupObservers.call(this, groupTree, definition);
+					createGroups.call(this, groupTree, groupTree.getValue().items, definition, array.dropLeft(definition.definitions));
+				});
+			} else {
+				tree = new BindingTree();
+
+				createGroups.call(this, tree, this._items, definition, definition.definitions);
+				disposeTree.call(this, previousTree);
+			}
+
+			this._definitions.splice(definitionIndex, 1, definition);
+			this._trees[definition.name] = tree;
+
+			Object.keys(this._portfolios).forEach(key => updateEmptyPortfolioGroups.call(this, this._portfolios[key]));
+
+			recalculatePercentages.call(this);
+		}
+
+		/**
 		 * Returns Barchart's user identifier for the container's portfolios. If
 		 * the container has no portfolios, a null value is returned.
 		 *
@@ -1448,6 +1498,26 @@ module.exports = (() => {
 				disposable.dispose();
 			}
 		}, false, true);
+	}
+
+	function disposeTree(tree) {
+		tree.getChildren().slice().forEach(child => disposeGroupTree.call(this, child));
+	}
+
+	function disposeGroupTree(groupTree) {
+		groupTree.walk(group => {
+			delete this._nodes[group.id];
+
+			if (Object.prototype.hasOwnProperty.call(this._groupObservers, group.id)) {
+				this._groupObservers[group.id].dispose();
+
+				delete this._groupObservers[group.id];
+			}
+
+			group.dispose();
+		}, false, true);
+
+		groupTree.sever();
 	}
 
 	function recalculatePercentages() {
