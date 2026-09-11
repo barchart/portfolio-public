@@ -462,6 +462,1342 @@
     }
   });
 
+  // ../../node_modules/@barchart/common-js/lang/Currency.js
+  var require_Currency = __commonJS({
+    "../../node_modules/@barchart/common-js/lang/Currency.js"(exports, module) {
+      var assert = require_assert();
+      var Enum = require_Enum();
+      var is = require_is();
+      module.exports = (() => {
+        "use strict";
+        class Currency6 extends Enum {
+          constructor(code, description, precision, alternateDescription) {
+            super(code, description);
+            assert.argumentIsRequired(precision, "precision", Number);
+            assert.argumentIsValid(precision, "precision", is.integer, "is an integer");
+            assert.argumentIsOptional(alternateDescription, "alternateDescription", String);
+            this._precision = precision;
+            this._alternateDescription = alternateDescription || description;
+          }
+          /**
+           * The maximum number of decimal places supported by a real world transaction.
+           *
+           * @public
+           * @returns {Number}
+           */
+          get precision() {
+            return this._precision;
+          }
+          /**
+           * An alternate human-readable description.
+           *
+           * @public
+           * @returns {String}
+           */
+          get alternateDescription() {
+            return this._alternateDescription;
+          }
+          /**
+           * Given a code, returns the enumeration item.
+           *
+           * @public
+           * @static
+           * @param {String} code
+           * @returns {Currency|null}
+           */
+          static parse(code) {
+            return Enum.fromCode(Currency6, code);
+          }
+          /**
+           * The Argentine Peso.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get ARS() {
+            return ars;
+          }
+          /**
+           * The Australian Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get AUD() {
+            return aud;
+          }
+          /**
+           * The Bermudian Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get BMD() {
+            return bmd;
+          }
+          /**
+           * The Brazilian Real.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get BRL() {
+            return brl;
+          }
+          /**
+           * The Bahamian Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get BSD() {
+            return bsd;
+          }
+          /**
+           * The Canadian Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get CAD() {
+            return cad;
+          }
+          /**
+           * The Swiss Franc.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get CHF() {
+            return chf;
+          }
+          /**
+           * The Chinese Yuan.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get CNY() {
+            return cny;
+          }
+          /**
+           * The Czech Koruna.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get CZK() {
+            return czk;
+          }
+          /**
+           * The Danish Krone.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get DKK() {
+            return dkk;
+          }
+          /**
+           * The Euro.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get EUR() {
+            return eur;
+          }
+          /**
+           * The Fijian Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get FJD() {
+            return fjd;
+          }
+          /**
+           * The British Pound.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get GBP() {
+            return gbp;
+          }
+          /**
+           * The British Penny.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get GBX() {
+            return gbx;
+          }
+          /**
+           * The Ghanaian Cedi.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get GHS() {
+            return ghs;
+          }
+          /**
+           * The Hong Kong Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get HKD() {
+            return hkd;
+          }
+          /**
+           * The Hungarian Forint.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get HUF() {
+            return huf;
+          }
+          /**
+           * The Indonesian Rupiah.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get IDR() {
+            return idr;
+          }
+          /**
+           * The Israeli New Shekel.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get ILS() {
+            return ils;
+          }
+          /**
+           * The Jordanian Dinar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get JOD() {
+            return jod;
+          }
+          /**
+           * The Japanese Yen.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get JPY() {
+            return jpy;
+          }
+          /**
+           * The South Korean Won.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get KRW() {
+            return krw;
+          }
+          /**
+           * The Lebanese Pound.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get LBP() {
+            return lbp;
+          }
+          /**
+           * The Mexican Peso.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get MXN() {
+            return mxn;
+          }
+          /**
+           * The Malaysian Ringgit.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get MYR() {
+            return myr;
+          }
+          /**
+           * The Namibian Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get NAD() {
+            return nad;
+          }
+          /**
+           * The Nigerian Naira.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get NGN() {
+            return ngn;
+          }
+          /**
+           * The Norwegian Krone.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get NOK() {
+            return nok;
+          }
+          /**
+           * The New Zealand Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get NZD() {
+            return nzd;
+          }
+          /**
+           * The Peruvian Sol.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get PEN() {
+            return pen;
+          }
+          /**
+           * The Papua New Guinean Kina.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get PGK() {
+            return pgk;
+          }
+          /**
+           * The Philippine peso.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get PHP() {
+            return php;
+          }
+          /**
+           * The Polish Zloty.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get PLN() {
+            return pln;
+          }
+          /**
+           * The Russian Ruble.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get RUB() {
+            return rub;
+          }
+          /**
+           * The Russian Ruble (Old).
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get RUR() {
+            return rur;
+          }
+          /**
+           * The Swedish Krona.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get SEK() {
+            return sek;
+          }
+          /**
+           * The Singapore Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get SGD() {
+            return sgd;
+          }
+          /**
+           * The Thai Baht.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get THB() {
+            return thb;
+          }
+          /**
+           * The Turkish Lira.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get TRY() {
+            return trx;
+          }
+          /**
+           * The New Taiwan Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get TWD() {
+            return twd;
+          }
+          /**
+           * The US Dollar.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get USD() {
+            return usd;
+          }
+          /**
+           * The Uruguay Peso.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get UYI() {
+            return uyi;
+          }
+          /**
+           * The South African Rand.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get ZAR() {
+            return zar;
+          }
+          /**
+           * The Zambian Kwacha.
+           *
+           * @public
+           * @static
+           * @returns {Currency}
+           */
+          static get ZMW() {
+            return zmw;
+          }
+          toString() {
+            return `[Currency (code=${this.code})]`;
+          }
+        }
+        const ars = new Currency6("ARS", "Argentine Peso", 2, "ARS");
+        const aud = new Currency6("AUD", "Australian Dollar", 2, "AUD$");
+        const bmd = new Currency6("BMD", "Bermudian Dollar", 2, "BMD");
+        const brl = new Currency6("BRL", "Brazilian Real", 2, "BRL");
+        const bsd = new Currency6("BSD", "Bahamian Dollar", 2, "BSD");
+        const cad = new Currency6("CAD", "Canadian Dollar", 2, "CAD$");
+        const chf = new Currency6("CHF", "Swiss Franc", 2, "CHF");
+        const cny = new Currency6("CNY", "Chinese Yuan", 2, "CNY");
+        const czk = new Currency6("CZK", "Czech Koruna", 2, "CZK");
+        const dkk = new Currency6("DKK", "Danish Krone", 2, "DKK");
+        const eur = new Currency6("EUR", "Euro", 2, "EUR");
+        const fjd = new Currency6("FJD", "Fijian Dollar", 2, "FJD");
+        const gbp = new Currency6("GBP", "British Pound", 2, "GBP");
+        const gbx = new Currency6("GBX", "British Penny", 2, "GBX");
+        const ghs = new Currency6("GHS", "Ghanaian Cedi", 2, "GHS");
+        const hkd = new Currency6("HKD", "Hong Kong Dollar", 2, "HK$");
+        const huf = new Currency6("HUF", "Hungarian Forint", 2, "HUF");
+        const idr = new Currency6("IDR", "Indonesian Rupiah", 2, "IDR");
+        const ils = new Currency6("ILS", "Israeli New Shekel", 2, "ILS");
+        const jod = new Currency6("JOD", "Jordanian Dinar", 2, "JOD");
+        const jpy = new Currency6("JPY", "Japanese Yen", 2, "JPY");
+        const krw = new Currency6("KRW", "South Korean Won", 2, "KRW");
+        const lbp = new Currency6("LBP", "Lebanese Pound", 2, "LBP");
+        const mxn = new Currency6("MXN", "Mexican Peso", 2, "MXN");
+        const myr = new Currency6("MYR", "Malaysian Ringgit", 2, "MYR");
+        const nad = new Currency6("NAD", "Namibian Dollar", 2, "NAD");
+        const ngn = new Currency6("NGN", "Nigerian Naira", 2, "NGN");
+        const nok = new Currency6("NOK", "Norwegian Krone", 2, "Nkr");
+        const nzd = new Currency6("NZD", "New Zealand Dollar", 2, "NZD");
+        const pen = new Currency6("PEN", "Peruvian Sol", 2, "PEN");
+        const pgk = new Currency6("PGK", "Papua New Guinean Kina", 2, "PGK");
+        const php = new Currency6("PHP", "Philippine peso", 2, "PHP");
+        const pln = new Currency6("PLN", "Polish Zloty", 2, "PLN");
+        const rub = new Currency6("RUB", "Russian Ruble", 2, "RUB");
+        const rur = new Currency6("RUR", "Russian Ruble (Old)", 2, "RUR");
+        const sek = new Currency6("SEK", "Swedish Krona", 2, "SEK");
+        const sgd = new Currency6("SGD", "Singapore Dollar", 2, "SGD");
+        const thb = new Currency6("THB", "Thai Baht", 2, "THB");
+        const trx = new Currency6("TRY", "Turkish Lira", 2, "TRY");
+        const twd = new Currency6("TWD", "New Taiwan Dollar", 2, "TWD");
+        const usd = new Currency6("USD", "US Dollar", 2, "US$");
+        const uyi = new Currency6("UYI", "Uruguay Peso", 2, "UYI");
+        const zar = new Currency6("ZAR", "South African Rand", 2, "ZAR");
+        const zmw = new Currency6("ZMW", "Zambian Kwacha", 2, "ZMW");
+        return Currency6;
+      })();
+    }
+  });
+
+  // ../../node_modules/@barchart/common-js/collections/sorting/comparators.js
+  var require_comparators = __commonJS({
+    "../../node_modules/@barchart/common-js/collections/sorting/comparators.js"(exports, module) {
+      var assert = require_assert();
+      module.exports = (() => {
+        "use strict";
+        return {
+          /**
+           * Compares two dates (in ascending order).
+           *
+           * @public
+           * @static
+           * @param {Date} a
+           * @param {Date} b
+           * @returns {Number}
+           */
+          compareDates: (a, b) => {
+            assert.argumentIsRequired(a, "a", Date);
+            assert.argumentIsRequired(b, "b", Date);
+            return a - b;
+          },
+          /**
+           * Compares two numbers (in ascending order).
+           *
+           * @public
+           * @static
+           * @param {Number} a
+           * @param {Number} b
+           * @returns {Number}
+           */
+          compareNumbers: (a, b) => {
+            assert.argumentIsRequired(a, "a", Number);
+            assert.argumentIsRequired(b, "b", Number);
+            return a - b;
+          },
+          /**
+           * Compares two strings (in ascending order), using {@link String#localeCompare}.
+           *
+           * @public
+           * @static
+           * @param {String} a
+           * @param {String} b
+           * @returns {Number}
+           */
+          compareStrings: (a, b) => {
+            assert.argumentIsRequired(a, "a", String);
+            assert.argumentIsRequired(b, "b", String);
+            return a.localeCompare(b);
+          },
+          /**
+           * Compares two boolean values (in ascending order -- false first, true second).
+           *
+           * @public
+           * @static
+           * @param {Boolean} a
+           * @param {Boolean} b
+           * @returns {Number}
+           */
+          compareBooleans: (a, b) => {
+            assert.argumentIsRequired(a, "a", Boolean);
+            assert.argumentIsRequired(b, "b", Boolean);
+            if (a === b) {
+              return 0;
+            } else if (a) {
+              return 1;
+            } else {
+              return -1;
+            }
+          },
+          /**
+           * Compares two values for nulls (in ascending order -- null first, non-null second).
+           *
+           * @public
+           * @static
+           * @param {*|null} a
+           * @param {*|null} b
+           * @returns {Number}
+           */
+          compareNull: (a, b) => {
+            if (a === null && b !== null) {
+              return -1;
+            } else if (a !== null && b === null) {
+              return 1;
+            } else {
+              return 0;
+            }
+          },
+          /**
+           * Compares two objects, always returning zero.
+           *
+           * @public
+           * @static
+           * @param {*} a
+           * @param {*} b
+           * @returns {Number}
+           */
+          empty: (a, b) => {
+            return 0;
+          }
+        };
+      })();
+    }
+  });
+
+  // ../../node_modules/@barchart/common-js/collections/sorting/ComparatorBuilder.js
+  var require_ComparatorBuilder = __commonJS({
+    "../../node_modules/@barchart/common-js/collections/sorting/ComparatorBuilder.js"(exports, module) {
+      var assert = require_assert();
+      var comparators = require_comparators();
+      module.exports = (() => {
+        "use strict";
+        class ComparatorBuilder {
+          constructor(comparator, invert, previous) {
+            assert.argumentIsRequired(comparator, "comparator", Function);
+            assert.argumentIsOptional(invert, "invert", Boolean);
+            this._comparator = comparator;
+            this._invert = invert || false;
+            this._previous = previous || null;
+          }
+          /**
+           * Adds a new comparator to the list of comparators to use.
+           *
+           * @public
+           * @param {Function} comparator - The next comparator function.
+           * @param {Boolean=} invert - Indicates if the comparator should sort in descending order.
+           * @returns {ComparatorBuilder}
+           */
+          thenBy(comparator, invert) {
+            assert.argumentIsRequired(comparator, "comparator", Function);
+            assert.argumentIsOptional(invert, "invert", Boolean);
+            return new ComparatorBuilder(comparator, invert, this);
+          }
+          /**
+           * Flips the order of the comparator (e.g. ascending to descending).
+           *
+           * @public
+           * @returns {ComparatorBuilder}
+           */
+          invert() {
+            let previous;
+            if (this._previous) {
+              previous = this._previous.invert();
+            } else {
+              previous = null;
+            }
+            return new ComparatorBuilder(this._comparator, !this._invert, previous);
+          }
+          /**
+           * Returns the comparator function.
+           *
+           * @public
+           * @returns {Function}
+           */
+          toComparator() {
+            let previousComparator;
+            if (this._previous) {
+              previousComparator = this._previous.toComparator();
+            } else {
+              previousComparator = comparators.empty;
+            }
+            return (a, b) => {
+              let result = previousComparator(a, b);
+              if (result === 0) {
+                let sortA;
+                let sortB;
+                if (this._invert) {
+                  sortA = b;
+                  sortB = a;
+                } else {
+                  sortA = a;
+                  sortB = b;
+                }
+                result = this._comparator(sortA, sortB);
+              }
+              return result;
+            };
+          }
+          toString() {
+            return "[ComparatorBuilder]";
+          }
+          /**
+           * Creates a {@link ComparatorBuilder}, given an initial comparator function.
+           *
+           * @public
+           * @param {Function} comparator - The initial comparator.
+           * @param {Boolean=} invert - Indicates if the comparator should sort in descending order.
+           * @returns {ComparatorBuilder}
+           */
+          static startWith(comparator, invert) {
+            return new ComparatorBuilder(comparator, invert);
+          }
+        }
+        return ComparatorBuilder;
+      })();
+    }
+  });
+
+  // ../../node_modules/@barchart/common-js/lang/DayFormatType.js
+  var require_DayFormatType = __commonJS({
+    "../../node_modules/@barchart/common-js/lang/DayFormatType.js"(exports, module) {
+      var Enum = require_Enum();
+      module.exports = (() => {
+        "use strict";
+        class DayFormatType extends Enum {
+          constructor(description, regex, yearIndex, monthIndex, dayIndex, yearShift) {
+            super(description, description);
+            this._regex = regex;
+            this._yearIndex = yearIndex;
+            this._monthIndex = monthIndex;
+            this._dayIndex = dayIndex;
+            this._yearShift = yearShift;
+          }
+          /**
+           * A regular expression for parsing the day type.
+           *
+           * @public
+           * @returns {RegExp}
+           */
+          get regex() {
+            return this._regex;
+          }
+          /**
+           * The index used to read the year from a regular expression match.
+           *
+           * @public
+           * @returns {number}
+           */
+          get yearIndex() {
+            return this._yearIndex;
+          }
+          /**
+           * The index used to read the month from a regular expression match.
+           *
+           * @public
+           * @returns {number}
+           */
+          get monthIndex() {
+            return this._monthIndex;
+          }
+          /**
+           * The index used to read the day from a regular expression match.
+           *
+           * @public
+           * @returns {number}
+           */
+          get dayIndex() {
+            return this._dayIndex;
+          }
+          /**
+           * The amount to add to the year (extracted from a formatted string) to get the
+           * full year (e.g. for "11-31-25" of a MM-DD-YY string, the value will be 2000).
+           *
+           * @public
+           * @returns {number}
+           */
+          get yearShift() {
+            return this._yearShift;
+          }
+          /**
+           * Specifies date formatting as four-digit year, then month, then day (e.g. 2025-11-31).
+           *
+           * @public
+           * @static
+           * @returns {DayFormatType}
+           */
+          static get YYYY_MM_DD() {
+            return yyyymmdd;
+          }
+          /**
+           * Specifies date formatting as month, then day, then four-digit year (e.g. 11-31-2025).
+           *
+           * @public
+           * @static
+           * @returns {DayFormatType}
+           */
+          static get MM_DD_YYYY() {
+            return mmddyyyy;
+          }
+          /**
+           * Specifies date formatting as month, then day, then two-digit year (e.g. 11-31-25).
+           *
+           * @public
+           * @static
+           * @returns {DayFormatType}
+           */
+          static get MM_DD_YY() {
+            return mmddyy;
+          }
+          toString() {
+            return `[DayFormatType (description=${this.description})]`;
+          }
+        }
+        function getMillenniumShift() {
+          const today = /* @__PURE__ */ new Date();
+          return Math.floor(today.getFullYear() / 100) * 100;
+        }
+        const yyyymmdd = new DayFormatType("YYYY_MM_DD", /^([0-9]{4})[-/.]?([0-9]{1,2})[-/.]?([0-9]{1,2})$/, 1, 2, 3, 0);
+        const mmddyyyy = new DayFormatType("MM_DD_YYYY", /^([0-9]{1,2})[-/.]?([0-9]{1,2})[-/.]?([0-9]{4})$/, 3, 1, 2, 0);
+        const mmddyy = new DayFormatType("MM_DD_YY", /^([0-9]{1,2})[-/.]?([0-9]{1,2})[-/.]?([0-9]{2})$/, 3, 1, 2, getMillenniumShift());
+        return DayFormatType;
+      })();
+    }
+  });
+
+  // ../../node_modules/@barchart/common-js/lang/Day.js
+  var require_Day = __commonJS({
+    "../../node_modules/@barchart/common-js/lang/Day.js"(exports, module) {
+      var assert = require_assert();
+      var ComparatorBuilder = require_ComparatorBuilder();
+      var comparators = require_comparators();
+      var DayFormatType = require_DayFormatType();
+      var is = require_is();
+      module.exports = (() => {
+        "use strict";
+        class Day8 {
+          constructor(year, month, day) {
+            if (!Day8.validate(year, month, day)) {
+              throw new Error(`Unable to instantiate [ Day ], input is invalid [ ${year} ], [ ${month} ], [ ${day} ]`);
+            }
+            this._year = year;
+            this._month = month;
+            this._day = day;
+          }
+          /**
+           * Calculates a new {@link Day} in the future (or past).
+           *
+           * @public
+           * @param {Number} days - The number of days to add (negative numbers can be used for subtraction).
+           * @param {Boolean=} inverse - If true, the sign of the "days" value will be flipped.
+           * @returns {Day}
+           */
+          addDays(days, inverse) {
+            assert.argumentIsRequired(days, "days", Number);
+            assert.argumentIsOptional(inverse, inverse, Boolean);
+            assert.argumentIsValid(days, "days", is.large, "is an integer");
+            let totalDaysToShift;
+            if (is.boolean(inverse) && inverse) {
+              totalDaysToShift = days * -1;
+            } else {
+              totalDaysToShift = days;
+            }
+            const positive = is.positive(totalDaysToShift);
+            let shiftedDay = this._day;
+            let shiftedMonth = this._month;
+            let shiftedYear = this._year;
+            while (totalDaysToShift !== 0) {
+              let monthDaysAvailable;
+              let monthDaysToShift;
+              if (positive) {
+                monthDaysAvailable = Day8.getDaysInMonth(shiftedYear, shiftedMonth) - shiftedDay;
+                monthDaysToShift = Math.min(totalDaysToShift, monthDaysAvailable);
+              } else {
+                monthDaysAvailable = 1 - shiftedDay;
+                monthDaysToShift = Math.max(totalDaysToShift, monthDaysAvailable);
+              }
+              totalDaysToShift = totalDaysToShift - monthDaysToShift;
+              if (totalDaysToShift === 0) {
+                shiftedDay = shiftedDay + monthDaysToShift;
+              } else if (positive) {
+                shiftedMonth++;
+                if (shiftedMonth > 12) {
+                  shiftedYear++;
+                  shiftedMonth = 1;
+                }
+                shiftedDay = 0;
+              } else {
+                shiftedMonth--;
+                if (shiftedMonth < 1) {
+                  shiftedYear--;
+                  shiftedMonth = 12;
+                }
+                shiftedDay = Day8.getDaysInMonth(shiftedYear, shiftedMonth) + 1;
+              }
+            }
+            return new Day8(shiftedYear, shiftedMonth, shiftedDay);
+          }
+          /**
+           * Calculates a new {@link Day} in the past (or future).
+           *
+           * @public
+           * @param {Number} days - The number of days to subtract (negative numbers can be used for addition).
+           * @returns {Day}
+           */
+          subtractDays(days) {
+            return this.addDays(days, true);
+          }
+          /**
+           * Calculates a new {@link Day} in the future (or past). If the new date is at the end of
+           * the month and the new month has fewer days than the current month, days will be subtracted
+           * as necessary (e.g. adding one month to March 31 will return April 30).
+           *
+           * @public
+           * @param {Number} months - The number of months to add (negative numbers can be used for subtraction).
+           * @param {Boolean=} inverse - If true, the sign of the "days" value will be flipped.
+           * @returns {Day}
+           */
+          addMonths(months, inverse) {
+            assert.argumentIsRequired(months, "months", Number);
+            assert.argumentIsOptional(inverse, inverse, Boolean);
+            assert.argumentIsValid(months, "months", is.large, "is an integer");
+            let totalMonthsToShift;
+            if (is.boolean(inverse) && inverse) {
+              totalMonthsToShift = months * -1;
+            } else {
+              totalMonthsToShift = months;
+            }
+            const monthsToShift = totalMonthsToShift % 12;
+            const yearsToShift = (totalMonthsToShift - monthsToShift) / 12;
+            let shiftedYear = this.year + yearsToShift;
+            let shiftedMonth = this.month + monthsToShift;
+            let shiftedDay = this.day;
+            if (shiftedMonth > 12) {
+              shiftedYear = shiftedYear + 1;
+              shiftedMonth = shiftedMonth - 12;
+            }
+            if (shiftedMonth < 1) {
+              shiftedYear = shiftedYear - 1;
+              shiftedMonth = shiftedMonth + 12;
+            }
+            while (!Day8.validate(shiftedYear, shiftedMonth, shiftedDay)) {
+              shiftedDay = shiftedDay - 1;
+            }
+            return new Day8(shiftedYear, shiftedMonth, shiftedDay);
+          }
+          /**
+           * Calculates a new {@link Day} in the past (or future).
+           *
+           * @public
+           * @param {Number} months - The number of months to subtract (negative numbers can be used for addition).
+           * @returns {Day}
+           */
+          subtractMonths(months) {
+            return this.addMonths(months, true);
+          }
+          /**
+           * Calculates a new {@link Day} in the future (or past). If the new date is at the end of
+           * the month and the new month has fewer days than the current month, days will be subtracted
+           * as necessary (e.g. adding one year to February 29 will return February 28).
+           *
+           * @public
+           * @param {Number} years - The number of years to add (negative numbers can be used for subtraction).
+           * @param {Boolean=} inverse - If true, the sign of the "days" value will be flipped.
+           * @returns {Day}
+           */
+          addYears(years, inverse) {
+            assert.argumentIsRequired(years, "years", Number);
+            assert.argumentIsOptional(inverse, inverse, Boolean);
+            assert.argumentIsValid(years, "years", is.large, "is an integer");
+            let yearsToShift;
+            if (is.boolean(inverse) && inverse) {
+              yearsToShift = years * -1;
+            } else {
+              yearsToShift = years;
+            }
+            let shiftedYear = this.year + yearsToShift;
+            let shiftedMonth = this.month;
+            let shiftedDay = this.day;
+            while (!Day8.validate(shiftedYear, shiftedMonth, shiftedDay)) {
+              shiftedDay = shiftedDay - 1;
+            }
+            return new Day8(shiftedYear, shiftedMonth, shiftedDay);
+          }
+          /**
+           * Calculates a new {@link Day} in the past (or future).
+           *
+           * @public
+           * @param {Number} years - The number of years to subtract (negative numbers can be used for addition).
+           * @returns {Day}
+           */
+          subtractYears(years) {
+            return this.addYears(years, true);
+          }
+          /**
+           * Returns a new {@link Day} instance for the start of the month referenced by the current instance.
+           *
+           * @public
+           * @returns {Day}
+           */
+          getStartOfMonth() {
+            return new Day8(this.year, this.month, 1);
+          }
+          /**
+           * Returns a new instance for the {@link Day} end of the month referenced by the current instance.
+           *
+           * @public
+           * @returns {Day}
+           */
+          getEndOfMonth() {
+            return new Day8(this.year, this.month, Day8.getDaysInMonth(this.year, this.month));
+          }
+          /**
+           * Indicates if the current {@link Day} instance occurs before another day.
+           *
+           * @public
+           * @param {Day} other
+           * @returns {boolean}
+           */
+          getIsBefore(other) {
+            return Day8.compareDays(this, other) < 0;
+          }
+          /**
+           * Indicates if the current {@link Day} instance occurs after another day.
+           *
+           * @public
+           * @param {Day} other
+           * @returns {boolean}
+           */
+          getIsAfter(other) {
+            return Day8.compareDays(this, other) > 0;
+          }
+          /**
+           * Indicates the current day falls between two other days, inclusive
+           * of the range boundaries.
+           *
+           * @public
+           * @param {Day=} first
+           * @param {Day=} last
+           * @returns {boolean}
+           */
+          getIsContained(first, last) {
+            assert.argumentIsOptional(first, "first", Day8, "Day");
+            assert.argumentIsOptional(last, "last", Day8, "Day");
+            let notAfter;
+            let notBefore;
+            if (first && last && first.getIsAfter(last)) {
+              notBefore = false;
+              notAfter = false;
+            } else {
+              notAfter = !(last instanceof Day8) || !this.getIsAfter(last);
+              notBefore = !(first instanceof Day8) || !this.getIsBefore(first);
+            }
+            return notAfter && notBefore;
+          }
+          /**
+           * Indicates if another {@link Day} refers to the same moment.
+           *
+           * @public
+           * @param {Day} other
+           * @returns {boolean}
+           */
+          getIsEqual(other) {
+            return Day8.compareDays(this, other) === 0;
+          }
+          /**
+           * Calculates and returns name of the day of the week (e.g. Monday, Tuesday, Wednesday, etc).
+           *
+           * @public
+           * @returns {String}
+           */
+          getName() {
+            const count = Day8.countDaysBetween(REFERENCE_MONDAY, this);
+            let index = count % NAMES_OF_DAYS.length;
+            if (index < 0) {
+              index = index + NAMES_OF_DAYS.length;
+            }
+            return NAMES_OF_DAYS[index];
+          }
+          /**
+           * The year.
+           *
+           * @public
+           * @returns {Number}
+           */
+          get year() {
+            return this._year;
+          }
+          /**
+           * The month of the year (January is one, December is twelve).
+           *
+           * @public
+           * @returns {Number}
+           */
+          get month() {
+            return this._month;
+          }
+          /**
+           * The day of the month.
+           *
+           * @public
+           * @returns {Number}
+           */
+          get day() {
+            return this._day;
+          }
+          /**
+           * Outputs the date as the formatted string: {year}-{month}-{day}.
+           *
+           * @public
+           * @returns {String}
+           */
+          format() {
+            return `${leftPad(this._year, 4, "0")}-${leftPad(this._month, 2, "0")}-${leftPad(this._day, 2, "0")}`;
+          }
+          /**
+           * Returns the JSON representation.
+           *
+           * @public
+           * @returns {String}
+           */
+          toJSON() {
+            return this.format();
+          }
+          /**
+           * Clones a {@link Day} instance.
+           *
+           * @public
+           * @static
+           * @param {Day} value
+           * @returns {Day}
+           */
+          static clone(value) {
+            assert.argumentIsRequired(value, "value", Day8, "Day");
+            return new Day8(value.year, value.month, value.day);
+          }
+          /**
+           * Converts a string (which matches the output of {@link Day#format}) into
+           * a {@link Day} instance.
+           *
+           * @public
+           * @static
+           * @param {String} value
+           * @param {DayFormatType=} type
+           * @returns {Day}
+           */
+          static parse(value, type) {
+            assert.argumentIsRequired(value, "value", String);
+            let t;
+            if (type instanceof DayFormatType) {
+              t = type;
+            } else {
+              t = DayFormatType.YYYY_MM_DD;
+            }
+            const match = value.match(t.regex);
+            if (match === null) {
+              throw new Error(`Unable to parse value as Day [ ${value} ]`);
+            }
+            return new Day8(parseInt(match[t.yearIndex]) + t.yearShift, parseInt(match[t.monthIndex]), parseInt(match[t.dayIndex]));
+          }
+          /**
+           * Creates a {@link Day} from the year, month, and day properties (in local time)
+           * of the {@link Date} argument.
+           *
+           * @public
+           * @static
+           * @param {Date} date
+           * @returns {Day}
+           */
+          static fromDate(date) {
+            assert.argumentIsRequired(date, "date", Date);
+            return new Day8(date.getFullYear(), date.getMonth() + 1, date.getDate());
+          }
+          /**
+           * Creates a {@link Day} from the year, month, and day properties (in UTC)
+           * of the {@link Date} argument.
+           *
+           * @public
+           * @static
+           * @param {Date} date
+           * @returns {Day}
+           */
+          static fromDateUtc(date) {
+            assert.argumentIsRequired(date, "date", Date);
+            return new Day8(date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate());
+          }
+          /**
+           * Returns a {@link Day} instance using today's local date.
+           *
+           * @public
+           * @static
+           * @returns {Day}
+           */
+          static getToday() {
+            return Day8.fromDate(/* @__PURE__ */ new Date());
+          }
+          /**
+           * Returns true if the year, month, and day combination is valid; otherwise false.
+           *
+           * @public
+           * @static
+           * @param {Number} year
+           * @param {Number} month
+           * @param {Number} day
+           * @returns {Boolean}
+           */
+          static validate(year, month, day) {
+            return is.integer(year) && is.integer(month) && is.integer(day) && !(month < 1) && !(month > 12) && !(day < 1) && !(day > Day8.getDaysInMonth(year, month));
+          }
+          /**
+           * Returns the number of days in a given month.
+           *
+           * @public
+           * @static
+           * @param {number} year - The year number (e.g. 2017)
+           * @param {number} month - The month number (e.g. 2 is February)
+           * @returns {number}
+           */
+          static getDaysInMonth(year, month) {
+            switch (month) {
+              case 1:
+              case 3:
+              case 5:
+              case 7:
+              case 8:
+              case 10:
+              case 12: {
+                return 31;
+              }
+              case 4:
+              case 6:
+              case 9:
+              case 11: {
+                return 30;
+              }
+              case 2: {
+                if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+                  return 29;
+                } else {
+                  return 28;
+                }
+              }
+            }
+          }
+          /**
+           * A comparator function for {@link Day} instances.
+           *
+           * @public
+           * @static
+           * @param {Day} a
+           * @param {Day} b
+           * @returns {Number}
+           */
+          static compareDays(a, b) {
+            assert.argumentIsRequired(a, "a", Day8, "Day");
+            assert.argumentIsRequired(b, "b", Day8, "Day");
+            return comparator(a, b);
+          }
+          /**
+           * Calculates the number of days between two {@link Day} instances (may return
+           * a negative value).
+           *
+           * @public
+           * @static
+           * @param {Day} a
+           * @param {Day} b
+           * @returns {Number}
+           */
+          static countDaysBetween(a, b) {
+            assert.argumentIsRequired(a, "a", Day8, "Day");
+            assert.argumentIsRequired(b, "b", Day8, "Day");
+            if (a.getIsEqual(b)) {
+              return 0;
+            }
+            let start;
+            let end;
+            let reversed = b.getIsBefore(a);
+            if (reversed) {
+              start = b;
+              end = a;
+            } else {
+              start = a;
+              end = b;
+            }
+            let currentMonth = start.month;
+            let currentYear = start.year;
+            let counter = 0 - start.day;
+            while (!(currentMonth === end.month && currentYear === end.year)) {
+              counter = counter + Day8.getDaysInMonth(currentYear, currentMonth);
+              if (currentMonth === 12) {
+                currentMonth = 1;
+                currentYear = currentYear + 1;
+              } else {
+                currentMonth = currentMonth + 1;
+              }
+            }
+            counter = counter + end.day;
+            if (reversed) {
+              counter = counter * -1;
+            }
+            return counter;
+          }
+          toString() {
+            return "[Day]";
+          }
+        }
+        function leftPad(value, digits, character) {
+          let string = value.toString();
+          let padding = digits - string.length;
+          return `${character.repeat(padding)}${string}`;
+        }
+        const comparator = ComparatorBuilder.startWith((a, b) => comparators.compareNumbers(a.year, b.year)).thenBy((a, b) => comparators.compareNumbers(a.month, b.month)).thenBy((a, b) => comparators.compareNumbers(a.day, b.day)).toComparator();
+        const NAMES_OF_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        const REFERENCE_MONDAY = new Day8(2024, 1, 1);
+        return Day8;
+      })();
+    }
+  });
+
   // ../../node_modules/big.js/big.js
   var require_big = __commonJS({
     "../../node_modules/big.js/big.js"(exports, module) {
@@ -956,7 +2292,7 @@
       var Big = require_big();
       module.exports = (() => {
         "use strict";
-        class Decimal8 {
+        class Decimal9 {
           constructor(value) {
             this._big = getBig(value);
           }
@@ -969,7 +2305,7 @@
            * @returns {Decimal}
            */
           add(other) {
-            return new Decimal8(this._big.plus(getBig(other)));
+            return new Decimal9(this._big.plus(getBig(other)));
           }
           /**
            * Returns a new {@link Decimal} instance with a value that results
@@ -981,7 +2317,7 @@
            * @returns {Decimal}
            */
           subtract(other) {
-            return new Decimal8(this._big.minus(getBig(other)));
+            return new Decimal9(this._big.minus(getBig(other)));
           }
           /**
            * Returns a new {@link Decimal} instance that is the product of the
@@ -992,7 +2328,7 @@
            * @returns {Decimal}
            */
           multiply(other) {
-            return new Decimal8(this._big.times(getBig(other)));
+            return new Decimal9(this._big.times(getBig(other)));
           }
           /**
            * Returns a new {@link Decimal} instance with a value that results
@@ -1004,7 +2340,7 @@
            * @returns {Decimal}
            */
           divide(other) {
-            return new Decimal8(this._big.div(getBig(other)));
+            return new Decimal9(this._big.div(getBig(other)));
           }
           /**
            * Returns a new {@link Decimal} instance with a value that results
@@ -1017,7 +2353,7 @@
            */
           raise(exponent) {
             assert.argumentIsRequired(exponent, "exponent", Number);
-            return new Decimal8(this._big.pow(exponent));
+            return new Decimal9(this._big.pow(exponent));
           }
           /**
            * Returns a new {@link Decimal} with a value resulting from a rounding
@@ -1032,7 +2368,7 @@
             assert.argumentIsRequired(places, "places", Number);
             assert.argumentIsOptional(mode, "mode", RoundingMode, "RoundingMode");
             const modeToUse = mode || RoundingMode.NORMAL;
-            return new Decimal8(this._big.round(places, modeToUse.value));
+            return new Decimal9(this._big.round(places, modeToUse.value));
           }
           /**
            * Returns a new {@link Decimal} instance with of the remainder when
@@ -1043,7 +2379,7 @@
            * @returns {Decimal}
            */
           mod(other) {
-            return new Decimal8(this._big.mod(getBig(other)));
+            return new Decimal9(this._big.mod(getBig(other)));
           }
           /**
            * Returns a new {@link Decimal} instance having the absolute value of
@@ -1053,7 +2389,7 @@
            * @returns {Decimal}
            */
           absolute() {
-            return new Decimal8(this._big.abs());
+            return new Decimal9(this._big.abs());
           }
           /**
            * Returns a new {@link Decimal} instance the opposite sign as the
@@ -1178,7 +2514,7 @@
               return this.getIsEqual(other);
             }
             const difference = this.subtract(other).absolute();
-            const tolerance = Decimal8.ONE.divide(new Decimal8(10).raise(places));
+            const tolerance = Decimal9.ONE.divide(new Decimal9(10).raise(places));
             return difference.getIsLessThan(tolerance);
           }
           /**
@@ -1256,8 +2592,8 @@
            * @returns {Decimal}
            */
           static clone(value) {
-            assert.argumentIsRequired(value, "value", Decimal8, "Decimal");
-            return new Decimal8(value._big);
+            assert.argumentIsRequired(value, "value", Decimal9, "Decimal");
+            return new Decimal9(value._big);
           }
           /**
            * An alias for the constructor. Creates a new instance. Suitable for
@@ -1269,7 +2605,7 @@
            * @returns {Decimal}
            */
           static parse(value) {
-            return new Decimal8(value);
+            return new Decimal9(value);
           }
           /**
            * Returns an instance with the value of zero.
@@ -1320,7 +2656,7 @@
            * @returns {Boolean}
            */
           static getIsZero(instance) {
-            assert.argumentIsRequired(instance, "instance", Decimal8, "Decimal");
+            assert.argumentIsRequired(instance, "instance", Decimal9, "Decimal");
             return instance.getIsZero();
           }
           /**
@@ -1332,7 +2668,7 @@
            * @returns {Boolean}
            */
           static getIsNotZero(instance) {
-            assert.argumentIsRequired(instance, "instance", Decimal8, "Decimal");
+            assert.argumentIsRequired(instance, "instance", Decimal9, "Decimal");
             return !instance.getIsZero();
           }
           /**
@@ -1344,7 +2680,7 @@
            * @returns {Boolean}
            */
           static getIsPositive(instance) {
-            assert.argumentIsRequired(instance, "instance", Decimal8, "Decimal");
+            assert.argumentIsRequired(instance, "instance", Decimal9, "Decimal");
             return instance.getIsPositive();
           }
           /**
@@ -1356,7 +2692,7 @@
            * @returns {Boolean}
            */
           static getIsNotPositive(instance) {
-            assert.argumentIsRequired(instance, "instance", Decimal8, "Decimal");
+            assert.argumentIsRequired(instance, "instance", Decimal9, "Decimal");
             return instance.getIsNegative() || instance.getIsZero();
           }
           /**
@@ -1368,7 +2704,7 @@
            * @returns {Boolean}
            */
           static getIsNegative(instance) {
-            assert.argumentIsRequired(instance, "instance", Decimal8, "Decimal");
+            assert.argumentIsRequired(instance, "instance", Decimal9, "Decimal");
             return instance.getIsNegative();
           }
           /**
@@ -1380,7 +2716,7 @@
            * @returns {Boolean}
            */
           static getIsNotNegative(instance) {
-            assert.argumentIsRequired(instance, "instance", Decimal8, "Decimal");
+            assert.argumentIsRequired(instance, "instance", Decimal9, "Decimal");
             return instance.getIsPositive() || instance.getIsZero();
           }
           /**
@@ -1393,8 +2729,8 @@
            * @returns {Number}
            */
           static compareDecimals(a, b) {
-            assert.argumentIsRequired(a, "a", Decimal8, "Decimal");
-            assert.argumentIsRequired(b, "b", Decimal8, "Decimal");
+            assert.argumentIsRequired(a, "a", Decimal9, "Decimal");
+            assert.argumentIsRequired(b, "b", Decimal9, "Decimal");
             if (a._big.gt(b._big)) {
               return 1;
             } else if (a._big.lt(b._big)) {
@@ -1410,13 +2746,13 @@
         const zero = new Big(0);
         const positiveOne = new Big(1);
         const negativeOne = new Big(-1);
-        const decimalZero = new Decimal8(zero);
-        const decimalOne = new Decimal8(positiveOne);
-        const decimalNegativeOne = new Decimal8(negativeOne);
+        const decimalZero = new Decimal9(zero);
+        const decimalOne = new Decimal9(positiveOne);
+        const decimalNegativeOne = new Decimal9(negativeOne);
         function getBig(value) {
           if (value instanceof Big) {
             return value;
-          } else if (value instanceof Decimal8) {
+          } else if (value instanceof Decimal9) {
             return value._big;
           } else {
             return new Big(value);
@@ -1473,7 +2809,7 @@
         const up = new RoundingMode(3, "up");
         const down = new RoundingMode(0, "down");
         const normal = new RoundingMode(1, "normal");
-        return Decimal8;
+        return Decimal9;
       })();
     }
   });
@@ -2188,7 +3524,7 @@
       var Enum = require_Enum();
       module.exports = (() => {
         "use strict";
-        class InstrumentType7 extends Enum {
+        class InstrumentType8 extends Enum {
           constructor(code, description, alternateDescription, canExistEmpty, canReinvest, canShort, canSwitchDirection, usesSymbols, hasCorporateActions, allowFractional, closeFractional, roundQuantity, strictOrdering, generator) {
             super(code, description);
             assert.argumentIsRequired(alternateDescription, "alternateDescription", String);
@@ -2438,7 +3774,7 @@
            * @returns {InstrumentType|null}
            */
           static parse(code) {
-            return Enum.fromCode(InstrumentType7, code);
+            return Enum.fromCode(InstrumentType8, code);
           }
           /**
            * Generates an identifier for the instrument.
@@ -2449,7 +3785,7 @@
            * @returns {String}
            */
           static generateIdentifier(instrument) {
-            const type = Enum.fromCode(InstrumentType7, instrument.type.code);
+            const type = Enum.fromCode(InstrumentType8, instrument.type.code);
             return type.generateIdentifier(instrument);
           }
           /**
@@ -2462,17 +3798,17 @@
           static fromSymbolType(code) {
             assert.argumentIsRequired(code, "code", Number);
             if (code === 1 || code === 6 || code === 7 || code === 11) {
-              return InstrumentType7.EQUITY;
+              return InstrumentType8.EQUITY;
             } else if (code === 34) {
-              return InstrumentType7.EQUITY_OPTION;
+              return InstrumentType8.EQUITY_OPTION;
             } else if (code === 5 || code === 15) {
-              return InstrumentType7.FUND;
+              return InstrumentType8.FUND;
             } else if (code === 2) {
-              return InstrumentType7.FUTURE;
+              return InstrumentType8.FUTURE;
             } else if (code === 12) {
-              return InstrumentType7.FUTURE_OPTION;
+              return InstrumentType8.FUTURE_OPTION;
             } else if (code === 999) {
-              return InstrumentType7.CRYPTO;
+              return InstrumentType8.CRYPTO;
             } else {
               throw new Error(`Unable to determine InstrumentType for [ ${code} ]`);
             }
@@ -2481,15 +3817,620 @@
             return `[InstrumentType (code=${this.code})]`;
           }
         }
-        const cash = new InstrumentType7("CASH", "cash", "Cash", true, false, false, true, false, false, true, false, false, false, (instrument) => `BARCHART-${instrument.type.code}-${instrument.currency.code}`);
-        const crypto2 = new InstrumentType7("CRYPTO", "crypto", "Crypto", false, false, true, false, true, false, true, false, false, true, (instrument) => `BARCHART-CRYPTO-${instrument.name.toUpperCase()}`);
-        const equity = new InstrumentType7("EQUITY", "equity", "Equities", false, true, true, false, true, true, true, true, true, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
-        const equityOption = new InstrumentType7("EQUITY_OPTION", "equity option", "Equity Options", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
-        const fund = new InstrumentType7("FUND", "mutual fund", "Funds", false, true, false, false, true, true, true, false, true, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
-        const future = new InstrumentType7("FUTURE", "futures contract", "Futures", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
-        const futureOption = new InstrumentType7("FUTURE_OPTION", "futures option", "Futures Options", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
-        const other = new InstrumentType7("OTHER", "other", "Other", false, false, false, false, false, false, true, false, true, true, (instrument) => `BARCHART-${instrument.type.code}-${uuid.v4()}`);
-        return InstrumentType7;
+        const cash = new InstrumentType8("CASH", "cash", "Cash", true, false, false, true, false, false, true, false, false, false, (instrument) => `BARCHART-${instrument.type.code}-${instrument.currency.code}`);
+        const crypto2 = new InstrumentType8("CRYPTO", "crypto", "Crypto", false, false, true, false, true, false, true, false, false, true, (instrument) => `BARCHART-CRYPTO-${instrument.name.toUpperCase()}`);
+        const equity = new InstrumentType8("EQUITY", "equity", "Equities", false, true, true, false, true, true, true, true, true, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
+        const equityOption = new InstrumentType8("EQUITY_OPTION", "equity option", "Equity Options", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
+        const fund = new InstrumentType8("FUND", "mutual fund", "Funds", false, true, false, false, true, true, true, false, true, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
+        const future = new InstrumentType8("FUTURE", "futures contract", "Futures", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
+        const futureOption = new InstrumentType8("FUTURE_OPTION", "futures option", "Futures Options", false, false, true, false, true, false, false, false, false, true, (instrument) => `BARCHART-${instrument.type.code}-${instrument.symbol.barchart}`);
+        const other = new InstrumentType8("OTHER", "other", "Other", false, false, false, false, false, false, true, false, true, true, (instrument) => `BARCHART-${instrument.type.code}-${uuid.v4()}`);
+        return InstrumentType8;
+      })();
+    }
+  });
+
+  // lib/data/TransactionType.js
+  var require_TransactionType = __commonJS({
+    "lib/data/TransactionType.js"(exports, module) {
+      var assert = require_assert();
+      var Enum = require_Enum();
+      module.exports = (() => {
+        "use strict";
+        class TransactionType6 extends Enum {
+          constructor(code, description, display, sequence, purchase, sale, income2, opening, closing, fee2, corporateAction, initial, terminal, significant, chaining, chained, transfer, dividend2) {
+            super(code, description);
+            assert.argumentIsRequired(display, "display", String);
+            assert.argumentIsRequired(sequence, "sequence", Number);
+            assert.argumentIsRequired(purchase, "purchase", Boolean);
+            assert.argumentIsRequired(sale, "sale", Boolean);
+            assert.argumentIsRequired(income2, "income", Boolean);
+            assert.argumentIsRequired(opening, "opening", Boolean);
+            assert.argumentIsRequired(closing, "closing", Boolean);
+            assert.argumentIsRequired(fee2, "fee", Boolean);
+            assert.argumentIsRequired(corporateAction, "corporateAction", Boolean);
+            assert.argumentIsRequired(initial, "initial", Boolean);
+            assert.argumentIsRequired(terminal, "terminal", Boolean);
+            assert.argumentIsRequired(significant, "significant", Boolean);
+            assert.argumentIsRequired(chaining, "chaining", Boolean);
+            assert.argumentIsRequired(chained, "chained", Boolean);
+            assert.argumentIsRequired(transfer, "transfer", Boolean);
+            assert.argumentIsRequired(dividend2, "dividend", Boolean);
+            this._display = display;
+            this._sequence = sequence;
+            this._purchase = purchase;
+            this._sale = sale;
+            this._income = income2;
+            this._opening = opening;
+            this._closing = closing;
+            this._fee = fee2;
+            this._corporateAction = corporateAction;
+            this._initial = initial;
+            this._terminal = terminal;
+            this._significant = significant;
+            this._chaining = chaining;
+            this._chained = chained;
+            this._transfer = transfer;
+            this._dividend = dividend2;
+          }
+          /**
+           * A human-readable description of the transaction type.
+           *
+           * @public
+           * @returns {String}
+           */
+          get display() {
+            return this._display;
+          }
+          /**
+           * Specifies ordering when multiple transactions occur on the same day, for
+           * the same position.
+           *
+           * @public
+           * @returns {Number}
+           */
+          get sequence() {
+            return this._sequence;
+          }
+          /**
+           * Indicates if the transaction was a trade.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get trade() {
+            return this._purchase || this._sale;
+          }
+          /**
+           * Indicates if the transaction was a purchase.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get purchase() {
+            return this._purchase;
+          }
+          /**
+           * Indicates if the transaction was a sale.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get sale() {
+            return this._sale;
+          }
+          /**
+           * Indicates if the transaction was an income payment.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get income() {
+            return this._income;
+          }
+          /**
+           * Indicates if the transaction opens the position (i.e. increases its
+           * magnitude).
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get opening() {
+            return this._opening;
+          }
+          /**
+           * Indicates if the transaction closes the position (i.e. decreases its
+           * magnitude).
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get closing() {
+            return this._closing;
+          }
+          /**
+           * Indicates if the transaction is a chart that neither opens nor
+           * closes the position.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get fee() {
+            return this._fee;
+          }
+          /**
+           * Indicates if the transaction is a corporate action.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get corporateAction() {
+            return this._corporateAction;
+          }
+          /**
+           * Indicates if the transaction can be the first transaction for a position.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get initial() {
+            return this._initial;
+          }
+          /**
+           * Indicates if the transaction must be the last
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get terminal() {
+            return this._terminal;
+          }
+          /**
+           * Significant transactions cannot be discarded during transaction re-write.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get significant() {
+            return this._significant;
+          }
+          /**
+           * Chain transactions cause another position to be created.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get chaining() {
+            return this._chaining;
+          }
+          /**
+           * Chained transactions are created from another position.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get chained() {
+            return this._chained;
+          }
+          /**
+           * Indicates if the transaction should cause gains and losses to be
+           * transferred from the original (chaining) position.
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get transfer() {
+            return this._transfer;
+          }
+          /**
+           * Indicates if the transaction represents a dividend or distribution (and
+           * should be included in an aggregation of dividends).
+           *
+           * @public
+           * @returns {Boolean}
+           */
+          get dividend() {
+            return this._dividend;
+          }
+          /**
+           * A purchase.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get BUY() {
+            return buy;
+          }
+          /**
+           * A sale.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get SELL() {
+            return sell;
+          }
+          /**
+           * A purchase (in a short position).
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get BUY_SHORT() {
+            return buyShort;
+          }
+          /**
+           * A short sale.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get SELL_SHORT() {
+            return sellShort;
+          }
+          /**
+           * A cash dividend.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get DIVIDEND() {
+            return dividend;
+          }
+          /**
+           * A cash dividend, reinvested.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get DIVIDEND_REINVEST() {
+            return dividendReinvest;
+          }
+          /**
+           * A stock dividend.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get DIVIDEND_STOCK() {
+            return dividendStock;
+          }
+          /**
+           * A mutual fund distribution in cash.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get DISTRIBUTION_CASH() {
+            return distributionCash;
+          }
+          /**
+           * A mutual fund distribution in units.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get DISTRIBUTION_FUND() {
+            return distributionFund;
+          }
+          /**
+           * A mutual fund distribution in cash, reinvested.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get DISTRIBUTION_REINVEST() {
+            return distributionReinvest;
+          }
+          /**
+           * A split.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get SPLIT() {
+            return split;
+          }
+          /**
+           * A fee.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get FEE() {
+            return fee;
+          }
+          /**
+           * A mutual fund fee, which is paid in units.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get FEE_UNITS() {
+            return feeUnits;
+          }
+          /**
+           * A deposit.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get DEPOSIT() {
+            return deposit;
+          }
+          /**
+           * A withdrawal.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get WITHDRAWAL() {
+            return withdrawal;
+          }
+          /**
+           * A system-generated withdrawal, arising from another transaction.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get DEBIT() {
+            return debit;
+          }
+          /**
+           * A system-generated transaction, indicating the security has stopped active trading.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get DELIST() {
+            return delist;
+          }
+          /**
+           * A system-generated deposit, arising from another transaction.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get CREDIT() {
+            return credit;
+          }
+          /**
+           * A valuation event.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get VALUATION() {
+            return valuation;
+          }
+          /**
+           * Other Income.
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get INCOME() {
+            return income;
+          }
+          /**
+           * A closing transaction as a result of a merger (for the acquired company).
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get MERGER_CLOSE() {
+            return mergerClose;
+          }
+          /**
+           * A opening transaction as a result of a merger (for the acquiring company).
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get MERGER_OPEN() {
+            return mergerOpen;
+          }
+          /**
+           * A spin-off (transaction applies to the original company).
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get SPINOFF() {
+            return spinoff;
+          }
+          /**
+           * A spin-off (transaction opens a position in a new company).
+           *
+           * @public
+           * @static
+           * @returns {TransactionType}
+           */
+          static get SPINOFF_OPEN() {
+            return spinoffOpen;
+          }
+          /**
+           * @public
+           * @static
+           * @param {String} code
+           * @returns {TransactionType|null}
+           */
+          static parse(code) {
+            return Enum.fromCode(TransactionType6, code);
+          }
+          toString() {
+            return `[TransactionType (code=${this.code})]`;
+          }
+        }
+        const buy = new TransactionType6("B", "Buy", "Buy", 0, true, false, false, true, false, false, false, true, false, true, false, false, false, false);
+        const sell = new TransactionType6("S", "Sell", "Sell", 0, false, true, false, false, true, false, false, false, false, true, false, false, false, false);
+        const buyShort = new TransactionType6("BS", "Buy To Cover", "Buy To Cover", 0, true, false, false, false, true, false, false, false, false, true, false, false, false, false);
+        const sellShort = new TransactionType6("SS", "Sell Short", "Sell Short", 0, false, true, false, true, false, false, false, true, false, true, false, false, false, false);
+        const dividend = new TransactionType6("DV", "Dividend", "Dividend", 1, false, false, true, false, false, false, true, false, false, false, false, false, false, true);
+        const dividendReinvest = new TransactionType6("DX", "Dividend (Reinvested)", "Dividend Reinvest", 1, false, false, false, true, false, false, true, false, false, false, false, false, false, true);
+        const dividendStock = new TransactionType6("DS", "Dividend (Stock)", "Dividend Stock", 1, false, false, false, true, false, false, true, false, false, false, false, false, false, false);
+        const split = new TransactionType6("SP", "Split", "Split", 1, false, false, false, true, false, false, true, false, false, false, false, false, false, false);
+        const fee = new TransactionType6("F", "Fee", "Fee", 0, false, false, false, false, false, true, false, false, false, false, false, false, false, false);
+        const feeUnits = new TransactionType6("FU", "Fee Units", "Fee", 0, false, false, false, false, true, false, false, false, false, false, false, false, false, false);
+        const delist = new TransactionType6("DL", "Delist", "Delist", 1, false, false, false, false, false, false, true, false, true, false, false, false, false, false);
+        const mergerClose = new TransactionType6("MC", "Merger Close", "Merger Close", 1, false, false, false, false, true, false, true, false, true, false, true, false, false, false);
+        const mergerOpen = new TransactionType6("MO", "Merger Open", "Merger Open", 1, false, false, false, true, false, false, true, true, false, true, false, true, true, false);
+        const spinoff = new TransactionType6("SPF", "Spinoff", "Spinoff", 1, false, false, false, false, false, false, true, false, false, false, true, false, false, false);
+        const spinoffOpen = new TransactionType6("SPFO", "Spinoff Open", "Spinoff Open", 1, false, false, false, true, false, false, true, true, false, true, false, true, true, false);
+        const distributionCash = new TransactionType6("DC", "Distribution (Cash)", "Cash Distribution", 1, false, false, true, false, false, false, true, false, false, false, false, false, false, true);
+        const distributionReinvest = new TransactionType6("DY", "Distribution (Reinvested)", "Distribution Reinvest", 1, false, false, false, true, false, false, true, false, false, false, false, false, false, true);
+        const distributionFund = new TransactionType6("DF", "Distribution (Units)", "Unit Distribution", 1, false, false, false, true, false, false, true, false, false, false, false, false, false, false);
+        const deposit = new TransactionType6("D", "Deposit", "Deposit", 0, false, false, false, false, false, false, false, true, false, true, false, false, false, false);
+        const withdrawal = new TransactionType6("W", "Withdrawal", "Withdrawal", 0, false, false, false, false, false, false, false, true, false, true, false, false, false, false);
+        const debit = new TransactionType6("DR", "Debit", "Debit", 0, false, false, false, false, false, false, false, true, false, true, false, false, false, false);
+        const credit = new TransactionType6("CR", "Credit", "Credit", 0, false, false, false, false, false, false, false, true, false, true, false, false, false, false);
+        const valuation = new TransactionType6("V", "Valuation", "Valuation", 0, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+        const income = new TransactionType6("I", "Income", "Income", 0, false, false, true, false, false, false, false, false, false, false, false, false, false, false);
+        return TransactionType6;
+      })();
+    }
+  });
+
+  // ../../node_modules/@barchart/common-js/lang/formatter.js
+  var require_formatter = __commonJS({
+    "../../node_modules/@barchart/common-js/lang/formatter.js"(exports, module) {
+      module.exports = (() => {
+        "use strict";
+        return {
+          /**
+           * Formats a number into a string for display purposes.
+           *
+           * @function
+           * @public
+           * @param {number|null|undefined} value
+           * @param {number} digits
+           * @param {string=} thousandsSeparator
+           * @param {boolean=} useParenthesis
+           */
+          numberToString(value, digits, thousandsSeparator, useParenthesis) {
+            if (value === "" || value === void 0 || value === null || isNaN(value)) {
+              return "";
+            }
+            const applyParenthesis = value < 0 && useParenthesis === true;
+            if (applyParenthesis) {
+              value = 0 - value;
+            }
+            let returnRef = value.toFixed(digits);
+            if (thousandsSeparator && !(value > -1e3 && value < 1e3)) {
+              const length = returnRef.length;
+              const negative = value < 0;
+              let found = digits === 0;
+              let counter = 0;
+              const buffer = [];
+              for (let i = length - 1; !(i < 0); i--) {
+                if (counter === 3 && !(negative && i === 0)) {
+                  buffer.unshift(thousandsSeparator);
+                  counter = 0;
+                }
+                const character = returnRef.charAt(i);
+                buffer.unshift(character);
+                if (found) {
+                  counter = counter + 1;
+                } else if (character === ".") {
+                  found = true;
+                }
+              }
+              if (applyParenthesis) {
+                buffer.unshift("(");
+                buffer.push(")");
+              }
+              returnRef = buffer.join("");
+            } else if (applyParenthesis) {
+              returnRef = "(" + returnRef + ")";
+            }
+            return returnRef;
+          }
+        };
+      })();
+    }
+  });
+
+  // ../../node_modules/@barchart/marketdata-api-js/lib/utilities/format/fraction.js
+  var require_fraction = __commonJS({
+    "../../node_modules/@barchart/marketdata-api-js/lib/utilities/format/fraction.js"(exports, module) {
+      var is = require_is();
+      module.exports = (() => {
+        "use strict";
+        function getIntegerPart(value, fractionSeparator) {
+          const floor = Math.floor(value);
+          if (floor === 0 && fractionSeparator === "") {
+            return "";
+          } else {
+            return floor;
+          }
+        }
+        function getDecimalPart(absoluteValue) {
+          return absoluteValue - Math.floor(absoluteValue);
+        }
+        function frontPad(value, digits) {
+          return ["000", Math.floor(value)].join("").substr(-1 * digits);
+        }
+        function formatFraction(value, fractionFactor, fractionDigits, fractionSeparator, useParenthesis) {
+          if (!is.number(value)) {
+            return "";
+          }
+          if (!is.number(fractionFactor)) {
+            return "";
+          }
+          if (!is.number(fractionDigits)) {
+            return "";
+          }
+          if (!is.string(fractionSeparator) || fractionSeparator.length > 1) {
+            fractionSeparator = ".";
+          }
+          const absoluteValue = Math.abs(value);
+          const integerPart = getIntegerPart(absoluteValue, fractionSeparator);
+          const decimalPart = getDecimalPart(absoluteValue);
+          const denominator = fractionFactor;
+          const numerator = decimalPart * denominator;
+          const roundedNumerator = Math.floor(parseFloat(numerator.toFixed(1)));
+          const formattedNumerator = frontPad(roundedNumerator, fractionDigits);
+          let prefix;
+          let suffix;
+          if (value < 0) {
+            useParenthesis = is.boolean(useParenthesis) && useParenthesis;
+            if (useParenthesis) {
+              prefix = "(";
+              suffix = ")";
+            } else {
+              prefix = "-";
+              suffix = "";
+            }
+          } else {
+            prefix = "";
+            suffix = "";
+          }
+          return [prefix, integerPart, fractionSeparator, formattedNumerator, suffix].join("");
+        }
+        return formatFraction;
       })();
     }
   });
@@ -2497,9 +4438,9 @@
   // lib/calculators/AveragePriceCalculator.js
   var require_AveragePriceCalculator = __commonJS({
     "lib/calculators/AveragePriceCalculator.js"(exports, module) {
-      var Decimal8 = require_Decimal();
+      var Decimal9 = require_Decimal();
       var is = require_is();
-      var InstrumentType7 = require_InstrumentType();
+      var InstrumentType8 = require_InstrumentType();
       module.exports = (() => {
         "use strict";
         class AveragePriceCalculator2 {
@@ -2518,14 +4459,14 @@
           static calculate(instrument, basis, quantity) {
             let basisToUse = null;
             if (is.number(basis)) {
-              basisToUse = new Decimal8(basis);
-            } else if (basis instanceof Decimal8) {
+              basisToUse = new Decimal9(basis);
+            } else if (basis instanceof Decimal9) {
               basisToUse = basis;
             }
             let quantityToUse = null;
             if (is.number(basis)) {
-              quantityToUse = new Decimal8(quantity);
-            } else if (basis instanceof Decimal8) {
+              quantityToUse = new Decimal9(quantity);
+            } else if (basis instanceof Decimal9) {
               quantityToUse = quantity;
             }
             const calculator = calculators.get(instrument.type);
@@ -2536,7 +4477,7 @@
           }
         }
         function calculateForCash(instrument, basis, quantity) {
-          return Decimal8.ONE;
+          return Decimal9.ONE;
         }
         function calculateForCrypto(instrument, basis, quantity) {
           if (basis === null || quantity === null || quantity.getIsZero()) {
@@ -2586,15 +4527,453 @@
           return basis.divide(quantity).opposite();
         }
         const calculators = /* @__PURE__ */ new Map();
-        calculators.set(InstrumentType7.CASH, calculateForCash);
-        calculators.set(InstrumentType7.CRYPTO, calculateForCrypto);
-        calculators.set(InstrumentType7.EQUITY, calculateForEquity);
-        calculators.set(InstrumentType7.EQUITY_OPTION, calculateForEquityOption);
-        calculators.set(InstrumentType7.FUND, calculateForFund);
-        calculators.set(InstrumentType7.FUTURE, calculateForFuture);
-        calculators.set(InstrumentType7.FUTURE_OPTION, calculateForFutureOption);
-        calculators.set(InstrumentType7.OTHER, calculateForOther);
+        calculators.set(InstrumentType8.CASH, calculateForCash);
+        calculators.set(InstrumentType8.CRYPTO, calculateForCrypto);
+        calculators.set(InstrumentType8.EQUITY, calculateForEquity);
+        calculators.set(InstrumentType8.EQUITY_OPTION, calculateForEquityOption);
+        calculators.set(InstrumentType8.FUND, calculateForFund);
+        calculators.set(InstrumentType8.FUTURE, calculateForFuture);
+        calculators.set(InstrumentType8.FUTURE_OPTION, calculateForFutureOption);
+        calculators.set(InstrumentType8.OTHER, calculateForOther);
         return AveragePriceCalculator2;
+      })();
+    }
+  });
+
+  // lib/formatters/TransactionFormatter.js
+  var require_TransactionFormatter = __commonJS({
+    "lib/formatters/TransactionFormatter.js"(exports, module) {
+      var assert = require_assert();
+      var ComparatorBuilder = require_ComparatorBuilder();
+      var comparators = require_comparators();
+      var Day8 = require_Day();
+      var Decimal9 = require_Decimal();
+      var is = require_is();
+      var formatter = require_formatter();
+      formatter.numberToFraction = require_fraction();
+      var InstrumentType8 = require_InstrumentType();
+      var TransactionType6 = require_TransactionType();
+      var AveragePriceCalculator2 = require_AveragePriceCalculator();
+      module.exports = (() => {
+        "use strict";
+        class TransactionFormatter2 {
+          constructor(schema) {
+          }
+          /**
+           * Maps transaction objects into new objects whose properties are human-readable.
+           *
+           * @public
+           * @static
+           * @param {Object[]} transactions
+           * @param {Object[]} positions
+           * @param {Boolean=} descending
+           * @param {Boolean=} fractions
+           * @returns {Array}
+           */
+          static format(transactions, positions, descending, fractions) {
+            assert.argumentIsArray(transactions, "transactions");
+            assert.argumentIsArray(positions, "positions");
+            assert.argumentIsOptional(descending, "descending", Boolean);
+            assert.argumentIsOptional(fractions, "fractions", Boolean);
+            const instruments = positions.reduce((map, p) => {
+              map[p.position] = Object.assign({}, p.instrument || {});
+              return map;
+            }, {});
+            const list = transactions.reduce((accumulator, transaction) => {
+              const position = transaction.position;
+              if (Object.prototype.hasOwnProperty.call(instruments, position)) {
+                let instrument = instruments[position];
+                let formatted = { instrument, raw: {} };
+                const formatterFunctions = formatters.get(transaction.type);
+                formatterFunctions.forEach((formatterFunction) => {
+                  formatterFunction(transaction, formatted);
+                });
+                const code = instrument.code;
+                Object.keys(formatted).forEach((key) => {
+                  const value = formatted[key];
+                  if (value instanceof Decimal9) {
+                    if (fractions && code && code.supportsFractions && (instrument.type === InstrumentType8.FUTURE || instrument.type === InstrumentType8.FUTURE_OPTION) && keys.fractions.some((k) => k === key)) {
+                      const rounded = code.roundToNearestTick(value.toFloat(), instrument.future ? instrument.future.tick : instrument.option.tick, true);
+                      formatted[key] = formatter.numberToFraction(rounded, code.fractionFactor, code.fractionDigits, "-", true);
+                    } else {
+                      const precision = instrument.currency.precision;
+                      formatted[key] = formatter.numberToString(value.toFloat(), precision, ",");
+                    }
+                  }
+                });
+                accumulator.push(formatted);
+              }
+              return accumulator;
+            }, []);
+            let comparator;
+            if (is.boolean(descending) && descending) {
+              comparator = comparatorDescending;
+            } else {
+              comparator = comparatorAscending;
+            }
+            list.sort(comparator);
+            list.forEach((t) => {
+              delete t.instrument.id;
+            });
+            return list;
+          }
+          /**
+           * Sorts an array of formatted transaction objects.
+           *
+           * @public
+           * @static
+           * @param {Object[]} transactions
+           * @param {Boolean=} descending
+           * @returns {Array}
+           */
+          sort(transactions, descending) {
+            assert.argumentIsArray(transactions, "transactions");
+            assert.argumentIsOptional(descending, "descending", Boolean);
+            let comparator;
+            if (is.boolean(descending) && descending) {
+              comparator = comparatorDescending;
+            } else {
+              comparator = comparatorAscending;
+            }
+            return transactions.sort(comparator);
+          }
+          toString() {
+            return "[TransactionFormatter]";
+          }
+        }
+        const keys = {};
+        keys.fractions = ["average", "price"];
+        const basicFormatter = (t, f) => {
+          f.date = t.date;
+          f.type = t.type.display;
+          f.code = t.type.code;
+          f.sequence = t.sequence;
+          f.position = t.position;
+          f.open = t.snapshot.open;
+          f.transaction = t.transaction;
+          f.edited = is.object(t.snaptrade) && is.boolean(t.snaptrade.edited) && t.snaptrade.edited;
+          f.userCreated = !is.object(t.snaptrade);
+          f.raw.open = getRawForDecimal(f.open);
+        };
+        const gainFormatter = (t, f) => {
+          f.gain = t.gain;
+          f.raw.gain = getRawForDecimal(f.gain);
+        };
+        const averageCostFormatter = (t, f) => {
+          const basis = t.snapshot.basis;
+          const open = t.snapshot.open;
+          let average;
+          if (basis && open && !open.getIsZero()) {
+            average = AveragePriceCalculator2.calculate(f.instrument, basis, open);
+          } else {
+            average = "";
+          }
+          f.average = average;
+          f.raw.average = getRawForDecimal(average);
+        };
+        const buySellFormatter = (t, f) => {
+          const ambiguous = is.object(t.snaptrade) && is.boolean(t.snaptrade.ambiguous) && t.snaptrade.ambiguous;
+          f.boughtSold = t.quantity;
+          f.price = t.trade.price;
+          f.fee = t.fee;
+          f.total = t.amount;
+          f.ambiguous = ambiguous;
+          if (t.description) {
+            f.description = t.description;
+          }
+          f.raw.total = getRawForDecimal(f.total);
+          f.raw.price = getRawForDecimal(f.price);
+          f.raw.boughtSold = getRawForDecimal(f.boughtSold);
+          f.raw.ambiguous = ambiguous;
+        };
+        const dividendFormatter = (t, f) => {
+          f.total = t.dividend.amount;
+          f.raw.total = getRawForDecimal(f.total);
+          if (!t.dividend.rate) {
+            return;
+          }
+          f.rate = t.dividend.rate;
+          f.raw.rate = getRawForDecimal(f.rate);
+          let shares;
+          if (t.dividend.open) {
+            shares = t.dividend.open;
+          } else {
+            if (!t.dividend.rate.getIsZero()) {
+              if (t.dividend.native) {
+                shares = t.dividend.native.divide(t.dividend.rate);
+              } else {
+                shares = t.dividend.amount.divide(t.dividend.rate);
+              }
+            } else {
+              shares = "";
+            }
+            if (shares) {
+              const rounded = shares.round(0);
+              if (rounded.subtract(shares).absolute().getIsLessThan(0.01)) {
+                shares = rounded;
+              } else {
+                shares = shares.round(2);
+              }
+            }
+          }
+          f.shares = shares;
+          f.raw.shares = getRawForDecimal(f.shares);
+          if (t.dividend.currency) {
+            f.currency = t.dividend.currency;
+          }
+          if (t.dividend.native) {
+            f.native = t.dividend.native;
+            f.raw.native = getRawForDecimal(f.native);
+          }
+        };
+        const distributionCashFormatter = (t, f) => {
+          f.total = t.dividend.amount;
+          f.raw.total = getRawForDecimal(f.total);
+          if (!t.dividend.rate) {
+            return;
+          }
+          f.rate = t.dividend.rate;
+          f.raw.rate = getRawForDecimal(f.rate);
+          let shares;
+          if (t.dividend.open) {
+            shares = t.dividend.open;
+          } else {
+            if (!t.dividend.rate.getIsZero()) {
+              if (t.dividend.native) {
+                shares = t.dividend.native.divide(t.dividend.rate);
+              } else {
+                shares = t.dividend.amount.divide(t.dividend.rate);
+              }
+            } else {
+              shares = "";
+            }
+            if (shares) {
+              const rounded = shares.round(0);
+              if (rounded.subtract(shares).absolute().getIsLessThan(0.01)) {
+                shares = rounded;
+              } else {
+                shares = shares.round(2);
+              }
+            }
+          }
+          f.shares = shares;
+          f.raw.shares = getRawForDecimal(f.shares);
+          if (t.dividend.currency) {
+            f.currency = t.dividend.currency;
+          }
+          if (t.dividend.native) {
+            f.native = t.dividend.native;
+            f.raw.native = getRawForDecimal(f.native);
+          }
+        };
+        const dividendReinvestFormatter = (t, f) => {
+          f.boughtSold = t.quantity;
+          if (f.fee && !f.fee.getIsZero()) {
+            f.fee = t.fee;
+          }
+          if (t.dividend.currency) {
+            f.currency = t.dividend.currency;
+          }
+          f.price = t.dividend.price;
+          f.rate = t.dividend.rate;
+          f.shares = t.snapshot.open.subtract(t.quantity);
+          f.raw.rate = getRawForDecimal(f.rate);
+          f.raw.shares = getRawForDecimal(f.shares);
+          f.raw.price = getRawForDecimal(f.price);
+          f.raw.boughtSold = getRawForDecimal(f.boughtSold);
+        };
+        const distributionReinvestFormatter = (t, f) => {
+          f.boughtSold = t.quantity;
+          if (f.fee && !f.fee.getIsZero()) {
+            f.fee = t.fee;
+          }
+          if (t.dividend.currency) {
+            f.currency = t.dividend.currency;
+          }
+          f.price = t.dividend.price;
+          f.rate = t.dividend.rate;
+          f.shares = t.snapshot.open.subtract(t.quantity);
+          f.raw.rate = getRawForDecimal(f.rate);
+          f.raw.shares = getRawForDecimal(f.shares);
+          f.raw.price = getRawForDecimal(f.price);
+          f.raw.boughtSold = getRawForDecimal(f.boughtSold);
+        };
+        const dividendStockFormatter = (t, f) => {
+          f.boughtSold = t.quantity;
+          if (f.fee && !f.fee.getIsZero()) {
+            f.fee = t.fee;
+          }
+          if (t.dividend) {
+            let rate;
+            if (t.dividend.numerator && t.dividend.denominator) {
+              if (!t.dividend.denominator.getIsZero()) {
+                rate = t.dividend.numerator.divide(t.dividend.denominator);
+              } else {
+                rate = "";
+              }
+            } else if (t.dividend.rate) {
+              rate = t.dividend.rate;
+            }
+            f.rate = rate;
+            f.raw.rate = getRawForDecimal(f.rate);
+            if (t.dividend.price) {
+              f.price = t.dividend.price;
+              f.raw.price = getRawForDecimal(f.price);
+            }
+          }
+          f.shares = t.snapshot.open.subtract(t.quantity);
+          f.raw.shares = getRawForDecimal(f.shares);
+          f.raw.boughtSold = getRawForDecimal(f.boughtSold);
+        };
+        const distributionFundFormatter = (t, f) => {
+          f.boughtSold = t.quantity;
+          if (f.fee && !f.fee.getIsZero()) {
+            f.fee = t.fee;
+          }
+          if (t.dividend) {
+            let rate;
+            if (t.dividend.numerator && t.dividend.denominator) {
+              if (!t.dividend.denominator.getIsZero()) {
+                rate = t.dividend.numerator.divide(t.dividend.denominator);
+              } else {
+                rate = "";
+              }
+            } else if (t.dividend.rate) {
+              rate = t.dividend.rate;
+            }
+            f.rate = rate;
+            f.raw.rate = getRawForDecimal(f.rate);
+            if (t.dividend.price) {
+              f.price = t.dividend.price;
+              f.raw.price = getRawForDecimal(f.price);
+            }
+          }
+          f.shares = t.snapshot.open.subtract(t.quantity);
+          f.raw.shares = getRawForDecimal(f.shares);
+          f.raw.boughtSold = getRawForDecimal(f.boughtSold);
+        };
+        const incomeFormatter = (t, f) => {
+          f.total = t.income.amount;
+          f.raw.total = getRawForDecimal(f.total);
+        };
+        const feeFormatter = (t, f) => {
+          f.fee = t.charge.amount;
+          f.total = t.charge.amount;
+          f.raw.total = getRawForDecimal(f.total);
+        };
+        const feeUnitsFormatter = (t, f) => {
+          f.boughtSold = t.quantity;
+          f.raw.boughtSold = getRawForDecimal(f.boughtSold);
+        };
+        const splitFormatter = (t, f) => {
+          f.boughtSold = t.quantity;
+          f.raw.boughtSold = getRawForDecimal(f.boughtSold);
+          if (!t.split || !t.split.numerator) {
+            return;
+          }
+          let rate;
+          if (!t.split.denominator.getIsZero()) {
+            rate = t.split.numerator.divide(t.split.denominator);
+          } else {
+            rate = "";
+          }
+          f.rate = rate;
+          f.raw.rate = getRawForDecimal(f.rate);
+          f.shares = t.snapshot.open.subtract(t.quantity);
+          f.raw.shares = getRawForDecimal(f.shares);
+        };
+        const valuationFormatter = (t, f) => {
+          let rate;
+          if (t.valuation.rate) {
+            rate = t.valuation.rate;
+          } else if (t.snapshot.open.getIsZero()) {
+            rate = null;
+          } else {
+            if (!t.snapshot.open.getIsZero()) {
+              rate = t.valuation.value.divide(t.snapshot.open);
+            } else {
+              rate = "";
+            }
+          }
+          f.price = rate;
+          f.raw.price = getRawForDecimal(f.price);
+        };
+        const cashFormatter = (t, f) => {
+          f.total = t.quantity;
+          f.raw.total = getRawForDecimal(f.total);
+        };
+        const debitFormatter = (t, f) => {
+          f.description = t.description;
+        };
+        const creditFormatter = (t, f) => {
+          f.description = t.description;
+        };
+        const mergerFormatter = (t, f) => {
+          f.boughtSold = t.quantity;
+          let rate;
+          if (!t.merger.denominator.getIsZero()) {
+            rate = t.merger.numerator.divide(t.merger.denominator);
+          } else {
+            rate = "";
+          }
+          f.rate = rate;
+          f.shares = t.snapshot.open.subtract(t.quantity);
+          f.raw.rate = getRawForDecimal(f.rate);
+          f.raw.shares = getRawForDecimal(f.shares);
+          f.raw.boughtSold = getRawForDecimal(f.boughtSold);
+        };
+        const spinoffFormatter = (t, f) => {
+          f.boughtSold = t.quantity;
+          let rate;
+          if (!t.spinoff.denominator.getIsZero()) {
+            rate = t.spinoff.numerator.divide(t.spinoff.denominator);
+          } else {
+            rate = "";
+          }
+          f.rate = rate;
+          f.shares = t.snapshot.open.subtract(t.quantity);
+          f.raw.rate = getRawForDecimal(f.rate);
+          f.raw.shares = getRawForDecimal(f.shares);
+          f.raw.boughtSold = getRawForDecimal(f.boughtSold);
+        };
+        const formatters = /* @__PURE__ */ new Map();
+        formatters.set(TransactionType6.BUY, [basicFormatter, buySellFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.SELL, [basicFormatter, buySellFormatter, averageCostFormatter, gainFormatter]);
+        formatters.set(TransactionType6.BUY_SHORT, [basicFormatter, buySellFormatter, averageCostFormatter, gainFormatter]);
+        formatters.set(TransactionType6.SELL_SHORT, [basicFormatter, buySellFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.DIVIDEND, [basicFormatter, dividendFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.DIVIDEND_STOCK, [basicFormatter, dividendStockFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.DIVIDEND_REINVEST, [basicFormatter, dividendReinvestFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.DISTRIBUTION_CASH, [basicFormatter, distributionCashFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.DISTRIBUTION_FUND, [basicFormatter, distributionFundFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.DISTRIBUTION_REINVEST, [basicFormatter, distributionReinvestFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.INCOME, [basicFormatter, incomeFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.FEE, [basicFormatter, feeFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.FEE_UNITS, [basicFormatter, feeUnitsFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.SPLIT, [basicFormatter, splitFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.VALUATION, [basicFormatter, valuationFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.DELIST, [basicFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.DEPOSIT, [basicFormatter, cashFormatter]);
+        formatters.set(TransactionType6.WITHDRAWAL, [basicFormatter, cashFormatter]);
+        formatters.set(TransactionType6.DEBIT, [basicFormatter, cashFormatter, debitFormatter]);
+        formatters.set(TransactionType6.CREDIT, [basicFormatter, cashFormatter, creditFormatter]);
+        formatters.set(TransactionType6.MERGER_OPEN, [basicFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.MERGER_CLOSE, [basicFormatter, mergerFormatter]);
+        formatters.set(TransactionType6.SPINOFF, [basicFormatter, spinoffFormatter, averageCostFormatter]);
+        formatters.set(TransactionType6.SPINOFF_OPEN, [basicFormatter, averageCostFormatter]);
+        function getInstrumentTypePriority(type) {
+          if (type === InstrumentType8.CASH) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        function getRawForDecimal(value) {
+          return value && value instanceof Decimal9 ? value.toFloat() : value;
+        }
+        const comparatorAscending = ComparatorBuilder.startWith((a, b) => Day8.compareDays(a.date, b.date)).thenBy((a, b) => comparators.compareNumbers(getInstrumentTypePriority(a.instrument.type), getInstrumentTypePriority(b.instrument.type))).thenBy((a, b) => comparators.compareStrings(a.instrument.id, b.instrument.id)).thenBy((a, b) => comparators.compareNumbers(a.sequence, b.sequence)).toComparator();
+        const comparatorDescending = ComparatorBuilder.startWith((a, b) => comparatorAscending(b, a)).toComparator();
+        return TransactionFormatter2;
       })();
     }
   });
@@ -2602,9 +4981,9 @@
   // lib/calculators/ValuationCalculator.js
   var require_ValuationCalculator = __commonJS({
     "lib/calculators/ValuationCalculator.js"(exports, module) {
-      var Decimal8 = require_Decimal();
+      var Decimal9 = require_Decimal();
       var is = require_is();
-      var InstrumentType7 = require_InstrumentType();
+      var InstrumentType8 = require_InstrumentType();
       module.exports = (() => {
         "use strict";
         class ValuationCalculator2 {
@@ -2623,8 +5002,8 @@
           static calculate(instrument, price, quantity) {
             let priceToUse = null;
             if (is.number(price)) {
-              priceToUse = new Decimal8(price);
-            } else if (price instanceof Decimal8) {
+              priceToUse = new Decimal9(price);
+            } else if (price instanceof Decimal9) {
               priceToUse = price;
             }
             if (priceToUse === null) {
@@ -2638,7 +5017,7 @@
           }
         }
         function calculateForCash(instrument, price, quantity) {
-          return new Decimal8(quantity);
+          return new Decimal9(quantity);
         }
         function calculateForCrypto(instrument, price, quantity) {
           return price.multiply(quantity);
@@ -2667,812 +5046,15 @@
           return price.multiply(quantity);
         }
         const calculators = /* @__PURE__ */ new Map();
-        calculators.set(InstrumentType7.CASH, calculateForCash);
-        calculators.set(InstrumentType7.CRYPTO, calculateForCrypto);
-        calculators.set(InstrumentType7.EQUITY, calculateForEquity);
-        calculators.set(InstrumentType7.EQUITY_OPTION, calculateForEquityOption);
-        calculators.set(InstrumentType7.FUND, calculateForFund);
-        calculators.set(InstrumentType7.FUTURE, calculateForFuture);
-        calculators.set(InstrumentType7.FUTURE_OPTION, calculateForFutureOption);
-        calculators.set(InstrumentType7.OTHER, calculateForOther);
+        calculators.set(InstrumentType8.CASH, calculateForCash);
+        calculators.set(InstrumentType8.CRYPTO, calculateForCrypto);
+        calculators.set(InstrumentType8.EQUITY, calculateForEquity);
+        calculators.set(InstrumentType8.EQUITY_OPTION, calculateForEquityOption);
+        calculators.set(InstrumentType8.FUND, calculateForFund);
+        calculators.set(InstrumentType8.FUTURE, calculateForFuture);
+        calculators.set(InstrumentType8.FUTURE_OPTION, calculateForFutureOption);
+        calculators.set(InstrumentType8.OTHER, calculateForOther);
         return ValuationCalculator2;
-      })();
-    }
-  });
-
-  // ../../node_modules/@barchart/common-js/collections/sorting/comparators.js
-  var require_comparators = __commonJS({
-    "../../node_modules/@barchart/common-js/collections/sorting/comparators.js"(exports, module) {
-      var assert = require_assert();
-      module.exports = (() => {
-        "use strict";
-        return {
-          /**
-           * Compares two dates (in ascending order).
-           *
-           * @public
-           * @static
-           * @param {Date} a
-           * @param {Date} b
-           * @returns {Number}
-           */
-          compareDates: (a, b) => {
-            assert.argumentIsRequired(a, "a", Date);
-            assert.argumentIsRequired(b, "b", Date);
-            return a - b;
-          },
-          /**
-           * Compares two numbers (in ascending order).
-           *
-           * @public
-           * @static
-           * @param {Number} a
-           * @param {Number} b
-           * @returns {Number}
-           */
-          compareNumbers: (a, b) => {
-            assert.argumentIsRequired(a, "a", Number);
-            assert.argumentIsRequired(b, "b", Number);
-            return a - b;
-          },
-          /**
-           * Compares two strings (in ascending order), using {@link String#localeCompare}.
-           *
-           * @public
-           * @static
-           * @param {String} a
-           * @param {String} b
-           * @returns {Number}
-           */
-          compareStrings: (a, b) => {
-            assert.argumentIsRequired(a, "a", String);
-            assert.argumentIsRequired(b, "b", String);
-            return a.localeCompare(b);
-          },
-          /**
-           * Compares two boolean values (in ascending order -- false first, true second).
-           *
-           * @public
-           * @static
-           * @param {Boolean} a
-           * @param {Boolean} b
-           * @returns {Number}
-           */
-          compareBooleans: (a, b) => {
-            assert.argumentIsRequired(a, "a", Boolean);
-            assert.argumentIsRequired(b, "b", Boolean);
-            if (a === b) {
-              return 0;
-            } else if (a) {
-              return 1;
-            } else {
-              return -1;
-            }
-          },
-          /**
-           * Compares two values for nulls (in ascending order -- null first, non-null second).
-           *
-           * @public
-           * @static
-           * @param {*|null} a
-           * @param {*|null} b
-           * @returns {Number}
-           */
-          compareNull: (a, b) => {
-            if (a === null && b !== null) {
-              return -1;
-            } else if (a !== null && b === null) {
-              return 1;
-            } else {
-              return 0;
-            }
-          },
-          /**
-           * Compares two objects, always returning zero.
-           *
-           * @public
-           * @static
-           * @param {*} a
-           * @param {*} b
-           * @returns {Number}
-           */
-          empty: (a, b) => {
-            return 0;
-          }
-        };
-      })();
-    }
-  });
-
-  // ../../node_modules/@barchart/common-js/collections/sorting/ComparatorBuilder.js
-  var require_ComparatorBuilder = __commonJS({
-    "../../node_modules/@barchart/common-js/collections/sorting/ComparatorBuilder.js"(exports, module) {
-      var assert = require_assert();
-      var comparators = require_comparators();
-      module.exports = (() => {
-        "use strict";
-        class ComparatorBuilder {
-          constructor(comparator, invert, previous) {
-            assert.argumentIsRequired(comparator, "comparator", Function);
-            assert.argumentIsOptional(invert, "invert", Boolean);
-            this._comparator = comparator;
-            this._invert = invert || false;
-            this._previous = previous || null;
-          }
-          /**
-           * Adds a new comparator to the list of comparators to use.
-           *
-           * @public
-           * @param {Function} comparator - The next comparator function.
-           * @param {Boolean=} invert - Indicates if the comparator should sort in descending order.
-           * @returns {ComparatorBuilder}
-           */
-          thenBy(comparator, invert) {
-            assert.argumentIsRequired(comparator, "comparator", Function);
-            assert.argumentIsOptional(invert, "invert", Boolean);
-            return new ComparatorBuilder(comparator, invert, this);
-          }
-          /**
-           * Flips the order of the comparator (e.g. ascending to descending).
-           *
-           * @public
-           * @returns {ComparatorBuilder}
-           */
-          invert() {
-            let previous;
-            if (this._previous) {
-              previous = this._previous.invert();
-            } else {
-              previous = null;
-            }
-            return new ComparatorBuilder(this._comparator, !this._invert, previous);
-          }
-          /**
-           * Returns the comparator function.
-           *
-           * @public
-           * @returns {Function}
-           */
-          toComparator() {
-            let previousComparator;
-            if (this._previous) {
-              previousComparator = this._previous.toComparator();
-            } else {
-              previousComparator = comparators.empty;
-            }
-            return (a, b) => {
-              let result = previousComparator(a, b);
-              if (result === 0) {
-                let sortA;
-                let sortB;
-                if (this._invert) {
-                  sortA = b;
-                  sortB = a;
-                } else {
-                  sortA = a;
-                  sortB = b;
-                }
-                result = this._comparator(sortA, sortB);
-              }
-              return result;
-            };
-          }
-          toString() {
-            return "[ComparatorBuilder]";
-          }
-          /**
-           * Creates a {@link ComparatorBuilder}, given an initial comparator function.
-           *
-           * @public
-           * @param {Function} comparator - The initial comparator.
-           * @param {Boolean=} invert - Indicates if the comparator should sort in descending order.
-           * @returns {ComparatorBuilder}
-           */
-          static startWith(comparator, invert) {
-            return new ComparatorBuilder(comparator, invert);
-          }
-        }
-        return ComparatorBuilder;
-      })();
-    }
-  });
-
-  // ../../node_modules/@barchart/common-js/lang/DayFormatType.js
-  var require_DayFormatType = __commonJS({
-    "../../node_modules/@barchart/common-js/lang/DayFormatType.js"(exports, module) {
-      var Enum = require_Enum();
-      module.exports = (() => {
-        "use strict";
-        class DayFormatType extends Enum {
-          constructor(description, regex, yearIndex, monthIndex, dayIndex, yearShift) {
-            super(description, description);
-            this._regex = regex;
-            this._yearIndex = yearIndex;
-            this._monthIndex = monthIndex;
-            this._dayIndex = dayIndex;
-            this._yearShift = yearShift;
-          }
-          /**
-           * A regular expression for parsing the day type.
-           *
-           * @public
-           * @returns {RegExp}
-           */
-          get regex() {
-            return this._regex;
-          }
-          /**
-           * The index used to read the year from a regular expression match.
-           *
-           * @public
-           * @returns {number}
-           */
-          get yearIndex() {
-            return this._yearIndex;
-          }
-          /**
-           * The index used to read the month from a regular expression match.
-           *
-           * @public
-           * @returns {number}
-           */
-          get monthIndex() {
-            return this._monthIndex;
-          }
-          /**
-           * The index used to read the day from a regular expression match.
-           *
-           * @public
-           * @returns {number}
-           */
-          get dayIndex() {
-            return this._dayIndex;
-          }
-          /**
-           * The amount to add to the year (extracted from a formatted string) to get the
-           * full year (e.g. for "11-31-25" of a MM-DD-YY string, the value will be 2000).
-           *
-           * @public
-           * @returns {number}
-           */
-          get yearShift() {
-            return this._yearShift;
-          }
-          /**
-           * Specifies date formatting as four-digit year, then month, then day (e.g. 2025-11-31).
-           *
-           * @public
-           * @static
-           * @returns {DayFormatType}
-           */
-          static get YYYY_MM_DD() {
-            return yyyymmdd;
-          }
-          /**
-           * Specifies date formatting as month, then day, then four-digit year (e.g. 11-31-2025).
-           *
-           * @public
-           * @static
-           * @returns {DayFormatType}
-           */
-          static get MM_DD_YYYY() {
-            return mmddyyyy;
-          }
-          /**
-           * Specifies date formatting as month, then day, then two-digit year (e.g. 11-31-25).
-           *
-           * @public
-           * @static
-           * @returns {DayFormatType}
-           */
-          static get MM_DD_YY() {
-            return mmddyy;
-          }
-          toString() {
-            return `[DayFormatType (description=${this.description})]`;
-          }
-        }
-        function getMillenniumShift() {
-          const today = /* @__PURE__ */ new Date();
-          return Math.floor(today.getFullYear() / 100) * 100;
-        }
-        const yyyymmdd = new DayFormatType("YYYY_MM_DD", /^([0-9]{4})[-/.]?([0-9]{1,2})[-/.]?([0-9]{1,2})$/, 1, 2, 3, 0);
-        const mmddyyyy = new DayFormatType("MM_DD_YYYY", /^([0-9]{1,2})[-/.]?([0-9]{1,2})[-/.]?([0-9]{4})$/, 3, 1, 2, 0);
-        const mmddyy = new DayFormatType("MM_DD_YY", /^([0-9]{1,2})[-/.]?([0-9]{1,2})[-/.]?([0-9]{2})$/, 3, 1, 2, getMillenniumShift());
-        return DayFormatType;
-      })();
-    }
-  });
-
-  // ../../node_modules/@barchart/common-js/lang/Day.js
-  var require_Day = __commonJS({
-    "../../node_modules/@barchart/common-js/lang/Day.js"(exports, module) {
-      var assert = require_assert();
-      var ComparatorBuilder = require_ComparatorBuilder();
-      var comparators = require_comparators();
-      var DayFormatType = require_DayFormatType();
-      var is = require_is();
-      module.exports = (() => {
-        "use strict";
-        class Day7 {
-          constructor(year, month, day) {
-            if (!Day7.validate(year, month, day)) {
-              throw new Error(`Unable to instantiate [ Day ], input is invalid [ ${year} ], [ ${month} ], [ ${day} ]`);
-            }
-            this._year = year;
-            this._month = month;
-            this._day = day;
-          }
-          /**
-           * Calculates a new {@link Day} in the future (or past).
-           *
-           * @public
-           * @param {Number} days - The number of days to add (negative numbers can be used for subtraction).
-           * @param {Boolean=} inverse - If true, the sign of the "days" value will be flipped.
-           * @returns {Day}
-           */
-          addDays(days, inverse) {
-            assert.argumentIsRequired(days, "days", Number);
-            assert.argumentIsOptional(inverse, inverse, Boolean);
-            assert.argumentIsValid(days, "days", is.large, "is an integer");
-            let totalDaysToShift;
-            if (is.boolean(inverse) && inverse) {
-              totalDaysToShift = days * -1;
-            } else {
-              totalDaysToShift = days;
-            }
-            const positive = is.positive(totalDaysToShift);
-            let shiftedDay = this._day;
-            let shiftedMonth = this._month;
-            let shiftedYear = this._year;
-            while (totalDaysToShift !== 0) {
-              let monthDaysAvailable;
-              let monthDaysToShift;
-              if (positive) {
-                monthDaysAvailable = Day7.getDaysInMonth(shiftedYear, shiftedMonth) - shiftedDay;
-                monthDaysToShift = Math.min(totalDaysToShift, monthDaysAvailable);
-              } else {
-                monthDaysAvailable = 1 - shiftedDay;
-                monthDaysToShift = Math.max(totalDaysToShift, monthDaysAvailable);
-              }
-              totalDaysToShift = totalDaysToShift - monthDaysToShift;
-              if (totalDaysToShift === 0) {
-                shiftedDay = shiftedDay + monthDaysToShift;
-              } else if (positive) {
-                shiftedMonth++;
-                if (shiftedMonth > 12) {
-                  shiftedYear++;
-                  shiftedMonth = 1;
-                }
-                shiftedDay = 0;
-              } else {
-                shiftedMonth--;
-                if (shiftedMonth < 1) {
-                  shiftedYear--;
-                  shiftedMonth = 12;
-                }
-                shiftedDay = Day7.getDaysInMonth(shiftedYear, shiftedMonth) + 1;
-              }
-            }
-            return new Day7(shiftedYear, shiftedMonth, shiftedDay);
-          }
-          /**
-           * Calculates a new {@link Day} in the past (or future).
-           *
-           * @public
-           * @param {Number} days - The number of days to subtract (negative numbers can be used for addition).
-           * @returns {Day}
-           */
-          subtractDays(days) {
-            return this.addDays(days, true);
-          }
-          /**
-           * Calculates a new {@link Day} in the future (or past). If the new date is at the end of
-           * the month and the new month has fewer days than the current month, days will be subtracted
-           * as necessary (e.g. adding one month to March 31 will return April 30).
-           *
-           * @public
-           * @param {Number} months - The number of months to add (negative numbers can be used for subtraction).
-           * @param {Boolean=} inverse - If true, the sign of the "days" value will be flipped.
-           * @returns {Day}
-           */
-          addMonths(months, inverse) {
-            assert.argumentIsRequired(months, "months", Number);
-            assert.argumentIsOptional(inverse, inverse, Boolean);
-            assert.argumentIsValid(months, "months", is.large, "is an integer");
-            let totalMonthsToShift;
-            if (is.boolean(inverse) && inverse) {
-              totalMonthsToShift = months * -1;
-            } else {
-              totalMonthsToShift = months;
-            }
-            const monthsToShift = totalMonthsToShift % 12;
-            const yearsToShift = (totalMonthsToShift - monthsToShift) / 12;
-            let shiftedYear = this.year + yearsToShift;
-            let shiftedMonth = this.month + monthsToShift;
-            let shiftedDay = this.day;
-            if (shiftedMonth > 12) {
-              shiftedYear = shiftedYear + 1;
-              shiftedMonth = shiftedMonth - 12;
-            }
-            if (shiftedMonth < 1) {
-              shiftedYear = shiftedYear - 1;
-              shiftedMonth = shiftedMonth + 12;
-            }
-            while (!Day7.validate(shiftedYear, shiftedMonth, shiftedDay)) {
-              shiftedDay = shiftedDay - 1;
-            }
-            return new Day7(shiftedYear, shiftedMonth, shiftedDay);
-          }
-          /**
-           * Calculates a new {@link Day} in the past (or future).
-           *
-           * @public
-           * @param {Number} months - The number of months to subtract (negative numbers can be used for addition).
-           * @returns {Day}
-           */
-          subtractMonths(months) {
-            return this.addMonths(months, true);
-          }
-          /**
-           * Calculates a new {@link Day} in the future (or past). If the new date is at the end of
-           * the month and the new month has fewer days than the current month, days will be subtracted
-           * as necessary (e.g. adding one year to February 29 will return February 28).
-           *
-           * @public
-           * @param {Number} years - The number of years to add (negative numbers can be used for subtraction).
-           * @param {Boolean=} inverse - If true, the sign of the "days" value will be flipped.
-           * @returns {Day}
-           */
-          addYears(years, inverse) {
-            assert.argumentIsRequired(years, "years", Number);
-            assert.argumentIsOptional(inverse, inverse, Boolean);
-            assert.argumentIsValid(years, "years", is.large, "is an integer");
-            let yearsToShift;
-            if (is.boolean(inverse) && inverse) {
-              yearsToShift = years * -1;
-            } else {
-              yearsToShift = years;
-            }
-            let shiftedYear = this.year + yearsToShift;
-            let shiftedMonth = this.month;
-            let shiftedDay = this.day;
-            while (!Day7.validate(shiftedYear, shiftedMonth, shiftedDay)) {
-              shiftedDay = shiftedDay - 1;
-            }
-            return new Day7(shiftedYear, shiftedMonth, shiftedDay);
-          }
-          /**
-           * Calculates a new {@link Day} in the past (or future).
-           *
-           * @public
-           * @param {Number} years - The number of years to subtract (negative numbers can be used for addition).
-           * @returns {Day}
-           */
-          subtractYears(years) {
-            return this.addYears(years, true);
-          }
-          /**
-           * Returns a new {@link Day} instance for the start of the month referenced by the current instance.
-           *
-           * @public
-           * @returns {Day}
-           */
-          getStartOfMonth() {
-            return new Day7(this.year, this.month, 1);
-          }
-          /**
-           * Returns a new instance for the {@link Day} end of the month referenced by the current instance.
-           *
-           * @public
-           * @returns {Day}
-           */
-          getEndOfMonth() {
-            return new Day7(this.year, this.month, Day7.getDaysInMonth(this.year, this.month));
-          }
-          /**
-           * Indicates if the current {@link Day} instance occurs before another day.
-           *
-           * @public
-           * @param {Day} other
-           * @returns {boolean}
-           */
-          getIsBefore(other) {
-            return Day7.compareDays(this, other) < 0;
-          }
-          /**
-           * Indicates if the current {@link Day} instance occurs after another day.
-           *
-           * @public
-           * @param {Day} other
-           * @returns {boolean}
-           */
-          getIsAfter(other) {
-            return Day7.compareDays(this, other) > 0;
-          }
-          /**
-           * Indicates the current day falls between two other days, inclusive
-           * of the range boundaries.
-           *
-           * @public
-           * @param {Day=} first
-           * @param {Day=} last
-           * @returns {boolean}
-           */
-          getIsContained(first, last) {
-            assert.argumentIsOptional(first, "first", Day7, "Day");
-            assert.argumentIsOptional(last, "last", Day7, "Day");
-            let notAfter;
-            let notBefore;
-            if (first && last && first.getIsAfter(last)) {
-              notBefore = false;
-              notAfter = false;
-            } else {
-              notAfter = !(last instanceof Day7) || !this.getIsAfter(last);
-              notBefore = !(first instanceof Day7) || !this.getIsBefore(first);
-            }
-            return notAfter && notBefore;
-          }
-          /**
-           * Indicates if another {@link Day} refers to the same moment.
-           *
-           * @public
-           * @param {Day} other
-           * @returns {boolean}
-           */
-          getIsEqual(other) {
-            return Day7.compareDays(this, other) === 0;
-          }
-          /**
-           * Calculates and returns name of the day of the week (e.g. Monday, Tuesday, Wednesday, etc).
-           *
-           * @public
-           * @returns {String}
-           */
-          getName() {
-            const count = Day7.countDaysBetween(REFERENCE_MONDAY, this);
-            let index = count % NAMES_OF_DAYS.length;
-            if (index < 0) {
-              index = index + NAMES_OF_DAYS.length;
-            }
-            return NAMES_OF_DAYS[index];
-          }
-          /**
-           * The year.
-           *
-           * @public
-           * @returns {Number}
-           */
-          get year() {
-            return this._year;
-          }
-          /**
-           * The month of the year (January is one, December is twelve).
-           *
-           * @public
-           * @returns {Number}
-           */
-          get month() {
-            return this._month;
-          }
-          /**
-           * The day of the month.
-           *
-           * @public
-           * @returns {Number}
-           */
-          get day() {
-            return this._day;
-          }
-          /**
-           * Outputs the date as the formatted string: {year}-{month}-{day}.
-           *
-           * @public
-           * @returns {String}
-           */
-          format() {
-            return `${leftPad(this._year, 4, "0")}-${leftPad(this._month, 2, "0")}-${leftPad(this._day, 2, "0")}`;
-          }
-          /**
-           * Returns the JSON representation.
-           *
-           * @public
-           * @returns {String}
-           */
-          toJSON() {
-            return this.format();
-          }
-          /**
-           * Clones a {@link Day} instance.
-           *
-           * @public
-           * @static
-           * @param {Day} value
-           * @returns {Day}
-           */
-          static clone(value) {
-            assert.argumentIsRequired(value, "value", Day7, "Day");
-            return new Day7(value.year, value.month, value.day);
-          }
-          /**
-           * Converts a string (which matches the output of {@link Day#format}) into
-           * a {@link Day} instance.
-           *
-           * @public
-           * @static
-           * @param {String} value
-           * @param {DayFormatType=} type
-           * @returns {Day}
-           */
-          static parse(value, type) {
-            assert.argumentIsRequired(value, "value", String);
-            let t;
-            if (type instanceof DayFormatType) {
-              t = type;
-            } else {
-              t = DayFormatType.YYYY_MM_DD;
-            }
-            const match = value.match(t.regex);
-            if (match === null) {
-              throw new Error(`Unable to parse value as Day [ ${value} ]`);
-            }
-            return new Day7(parseInt(match[t.yearIndex]) + t.yearShift, parseInt(match[t.monthIndex]), parseInt(match[t.dayIndex]));
-          }
-          /**
-           * Creates a {@link Day} from the year, month, and day properties (in local time)
-           * of the {@link Date} argument.
-           *
-           * @public
-           * @static
-           * @param {Date} date
-           * @returns {Day}
-           */
-          static fromDate(date) {
-            assert.argumentIsRequired(date, "date", Date);
-            return new Day7(date.getFullYear(), date.getMonth() + 1, date.getDate());
-          }
-          /**
-           * Creates a {@link Day} from the year, month, and day properties (in UTC)
-           * of the {@link Date} argument.
-           *
-           * @public
-           * @static
-           * @param {Date} date
-           * @returns {Day}
-           */
-          static fromDateUtc(date) {
-            assert.argumentIsRequired(date, "date", Date);
-            return new Day7(date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate());
-          }
-          /**
-           * Returns a {@link Day} instance using today's local date.
-           *
-           * @public
-           * @static
-           * @returns {Day}
-           */
-          static getToday() {
-            return Day7.fromDate(/* @__PURE__ */ new Date());
-          }
-          /**
-           * Returns true if the year, month, and day combination is valid; otherwise false.
-           *
-           * @public
-           * @static
-           * @param {Number} year
-           * @param {Number} month
-           * @param {Number} day
-           * @returns {Boolean}
-           */
-          static validate(year, month, day) {
-            return is.integer(year) && is.integer(month) && is.integer(day) && !(month < 1) && !(month > 12) && !(day < 1) && !(day > Day7.getDaysInMonth(year, month));
-          }
-          /**
-           * Returns the number of days in a given month.
-           *
-           * @public
-           * @static
-           * @param {number} year - The year number (e.g. 2017)
-           * @param {number} month - The month number (e.g. 2 is February)
-           * @returns {number}
-           */
-          static getDaysInMonth(year, month) {
-            switch (month) {
-              case 1:
-              case 3:
-              case 5:
-              case 7:
-              case 8:
-              case 10:
-              case 12: {
-                return 31;
-              }
-              case 4:
-              case 6:
-              case 9:
-              case 11: {
-                return 30;
-              }
-              case 2: {
-                if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
-                  return 29;
-                } else {
-                  return 28;
-                }
-              }
-            }
-          }
-          /**
-           * A comparator function for {@link Day} instances.
-           *
-           * @public
-           * @static
-           * @param {Day} a
-           * @param {Day} b
-           * @returns {Number}
-           */
-          static compareDays(a, b) {
-            assert.argumentIsRequired(a, "a", Day7, "Day");
-            assert.argumentIsRequired(b, "b", Day7, "Day");
-            return comparator(a, b);
-          }
-          /**
-           * Calculates the number of days between two {@link Day} instances (may return
-           * a negative value).
-           *
-           * @public
-           * @static
-           * @param {Day} a
-           * @param {Day} b
-           * @returns {Number}
-           */
-          static countDaysBetween(a, b) {
-            assert.argumentIsRequired(a, "a", Day7, "Day");
-            assert.argumentIsRequired(b, "b", Day7, "Day");
-            if (a.getIsEqual(b)) {
-              return 0;
-            }
-            let start;
-            let end;
-            let reversed = b.getIsBefore(a);
-            if (reversed) {
-              start = b;
-              end = a;
-            } else {
-              start = a;
-              end = b;
-            }
-            let currentMonth = start.month;
-            let currentYear = start.year;
-            let counter = 0 - start.day;
-            while (!(currentMonth === end.month && currentYear === end.year)) {
-              counter = counter + Day7.getDaysInMonth(currentYear, currentMonth);
-              if (currentMonth === 12) {
-                currentMonth = 1;
-                currentYear = currentYear + 1;
-              } else {
-                currentMonth = currentMonth + 1;
-              }
-            }
-            counter = counter + end.day;
-            if (reversed) {
-              counter = counter * -1;
-            }
-            return counter;
-          }
-          toString() {
-            return "[Day]";
-          }
-        }
-        function leftPad(value, digits, character) {
-          let string = value.toString();
-          let padding = digits - string.length;
-          return `${character.repeat(padding)}${string}`;
-        }
-        const comparator = ComparatorBuilder.startWith((a, b) => comparators.compareNumbers(a.year, b.year)).thenBy((a, b) => comparators.compareNumbers(a.month, b.month)).thenBy((a, b) => comparators.compareNumbers(a.day, b.day)).toComparator();
-        const NAMES_OF_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-        const REFERENCE_MONDAY = new Day7(2024, 1, 1);
-        return Day7;
       })();
     }
   });
@@ -3928,8 +5510,8 @@
     "lib/data/PositionSummaryFrame.js"(exports, module) {
       var array = require_array();
       var assert = require_assert();
-      var Day7 = require_Day();
-      var Decimal8 = require_Decimal();
+      var Day8 = require_Day();
+      var Decimal9 = require_Decimal();
       var Enum = require_Enum();
       module.exports = (() => {
         "use strict";
@@ -3976,7 +5558,7 @@
            */
           getRecentRanges(periods) {
             const startDate = this.getStartDate(periods);
-            const transaction = { date: startDate, snapshot: { open: Decimal8.ONE } };
+            const transaction = { date: startDate, snapshot: { open: Decimal9.ONE } };
             return this.getRanges([transaction]);
           }
           /**
@@ -3998,8 +5580,8 @@
            * @returns {PositionSummaryRange[]}
            */
           getRangesFromDate(date) {
-            assert.argumentIsRequired(date, "date", Day7, "Day");
-            const transaction = { date, snapshot: { open: Decimal8.ONE } };
+            assert.argumentIsRequired(date, "date", Day8, "Day");
+            const transaction = { date, snapshot: { open: Decimal9.ONE } };
             return this.getRanges([transaction]);
           }
           /**
@@ -4012,10 +5594,10 @@
            * @returns {PositionSummaryRange[]}
            */
           getPriorRanges(date, periods) {
-            assert.argumentIsRequired(date, "date", Day7, "Day");
+            assert.argumentIsRequired(date, "date", Day8, "Day");
             assert.argumentIsRequired(periods, "periods", Number, "Number");
-            const transactionOne = { date: this.getStartDate(periods - 1, date), snapshot: { open: Decimal8.ONE } };
-            const transactionTwo = { date, snapshot: { open: Decimal8.ZERO } };
+            const transactionOne = { date: this.getStartDate(periods - 1, date), snapshot: { open: Decimal9.ONE } };
+            const transactionTwo = { date, snapshot: { open: Decimal9.ZERO } };
             return this._rangeCalculator([transactionOne, transactionTwo]);
           }
           /**
@@ -4028,7 +5610,7 @@
            */
           getStartDate(periods, start) {
             assert.argumentIsRequired(periods, "periods", Number);
-            assert.argumentIsOptional(start, "start", Day7, "Day");
+            assert.argumentIsOptional(start, "start", Day8, "Day");
             return this._startDateCalculator(periods, start);
           }
           /**
@@ -4126,9 +5708,9 @@
             if (last.snapshot.open.getIsZero()) {
               lastYear = last.date.year + 1;
             } else {
-              lastYear = Day7.getToday().year;
+              lastYear = Day8.getToday().year;
             }
-            for (let end = new Day7(firstDate.year, 12, 31); end.year < lastYear; end = end.addYears(1)) {
+            for (let end = new Day8(firstDate.year, 12, 31); end.year < lastYear; end = end.addYears(1)) {
               ranges.push(getRange(end.subtractYears(1), end));
             }
           }
@@ -4140,7 +5722,7 @@
         function getMonthlyRanges(transactions) {
           const ranges = [];
           if (transactions.length !== 0) {
-            const today = Day7.getToday();
+            const today = Day8.getToday();
             const first = array.first(transactions);
             const last = array.last(transactions);
             const firstDate = first.date;
@@ -4164,9 +5746,9 @@
           const ranges = [];
           if (transactions.length !== 0) {
             const last = array.last(transactions);
-            const currentYear = Day7.getToday().year;
+            const currentYear = Day8.getToday().year;
             if (!last.snapshot.open.getIsZero() || last.date.year === currentYear) {
-              let end = new Day7(currentYear, 12, 31);
+              let end = new Day8(currentYear, 12, 31);
               let start = end.subtractYears(1);
               ranges.push(getRange(start, end));
             }
@@ -4198,21 +5780,21 @@
           return ranges;
         }
         function getYearlyStartDate(periods, date) {
-          const today = date || Day7.getToday();
+          const today = date || Day8.getToday();
           return today.subtractMonths(today.month - 1).subtractDays(today.day).subtractYears(periods);
         }
         function getQuarterlyStartDate(periods, date) {
           return null;
         }
         function getMonthlyStartDate(periods, date) {
-          const today = date || Day7.getToday();
+          const today = date || Day8.getToday();
           return today.subtractMonths(periods).subtractDays(today.day);
         }
         function getYearToDateStartDate(periods, date) {
           return null;
         }
         function getWeekToDateStartDate(periods, date) {
-          const today = date || Day7.getToday();
+          const today = date || Day8.getToday();
           const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
           let daysSinceSunday = dayNames.indexOf(today.getName());
           if (daysSinceSunday === 0) {
@@ -4251,495 +5833,11 @@
     }
   });
 
-  // lib/data/TransactionType.js
-  var require_TransactionType = __commonJS({
-    "lib/data/TransactionType.js"(exports, module) {
-      var assert = require_assert();
-      var Enum = require_Enum();
-      module.exports = (() => {
-        "use strict";
-        class TransactionType5 extends Enum {
-          constructor(code, description, display, sequence, purchase, sale, income2, opening, closing, fee2, corporateAction, initial, terminal, significant, chaining, chained, transfer, dividend2) {
-            super(code, description);
-            assert.argumentIsRequired(display, "display", String);
-            assert.argumentIsRequired(sequence, "sequence", Number);
-            assert.argumentIsRequired(purchase, "purchase", Boolean);
-            assert.argumentIsRequired(sale, "sale", Boolean);
-            assert.argumentIsRequired(income2, "income", Boolean);
-            assert.argumentIsRequired(opening, "opening", Boolean);
-            assert.argumentIsRequired(closing, "closing", Boolean);
-            assert.argumentIsRequired(fee2, "fee", Boolean);
-            assert.argumentIsRequired(corporateAction, "corporateAction", Boolean);
-            assert.argumentIsRequired(initial, "initial", Boolean);
-            assert.argumentIsRequired(terminal, "terminal", Boolean);
-            assert.argumentIsRequired(significant, "significant", Boolean);
-            assert.argumentIsRequired(chaining, "chaining", Boolean);
-            assert.argumentIsRequired(chained, "chained", Boolean);
-            assert.argumentIsRequired(transfer, "transfer", Boolean);
-            assert.argumentIsRequired(dividend2, "dividend", Boolean);
-            this._display = display;
-            this._sequence = sequence;
-            this._purchase = purchase;
-            this._sale = sale;
-            this._income = income2;
-            this._opening = opening;
-            this._closing = closing;
-            this._fee = fee2;
-            this._corporateAction = corporateAction;
-            this._initial = initial;
-            this._terminal = terminal;
-            this._significant = significant;
-            this._chaining = chaining;
-            this._chained = chained;
-            this._transfer = transfer;
-            this._dividend = dividend2;
-          }
-          /**
-           * A human-readable description of the transaction type.
-           *
-           * @public
-           * @returns {String}
-           */
-          get display() {
-            return this._display;
-          }
-          /**
-           * Specifies ordering when multiple transactions occur on the same day, for
-           * the same position.
-           *
-           * @public
-           * @returns {Number}
-           */
-          get sequence() {
-            return this._sequence;
-          }
-          /**
-           * Indicates if the transaction was a trade.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get trade() {
-            return this._purchase || this._sale;
-          }
-          /**
-           * Indicates if the transaction was a purchase.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get purchase() {
-            return this._purchase;
-          }
-          /**
-           * Indicates if the transaction was a sale.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get sale() {
-            return this._sale;
-          }
-          /**
-           * Indicates if the transaction was an income payment.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get income() {
-            return this._income;
-          }
-          /**
-           * Indicates if the transaction opens the position (i.e. increases its
-           * magnitude).
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get opening() {
-            return this._opening;
-          }
-          /**
-           * Indicates if the transaction closes the position (i.e. decreases its
-           * magnitude).
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get closing() {
-            return this._closing;
-          }
-          /**
-           * Indicates if the transaction is a chart that neither opens nor
-           * closes the position.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get fee() {
-            return this._fee;
-          }
-          /**
-           * Indicates if the transaction is a corporate action.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get corporateAction() {
-            return this._corporateAction;
-          }
-          /**
-           * Indicates if the transaction can be the first transaction for a position.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get initial() {
-            return this._initial;
-          }
-          /**
-           * Indicates if the transaction must be the last
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get terminal() {
-            return this._terminal;
-          }
-          /**
-           * Significant transactions cannot be discarded during transaction re-write.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get significant() {
-            return this._significant;
-          }
-          /**
-           * Chain transactions cause another position to be created.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get chaining() {
-            return this._chaining;
-          }
-          /**
-           * Chained transactions are created from another position.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get chained() {
-            return this._chained;
-          }
-          /**
-           * Indicates if the transaction should cause gains and losses to be
-           * transferred from the original (chaining) position.
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get transfer() {
-            return this._transfer;
-          }
-          /**
-           * Indicates if the transaction represents a dividend or distribution (and
-           * should be included in an aggregation of dividends).
-           *
-           * @public
-           * @returns {Boolean}
-           */
-          get dividend() {
-            return this._dividend;
-          }
-          /**
-           * A purchase.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get BUY() {
-            return buy;
-          }
-          /**
-           * A sale.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get SELL() {
-            return sell;
-          }
-          /**
-           * A purchase (in a short position).
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get BUY_SHORT() {
-            return buyShort;
-          }
-          /**
-           * A short sale.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get SELL_SHORT() {
-            return sellShort;
-          }
-          /**
-           * A cash dividend.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get DIVIDEND() {
-            return dividend;
-          }
-          /**
-           * A cash dividend, reinvested.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get DIVIDEND_REINVEST() {
-            return dividendReinvest;
-          }
-          /**
-           * A stock dividend.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get DIVIDEND_STOCK() {
-            return dividendStock;
-          }
-          /**
-           * A mutual fund distribution in cash.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get DISTRIBUTION_CASH() {
-            return distributionCash;
-          }
-          /**
-           * A mutual fund distribution in units.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get DISTRIBUTION_FUND() {
-            return distributionFund;
-          }
-          /**
-           * A mutual fund distribution in cash, reinvested.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get DISTRIBUTION_REINVEST() {
-            return distributionReinvest;
-          }
-          /**
-           * A split.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get SPLIT() {
-            return split;
-          }
-          /**
-           * A fee.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get FEE() {
-            return fee;
-          }
-          /**
-           * A mutual fund fee, which is paid in units.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get FEE_UNITS() {
-            return feeUnits;
-          }
-          /**
-           * A deposit.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get DEPOSIT() {
-            return deposit;
-          }
-          /**
-           * A withdrawal.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get WITHDRAWAL() {
-            return withdrawal;
-          }
-          /**
-           * A system-generated withdrawal, arising from another transaction.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get DEBIT() {
-            return debit;
-          }
-          /**
-           * A system-generated transaction, indicating the security has stopped active trading.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get DELIST() {
-            return delist;
-          }
-          /**
-           * A system-generated deposit, arising from another transaction.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get CREDIT() {
-            return credit;
-          }
-          /**
-           * A valuation event.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get VALUATION() {
-            return valuation;
-          }
-          /**
-           * Other Income.
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get INCOME() {
-            return income;
-          }
-          /**
-           * A closing transaction as a result of a merger (for the acquired company).
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get MERGER_CLOSE() {
-            return mergerClose;
-          }
-          /**
-           * A opening transaction as a result of a merger (for the acquiring company).
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get MERGER_OPEN() {
-            return mergerOpen;
-          }
-          /**
-           * A spin-off (transaction applies to the original company).
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get SPINOFF() {
-            return spinoff;
-          }
-          /**
-           * A spin-off (transaction opens a position in a new company).
-           *
-           * @public
-           * @static
-           * @returns {TransactionType}
-           */
-          static get SPINOFF_OPEN() {
-            return spinoffOpen;
-          }
-          /**
-           * @public
-           * @static
-           * @param {String} code
-           * @returns {TransactionType|null}
-           */
-          static parse(code) {
-            return Enum.fromCode(TransactionType5, code);
-          }
-          toString() {
-            return `[TransactionType (code=${this.code})]`;
-          }
-        }
-        const buy = new TransactionType5("B", "Buy", "Buy", 0, true, false, false, true, false, false, false, true, false, true, false, false, false, false);
-        const sell = new TransactionType5("S", "Sell", "Sell", 0, false, true, false, false, true, false, false, false, false, true, false, false, false, false);
-        const buyShort = new TransactionType5("BS", "Buy To Cover", "Buy To Cover", 0, true, false, false, false, true, false, false, false, false, true, false, false, false, false);
-        const sellShort = new TransactionType5("SS", "Sell Short", "Sell Short", 0, false, true, false, true, false, false, false, true, false, true, false, false, false, false);
-        const dividend = new TransactionType5("DV", "Dividend", "Dividend", 1, false, false, true, false, false, false, true, false, false, false, false, false, false, true);
-        const dividendReinvest = new TransactionType5("DX", "Dividend (Reinvested)", "Dividend Reinvest", 1, false, false, false, true, false, false, true, false, false, false, false, false, false, true);
-        const dividendStock = new TransactionType5("DS", "Dividend (Stock)", "Dividend Stock", 1, false, false, false, true, false, false, true, false, false, false, false, false, false, false);
-        const split = new TransactionType5("SP", "Split", "Split", 1, false, false, false, true, false, false, true, false, false, false, false, false, false, false);
-        const fee = new TransactionType5("F", "Fee", "Fee", 0, false, false, false, false, false, true, false, false, false, false, false, false, false, false);
-        const feeUnits = new TransactionType5("FU", "Fee Units", "Fee", 0, false, false, false, false, true, false, false, false, false, false, false, false, false, false);
-        const delist = new TransactionType5("DL", "Delist", "Delist", 1, false, false, false, false, false, false, true, false, true, false, false, false, false, false);
-        const mergerClose = new TransactionType5("MC", "Merger Close", "Merger Close", 1, false, false, false, false, true, false, true, false, true, false, true, false, false, false);
-        const mergerOpen = new TransactionType5("MO", "Merger Open", "Merger Open", 1, false, false, false, true, false, false, true, true, false, true, false, true, true, false);
-        const spinoff = new TransactionType5("SPF", "Spinoff", "Spinoff", 1, false, false, false, false, false, false, true, false, false, false, true, false, false, false);
-        const spinoffOpen = new TransactionType5("SPFO", "Spinoff Open", "Spinoff Open", 1, false, false, false, true, false, false, true, true, false, true, false, true, true, false);
-        const distributionCash = new TransactionType5("DC", "Distribution (Cash)", "Cash Distribution", 1, false, false, true, false, false, false, true, false, false, false, false, false, false, true);
-        const distributionReinvest = new TransactionType5("DY", "Distribution (Reinvested)", "Distribution Reinvest", 1, false, false, false, true, false, false, true, false, false, false, false, false, false, true);
-        const distributionFund = new TransactionType5("DF", "Distribution (Units)", "Unit Distribution", 1, false, false, false, true, false, false, true, false, false, false, false, false, false, false);
-        const deposit = new TransactionType5("D", "Deposit", "Deposit", 0, false, false, false, false, false, false, false, true, false, true, false, false, false, false);
-        const withdrawal = new TransactionType5("W", "Withdrawal", "Withdrawal", 0, false, false, false, false, false, false, false, true, false, true, false, false, false, false);
-        const debit = new TransactionType5("DR", "Debit", "Debit", 0, false, false, false, false, false, false, false, true, false, true, false, false, false, false);
-        const credit = new TransactionType5("CR", "Credit", "Credit", 0, false, false, false, false, false, false, false, true, false, true, false, false, false, false);
-        const valuation = new TransactionType5("V", "Valuation", "Valuation", 0, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
-        const income = new TransactionType5("I", "Income", "Income", 0, false, false, true, false, false, false, false, false, false, false, false, false, false, false);
-        return TransactionType5;
-      })();
-    }
-  });
-
   // lib/data/PositionDirection.js
   var require_PositionDirection = __commonJS({
     "lib/data/PositionDirection.js"(exports, module) {
       var assert = require_assert();
-      var Decimal8 = require_Decimal();
+      var Decimal9 = require_Decimal();
       var Enum = require_Enum();
       module.exports = (() => {
         "use strict";
@@ -4845,7 +5943,7 @@
            * @returns {PositionDirection}
            */
           static for(open) {
-            assert.argumentIsRequired(open, "open", Decimal8, "Decimal");
+            assert.argumentIsRequired(open, "open", Decimal9, "Decimal");
             if (open.getIsPositive()) {
               return long;
             } else if (open.getIsNegative()) {
@@ -4871,11 +5969,11 @@
     "lib/data/TransactionValidator.js"(exports, module) {
       var assert = require_assert();
       var array = require_array();
-      var Decimal8 = require_Decimal();
+      var Decimal9 = require_Decimal();
       var is = require_is();
-      var InstrumentType7 = require_InstrumentType();
+      var InstrumentType8 = require_InstrumentType();
       var PositionDirection2 = require_PositionDirection();
-      var TransactionType5 = require_TransactionType();
+      var TransactionType6 = require_TransactionType();
       module.exports = (() => {
         "use strict";
         class TransactionValidator2 {
@@ -4967,9 +6065,9 @@
            */
           static getSwitchIndex(transactions, instrumentType, position) {
             assert.argumentIsArray(transactions, "transactions");
-            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType7, "InstrumentType");
+            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType8, "InstrumentType");
             assert.argumentIsOptional(position, "position");
-            let open = position ? position.snapshot.open : Decimal8.ZERO;
+            let open = position ? position.snapshot.open : Decimal9.ZERO;
             let currentDirection = open.getIsZero() ? null : PositionDirection2.for(open);
             return transactions.findIndex((t) => {
               let quantity = t.quantity.absolute();
@@ -4999,9 +6097,9 @@
            */
           static getPositionViolationIndex(transactions, instrumentType, position) {
             assert.argumentIsArray(transactions, "transactions");
-            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType7, "InstrumentType");
+            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType8, "InstrumentType");
             assert.argumentIsOptional(position, "position");
-            let open = position ? position.snapshot.open : Decimal8.ZERO;
+            let open = position ? position.snapshot.open : Decimal9.ZERO;
             let currentDirection = open.getIsZero() ? PositionDirection2.EVEN : PositionDirection2.for(open);
             return transactions.findIndex((t) => {
               const quantity = t.quantity.absolute();
@@ -5030,7 +6128,7 @@
           * @returns {TransactionType[]}
           */
           static getTransactionTypesFor(instrumentType, userInitiated, currentDirection) {
-            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType7, "InstrumentType");
+            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType8, "InstrumentType");
             assert.argumentIsOptional(userInitiated, "userInitiated", Boolean);
             let valid = validTransactionTypes[instrumentType.code] || [];
             if (userInitiated) {
@@ -5071,7 +6169,7 @@
            * @returns {Boolean}
            */
           static validateTransactionType(instrumentType, transactionType, userInitiated) {
-            assert.argumentIsRequired(transactionType, "transactionType", TransactionType5, "TransactionType");
+            assert.argumentIsRequired(transactionType, "transactionType", TransactionType6, "TransactionType");
             const transactionTypes = TransactionValidator2.getTransactionTypesFor(instrumentType, userInitiated);
             return transactionTypes.some((t) => t === transactionType);
           }
@@ -5097,7 +6195,7 @@
            * @returns {Boolean}
            */
           static validateDirection(instrumentType, direction) {
-            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType7, "InstrumentType");
+            assert.argumentIsRequired(instrumentType, "instrumentType", InstrumentType8, "InstrumentType");
             assert.argumentIsRequired(direction, "direction", PositionDirection2, "PositionDirection");
             return validDirections[instrumentType.code].some((d) => d === direction);
           }
@@ -5127,58 +6225,58 @@
           }
           validTransactionTypes[instrumentTypeCode].push({ type: transactionType, user: userInitiated, directions: directions || [PositionDirection2.LONG, PositionDirection2.SHORT, PositionDirection2.EVEN] });
         }
-        associateTypes(InstrumentType7.CRYPTO, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.CRYPTO, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.CRYPTO, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.CRYPTO, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.FEE, true, [PositionDirection2.LONG, PositionDirection2.SHORT]);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.DIVIDEND, false);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.DIVIDEND_REINVEST, false);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.DIVIDEND_STOCK, false);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.SPLIT, false);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.DELIST, false);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.MERGER_OPEN, false);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.MERGER_CLOSE, false);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.SPINOFF, false);
-        associateTypes(InstrumentType7.EQUITY, TransactionType5.SPINOFF_OPEN, false);
-        associateTypes(InstrumentType7.EQUITY_OPTION, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.EQUITY_OPTION, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.EQUITY_OPTION, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.EQUITY_OPTION, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
-        associateTypes(InstrumentType7.FUND, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.FUND, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.FUND, TransactionType5.FEE, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.FUND, TransactionType5.FEE_UNITS, false);
-        associateTypes(InstrumentType7.FUND, TransactionType5.DISTRIBUTION_CASH, false);
-        associateTypes(InstrumentType7.FUND, TransactionType5.DISTRIBUTION_REINVEST, false);
-        associateTypes(InstrumentType7.FUND, TransactionType5.DISTRIBUTION_FUND, false);
-        associateTypes(InstrumentType7.FUND, TransactionType5.SPLIT, false);
-        associateTypes(InstrumentType7.FUND, TransactionType5.DELIST, false);
-        associateTypes(InstrumentType7.FUND, TransactionType5.MERGER_OPEN, false);
-        associateTypes(InstrumentType7.FUND, TransactionType5.MERGER_CLOSE, false);
-        associateTypes(InstrumentType7.FUND, TransactionType5.SPINOFF, false);
-        associateTypes(InstrumentType7.FUND, TransactionType5.SPINOFF_OPEN, false);
-        associateTypes(InstrumentType7.FUTURE, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.FUTURE, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.FUTURE, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.FUTURE, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
-        associateTypes(InstrumentType7.FUTURE_OPTION, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.FUTURE_OPTION, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.FUTURE_OPTION, TransactionType5.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.FUTURE_OPTION, TransactionType5.BUY_SHORT, true, [PositionDirection2.SHORT]);
-        associateTypes(InstrumentType7.OTHER, TransactionType5.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
-        associateTypes(InstrumentType7.OTHER, TransactionType5.SELL, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.OTHER, TransactionType5.INCOME, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.OTHER, TransactionType5.FEE, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.OTHER, TransactionType5.VALUATION, true, [PositionDirection2.LONG]);
-        associateTypes(InstrumentType7.CASH, TransactionType5.DEPOSIT, true);
-        associateTypes(InstrumentType7.CASH, TransactionType5.WITHDRAWAL, true);
-        associateTypes(InstrumentType7.CASH, TransactionType5.DEBIT, false);
-        associateTypes(InstrumentType7.CASH, TransactionType5.CREDIT, false);
+        associateTypes(InstrumentType8.CRYPTO, TransactionType6.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.CRYPTO, TransactionType6.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.CRYPTO, TransactionType6.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.CRYPTO, TransactionType6.BUY_SHORT, true, [PositionDirection2.SHORT]);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.BUY_SHORT, true, [PositionDirection2.SHORT]);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.FEE, true, [PositionDirection2.LONG, PositionDirection2.SHORT]);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.DIVIDEND, false);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.DIVIDEND_REINVEST, false);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.DIVIDEND_STOCK, false);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.SPLIT, false);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.DELIST, false);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.MERGER_OPEN, false);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.MERGER_CLOSE, false);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.SPINOFF, false);
+        associateTypes(InstrumentType8.EQUITY, TransactionType6.SPINOFF_OPEN, false);
+        associateTypes(InstrumentType8.EQUITY_OPTION, TransactionType6.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.EQUITY_OPTION, TransactionType6.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.EQUITY_OPTION, TransactionType6.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.EQUITY_OPTION, TransactionType6.BUY_SHORT, true, [PositionDirection2.SHORT]);
+        associateTypes(InstrumentType8.FUND, TransactionType6.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.FUND, TransactionType6.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.FUND, TransactionType6.FEE, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.FUND, TransactionType6.FEE_UNITS, false);
+        associateTypes(InstrumentType8.FUND, TransactionType6.DISTRIBUTION_CASH, false);
+        associateTypes(InstrumentType8.FUND, TransactionType6.DISTRIBUTION_REINVEST, false);
+        associateTypes(InstrumentType8.FUND, TransactionType6.DISTRIBUTION_FUND, false);
+        associateTypes(InstrumentType8.FUND, TransactionType6.SPLIT, false);
+        associateTypes(InstrumentType8.FUND, TransactionType6.DELIST, false);
+        associateTypes(InstrumentType8.FUND, TransactionType6.MERGER_OPEN, false);
+        associateTypes(InstrumentType8.FUND, TransactionType6.MERGER_CLOSE, false);
+        associateTypes(InstrumentType8.FUND, TransactionType6.SPINOFF, false);
+        associateTypes(InstrumentType8.FUND, TransactionType6.SPINOFF_OPEN, false);
+        associateTypes(InstrumentType8.FUTURE, TransactionType6.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.FUTURE, TransactionType6.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.FUTURE, TransactionType6.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.FUTURE, TransactionType6.BUY_SHORT, true, [PositionDirection2.SHORT]);
+        associateTypes(InstrumentType8.FUTURE_OPTION, TransactionType6.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.FUTURE_OPTION, TransactionType6.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.FUTURE_OPTION, TransactionType6.SELL_SHORT, true, [PositionDirection2.SHORT, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.FUTURE_OPTION, TransactionType6.BUY_SHORT, true, [PositionDirection2.SHORT]);
+        associateTypes(InstrumentType8.OTHER, TransactionType6.BUY, true, [PositionDirection2.LONG, PositionDirection2.EVEN]);
+        associateTypes(InstrumentType8.OTHER, TransactionType6.SELL, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.OTHER, TransactionType6.INCOME, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.OTHER, TransactionType6.FEE, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.OTHER, TransactionType6.VALUATION, true, [PositionDirection2.LONG]);
+        associateTypes(InstrumentType8.CASH, TransactionType6.DEPOSIT, true);
+        associateTypes(InstrumentType8.CASH, TransactionType6.WITHDRAWAL, true);
+        associateTypes(InstrumentType8.CASH, TransactionType6.DEBIT, false);
+        associateTypes(InstrumentType8.CASH, TransactionType6.CREDIT, false);
         const validDirections = {};
         function associateDirections(instrumentType, positionDirection) {
           const instrumentTypeCode = instrumentType.code;
@@ -5187,568 +6285,29 @@
           }
           validDirections[instrumentTypeCode].push(positionDirection);
         }
-        associateDirections(InstrumentType7.CRYPTO, PositionDirection2.EVEN);
-        associateDirections(InstrumentType7.CRYPTO, PositionDirection2.LONG);
-        associateDirections(InstrumentType7.CRYPTO, PositionDirection2.SHORT);
-        associateDirections(InstrumentType7.EQUITY, PositionDirection2.EVEN);
-        associateDirections(InstrumentType7.EQUITY, PositionDirection2.LONG);
-        associateDirections(InstrumentType7.EQUITY, PositionDirection2.SHORT);
-        associateDirections(InstrumentType7.EQUITY_OPTION, PositionDirection2.EVEN);
-        associateDirections(InstrumentType7.EQUITY_OPTION, PositionDirection2.LONG);
-        associateDirections(InstrumentType7.EQUITY_OPTION, PositionDirection2.SHORT);
-        associateDirections(InstrumentType7.FUND, PositionDirection2.EVEN);
-        associateDirections(InstrumentType7.FUND, PositionDirection2.LONG);
-        associateDirections(InstrumentType7.FUTURE, PositionDirection2.EVEN);
-        associateDirections(InstrumentType7.FUTURE, PositionDirection2.LONG);
-        associateDirections(InstrumentType7.FUTURE, PositionDirection2.SHORT);
-        associateDirections(InstrumentType7.FUTURE_OPTION, PositionDirection2.EVEN);
-        associateDirections(InstrumentType7.FUTURE_OPTION, PositionDirection2.LONG);
-        associateDirections(InstrumentType7.FUTURE_OPTION, PositionDirection2.SHORT);
-        associateDirections(InstrumentType7.OTHER, PositionDirection2.EVEN);
-        associateDirections(InstrumentType7.OTHER, PositionDirection2.LONG);
-        associateDirections(InstrumentType7.CASH, PositionDirection2.EVEN);
-        associateDirections(InstrumentType7.CASH, PositionDirection2.LONG);
-        associateDirections(InstrumentType7.CASH, PositionDirection2.SHORT);
+        associateDirections(InstrumentType8.CRYPTO, PositionDirection2.EVEN);
+        associateDirections(InstrumentType8.CRYPTO, PositionDirection2.LONG);
+        associateDirections(InstrumentType8.CRYPTO, PositionDirection2.SHORT);
+        associateDirections(InstrumentType8.EQUITY, PositionDirection2.EVEN);
+        associateDirections(InstrumentType8.EQUITY, PositionDirection2.LONG);
+        associateDirections(InstrumentType8.EQUITY, PositionDirection2.SHORT);
+        associateDirections(InstrumentType8.EQUITY_OPTION, PositionDirection2.EVEN);
+        associateDirections(InstrumentType8.EQUITY_OPTION, PositionDirection2.LONG);
+        associateDirections(InstrumentType8.EQUITY_OPTION, PositionDirection2.SHORT);
+        associateDirections(InstrumentType8.FUND, PositionDirection2.EVEN);
+        associateDirections(InstrumentType8.FUND, PositionDirection2.LONG);
+        associateDirections(InstrumentType8.FUTURE, PositionDirection2.EVEN);
+        associateDirections(InstrumentType8.FUTURE, PositionDirection2.LONG);
+        associateDirections(InstrumentType8.FUTURE, PositionDirection2.SHORT);
+        associateDirections(InstrumentType8.FUTURE_OPTION, PositionDirection2.EVEN);
+        associateDirections(InstrumentType8.FUTURE_OPTION, PositionDirection2.LONG);
+        associateDirections(InstrumentType8.FUTURE_OPTION, PositionDirection2.SHORT);
+        associateDirections(InstrumentType8.OTHER, PositionDirection2.EVEN);
+        associateDirections(InstrumentType8.OTHER, PositionDirection2.LONG);
+        associateDirections(InstrumentType8.CASH, PositionDirection2.EVEN);
+        associateDirections(InstrumentType8.CASH, PositionDirection2.LONG);
+        associateDirections(InstrumentType8.CASH, PositionDirection2.SHORT);
         return TransactionValidator2;
-      })();
-    }
-  });
-
-  // ../../node_modules/@barchart/common-js/lang/Currency.js
-  var require_Currency = __commonJS({
-    "../../node_modules/@barchart/common-js/lang/Currency.js"(exports, module) {
-      var assert = require_assert();
-      var Enum = require_Enum();
-      var is = require_is();
-      module.exports = (() => {
-        "use strict";
-        class Currency5 extends Enum {
-          constructor(code, description, precision, alternateDescription) {
-            super(code, description);
-            assert.argumentIsRequired(precision, "precision", Number);
-            assert.argumentIsValid(precision, "precision", is.integer, "is an integer");
-            assert.argumentIsOptional(alternateDescription, "alternateDescription", String);
-            this._precision = precision;
-            this._alternateDescription = alternateDescription || description;
-          }
-          /**
-           * The maximum number of decimal places supported by a real world transaction.
-           *
-           * @public
-           * @returns {Number}
-           */
-          get precision() {
-            return this._precision;
-          }
-          /**
-           * An alternate human-readable description.
-           *
-           * @public
-           * @returns {String}
-           */
-          get alternateDescription() {
-            return this._alternateDescription;
-          }
-          /**
-           * Given a code, returns the enumeration item.
-           *
-           * @public
-           * @static
-           * @param {String} code
-           * @returns {Currency|null}
-           */
-          static parse(code) {
-            return Enum.fromCode(Currency5, code);
-          }
-          /**
-           * The Argentine Peso.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get ARS() {
-            return ars;
-          }
-          /**
-           * The Australian Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get AUD() {
-            return aud;
-          }
-          /**
-           * The Bermudian Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get BMD() {
-            return bmd;
-          }
-          /**
-           * The Brazilian Real.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get BRL() {
-            return brl;
-          }
-          /**
-           * The Bahamian Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get BSD() {
-            return bsd;
-          }
-          /**
-           * The Canadian Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get CAD() {
-            return cad;
-          }
-          /**
-           * The Swiss Franc.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get CHF() {
-            return chf;
-          }
-          /**
-           * The Chinese Yuan.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get CNY() {
-            return cny;
-          }
-          /**
-           * The Czech Koruna.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get CZK() {
-            return czk;
-          }
-          /**
-           * The Danish Krone.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get DKK() {
-            return dkk;
-          }
-          /**
-           * The Euro.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get EUR() {
-            return eur;
-          }
-          /**
-           * The Fijian Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get FJD() {
-            return fjd;
-          }
-          /**
-           * The British Pound.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get GBP() {
-            return gbp;
-          }
-          /**
-           * The British Penny.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get GBX() {
-            return gbx;
-          }
-          /**
-           * The Ghanaian Cedi.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get GHS() {
-            return ghs;
-          }
-          /**
-           * The Hong Kong Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get HKD() {
-            return hkd;
-          }
-          /**
-           * The Hungarian Forint.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get HUF() {
-            return huf;
-          }
-          /**
-           * The Indonesian Rupiah.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get IDR() {
-            return idr;
-          }
-          /**
-           * The Israeli New Shekel.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get ILS() {
-            return ils;
-          }
-          /**
-           * The Jordanian Dinar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get JOD() {
-            return jod;
-          }
-          /**
-           * The Japanese Yen.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get JPY() {
-            return jpy;
-          }
-          /**
-           * The South Korean Won.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get KRW() {
-            return krw;
-          }
-          /**
-           * The Lebanese Pound.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get LBP() {
-            return lbp;
-          }
-          /**
-           * The Mexican Peso.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get MXN() {
-            return mxn;
-          }
-          /**
-           * The Malaysian Ringgit.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get MYR() {
-            return myr;
-          }
-          /**
-           * The Namibian Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get NAD() {
-            return nad;
-          }
-          /**
-           * The Nigerian Naira.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get NGN() {
-            return ngn;
-          }
-          /**
-           * The Norwegian Krone.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get NOK() {
-            return nok;
-          }
-          /**
-           * The New Zealand Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get NZD() {
-            return nzd;
-          }
-          /**
-           * The Peruvian Sol.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get PEN() {
-            return pen;
-          }
-          /**
-           * The Papua New Guinean Kina.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get PGK() {
-            return pgk;
-          }
-          /**
-           * The Philippine peso.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get PHP() {
-            return php;
-          }
-          /**
-           * The Polish Zloty.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get PLN() {
-            return pln;
-          }
-          /**
-           * The Russian Ruble.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get RUB() {
-            return rub;
-          }
-          /**
-           * The Russian Ruble (Old).
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get RUR() {
-            return rur;
-          }
-          /**
-           * The Swedish Krona.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get SEK() {
-            return sek;
-          }
-          /**
-           * The Singapore Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get SGD() {
-            return sgd;
-          }
-          /**
-           * The Thai Baht.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get THB() {
-            return thb;
-          }
-          /**
-           * The Turkish Lira.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get TRY() {
-            return trx;
-          }
-          /**
-           * The New Taiwan Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get TWD() {
-            return twd;
-          }
-          /**
-           * The US Dollar.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get USD() {
-            return usd;
-          }
-          /**
-           * The Uruguay Peso.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get UYI() {
-            return uyi;
-          }
-          /**
-           * The South African Rand.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get ZAR() {
-            return zar;
-          }
-          /**
-           * The Zambian Kwacha.
-           *
-           * @public
-           * @static
-           * @returns {Currency}
-           */
-          static get ZMW() {
-            return zmw;
-          }
-          toString() {
-            return `[Currency (code=${this.code})]`;
-          }
-        }
-        const ars = new Currency5("ARS", "Argentine Peso", 2, "ARS");
-        const aud = new Currency5("AUD", "Australian Dollar", 2, "AUD$");
-        const bmd = new Currency5("BMD", "Bermudian Dollar", 2, "BMD");
-        const brl = new Currency5("BRL", "Brazilian Real", 2, "BRL");
-        const bsd = new Currency5("BSD", "Bahamian Dollar", 2, "BSD");
-        const cad = new Currency5("CAD", "Canadian Dollar", 2, "CAD$");
-        const chf = new Currency5("CHF", "Swiss Franc", 2, "CHF");
-        const cny = new Currency5("CNY", "Chinese Yuan", 2, "CNY");
-        const czk = new Currency5("CZK", "Czech Koruna", 2, "CZK");
-        const dkk = new Currency5("DKK", "Danish Krone", 2, "DKK");
-        const eur = new Currency5("EUR", "Euro", 2, "EUR");
-        const fjd = new Currency5("FJD", "Fijian Dollar", 2, "FJD");
-        const gbp = new Currency5("GBP", "British Pound", 2, "GBP");
-        const gbx = new Currency5("GBX", "British Penny", 2, "GBX");
-        const ghs = new Currency5("GHS", "Ghanaian Cedi", 2, "GHS");
-        const hkd = new Currency5("HKD", "Hong Kong Dollar", 2, "HK$");
-        const huf = new Currency5("HUF", "Hungarian Forint", 2, "HUF");
-        const idr = new Currency5("IDR", "Indonesian Rupiah", 2, "IDR");
-        const ils = new Currency5("ILS", "Israeli New Shekel", 2, "ILS");
-        const jod = new Currency5("JOD", "Jordanian Dinar", 2, "JOD");
-        const jpy = new Currency5("JPY", "Japanese Yen", 2, "JPY");
-        const krw = new Currency5("KRW", "South Korean Won", 2, "KRW");
-        const lbp = new Currency5("LBP", "Lebanese Pound", 2, "LBP");
-        const mxn = new Currency5("MXN", "Mexican Peso", 2, "MXN");
-        const myr = new Currency5("MYR", "Malaysian Ringgit", 2, "MYR");
-        const nad = new Currency5("NAD", "Namibian Dollar", 2, "NAD");
-        const ngn = new Currency5("NGN", "Nigerian Naira", 2, "NGN");
-        const nok = new Currency5("NOK", "Norwegian Krone", 2, "Nkr");
-        const nzd = new Currency5("NZD", "New Zealand Dollar", 2, "NZD");
-        const pen = new Currency5("PEN", "Peruvian Sol", 2, "PEN");
-        const pgk = new Currency5("PGK", "Papua New Guinean Kina", 2, "PGK");
-        const php = new Currency5("PHP", "Philippine peso", 2, "PHP");
-        const pln = new Currency5("PLN", "Polish Zloty", 2, "PLN");
-        const rub = new Currency5("RUB", "Russian Ruble", 2, "RUB");
-        const rur = new Currency5("RUR", "Russian Ruble (Old)", 2, "RUR");
-        const sek = new Currency5("SEK", "Swedish Krona", 2, "SEK");
-        const sgd = new Currency5("SGD", "Singapore Dollar", 2, "SGD");
-        const thb = new Currency5("THB", "Thai Baht", 2, "THB");
-        const trx = new Currency5("TRY", "Turkish Lira", 2, "TRY");
-        const twd = new Currency5("TWD", "New Taiwan Dollar", 2, "TWD");
-        const usd = new Currency5("USD", "US Dollar", 2, "US$");
-        const uyi = new Currency5("UYI", "Uruguay Peso", 2, "UYI");
-        const zar = new Currency5("ZAR", "South African Rand", 2, "ZAR");
-        const zmw = new Currency5("ZMW", "Zambian Kwacha", 2, "ZMW");
-        return Currency5;
       })();
     }
   });
@@ -5814,25 +6373,25 @@
       var assert = require_assert();
       var is = require_is();
       var memoize = require_memoize();
-      var Currency5 = require_Currency();
-      var Decimal8 = require_Decimal();
+      var Currency6 = require_Currency();
+      var Decimal9 = require_Decimal();
       module.exports = (() => {
         "use strict";
         class Rate {
           constructor(value, numerator, denominator) {
-            assert.argumentIsRequired(numerator, "numerator", Currency5, "Currency");
-            assert.argumentIsRequired(denominator, "denominator", Currency5, "Currency");
+            assert.argumentIsRequired(numerator, "numerator", Currency6, "Currency");
+            assert.argumentIsRequired(denominator, "denominator", Currency6, "Currency");
             if (numerator === denominator) {
               throw new Error("A rate cannot use two identical currencies.");
             }
             if (is.number(value)) {
               this._decimal = null;
               this._float = value;
-            } else if (value instanceof Decimal8) {
+            } else if (value instanceof Decimal9) {
               this._decimal = value;
               this._float = null;
             } else {
-              this._decimal = new Decimal8(value);
+              this._decimal = new Decimal9(value);
               this._float = null;
             }
             if (this._float !== null && !(this._float > 0) || this._decimal !== null && !this._decimal.getIsPositive()) {
@@ -5849,7 +6408,7 @@
            */
           get decimal() {
             if (this._decimal === null) {
-              this._decimal = new Decimal8(this.float);
+              this._decimal = new Decimal9(this.float);
             }
             return this._decimal;
           }
@@ -5917,7 +6476,7 @@
             if (this._decimal === null) {
               inverted = 1 / this._float;
             } else {
-              inverted = Decimal8.ONE.divide(this.decimal);
+              inverted = Decimal9.ONE.divide(this.decimal);
             }
             return new Rate(inverted, this._denominator, this._numerator);
           }
@@ -5953,7 +6512,7 @@
           static fromPair(value, symbol) {
             assert.argumentIsRequired(symbol, "symbol", String);
             const pair = parsePair(symbol);
-            return new Rate(value, Currency5.parse(pair.numerator), Currency5.parse(pair.denominator));
+            return new Rate(value, Currency6.parse(pair.numerator), Currency6.parse(pair.denominator));
           }
           /**
            * Given a {@link Decimal} value in a known currency, output
@@ -5970,19 +6529,19 @@
            * @returns {Decimal}
            */
           static convert(amount, currency, desiredCurrency, ...rates) {
-            assert.argumentIsRequired(amount, "amount", Decimal8, "Decimal");
-            assert.argumentIsRequired(currency, "currency", Currency5, "Currency");
-            assert.argumentIsRequired(desiredCurrency, "desiredCurrency", Currency5, "Currency");
+            assert.argumentIsRequired(amount, "amount", Decimal9, "Decimal");
+            assert.argumentIsRequired(currency, "currency", Currency6, "Currency");
+            assert.argumentIsRequired(desiredCurrency, "desiredCurrency", Currency6, "Currency");
             if (currency === desiredCurrency) {
               return amount;
             }
-            if (currency === Currency5.GBX) {
-              const gbp = convert(amount, Currency5.GBX, Currency5.GBP, [GBPGBX]);
-              return convert(gbp, Currency5.GBP, desiredCurrency, rates);
+            if (currency === Currency6.GBX) {
+              const gbp = convert(amount, Currency6.GBX, Currency6.GBP, [GBPGBX]);
+              return convert(gbp, Currency6.GBP, desiredCurrency, rates);
             }
-            if (desiredCurrency === Currency5.GBX) {
-              const gbp = convert(amount, currency, Currency5.GBP, [GBXGBP, ...rates]);
-              return convert(gbp, Currency5.GBP, Currency5.GBX, [GBXGBP]);
+            if (desiredCurrency === Currency6.GBX) {
+              const gbp = convert(amount, currency, Currency6.GBP, [GBXGBP, ...rates]);
+              return convert(gbp, Currency6.GBP, Currency6.GBX, [GBXGBP]);
             }
             return convert(amount, currency, desiredCurrency, rates);
           }
@@ -6194,8 +6753,8 @@
     "../../node_modules/@barchart/common-js/lang/CurrencyTranslator.js"(exports, module) {
       var assert = require_assert();
       var array = require_array();
-      var Currency5 = require_Currency();
-      var Decimal8 = require_Decimal();
+      var Currency6 = require_Currency();
+      var Decimal9 = require_Decimal();
       var Rate = require_Rate();
       var comparators = require_comparators();
       var ComparatorBuilder = require_ComparatorBuilder();
@@ -6256,8 +6815,8 @@
            * @returns {boolean}
            */
           supportsTranslation(current, desired) {
-            assert.argumentIsRequired(current, "current", Currency5, "Currency");
-            assert.argumentIsRequired(desired, "desired", Currency5, "Currency");
+            assert.argumentIsRequired(current, "current", Currency6, "Currency");
+            assert.argumentIsRequired(desired, "desired", Currency6, "Currency");
             if (current === desired) {
               return true;
             }
@@ -6302,8 +6861,8 @@
            * @returns {Number|Decimal}
            */
           translate(amount, current, desired) {
-            assert.argumentIsRequired(current, "current", Currency5, "Currency");
-            assert.argumentIsRequired(desired, "desired", Currency5, "Currency");
+            assert.argumentIsRequired(current, "current", Currency6, "Currency");
+            assert.argumentIsRequired(desired, "desired", Currency6, "Currency");
             if (current === desired) {
               return amount;
             }
@@ -6320,8 +6879,8 @@
             throw new Error('The "pair" argument cannot be parsed.');
           }
           return {
-            quote: Currency5.parse(match[1]),
-            base: Currency5.parse(match[2])
+            quote: Currency6.parse(match[1]),
+            base: Currency6.parse(match[2])
           };
         });
         function solve(symbols) {
@@ -6477,7 +7036,7 @@
             if (!ready) {
               throw new Error(`Unable to translate from [ ${this.from.code} ] to [ ${this.to.code} ], exchange rate is unknown.`);
             }
-            if (amount instanceof Decimal8) {
+            if (amount instanceof Decimal9) {
               return amount.multiply(this._factors.decimal);
             } else {
               return amount * this._factors.float;
@@ -6500,7 +7059,7 @@
             factor = factor * edge.data.rate;
           }
           this._factors.float = factor;
-          this._factors.decimal = Decimal8.parse(factor);
+          this._factors.decimal = Decimal9.parse(factor);
           return true;
         }
         const pathComparator = ComparatorBuilder.startWith((a, b) => comparators.compareNumbers(a.length, b.length)).toComparator();
@@ -7255,9 +7814,9 @@
   var require_PositionLevelDefinition = __commonJS({
     "lib/processing/definitions/PositionLevelDefinition.js"(exports, module) {
       var assert = require_assert();
-      var Currency5 = require_Currency();
+      var Currency6 = require_Currency();
       var is = require_is();
-      var InstrumentType7 = require_InstrumentType();
+      var InstrumentType8 = require_InstrumentType();
       var PositionLevelType5 = require_PositionLevelType();
       module.exports = (() => {
         "use strict";
@@ -7383,11 +7942,11 @@
            * @returns {PositionLevelDefinition~RequiredGroup}
            */
           static buildRequiredGroupForPortfolio(portfolio, currency) {
-            assert.argumentIsOptional(currency, "currency", Currency5, "Currency");
+            assert.argumentIsOptional(currency, "currency", Currency6, "Currency");
             return {
               key: PositionLevelDefinition5.getKeyForPortfolioGroup(portfolio),
               description: PositionLevelDefinition5.getDescriptionForPortfolioGroup(portfolio),
-              currency: currency || Currency5.CAD
+              currency: currency || Currency6.CAD
             };
           }
           /**
@@ -7446,15 +8005,15 @@
            * @returns {String}
            */
           static getKeyForAssetClassGroup(type, currency) {
-            assert.argumentIsRequired(type, "type", InstrumentType7, "InstrumentType");
-            assert.argumentIsRequired(currency, "currency", Currency5, "Currency");
+            assert.argumentIsRequired(type, "type", InstrumentType8, "InstrumentType");
+            assert.argumentIsRequired(currency, "currency", Currency6, "Currency");
             return `${type.code}|${currency.code}`;
           }
           static getDescriptionForAssetClassGroup(type, currency, defaultCurrency) {
-            assert.argumentIsRequired(type, "type", InstrumentType7, "InstrumentType");
-            assert.argumentIsRequired(currency, "currency", Currency5, "Currency");
-            assert.argumentIsOptional(defaultCurrency, "defaultCurrency", Currency5, "Currency");
-            return `${type.alternateDescription}${currency === (defaultCurrency || Currency5.CAD) ? "" : ` (${currency.alternateDescription})`}`;
+            assert.argumentIsRequired(type, "type", InstrumentType8, "InstrumentType");
+            assert.argumentIsRequired(currency, "currency", Currency6, "Currency");
+            assert.argumentIsOptional(defaultCurrency, "defaultCurrency", Currency6, "Currency");
+            return `${type.alternateDescription}${currency === (defaultCurrency || Currency6.CAD) ? "" : ` (${currency.alternateDescription})`}`;
           }
           toString() {
             return "[PositionLevelDefinition]";
@@ -7464,7 +8023,7 @@
           assert.argumentIsRequired(requiredGroup, variableName, Object);
           assert.argumentIsRequired(requiredGroup.key, `${variableName}.key`, String);
           assert.argumentIsRequired(requiredGroup.description, `${variableName}.description`, String);
-          assert.argumentIsRequired(requiredGroup.currency, `${variableName}.currency`, Currency5, "Currency");
+          assert.argumentIsRequired(requiredGroup.currency, `${variableName}.currency`, Currency6, "Currency");
         }
         return PositionLevelDefinition5;
       })();
@@ -7525,127 +8084,6 @@
           }
         }
         return PositionTreeDefinitions;
-      })();
-    }
-  });
-
-  // ../../node_modules/@barchart/common-js/lang/formatter.js
-  var require_formatter = __commonJS({
-    "../../node_modules/@barchart/common-js/lang/formatter.js"(exports, module) {
-      module.exports = (() => {
-        "use strict";
-        return {
-          /**
-           * Formats a number into a string for display purposes.
-           *
-           * @function
-           * @public
-           * @param {number|null|undefined} value
-           * @param {number} digits
-           * @param {string=} thousandsSeparator
-           * @param {boolean=} useParenthesis
-           */
-          numberToString(value, digits, thousandsSeparator, useParenthesis) {
-            if (value === "" || value === void 0 || value === null || isNaN(value)) {
-              return "";
-            }
-            const applyParenthesis = value < 0 && useParenthesis === true;
-            if (applyParenthesis) {
-              value = 0 - value;
-            }
-            let returnRef = value.toFixed(digits);
-            if (thousandsSeparator && !(value > -1e3 && value < 1e3)) {
-              const length = returnRef.length;
-              const negative = value < 0;
-              let found = digits === 0;
-              let counter = 0;
-              const buffer = [];
-              for (let i = length - 1; !(i < 0); i--) {
-                if (counter === 3 && !(negative && i === 0)) {
-                  buffer.unshift(thousandsSeparator);
-                  counter = 0;
-                }
-                const character = returnRef.charAt(i);
-                buffer.unshift(character);
-                if (found) {
-                  counter = counter + 1;
-                } else if (character === ".") {
-                  found = true;
-                }
-              }
-              if (applyParenthesis) {
-                buffer.unshift("(");
-                buffer.push(")");
-              }
-              returnRef = buffer.join("");
-            } else if (applyParenthesis) {
-              returnRef = "(" + returnRef + ")";
-            }
-            return returnRef;
-          }
-        };
-      })();
-    }
-  });
-
-  // ../../node_modules/@barchart/marketdata-api-js/lib/utilities/format/fraction.js
-  var require_fraction = __commonJS({
-    "../../node_modules/@barchart/marketdata-api-js/lib/utilities/format/fraction.js"(exports, module) {
-      var is = require_is();
-      module.exports = (() => {
-        "use strict";
-        function getIntegerPart(value, fractionSeparator) {
-          const floor = Math.floor(value);
-          if (floor === 0 && fractionSeparator === "") {
-            return "";
-          } else {
-            return floor;
-          }
-        }
-        function getDecimalPart(absoluteValue) {
-          return absoluteValue - Math.floor(absoluteValue);
-        }
-        function frontPad(value, digits) {
-          return ["000", Math.floor(value)].join("").substr(-1 * digits);
-        }
-        function formatFraction(value, fractionFactor, fractionDigits, fractionSeparator, useParenthesis) {
-          if (!is.number(value)) {
-            return "";
-          }
-          if (!is.number(fractionFactor)) {
-            return "";
-          }
-          if (!is.number(fractionDigits)) {
-            return "";
-          }
-          if (!is.string(fractionSeparator) || fractionSeparator.length > 1) {
-            fractionSeparator = ".";
-          }
-          const absoluteValue = Math.abs(value);
-          const integerPart = getIntegerPart(absoluteValue, fractionSeparator);
-          const decimalPart = getDecimalPart(absoluteValue);
-          const denominator = fractionFactor;
-          const numerator = decimalPart * denominator;
-          const roundedNumerator = Math.floor(parseFloat(numerator.toFixed(1)));
-          const formattedNumerator = frontPad(roundedNumerator, fractionDigits);
-          let prefix;
-          let suffix;
-          if (value < 0) {
-            useParenthesis = is.boolean(useParenthesis) && useParenthesis;
-            if (useParenthesis) {
-              prefix = "(";
-              suffix = ")";
-            } else {
-              prefix = "-";
-              suffix = "";
-            }
-          } else {
-            prefix = "";
-            suffix = "";
-          }
-          return [prefix, integerPart, fractionSeparator, formattedNumerator, suffix].join("");
-        }
-        return formatFraction;
       })();
     }
   });
@@ -7801,15 +8239,15 @@
       var array = require_array();
       var assert = require_assert();
       var DisposableStack = require_DisposableStack();
-      var Currency5 = require_Currency();
+      var Currency6 = require_Currency();
       var CurrencyTranslator2 = require_CurrencyTranslator();
-      var Decimal8 = require_Decimal();
+      var Decimal9 = require_Decimal();
       var Disposable = require_Disposable();
       var Event = require_Event();
       var formatter = require_formatter();
       var is = require_is();
       var fractionFormatter = require_fraction();
-      var InstrumentType7 = require_InstrumentType();
+      var InstrumentType8 = require_InstrumentType();
       var FilterMode2 = require_FilterMode();
       var PositionLevelDefinition5 = require_PositionLevelDefinition();
       var PositionLevelType5 = require_PositionLevelType();
@@ -7829,7 +8267,7 @@
             this._items = items;
             this._parentGroup = null;
             this._portfolioGroup = null;
-            this._currency = currency || Currency5.CAD;
+            this._currency = currency || Currency6.CAD;
             this._currencyTranslator = currencyTranslator;
             this._bypassCurrencyTranslation = false;
             this._useBarchartPriceFormattingRules = false;
@@ -8193,7 +8631,7 @@
            * @param {Currency} currency
            */
           changeCurrency(currency) {
-            assert.argumentIsRequired(currency, "currency", Currency5, "Currency");
+            assert.argumentIsRequired(currency, "currency", Currency6, "Currency");
             if (this._currency !== currency) {
               this._currency = currency;
               this.refresh();
@@ -8432,7 +8870,7 @@
               this._dataActual.quoteChange = is.number(quote.priceChange) ? quote.priceChange : null;
               this._dataActual.quoteChangePercent = is.number(quote.percentChange) ? quote.percentChange : null;
               this._dataFormat.quoteChange = formatFraction(this._dataActual.quoteChange, currency, instrument, this._useBarchartPriceFormattingRules);
-              this._dataFormat.quoteChangePercent = formatPercent(new Decimal8(this._dataActual.quoteChangePercent || 0), 2);
+              this._dataFormat.quoteChangePercent = formatPercent(new Decimal9(this._dataActual.quoteChangePercent || 0), 2);
               this._dataActual.quoteTime = quote.timeDisplay;
               this._dataActual.quoteVolume = is.number(quote.volume) ? quote.volume : null;
               this._dataFormat.quoteTime = formatString(this._dataActual.quoteTime);
@@ -8463,7 +8901,7 @@
                   if (i + 1 === this.items.length) {
                     let averageFormat;
                     if (summary.count > 0) {
-                      averageFormat = formatPercent(new Decimal8(summary.total / summary.count), 2, true);
+                      averageFormat = formatPercent(new Decimal9(summary.total / summary.count), 2, true);
                     } else {
                       averageFormat = "\u2014";
                     }
@@ -8606,7 +9044,7 @@
             return "\u2014";
           }
           let prefix;
-          if (is.boolean(plus) && plus && !Decimal8.getIsNegative(decimal)) {
+          if (is.boolean(plus) && plus && !Decimal9.getIsNegative(decimal)) {
             prefix = "+";
           } else {
             prefix = "";
@@ -8614,12 +9052,12 @@
           return `${prefix}${formatDecimal(decimal.multiply(100), precision)}%`;
         }
         function formatFraction(value, currency, instrument, useBarchartPriceFormattingRules) {
-          let decimal = value instanceof Decimal8;
+          let decimal = value instanceof Decimal9;
           let precision = currency.precision;
           if (instrument && value !== null) {
             const type = instrument.type;
             const code = instrument.code;
-            if (code && code.supportsFractions && (type === InstrumentType7.FUTURE || type === InstrumentType7.FUTURE_OPTION)) {
+            if (code && code.supportsFractions && (type === InstrumentType8.FUTURE || type === InstrumentType8.FUTURE_OPTION)) {
               const rounded = code.roundToNearestTick(decimal ? value.toFloat() : value, instrument.future ? instrument.future.tick : instrument.option.tick, true);
               return fractionFormatter(rounded, code.fractionFactor, code.fractionDigits, "-", true);
             }
@@ -8636,8 +9074,8 @@
         function formatCurrency(decimal, currency) {
           let translated = decimal;
           let desired = currency;
-          if (desired === Currency5.GBX) {
-            desired = Currency5.GBP;
+          if (desired === Currency6.GBX) {
+            desired = Currency6.GBP;
             if (translated !== null) {
               translated = translated.multiply(0.01);
             }
@@ -8647,10 +9085,10 @@
         function formatFractionSpecial(value, currency, instrument) {
           let translated = value;
           let desired = currency;
-          if (desired === Currency5.GBX) {
-            desired = Currency5.GBP;
+          if (desired === Currency6.GBX) {
+            desired = Currency6.GBP;
             if (is.number(value)) {
-              translated = new Decimal8(value);
+              translated = new Decimal9(value);
             }
             if (translated !== null) {
               translated = translated.multiply(0.01);
@@ -8675,7 +9113,7 @@
           };
           const updates = items.reduce((updates2, item) => {
             updates2.basis = updates2.basis.add(translate(item, item.data.basis));
-            if (item.position.instrument.type === InstrumentType7.FUTURE) {
+            if (item.position.instrument.type === InstrumentType8.FUTURE) {
               if (group.single) {
                 updates2.basis2 = null;
               }
@@ -8698,7 +9136,7 @@
             updates2.periodDividendsPrevious = updates2.periodDividendsPrevious.add(translate(item, item.data.periodDividendsPrevious));
             updates2.periodRealized = updates2.periodRealized.add(translate(item, item.data.periodRealized));
             updates2.periodUnrealized = updates2.periodUnrealized.add(translate(item, item.data.periodUnrealized));
-            if (item.position.instrument.type === InstrumentType7.CASH) {
+            if (item.position.instrument.type === InstrumentType8.CASH) {
               updates2.cashTotal = updates2.cashTotal.add(translate(item, item.data.market));
             }
             updates2.totalDivisor = updates2.totalDivisor.add(translate(item, item.data.totalDivisor));
@@ -8714,34 +9152,34 @@
             }
             return updates2;
           }, {
-            basis: Decimal8.ZERO,
-            basis2: Decimal8.ZERO,
-            realized: Decimal8.ZERO,
-            unrealized: Decimal8.ZERO,
-            realizedToday: Decimal8.ZERO,
-            income: Decimal8.ZERO,
-            dividends: Decimal8.ZERO,
-            summaryTotalCurrent: Decimal8.ZERO,
-            summaryTotalPrevious: Decimal8.ZERO,
-            summaryTotalPrevious2: Decimal8.ZERO,
-            marketPrevious: Decimal8.ZERO,
-            marketPrevious2: Decimal8.ZERO,
-            periodIncome: Decimal8.ZERO,
-            periodIncomePrevious: Decimal8.ZERO,
-            periodDividends: Decimal8.ZERO,
-            periodDividendsPrevious: Decimal8.ZERO,
-            periodRealized: Decimal8.ZERO,
-            periodUnrealized: Decimal8.ZERO,
-            cashTotal: Decimal8.ZERO,
-            totalDivisor: Decimal8.ZERO,
-            periodDivisorCurrent: Decimal8.ZERO,
-            periodDivisorPrevious: Decimal8.ZERO,
-            periodDivisorPrevious2: Decimal8.ZERO,
-            weekToDateGain: Decimal8.ZERO,
-            weekToDateDivisor: Decimal8.ZERO,
-            monthToDateGain: Decimal8.ZERO,
-            monthToDateDivisor: Decimal8.ZERO,
-            quantity: Decimal8.ZERO
+            basis: Decimal9.ZERO,
+            basis2: Decimal9.ZERO,
+            realized: Decimal9.ZERO,
+            unrealized: Decimal9.ZERO,
+            realizedToday: Decimal9.ZERO,
+            income: Decimal9.ZERO,
+            dividends: Decimal9.ZERO,
+            summaryTotalCurrent: Decimal9.ZERO,
+            summaryTotalPrevious: Decimal9.ZERO,
+            summaryTotalPrevious2: Decimal9.ZERO,
+            marketPrevious: Decimal9.ZERO,
+            marketPrevious2: Decimal9.ZERO,
+            periodIncome: Decimal9.ZERO,
+            periodIncomePrevious: Decimal9.ZERO,
+            periodDividends: Decimal9.ZERO,
+            periodDividendsPrevious: Decimal9.ZERO,
+            periodRealized: Decimal9.ZERO,
+            periodUnrealized: Decimal9.ZERO,
+            cashTotal: Decimal9.ZERO,
+            totalDivisor: Decimal9.ZERO,
+            periodDivisorCurrent: Decimal9.ZERO,
+            periodDivisorPrevious: Decimal9.ZERO,
+            periodDivisorPrevious2: Decimal9.ZERO,
+            weekToDateGain: Decimal9.ZERO,
+            weekToDateDivisor: Decimal9.ZERO,
+            monthToDateGain: Decimal9.ZERO,
+            monthToDateDivisor: Decimal9.ZERO,
+            quantity: Decimal9.ZERO
           });
           actual.basis = updates.basis;
           actual.basis2 = updates.basis2;
@@ -8773,7 +9211,7 @@
           const holdingItem = group.single && items.length === 1 ? items[0] : null;
           actual.daysHeld = holdingItem === null ? null : holdingItem.data.daysHeld;
           actual.weeksHeld = holdingItem === null ? null : holdingItem.data.weeksHeld;
-          const nonCashItems = items.filter((item) => item.position.instrument.type !== InstrumentType7.CASH);
+          const nonCashItems = items.filter((item) => item.position.instrument.type !== InstrumentType8.CASH);
           actual.holdingPeriodComplete = nonCashItems.length !== 0 && nonCashItems.every((item) => item.data.daysHeld !== null);
           actual.annualizedDaysHeld = nonCashItems.reduce((daysHeld, item) => {
             if (item.data.daysHeld === null) {
@@ -8898,7 +9336,7 @@
             const items = group._consideredItems;
             updates = items.reduce((updates2, item2) => {
               updates2.market = updates2.market.add(translate(item2, item2.data.market));
-              if (item2.position.instrument.type === InstrumentType7.FUTURE) {
+              if (item2.position.instrument.type === InstrumentType8.FUTURE) {
                 updates2.market2 = updates2.market2.add(translate(item2, item2.data.unrealized));
               } else {
                 updates2.market2 = updates2.market2.add(translate(item2, item2.data.market));
@@ -8915,24 +9353,24 @@
               updates2.monthToDateGain = updates2.monthToDateGain.add(translate(item2, item2.data.monthToDateGain));
               return updates2;
             }, {
-              market: Decimal8.ZERO,
-              market2: Decimal8.ZERO,
-              marketAbsolute: Decimal8.ZERO,
+              market: Decimal9.ZERO,
+              market2: Decimal9.ZERO,
+              marketAbsolute: Decimal9.ZERO,
               marketDirection: unchanged,
-              unrealized: Decimal8.ZERO,
-              unrealizedToday: Decimal8.ZERO,
-              realizedToday: Decimal8.ZERO,
-              gainToday: Decimal8.ZERO,
-              todayDivisor: Decimal8.ZERO,
-              summaryTotalCurrent: Decimal8.ZERO,
-              periodUnrealized: Decimal8.ZERO,
-              weekToDateGain: Decimal8.ZERO,
-              monthToDateGain: Decimal8.ZERO
+              unrealized: Decimal9.ZERO,
+              unrealizedToday: Decimal9.ZERO,
+              realizedToday: Decimal9.ZERO,
+              gainToday: Decimal9.ZERO,
+              todayDivisor: Decimal9.ZERO,
+              summaryTotalCurrent: Decimal9.ZERO,
+              periodUnrealized: Decimal9.ZERO,
+              weekToDateGain: Decimal9.ZERO,
+              monthToDateGain: Decimal9.ZERO
             });
           } else {
             updates = {};
             updates.market = actual.market.add(translate(item, item.data.marketChange));
-            if (item.position.instrument.type === InstrumentType7.FUTURE) {
+            if (item.position.instrument.type === InstrumentType8.FUTURE) {
               updates.market2 = actual.market2.add(translate(item, item.data.unrealizedChange));
             } else {
               updates.market2 = actual.market2.add(translate(item, item.data.marketChange));
@@ -8970,13 +9408,13 @@
           actual.annualizedReturnPercent = annualizedReturnExists ? calculateAnnualizedReturnPercent(actual.totalPercent, actual.totalDivisor, actual.annualizedDaysHeld, actual.holdingPeriodComplete) : null;
           let marketChange = updates.market.subtract(actual.marketPrevious);
           let marketChangePercent;
-          if (actual.marketPrevious.getIsApproximate(Decimal8.ZERO, 4)) {
+          if (actual.marketPrevious.getIsApproximate(Decimal9.ZERO, 4)) {
             if (marketChange.getIsPositive()) {
-              marketChangePercent = Decimal8.ONE;
+              marketChangePercent = Decimal9.ONE;
             } else if (marketChange.getIsNegative()) {
-              marketChangePercent = Decimal8.NEGATIVE_ONE;
+              marketChangePercent = Decimal9.NEGATIVE_ONE;
             } else {
-              marketChangePercent = Decimal8.ZERO;
+              marketChangePercent = Decimal9.ZERO;
             }
           } else {
             marketChangePercent = marketChange.divide(actual.marketPrevious);
@@ -9040,7 +9478,7 @@
             format.todayPricePrevious = actual.todayPricePrevious === null ? "\u2014" : formatFractionSpecial(actual.todayPricePrevious, currency, priceItem.position.instrument);
             if (actual.todayPrice === null) {
               format.unrealizedToday = "\u2014";
-              if (actual.realizedToday.getIsEqual(Decimal8.ZERO)) {
+              if (actual.realizedToday.getIsEqual(Decimal9.ZERO)) {
                 format.gainToday = "\u2014";
               }
             }
@@ -9056,7 +9494,7 @@
               return null;
             }
             const parentData = parent._dataActual;
-            if (parentData.marketAbsolute === null || parentData.marketAbsolute.getIsApproximate(Decimal8.ZERO, 4)) {
+            if (parentData.marketAbsolute === null || parentData.marketAbsolute.getIsApproximate(Decimal9.ZERO, 4)) {
               return null;
             }
             let numerator;
@@ -9084,8 +9522,8 @@
           const totalBasis = actual.totalDivisor;
           const numerator = actual.realized;
           const denominator = totalBasis.subtract(openBasis);
-          if (denominator.getIsApproximate(Decimal8.ZERO, 4)) {
-            actual.realizedPercent = Decimal8.ZERO;
+          if (denominator.getIsApproximate(Decimal9.ZERO, 4)) {
+            actual.realizedPercent = Decimal9.ZERO;
           } else {
             actual.realizedPercent = numerator.divide(denominator);
           }
@@ -9096,22 +9534,22 @@
           const format = group._dataFormat;
           const numerator = actual.unrealized;
           const denominator = actual.basis.absolute();
-          if (denominator.getIsApproximate(Decimal8.ZERO, 4)) {
-            actual.unrealizedPercent = Decimal8.ZERO;
+          if (denominator.getIsApproximate(Decimal9.ZERO, 4)) {
+            actual.unrealizedPercent = Decimal9.ZERO;
           } else {
             actual.unrealizedPercent = numerator.divide(denominator);
           }
           format.unrealizedPercent = formatPercent(actual.unrealizedPercent, 2);
         }
         function calculateGainPercent(gain, basis) {
-          return basis.getIsApproximate(Decimal8.ZERO, 4) ? Decimal8.ZERO : gain.divide(basis);
+          return basis.getIsApproximate(Decimal9.ZERO, 4) ? Decimal9.ZERO : gain.divide(basis);
         }
         function calculateAnnualizedReturnPercent(totalPercent, totalDivisor, daysHeld, holdingPeriodComplete) {
-          if (!holdingPeriodComplete || totalDivisor.getIsApproximate(Decimal8.ZERO, 4) || daysHeld < DAYS_PER_YEAR || totalPercent.toFloat() < -1) {
+          if (!holdingPeriodComplete || totalDivisor.getIsApproximate(Decimal9.ZERO, 4) || daysHeld < DAYS_PER_YEAR || totalPercent.toFloat() < -1) {
             return null;
           }
           const annualizedReturn = Math.pow(1 + totalPercent.toFloat(), DAYS_PER_YEAR / daysHeld) - 1;
-          return Number.isFinite(annualizedReturn) ? new Decimal8(annualizedReturn) : null;
+          return Number.isFinite(annualizedReturn) ? new Decimal9(annualizedReturn) : null;
         }
         const unchanged = { up: false, down: false };
         return PositionGroup2;
@@ -9174,13 +9612,13 @@
   var require_PositionItem = __commonJS({
     "lib/processing/PositionItem.js"(exports, module) {
       var assert = require_assert();
-      var Currency5 = require_Currency();
-      var Day7 = require_Day();
-      var Decimal8 = require_Decimal();
+      var Currency6 = require_Currency();
+      var Day8 = require_Day();
+      var Decimal9 = require_Decimal();
       var Disposable = require_Disposable();
       var Event = require_Event();
       var is = require_is();
-      var InstrumentType7 = require_InstrumentType();
+      var InstrumentType8 = require_InstrumentType();
       var PositionDirection2 = require_PositionDirection();
       var OptionsValuationType = require_OptionsValuationType();
       var AveragePriceCalculator2 = require_AveragePriceCalculator();
@@ -9195,7 +9633,7 @@
             this._position = position;
             this._priceSelctor = getPriceSelector(this._portfolio, this._position);
             const instrument = position.instrument;
-            this._currency = instrument.currency || Currency5.CAD;
+            this._currency = instrument.currency || Currency6.CAD;
             this._invalid = instrument.type.usesSymbols && (!is.object(instrument.symbol) || !is.string(instrument.symbol.barchart));
             this._exchangeStatus = null;
             this._currentSummary = currentSummary || null;
@@ -9426,7 +9864,7 @@
           setExchangeStatus(exchange) {
             assert.argumentIsRequired(exchange, "exchange", Object);
             assert.argumentIsRequired(exchange.code, "exchange.code", String);
-            assert.argumentIsRequired(exchange.currentDay, "exchange.currentDay", Day7, "Day");
+            assert.argumentIsRequired(exchange.currentDay, "exchange.currentDay", Day8, "Day");
             assert.argumentIsRequired(exchange.currentOpened, "exchange.currentOpened", Boolean);
             if (this._exchangeStatus === null || !(exchange.currentDay.getIsEqual(this._exchangeStatus.currentDay) && exchange.currentOpened === this._exchangeStatus.currentOpened)) {
               this._exchangeStatus = exchange;
@@ -9602,24 +10040,24 @@
           if (snapshot.basis) {
             basis = snapshot.basis.opposite();
           } else {
-            basis = Decimal8.ZERO;
+            basis = Decimal9.ZERO;
           }
           data.basis = basis;
           data.realized = snapshot.gain;
-          data.unrealized = Decimal8.ZERO;
+          data.unrealized = Decimal9.ZERO;
           data.income = snapshot.income;
-          data.dividends = snapshot.dividends || Decimal8.ZERO;
-          data.marketPrevious = previousSummary1 === null ? Decimal8.ZERO : previousSummary1.end.value;
-          data.marketPrevious2 = previousSummary2 === null ? Decimal8.ZERO : previousSummary2.end.value;
-          data.quantityPrevious = previousSummary1 === null ? Decimal8.ZERO : previousSummary1.end.open;
+          data.dividends = snapshot.dividends || Decimal9.ZERO;
+          data.marketPrevious = previousSummary1 === null ? Decimal9.ZERO : previousSummary1.end.value;
+          data.marketPrevious2 = previousSummary2 === null ? Decimal9.ZERO : previousSummary2.end.value;
+          data.quantityPrevious = previousSummary1 === null ? Decimal9.ZERO : previousSummary1.end.open;
           data.periodGain = calculatePeriodGain(position.instrument, data.initiate, currentSummary, previousSummary1);
           data.periodGainPrevious = calculatePeriodGain(position.instrument, data.initiate, previousSummary1, previousSummary2);
           data.periodGainPrevious2 = calculatePeriodGain(position.instrument, data.initiate, previousSummary2, previousSummary3);
-          data.periodIncome = currentSummary !== null ? currentSummary.period.income : Decimal8.ZERO;
-          data.periodIncomePrevious = previousSummary1 !== null ? previousSummary1.period.income : Decimal8.ZERO;
-          data.periodDividends = currentSummary !== null ? currentSummary.period.dividends || Decimal8.ZERO : Decimal8.ZERO;
-          data.periodDividendsPrevious = previousSummary1 !== null ? previousSummary1.period.dividends || Decimal8.ZERO : Decimal8.ZERO;
-          data.periodRealized = currentSummary !== null ? currentSummary.period.realized : Decimal8.ZERO;
+          data.periodIncome = currentSummary !== null ? currentSummary.period.income : Decimal9.ZERO;
+          data.periodIncomePrevious = previousSummary1 !== null ? previousSummary1.period.income : Decimal9.ZERO;
+          data.periodDividends = currentSummary !== null ? currentSummary.period.dividends || Decimal9.ZERO : Decimal9.ZERO;
+          data.periodDividendsPrevious = previousSummary1 !== null ? previousSummary1.period.dividends || Decimal9.ZERO : Decimal9.ZERO;
+          data.periodRealized = currentSummary !== null ? currentSummary.period.realized : Decimal9.ZERO;
           data.periodUnrealized = calculatePeriodUnrealized(position.instrument.type, data.periodGain, data.periodRealized, data.periodIncome);
           data.periodDivisor = calculatePeriodDivisor(position.instrument.type, data.initiate, currentSummary, previousSummary1);
           data.periodDivisorPrevious = calculatePeriodDivisor(position.instrument.type, data.initiate, previousSummary1, previousSummary2);
@@ -9632,7 +10070,7 @@
           data.monthToDateDivisor = calculatePeriodDivisor(position.instrument.type, data.initiate, monthToDateSummary, null, true);
           data.monthToDateSummaryExists = monthToDateSummary !== null;
           data.monthToDatePercent = data.monthToDateSummaryExists ? calculateGainPercent(data.monthToDateGain, data.monthToDateDivisor) : null;
-          data.basisPrice = AveragePriceCalculator2.calculate(position.instrument, data.basis, snapshot.open) || Decimal8.ZERO;
+          data.basisPrice = AveragePriceCalculator2.calculate(position.instrument, data.basis, snapshot.open) || Decimal9.ZERO;
           data.basisPrice = data.basisPrice.opposite();
           if (currentSummary && !currentSummary.end.open.getIsZero()) {
             data.periodPrice = currentSummary.end.value.divide(currentSummary.end.open);
@@ -9654,15 +10092,15 @@
           const currentSnapshot = snapshot || getSnapshot(item.position, item.currentSummary, item._reporting);
           data.daysHeld = null;
           data.weeksHeld = null;
-          if (openingDate instanceof Day7 && !openingDate.getIsAfter(item._today)) {
+          if (openingDate instanceof Day8 && !openingDate.getIsAfter(item._today)) {
             let heldUntil;
             if (currentSnapshot.open.getIsZero()) {
-              heldUntil = closingDate instanceof Day7 && !closingDate.getIsBefore(openingDate) && !closingDate.getIsAfter(item._today) ? closingDate : null;
+              heldUntil = closingDate instanceof Day8 && !closingDate.getIsBefore(openingDate) && !closingDate.getIsAfter(item._today) ? closingDate : null;
             } else {
               heldUntil = item._today;
             }
             if (heldUntil !== null) {
-              data.daysHeld = Day7.countDaysBetween(openingDate, heldUntil);
+              data.daysHeld = Day8.countDaysBetween(openingDate, heldUntil);
               data.weeksHeld = Math.floor(data.daysHeld / 7);
             }
           }
@@ -9671,16 +10109,16 @@
           const position = item.position;
           const snapshot = getSnapshot(position, item.currentSummary, item._reporting);
           const data = item._data;
-          const worthless = data.expired && (position.instrument.type === InstrumentType7.EQUITY_OPTION || position.instrument.type === InstrumentType7.FUTURE_OPTION);
+          const worthless = data.expired && (position.instrument.type === InstrumentType8.EQUITY_OPTION || position.instrument.type === InstrumentType8.FUTURE_OPTION);
           let market;
-          if (position.instrument.type === InstrumentType7.OTHER) {
+          if (position.instrument.type === InstrumentType8.OTHER) {
             market = snapshot.value;
-          } else if (position.instrument.type === InstrumentType7.CASH) {
+          } else if (position.instrument.type === InstrumentType8.CASH) {
             market = snapshot.open;
           } else {
             let priceToUse;
             if (worthless) {
-              priceToUse = Decimal8.ZERO;
+              priceToUse = Decimal9.ZERO;
             } else {
               priceToUse = price;
             }
@@ -9714,8 +10152,8 @@
             unrealizedToday = market.subtract(unrealizedTodayBase);
             todayDivisor = unrealizedTodayBase.absolute();
           } else {
-            unrealizedToday = Decimal8.ZERO;
-            todayDivisor = Decimal8.ZERO;
+            unrealizedToday = Decimal9.ZERO;
+            todayDivisor = Decimal9.ZERO;
           }
           if (data.unrealizedToday !== null) {
             unrealizedTodayChange = unrealizedToday.subtract(data.unrealizedToday);
@@ -9744,7 +10182,7 @@
           if (position.latest && position.latest.gain && position.latest.date && today && position.latest.date.getIsEqual(today)) {
             realizedToday = position.latest.gain;
           } else {
-            realizedToday = Decimal8.ZERO;
+            realizedToday = Decimal9.ZERO;
           }
           if (data.realizedToday) {
             realizedTodayChange = realizedToday.subtract(data.realizedToday);
@@ -9766,16 +10204,16 @@
           const weekToDateSummary = item._periodSummaries.weekToDate || null;
           const monthToDateSummary = item._periodSummaries.monthToDate || null;
           let currentPriceToUse = null;
-          if (currentSummary && position.instrument.type !== InstrumentType7.CASH) {
+          if (currentSummary && position.instrument.type !== InstrumentType8.CASH) {
             let priceToUse;
             if (worthless) {
-              priceToUse = Decimal8.ZERO;
+              priceToUse = Decimal9.ZERO;
             } else if (price) {
               priceToUse = price;
             } else if (data.previousPrice) {
-              priceToUse = new Decimal8(data.previousPrice);
+              priceToUse = new Decimal9(data.previousPrice);
             } else if (!currentSummary.end.open.getIsZero()) {
-              priceToUse = AveragePriceCalculator2.calculate(position.instrument, currentSummary.end.value, currentSummary.end.open) || Decimal8.ZERO;
+              priceToUse = AveragePriceCalculator2.calculate(position.instrument, currentSummary.end.value, currentSummary.end.open) || Decimal9.ZERO;
               priceToUse = priceToUse.opposite();
             } else {
               priceToUse = null;
@@ -9787,7 +10225,7 @@
               if (data.unrealized !== null) {
                 unrealizedChange = unrealized.subtract(data.unrealized);
               } else {
-                unrealizedChange = Decimal8.ZERO;
+                unrealizedChange = Decimal9.ZERO;
               }
               data.unrealized = unrealized;
               data.unrealizedChange = unrealizedChange;
@@ -9796,7 +10234,7 @@
               if (data.periodGain !== null) {
                 periodGainChange = periodGain.subtract(data.periodGain);
               } else {
-                periodGainChange = Decimal8.ZERO;
+                periodGainChange = Decimal9.ZERO;
               }
               data.periodGain = periodGain;
               data.periodGainChange = periodGainChange;
@@ -9805,7 +10243,7 @@
               if (data.periodUnrealized !== null) {
                 periodUnrealizedChange = periodUnrealized.subtract(data.periodUnrealized);
               } else {
-                periodUnrealizedChange = Decimal8.ZERO;
+                periodUnrealizedChange = Decimal9.ZERO;
               }
               data.periodUnrealized = periodUnrealized;
               data.periodUnrealizedChange = periodUnrealizedChange;
@@ -9815,27 +10253,27 @@
                 data.unrealizedPrice = data.basisPrice.opposite().add(priceToUse);
               }
             } else {
-              data.unrealizedChange = Decimal8.ZERO;
-              data.periodUnrealizedChange = Decimal8.ZERO;
-              data.periodGainChange = Decimal8.ZERO;
-              data.weekToDateGainChange = Decimal8.ZERO;
-              data.monthToDateGainChange = Decimal8.ZERO;
+              data.unrealizedChange = Decimal9.ZERO;
+              data.periodUnrealizedChange = Decimal9.ZERO;
+              data.periodGainChange = Decimal9.ZERO;
+              data.weekToDateGainChange = Decimal9.ZERO;
+              data.monthToDateGainChange = Decimal9.ZERO;
             }
           } else {
-            data.unrealizedChange = Decimal8.ZERO;
-            data.periodUnrealizedChange = Decimal8.ZERO;
-            data.periodGainChange = Decimal8.ZERO;
-            data.weekToDateGainChange = Decimal8.ZERO;
-            data.monthToDateGainChange = Decimal8.ZERO;
+            data.unrealizedChange = Decimal9.ZERO;
+            data.periodUnrealizedChange = Decimal9.ZERO;
+            data.periodGainChange = Decimal9.ZERO;
+            data.weekToDateGainChange = Decimal9.ZERO;
+            data.monthToDateGainChange = Decimal9.ZERO;
           }
-          if (position.instrument.type !== InstrumentType7.CASH) {
+          if (position.instrument.type !== InstrumentType8.CASH) {
             if (currentPriceToUse === null) {
               if (worthless) {
-                currentPriceToUse = Decimal8.ZERO;
+                currentPriceToUse = Decimal9.ZERO;
               } else if (price) {
                 currentPriceToUse = price;
               } else if (data.previousPrice) {
-                currentPriceToUse = new Decimal8(data.previousPrice);
+                currentPriceToUse = new Decimal9(data.previousPrice);
               }
             }
             if (currentPriceToUse !== null) {
@@ -9880,14 +10318,14 @@
         function calculatePeriodGain(instrument, direction, currentSummary, previousSummary, overridePrice, useCurrentStart) {
           let returnRef;
           const type = instrument.type;
-          if (currentSummary && type !== InstrumentType7.CASH) {
+          if (currentSummary && type !== InstrumentType8.CASH) {
             let startValue;
             if (previousSummary) {
               startValue = previousSummary.end.value;
             } else if (useCurrentStart) {
               startValue = currentSummary.start.value;
             } else {
-              startValue = Decimal8.ZERO;
+              startValue = Decimal9.ZERO;
             }
             let endValue;
             if (overridePrice) {
@@ -9900,20 +10338,20 @@
             const incomeChange = currentSummary.period.income;
             returnRef = valueChange.add(tradeChange).add(incomeChange);
           } else {
-            returnRef = Decimal8.ZERO;
+            returnRef = Decimal9.ZERO;
           }
           return returnRef;
         }
         function calculatePeriodDivisor(type, direction, currentSummary, previousSummary, useCurrentStart) {
           let returnRef;
-          if (currentSummary && type !== InstrumentType7.CASH) {
+          if (currentSummary && type !== InstrumentType8.CASH) {
             let startValue;
             if (previousSummary) {
               startValue = previousSummary.end.value;
             } else if (useCurrentStart) {
               startValue = currentSummary.start.value;
             } else {
-              startValue = Decimal8.ZERO;
+              startValue = Decimal9.ZERO;
             }
             if (direction === PositionDirection2.SHORT) {
               returnRef = startValue.opposite().add(currentSummary.period.sells);
@@ -9921,22 +10359,22 @@
               returnRef = startValue.add(currentSummary.period.buys.opposite());
             }
           } else {
-            returnRef = Decimal8.ZERO;
+            returnRef = Decimal9.ZERO;
           }
           return returnRef;
         }
         function calculatePeriodUnrealized(type, periodGain, periodRealized, periodIncome) {
           let returnRef;
-          if (type !== InstrumentType7.CASH) {
+          if (type !== InstrumentType8.CASH) {
             returnRef = periodRealized.add(periodIncome).subtract(periodGain).opposite();
           } else {
-            returnRef = Decimal8.ZERO;
+            returnRef = Decimal9.ZERO;
           }
           return returnRef;
         }
         function calculateTotalDivisor(type, direction, position) {
-          if (type === InstrumentType7.CASH) {
-            return Decimal8.ZERO;
+          if (type === InstrumentType8.CASH) {
+            return Decimal9.ZERO;
           }
           let divisor;
           if (direction === PositionDirection2.SHORT) {
@@ -9944,19 +10382,19 @@
           } else if (direction === PositionDirection2.LONG) {
             divisor = position.snapshot.buys.opposite();
           } else {
-            divisor = Decimal8.ZERO;
+            divisor = Decimal9.ZERO;
           }
           return divisor;
         }
         function calculateGainPercent(gain, divisor) {
-          return divisor.getIsApproximate(Decimal8.ZERO, 4) ? Decimal8.ZERO : gain.divide(divisor);
+          return divisor.getIsApproximate(Decimal9.ZERO, 4) ? Decimal9.ZERO : gain.divide(divisor);
         }
         function calculateAnnualizedReturnPercent(type, totalPercent, totalDivisor, daysHeld) {
-          if (type === InstrumentType7.CASH || totalDivisor.getIsApproximate(Decimal8.ZERO, 4) || daysHeld === null || daysHeld < DAYS_PER_YEAR || totalPercent.toFloat() < -1) {
+          if (type === InstrumentType8.CASH || totalDivisor.getIsApproximate(Decimal9.ZERO, 4) || daysHeld === null || daysHeld < DAYS_PER_YEAR || totalPercent.toFloat() < -1) {
             return null;
           }
           const annualizedReturn = Math.pow(1 + totalPercent.toFloat(), DAYS_PER_YEAR / daysHeld) - 1;
-          return Number.isFinite(annualizedReturn) ? new Decimal8(annualizedReturn) : null;
+          return Number.isFinite(annualizedReturn) ? new Decimal9(annualizedReturn) : null;
         }
         function getPreviousSummary(previousSummaries, count) {
           const index = previousSummaries.length - count;
@@ -9980,9 +10418,9 @@
           assert.argumentIsRequired(position, "position");
           const type = position.instrument.type;
           let expiration;
-          if (type === InstrumentType7.FUTURE) {
+          if (type === InstrumentType8.FUTURE) {
             expiration = position.instrument.future.expiration;
-          } else if (type === InstrumentType7.FUTURE_OPTION || type === InstrumentType7.EQUITY_OPTION) {
+          } else if (type === InstrumentType8.FUTURE_OPTION || type === InstrumentType8.EQUITY_OPTION) {
             expiration = position.instrument.option.expiration;
           } else {
             expiration = null;
@@ -10009,16 +10447,16 @@
           return snapshot;
         }
         function calculateToday(reportDate, exchangeStatus) {
-          if (reportDate instanceof Day7) {
+          if (reportDate instanceof Day8) {
             return reportDate;
           }
-          if (exchangeStatus && exchangeStatus.currentDay instanceof Day7) {
+          if (exchangeStatus && exchangeStatus.currentDay instanceof Day8) {
             return exchangeStatus.currentDay;
           }
-          return Day7.getToday();
+          return Day8.getToday();
         }
         function calculateQuoteDay(quote) {
-          if (quote && quote.lastDay instanceof Day7) {
+          if (quote && quote.lastDay instanceof Day8) {
             return quote.lastDay;
           }
           return null;
@@ -10061,10 +10499,10 @@
       var assert = require_assert();
       var ComparatorBuilder = require_ComparatorBuilder();
       var comparators = require_comparators();
-      var Currency5 = require_Currency();
+      var Currency6 = require_Currency();
       var CurrencyTranslator2 = require_CurrencyTranslator();
-      var Day7 = require_Day();
-      var Decimal8 = require_Decimal();
+      var Day8 = require_Day();
+      var Decimal9 = require_Decimal();
       var Disposable = require_Disposable();
       var DisposableStack = require_DisposableStack();
       var Event = require_Event();
@@ -10079,21 +10517,21 @@
       var PositionItem3 = require_PositionItem();
       module.exports = (() => {
         "use strict";
-        const DEFAULT_CURRENCY = Currency5.USD;
+        const DEFAULT_CURRENCY = Currency6.USD;
         const SUPPORTED_CURRENCIES = [
-          Currency5.AUD,
-          Currency5.CAD,
-          Currency5.CHF,
-          Currency5.CZK,
-          Currency5.DKK,
-          Currency5.GBP,
-          Currency5.GBX,
-          Currency5.EUR,
-          Currency5.HKD,
-          Currency5.JPY,
-          Currency5.NOK,
-          Currency5.SEK,
-          Currency5.USD
+          Currency6.AUD,
+          Currency6.CAD,
+          Currency6.CHF,
+          Currency6.CZK,
+          Currency6.DKK,
+          Currency6.GBP,
+          Currency6.GBX,
+          Currency6.EUR,
+          Currency6.HKD,
+          Currency6.JPY,
+          Currency6.NOK,
+          Currency6.SEK,
+          Currency6.USD
         ];
         const STATIC_RATES = [
           Rate.fromPair(0.01, "^GBXGBP")
@@ -10106,12 +10544,12 @@
             assert.argumentIsArray(summaries, "summaries");
             assert.argumentIsOptional(reportFrame, "reportFrame", PositionSummaryFrame5, "PositionSummaryFrame");
             if (reportFrame) {
-              assert.argumentIsRequired(reportDate, "reportDate", Day7, "Day");
+              assert.argumentIsRequired(reportDate, "reportDate", Day8, "Day");
             }
             if (currencyPairs) {
               assert.argumentIsArray(currencyPairs, "currencyPairs");
               currencyPairs.forEach((currencyPair) => {
-                assert.argumentIsArray(currencyPair, "currencyPair", Currency5, "Currency");
+                assert.argumentIsArray(currencyPair, "currencyPair", Currency6, "Currency");
                 assert.argumentIsValid(currencyPair.length, "currencyPair.length", (l) => l === 2, "has two items");
               });
             }
@@ -10190,7 +10628,7 @@
               }));
             } else {
               this._forexSymbols = SUPPORTED_CURRENCIES.reduce((symbols, currency) => {
-                if (currency === DEFAULT_CURRENCY || currency === Currency5.GBX) {
+                if (currency === DEFAULT_CURRENCY || currency === Currency6.GBX) {
                   return symbols;
                 }
                 symbols.push(`^${DEFAULT_CURRENCY.code}${currency.code}`);
@@ -10210,7 +10648,7 @@
               }
             });
             const forexQuotes = this._forexSymbols.map((symbol) => {
-              return Rate.fromPair(Decimal8.ONE, symbol);
+              return Rate.fromPair(Decimal9.ONE, symbol);
             });
             this._currencyTranslator = new CurrencyTranslator2(this._forexSymbols.concat(STATIC_RATES.map((r) => r.getSymbol())));
             this._currencyTranslator.setRates(forexQuotes.concat(STATIC_RATES));
@@ -10690,7 +11128,7 @@
           setExchangeStatus(exchange) {
             assert.argumentIsRequired(exchange, "exchange", Object);
             assert.argumentIsRequired(exchange.code, "exchange.code", String);
-            assert.argumentIsRequired(exchange.currentDay, "exchange.currentDay", Day7, "Day");
+            assert.argumentIsRequired(exchange.currentDay, "exchange.currentDay", Day8, "Day");
             assert.argumentIsRequired(exchange.currentOpened, "exchange.currentOpened", Boolean);
             const code = exchange.code;
             this._exchanges[code] = exchange;
@@ -10941,10 +11379,10 @@
           return keys.reduce((tree2, key) => tree2.findChild((group) => group.key === key), tree);
         }
         function getForexSymbolForTranslation(currency) {
-          if (!(currency instanceof Currency5) || currency === DEFAULT_CURRENCY) {
+          if (!(currency instanceof Currency6) || currency === DEFAULT_CURRENCY) {
             return null;
           }
-          const currencyToUse = currency === Currency5.GBX ? Currency5.GBP : currency;
+          const currencyToUse = currency === Currency6.GBX ? Currency6.GBP : currency;
           return `^${DEFAULT_CURRENCY.code}${currencyToUse.code}`;
         }
         function registerCurrencyTranslation(currency) {
@@ -10954,7 +11392,7 @@
           }
           this._forexSymbols.push(symbol);
           this._currencyTranslator.addSymbol(symbol);
-          this._currencyTranslator.setRate(Rate.fromPair(Decimal8.ONE, symbol));
+          this._currencyTranslator.setRate(Rate.fromPair(Decimal9.ONE, symbol));
           this._forexSymbolAddedEvent.fire(symbol);
         }
         function findParentGroup(group, predicate) {
@@ -11234,9 +11672,9 @@
   // test/utils/processing/PositionTestFactory.js
   var require_PositionTestFactory = __commonJS({
     "test/utils/processing/PositionTestFactory.js"(exports, module) {
-      var Currency5 = require_Currency();
-      var Decimal8 = require_Decimal();
-      var InstrumentType7 = require_InstrumentType();
+      var Currency6 = require_Currency();
+      var Decimal9 = require_Decimal();
+      var InstrumentType8 = require_InstrumentType();
       var PositionDirection2 = require_PositionDirection();
       var positionCounter = 0;
       function resetPositionCounter() {
@@ -11256,18 +11694,18 @@
             symbol: {
               barchart: symbol
             },
-            currency: currency || Currency5.USD,
-            type: InstrumentType7.EQUITY
+            currency: currency || Currency6.USD,
+            type: InstrumentType8.EQUITY
           },
           snapshot: {
-            basis: new Decimal8(123),
-            value: new Decimal8(456),
-            open: new Decimal8(1),
+            basis: new Decimal9(123),
+            value: new Decimal9(456),
+            open: new Decimal9(1),
             direction: PositionDirection2.LONG,
-            income: new Decimal8(0),
-            gain: new Decimal8(0),
-            buys: new Decimal8(50),
-            sells: new Decimal8(0)
+            income: new Decimal9(0),
+            gain: new Decimal9(0),
+            buys: new Decimal9(50),
+            sells: new Decimal9(0)
           }
         }, overrides || {});
       }
@@ -11291,11 +11729,11 @@
               basis: position.snapshot.basis
             },
             period: {
-              buys: new Decimal8(0),
-              sells: new Decimal8(0),
-              income: new Decimal8(0),
-              realized: new Decimal8(0),
-              unrealized: new Decimal8(0)
+              buys: new Decimal9(0),
+              sells: new Decimal9(0),
+              income: new Decimal9(0),
+              realized: new Decimal9(0),
+              unrealized: new Decimal9(0)
             }
           };
         });
@@ -13589,13 +14027,13 @@
     "../../node_modules/@barchart/common-js/lang/Money.js"(exports, module) {
       var assert = require_assert();
       var is = require_is();
-      var Decimal8 = require_Decimal();
-      var Currency5 = require_Currency();
+      var Decimal9 = require_Decimal();
+      var Currency6 = require_Currency();
       module.exports = (() => {
         "use strict";
         class Money {
           constructor(value, currency) {
-            assert.argumentIsRequired(currency, "currency", Currency5, "Currency");
+            assert.argumentIsRequired(currency, "currency", Currency6, "Currency");
             this._decimal = getDecimal(value);
             this._currency = currency;
           }
@@ -13648,10 +14086,10 @@
           }
         }
         function getDecimal(value) {
-          if (value instanceof Decimal8) {
+          if (value instanceof Decimal9) {
             return value;
           } else {
-            return new Decimal8(value);
+            return new Decimal9(value);
           }
         }
         function getPlaces(value) {
@@ -19301,8 +19739,8 @@
       var moment = require_moment();
       var AdHoc = require_AdHoc();
       var assert = require_assert();
-      var Day7 = require_Day();
-      var Decimal8 = require_Decimal();
+      var Day8 = require_Day();
+      var Decimal9 = require_Decimal();
       var Enum = require_Enum();
       var is = require_is();
       var Timestamp = require_Timestamp();
@@ -19504,8 +19942,8 @@
         const dataTypeBoolean = new DataType("Boolean", null, null, is.boolean);
         const dataTypeObject = new DataType("Object", null, null, is.object);
         const dataTypeArray = new DataType("Array", null, null, is.array);
-        const dataTypeDecimal = new DataType("Decimal", null, (x) => Decimal8.parse(x), (x) => x instanceof Decimal8, getBuilder(buildDecimal));
-        const dataTypeDay = new DataType("Day", null, (x) => Day7.parse(x), (x) => x instanceof Day7, getBuilder(buildDay));
+        const dataTypeDecimal = new DataType("Decimal", null, (x) => Decimal9.parse(x), (x) => x instanceof Decimal9, getBuilder(buildDecimal));
+        const dataTypeDay = new DataType("Day", null, (x) => Day8.parse(x), (x) => x instanceof Day8, getBuilder(buildDay));
         const dataTypeTimestamp = new DataType("Timestamp", null, (x) => Timestamp.parse(x), (x) => x instanceof Timestamp, getBuilder(buildTimestamp));
         const dataTypeAdHoc = new DataType("AdHoc", null, (x) => AdHoc.parse(x), (x) => x instanceof AdHoc, getBuilder(buildAdHoc));
         function getBuilder(builder) {
@@ -19518,17 +19956,17 @@
           };
         }
         function buildDecimal(data) {
-          return new Decimal8(data);
+          return new Decimal9(data);
         }
         function buildDay(data) {
-          if (data instanceof Day7) {
-            return new Day7(data.year, data.month, data.day);
+          if (data instanceof Day8) {
+            return new Day8(data.year, data.month, data.day);
           } else if (is.date(data)) {
-            return Day7.fromDate(data);
+            return Day8.fromDate(data);
           } else if (is.string(data)) {
-            return Day7.parse(data);
+            return Day8.parse(data);
           } else if (data instanceof moment) {
-            return new Day7(data.year(), data.month() + 1, data.date());
+            return new Day8(data.year(), data.month() + 1, data.date());
           } else {
             return data;
           }
@@ -19624,7 +20062,7 @@
   // ../../node_modules/@barchart/common-js/serialization/json/Component.js
   var require_Component = __commonJS({
     "../../node_modules/@barchart/common-js/serialization/json/Component.js"(exports, module) {
-      var Currency5 = require_Currency();
+      var Currency6 = require_Currency();
       var Money = require_Money();
       var DataType = require_DataType();
       var Field = require_Field();
@@ -19671,7 +20109,7 @@
           static forMoney(name) {
             return new Component(name, [
               new Field("decimal", DataType.DECIMAL),
-              new Field("currency", DataType.forEnum(Currency5, "Currency"))
+              new Field("currency", DataType.forEnum(Currency6, "Currency"))
             ], (x) => Money.parse(x));
           }
           toString() {
@@ -21676,7 +22114,7 @@
   var require_UnitCode = __commonJS({
     "../../node_modules/@barchart/marketdata-api-js/lib/utilities/data/UnitCode.js"(exports, module) {
       var assert = require_assert();
-      var Decimal8 = require_Decimal();
+      var Decimal9 = require_Decimal();
       var is = require_is();
       var Enum = require_Enum();
       module.exports = (() => {
@@ -21811,8 +22249,8 @@
            */
           getMinimumTick(tickIncrement) {
             assert.argumentIsValid(tickIncrement, "tickIncrement", is.integer, "must be an integer");
-            const one = new Decimal8(1);
-            const ten = new Decimal8(10);
+            const one = new Decimal9(1);
+            const ten = new Decimal9(10);
             let discretePrice;
             if (this.supportsFractions) {
               discretePrice = one.divide(this._fractionFactor);
@@ -21834,7 +22272,7 @@
           getMinimumTickValue(tickIncrement, pointValue) {
             assert.argumentIsValid(tickIncrement, "tickIncrement", is.integer, "must be an integer");
             assert.argumentIsValid(pointValue, "pointValue", is.number, "must be a number");
-            const minimumTick = new Decimal8(this.getMinimumTick(tickIncrement));
+            const minimumTick = new Decimal9(this.getMinimumTick(tickIncrement));
             const minimumTickValue = minimumTick.multiply(pointValue);
             return minimumTickValue.toFloat();
           }
@@ -21847,19 +22285,19 @@
            * @returns {Number}
            */
           roundToNearestTick(value, minimumTick, roundToZero) {
-            assert.argumentIsValid(value, "value", (x) => is.number(x) || x instanceof Decimal8, "must be a number primitive or a Decimal instance");
-            assert.argumentIsValid(minimumTick, "minimumTick", (x) => is.number(x) || x instanceof Decimal8, "must be a number primitive or a Decimal instance");
+            assert.argumentIsValid(value, "value", (x) => is.number(x) || x instanceof Decimal9, "must be a number primitive or a Decimal instance");
+            assert.argumentIsValid(minimumTick, "minimumTick", (x) => is.number(x) || x instanceof Decimal9, "must be a number primitive or a Decimal instance");
             assert.argumentIsOptional(roundToZero, "roundToZero", Boolean);
             let valueToUse;
-            if (value instanceof Decimal8) {
+            if (value instanceof Decimal9) {
               valueToUse = value;
             } else {
-              valueToUse = new Decimal8(value);
+              valueToUse = new Decimal9(value);
             }
             let ticks = valueToUse.divide(minimumTick);
             let remainder = valueToUse.mod(minimumTick);
             if (!remainder.getIsZero()) {
-              ticks = ticks.round(0, is.boolean(roundToZero) && roundToZero ? Decimal8.ROUNDING_MODE.DOWN : Decimal8.ROUNDING_MODE.NORMAL);
+              ticks = ticks.round(0, is.boolean(roundToZero) && roundToZero ? Decimal9.ROUNDING_MODE.DOWN : Decimal9.ROUNDING_MODE.NORMAL);
             }
             return ticks.multiply(minimumTick).toFloat();
           }
@@ -22010,12 +22448,12 @@
   // lib/serialization/PositionSchema.js
   var require_PositionSchema = __commonJS({
     "lib/serialization/PositionSchema.js"(exports, module) {
-      var Currency5 = require_Currency();
+      var Currency6 = require_Currency();
       var DataType = require_DataType();
       var Enum = require_Enum();
       var SchemaBuilder = require_SchemaBuilder();
       var UnitCode = require_UnitCode();
-      var InstrumentType7 = require_InstrumentType();
+      var InstrumentType8 = require_InstrumentType();
       var OptionSide = require_OptionSide();
       var PositionDirection2 = require_PositionDirection();
       var ValuationType = require_ValuationType();
@@ -22080,13 +22518,13 @@
           }
         }
         const complete = new PositionSchema2(
-          SchemaBuilder.withName("complete").withField("user", DataType.STRING).withField("portfolio", DataType.STRING).withField("instrument.id", DataType.STRING).withField("instrument.name", DataType.STRING).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType")).withField("instrument.code", DataType.forEnum(UnitCode, "UnitCode"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency")).withField("instrument.exchange", DataType.STRING, true).withField("instrument.delist", DataType.DAY, true).withField("instrument.future.expiration", DataType.DAY, true).withField("instrument.future.tick", DataType.DECIMAL, true).withField("instrument.future.value", DataType.DECIMAL, true).withField("instrument.option.underlying", DataType.STRING, true).withField("instrument.option.expiration", DataType.DAY, true).withField("instrument.option.side", DataType.forEnum(OptionSide, "OptionSide"), true).withField("instrument.option.strike", DataType.DECIMAL, true).withField("instrument.option.multiplier", DataType.DECIMAL, true).withField("instrument.option.tick", DataType.DECIMAL, true).withField("instrument.option.value", DataType.DECIMAL, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("position", DataType.STRING).withField("transaction", DataType.NUMBER).withField("opening.date", DataType.DAY, true).withField("closing.date", DataType.DAY, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).withField("valuation", DataType.forEnum(ValuationType, "ValuationType")).withField("snapshot.date", DataType.DAY).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("snapshot.initial", DataType.forEnum(PositionDirection2, "PositionDirection"), true).withField("latest.date", DataType.DAY).withField("latest.gain", DataType.DECIMAL).withField("legacy.system", DataType.STRING, true).withField("legacy.user", DataType.STRING, true).withField("legacy.portfolio", DataType.STRING, true).withField("legacy.position", DataType.STRING, true).withField("system.version", DataType.NUMBER, true).withField("system.calculate.processors", DataType.NUMBER, true).withField("system.locked", DataType.BOOLEAN, true).withField("root", DataType.STRING, true).schema
+          SchemaBuilder.withName("complete").withField("user", DataType.STRING).withField("portfolio", DataType.STRING).withField("instrument.id", DataType.STRING).withField("instrument.name", DataType.STRING).withField("instrument.type", DataType.forEnum(InstrumentType8, "InstrumentType")).withField("instrument.code", DataType.forEnum(UnitCode, "UnitCode"), true).withField("instrument.currency", DataType.forEnum(Currency6, "Currency")).withField("instrument.exchange", DataType.STRING, true).withField("instrument.delist", DataType.DAY, true).withField("instrument.future.expiration", DataType.DAY, true).withField("instrument.future.tick", DataType.DECIMAL, true).withField("instrument.future.value", DataType.DECIMAL, true).withField("instrument.option.underlying", DataType.STRING, true).withField("instrument.option.expiration", DataType.DAY, true).withField("instrument.option.side", DataType.forEnum(OptionSide, "OptionSide"), true).withField("instrument.option.strike", DataType.DECIMAL, true).withField("instrument.option.multiplier", DataType.DECIMAL, true).withField("instrument.option.tick", DataType.DECIMAL, true).withField("instrument.option.value", DataType.DECIMAL, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("position", DataType.STRING).withField("transaction", DataType.NUMBER).withField("opening.date", DataType.DAY, true).withField("closing.date", DataType.DAY, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).withField("valuation", DataType.forEnum(ValuationType, "ValuationType")).withField("snapshot.date", DataType.DAY).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("snapshot.initial", DataType.forEnum(PositionDirection2, "PositionDirection"), true).withField("latest.date", DataType.DAY).withField("latest.gain", DataType.DECIMAL).withField("legacy.system", DataType.STRING, true).withField("legacy.user", DataType.STRING, true).withField("legacy.portfolio", DataType.STRING, true).withField("legacy.position", DataType.STRING, true).withField("system.version", DataType.NUMBER, true).withField("system.calculate.processors", DataType.NUMBER, true).withField("system.locked", DataType.BOOLEAN, true).withField("root", DataType.STRING, true).schema
         );
         const client = new PositionSchema2(
-          SchemaBuilder.withName("client").withField("user", DataType.STRING).withField("portfolio", DataType.STRING).withField("instrument.id", DataType.STRING).withField("instrument.name", DataType.STRING).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType")).withField("instrument.code", DataType.forEnum(UnitCode, "UnitCode"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency")).withField("instrument.exchange", DataType.STRING, true).withField("instrument.delist", DataType.DAY, true).withField("instrument.future.expiration", DataType.DAY, true).withField("instrument.future.tick", DataType.DECIMAL, true).withField("instrument.future.value", DataType.DECIMAL, true).withField("instrument.option.underlying", DataType.STRING, true).withField("instrument.option.expiration", DataType.DAY, true).withField("instrument.option.side", DataType.forEnum(OptionSide, "OptionSide"), true).withField("instrument.option.strike", DataType.DECIMAL, true).withField("instrument.option.multiplier", DataType.DECIMAL, true).withField("instrument.option.tick", DataType.DECIMAL, true).withField("instrument.option.value", DataType.DECIMAL, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("position", DataType.STRING).withField("transaction", DataType.NUMBER).withField("opening.date", DataType.DAY, true).withField("closing.date", DataType.DAY, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).withField("valuation", DataType.forEnum(ValuationType, "ValuationType")).withField("snapshot.date", DataType.DAY).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("snapshot.initial", DataType.forEnum(PositionDirection2, "PositionDirection"), true).withField("latest.date", DataType.DAY).withField("latest.gain", DataType.DECIMAL).withField("system.calculate.processors", DataType.NUMBER, true).withField("system.locked", DataType.BOOLEAN, true).withField("previous", DataType.NUMBER, true).schema
+          SchemaBuilder.withName("client").withField("user", DataType.STRING).withField("portfolio", DataType.STRING).withField("instrument.id", DataType.STRING).withField("instrument.name", DataType.STRING).withField("instrument.type", DataType.forEnum(InstrumentType8, "InstrumentType")).withField("instrument.code", DataType.forEnum(UnitCode, "UnitCode"), true).withField("instrument.currency", DataType.forEnum(Currency6, "Currency")).withField("instrument.exchange", DataType.STRING, true).withField("instrument.delist", DataType.DAY, true).withField("instrument.future.expiration", DataType.DAY, true).withField("instrument.future.tick", DataType.DECIMAL, true).withField("instrument.future.value", DataType.DECIMAL, true).withField("instrument.option.underlying", DataType.STRING, true).withField("instrument.option.expiration", DataType.DAY, true).withField("instrument.option.side", DataType.forEnum(OptionSide, "OptionSide"), true).withField("instrument.option.strike", DataType.DECIMAL, true).withField("instrument.option.multiplier", DataType.DECIMAL, true).withField("instrument.option.tick", DataType.DECIMAL, true).withField("instrument.option.value", DataType.DECIMAL, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("position", DataType.STRING).withField("transaction", DataType.NUMBER).withField("opening.date", DataType.DAY, true).withField("closing.date", DataType.DAY, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).withField("valuation", DataType.forEnum(ValuationType, "ValuationType")).withField("snapshot.date", DataType.DAY).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("snapshot.initial", DataType.forEnum(PositionDirection2, "PositionDirection"), true).withField("latest.date", DataType.DAY).withField("latest.gain", DataType.DECIMAL).withField("system.calculate.processors", DataType.NUMBER, true).withField("system.locked", DataType.BOOLEAN, true).withField("previous", DataType.NUMBER, true).schema
         );
         const update = new PositionSchema2(
-          SchemaBuilder.withName("update").withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("mapping.name", DataType.STRING, true).withField("mapping.type", DataType.forEnum(InstrumentType7, "InstrumentType"), true).withField("mapping.currency", DataType.forEnum(Currency5, "Currency"), true).withField("mapping.symbol.barchart", DataType.STRING, true).withField("mapping.symbol.display", DataType.STRING, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName("update").withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("mapping.name", DataType.STRING, true).withField("mapping.type", DataType.forEnum(InstrumentType8, "InstrumentType"), true).withField("mapping.currency", DataType.forEnum(Currency6, "Currency"), true).withField("mapping.symbol.barchart", DataType.STRING, true).withField("mapping.symbol.display", DataType.STRING, true).withField("cash", DataType.BOOLEAN, true).withField("reinvest", DataType.BOOLEAN, true).schema
         );
         const simple = new PositionSchema2(
           SchemaBuilder.withName("simple").withField("user", DataType.STRING).withField("portfolio", DataType.STRING).withField("instrument.id", DataType.STRING).withField("instrument.name", DataType.STRING).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("position", DataType.STRING).schema
@@ -22100,13 +22538,13 @@
   var require_TransactionSchema = __commonJS({
     "lib/serialization/TransactionSchema.js"(exports, module) {
       var is = require_is();
-      var Currency5 = require_Currency();
+      var Currency6 = require_Currency();
       var DataType = require_DataType();
       var Enum = require_Enum();
       var SchemaBuilder = require_SchemaBuilder();
-      var InstrumentType7 = require_InstrumentType();
+      var InstrumentType8 = require_InstrumentType();
       var PositionDirection2 = require_PositionDirection();
-      var TransactionType5 = require_TransactionType();
+      var TransactionType6 = require_TransactionType();
       module.exports = (() => {
         "use strict";
         class TransactionSchema2 extends Enum {
@@ -22134,7 +22572,7 @@
            */
           static forCreate(transactionType) {
             let code;
-            if (transactionType instanceof TransactionType5) {
+            if (transactionType instanceof TransactionType6) {
               code = transactionType.code;
             } else {
               code = transactionType;
@@ -22199,55 +22637,113 @@
           }
         }
         const complete = new TransactionSchema2(
-          SchemaBuilder.withName("complete").withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("transaction", DataType.STRING).withField("sequence", DataType.NUMBER).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("description", DataType.STRING, true).withField("amount", DataType.DECIMAL).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("gain", DataType.DECIMAL).withField("reference.position", DataType.STRING, true).withField("reference.transaction", DataType.STRING, true).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("legacy.system", DataType.STRING, true).withField("legacy.user", DataType.STRING, true).withField("legacy.portfolio", DataType.STRING).withField("legacy.position", DataType.STRING, true).withField("legacy.transaction", DataType.STRING, true).withField("trade.price", DataType.DECIMAL, true).withField("dividend.rate", DataType.DECIMAL, true).withField("dividend.effective", DataType.DAY, true).withField("dividend.price", DataType.DECIMAL, true).withField("dividend.amount", DataType.DECIMAL, true).withField("dividend.reference", DataType.STRING, true).withField("split.numerator", DataType.DECIMAL, true).withField("split.denominator", DataType.DECIMAL, true).withField("split.effective", DataType.DAY, true).withField("split.reference", DataType.STRING, true).withField("merger.numerator", DataType.DECIMAL, true).withField("merger.denominator", DataType.DECIMAL, true).withField("spinoff.numerator", DataType.DECIMAL, true).withField("spinoff.denominator", DataType.DECIMAL, true).withField("charge.amount", DataType.DECIMAL, true).withField("income.amount", DataType.DECIMAL, true).withField("valuation.rate", DataType.DECIMAL, true).withField("valuation.value", DataType.DECIMAL, true).withField("system.sequence", DataType.NUMBER).withField("system.version", DataType.STRING).withField("system.timestamp", DataType.TIMESTAMP).schema
+          SchemaBuilder.withName("complete").withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("transaction", DataType.STRING).withField("sequence", DataType.NUMBER).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("date", DataType.DAY).withField("description", DataType.STRING, true).withField("amount", DataType.DECIMAL).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("gain", DataType.DECIMAL).withField("reference.position", DataType.STRING, true).withField("reference.transaction", DataType.STRING, true).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("legacy.system", DataType.STRING, true).withField("legacy.user", DataType.STRING, true).withField("legacy.portfolio", DataType.STRING).withField("legacy.position", DataType.STRING, true).withField("legacy.transaction", DataType.STRING, true).withField("trade.price", DataType.DECIMAL, true).withField("dividend.rate", DataType.DECIMAL, true).withField("dividend.effective", DataType.DAY, true).withField("dividend.price", DataType.DECIMAL, true).withField("dividend.amount", DataType.DECIMAL, true).withField("dividend.reference", DataType.STRING, true).withField("split.numerator", DataType.DECIMAL, true).withField("split.denominator", DataType.DECIMAL, true).withField("split.effective", DataType.DAY, true).withField("split.reference", DataType.STRING, true).withField("merger.numerator", DataType.DECIMAL, true).withField("merger.denominator", DataType.DECIMAL, true).withField("spinoff.numerator", DataType.DECIMAL, true).withField("spinoff.denominator", DataType.DECIMAL, true).withField("charge.amount", DataType.DECIMAL, true).withField("income.amount", DataType.DECIMAL, true).withField("valuation.rate", DataType.DECIMAL, true).withField("valuation.value", DataType.DECIMAL, true).withField("system.sequence", DataType.NUMBER).withField("system.version", DataType.STRING).withField("system.timestamp", DataType.TIMESTAMP).schema
         );
         const client = new TransactionSchema2(
-          SchemaBuilder.withName("client").withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("transaction", DataType.STRING).withField("sequence", DataType.NUMBER).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("description", DataType.STRING, true).withField("amount", DataType.DECIMAL).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("gain", DataType.DECIMAL).withField("reference.position", DataType.STRING, true).withField("reference.transaction", DataType.NUMBER, true).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("trade.price", DataType.DECIMAL, true).withField("dividend.rate", DataType.DECIMAL, true).withField("dividend.effective", DataType.DAY, true).withField("dividend.price", DataType.DECIMAL, true).withField("dividend.amount", DataType.DECIMAL, true).withField("split.numerator", DataType.DECIMAL, true).withField("split.denominator", DataType.DECIMAL, true).withField("split.effective", DataType.DAY, true).withField("split.reference", DataType.STRING, true).withField("merger.numerator", DataType.DECIMAL, true).withField("merger.denominator", DataType.DECIMAL, true).withField("spinoff.numerator", DataType.DECIMAL, true).withField("spinoff.denominator", DataType.DECIMAL, true).withField("charge.amount", DataType.DECIMAL, true).withField("income.amount", DataType.DECIMAL, true).withField("valuation.rate", DataType.DECIMAL, true).withField("valuation.value", DataType.DECIMAL, true).schema
+          SchemaBuilder.withName("client").withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("transaction", DataType.STRING).withField("sequence", DataType.NUMBER).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("date", DataType.DAY).withField("description", DataType.STRING, true).withField("amount", DataType.DECIMAL).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("gain", DataType.DECIMAL).withField("reference.position", DataType.STRING, true).withField("reference.transaction", DataType.NUMBER, true).withField("snapshot.open", DataType.DECIMAL).withField("snapshot.direction", DataType.forEnum(PositionDirection2, "PositionDirection")).withField("snapshot.buys", DataType.DECIMAL).withField("snapshot.sells", DataType.DECIMAL).withField("snapshot.gain", DataType.DECIMAL).withField("snapshot.basis", DataType.DECIMAL).withField("snapshot.income", DataType.DECIMAL).withField("snapshot.dividends", DataType.DECIMAL, true).withField("snapshot.value", DataType.DECIMAL).withField("trade.price", DataType.DECIMAL, true).withField("dividend.rate", DataType.DECIMAL, true).withField("dividend.effective", DataType.DAY, true).withField("dividend.price", DataType.DECIMAL, true).withField("dividend.amount", DataType.DECIMAL, true).withField("split.numerator", DataType.DECIMAL, true).withField("split.denominator", DataType.DECIMAL, true).withField("split.effective", DataType.DAY, true).withField("split.reference", DataType.STRING, true).withField("merger.numerator", DataType.DECIMAL, true).withField("merger.denominator", DataType.DECIMAL, true).withField("spinoff.numerator", DataType.DECIMAL, true).withField("spinoff.denominator", DataType.DECIMAL, true).withField("charge.amount", DataType.DECIMAL, true).withField("income.amount", DataType.DECIMAL, true).withField("valuation.rate", DataType.DECIMAL, true).withField("valuation.value", DataType.DECIMAL, true).schema
         );
         const buy = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.BUY.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.id", DataType.STRING, true).withField("instrument.name", DataType.STRING, true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.code", DataType.NUMBER, true).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("date", DataType.DAY).withField("price", DataType.DECIMAL, true).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("reinvest", DataType.BOOLEAN, true).withField("cash", DataType.BOOLEAN, true).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType6.BUY.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("instrument.id", DataType.STRING, true).withField("instrument.name", DataType.STRING, true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.code", DataType.NUMBER, true).withField("instrument.type", DataType.forEnum(InstrumentType8, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency6, "Currency"), true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("date", DataType.DAY).withField("price", DataType.DECIMAL, true).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("reinvest", DataType.BOOLEAN, true).withField("cash", DataType.BOOLEAN, true).withField("force", DataType.BOOLEAN, true).schema
         );
         const sell = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.SELL.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("price", DataType.DECIMAL, true).withField("quantity", DataType.DECIMAL, true).withField("fee", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).withField("close", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType6.SELL.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("date", DataType.DAY).withField("price", DataType.DECIMAL, true).withField("quantity", DataType.DECIMAL, true).withField("fee", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).withField("close", DataType.BOOLEAN, true).schema
         );
         const buyShort = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.BUY_SHORT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("price", DataType.DECIMAL).withField("quantity", DataType.DECIMAL, true).withField("fee", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).withField("close", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType6.BUY_SHORT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("date", DataType.DAY).withField("price", DataType.DECIMAL).withField("quantity", DataType.DECIMAL, true).withField("fee", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).withField("close", DataType.BOOLEAN, true).schema
         );
         const sellShort = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.SELL_SHORT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.id", DataType.STRING, true).withField("instrument.name", DataType.STRING, true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.code", DataType.NUMBER, true).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("date", DataType.DAY).withField("price", DataType.DECIMAL).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("reinvest", DataType.BOOLEAN, true).withField("cash", DataType.BOOLEAN, true).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType6.SELL_SHORT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("instrument.id", DataType.STRING, true).withField("instrument.name", DataType.STRING, true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.code", DataType.NUMBER, true).withField("instrument.type", DataType.forEnum(InstrumentType8, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency6, "Currency"), true).withField("instrument.exchange", DataType.STRING, true).withField("instrument.symbol.barchart", DataType.STRING, true).withField("instrument.symbol.display", DataType.STRING, true).withField("date", DataType.DAY).withField("price", DataType.DECIMAL).withField("quantity", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("reinvest", DataType.BOOLEAN, true).withField("cash", DataType.BOOLEAN, true).withField("force", DataType.BOOLEAN, true).schema
         );
         const fee = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.FEE.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("fee", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType6.FEE.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("date", DataType.DAY).withField("fee", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
         );
         const deposit = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.DEPOSIT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("date", DataType.DAY).withField("amount", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType6.DEPOSIT.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("instrument.type", DataType.forEnum(InstrumentType8, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency6, "Currency"), true).withField("date", DataType.DAY).withField("amount", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
         );
         const withdrawal = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.WITHDRAWAL.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("instrument.type", DataType.forEnum(InstrumentType7, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency5, "Currency"), true).withField("date", DataType.DAY).withField("amount", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType6.WITHDRAWAL.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("instrument.type", DataType.forEnum(InstrumentType8, "InstrumentType"), true).withField("instrument.currency", DataType.forEnum(Currency6, "Currency"), true).withField("date", DataType.DAY).withField("amount", DataType.DECIMAL).withField("force", DataType.BOOLEAN, true).schema
         );
         const valuation = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.VALUATION.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("rate", DataType.DECIMAL, true).withField("value", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType6.VALUATION.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("date", DataType.DAY).withField("rate", DataType.DECIMAL, true).withField("value", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).schema
         );
         const delist = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.DELIST.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType6.DELIST.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("date", DataType.DAY).withField("force", DataType.BOOLEAN, true).schema
         );
         const income = new TransactionSchema2(
-          SchemaBuilder.withName(TransactionType5.INCOME.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType5, "TransactionType")).withField("date", DataType.DAY).withField("income", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).schema
+          SchemaBuilder.withName(TransactionType6.INCOME.code).withField("portfolio", DataType.STRING).withField("position", DataType.STRING).withField("sequence", DataType.NUMBER, true).withField("type", DataType.forEnum(TransactionType6, "TransactionType")).withField("date", DataType.DAY).withField("income", DataType.DECIMAL).withField("fee", DataType.DECIMAL, true).withField("force", DataType.BOOLEAN, true).schema
         );
         return TransactionSchema2;
       })();
     }
   });
 
-  // test/specs/calculators/AveragePriceCalculatorSpec.js
+  // test/specs/TransactionFormatterSpec.js
+  var Currency = require_Currency();
+  var Day = require_Day();
   var Decimal = require_Decimal();
   var InstrumentType = require_InstrumentType();
+  var TransactionType = require_TransactionType();
+  var TransactionFormatter = require_TransactionFormatter();
+  describe("When transactions are formatted", () => {
+    "use strict";
+    let position;
+    let transaction;
+    beforeEach(() => {
+      position = {
+        position: "position",
+        instrument: {
+          id: "instrument",
+          type: InstrumentType.EQUITY,
+          currency: Currency.USD
+        }
+      };
+      transaction = {
+        position: "position",
+        transaction: "transaction",
+        sequence: 1,
+        type: TransactionType.BUY,
+        date: Day.parse("2026-09-10"),
+        quantity: new Decimal(1),
+        fee: Decimal.ZERO,
+        amount: new Decimal(10),
+        trade: { price: new Decimal(10) },
+        snapshot: { open: new Decimal(1), basis: new Decimal(10) }
+      };
+    });
+    it("should identify a manually created transaction", () => {
+      const formatted = TransactionFormatter.format([transaction], [position]);
+      expect(formatted[0].userCreated).toBe(true);
+    });
+    it("should identify a broker-imported transaction", () => {
+      transaction.snaptrade = { instrument: "instrument", transaction: "broker-transaction" };
+      const formatted = TransactionFormatter.format([transaction], [position]);
+      expect(formatted[0].userCreated).toBe(false);
+    });
+    it("should identify an edited broker-imported transaction", () => {
+      transaction.snaptrade = { instrument: "instrument", transaction: "broker-transaction", edited: true };
+      const formatted = TransactionFormatter.format([transaction], [position]);
+      expect(formatted[0].edited).toBe(true);
+    });
+    it("should identify an untouched broker-imported transaction as not edited", () => {
+      transaction.snaptrade = { instrument: "instrument", transaction: "broker-transaction" };
+      const formatted = TransactionFormatter.format([transaction], [position]);
+      expect(formatted[0].edited).toBe(false);
+    });
+    it("should identify a manually created transaction as not edited", () => {
+      const formatted = TransactionFormatter.format([transaction], [position]);
+      expect(formatted[0].edited).toBe(false);
+    });
+  });
+
+  // test/specs/calculators/AveragePriceCalculatorSpec.js
+  var Decimal2 = require_Decimal();
+  var InstrumentType2 = require_InstrumentType();
   var AveragePriceCalculator = require_AveragePriceCalculator();
   describe("When calculating the value of a cash", () => {
     "use strict";
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType.CASH };
+      instrument = { type: InstrumentType2.CASH };
     });
     it("A balance of $0 balance should have an average cost of $1", () => {
       expect(AveragePriceCalculator.calculate(instrument, 0, 0).toFloat()).toEqual(1);
@@ -22263,7 +22759,7 @@
     "use strict";
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType.EQUITY };
+      instrument = { type: InstrumentType2.EQUITY };
     });
     it("An even position should have no average cost", () => {
       expect(AveragePriceCalculator.calculate(instrument, 0, 0)).toEqual(null);
@@ -22278,7 +22774,7 @@
   describe("When calculating the value of an equity option (with a multiplier of 100)", () => {
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType.EQUITY_OPTION, option: { multiplier: 100 } };
+      instrument = { type: InstrumentType2.EQUITY_OPTION, option: { multiplier: 100 } };
     });
     it("An even position should have no average cost", () => {
       expect(AveragePriceCalculator.calculate(instrument, 0, 0)).toEqual(null);
@@ -22294,7 +22790,7 @@
     "use strict";
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType.FUND };
+      instrument = { type: InstrumentType2.FUND };
     });
     it("An even position should have no average cost", () => {
       expect(AveragePriceCalculator.calculate(instrument, 0, 0)).toEqual(null);
@@ -22306,7 +22802,7 @@
   describe("When calculating the value of a future (with a minimum tick of 0.25 tick, and each tick valued at $12.50 each)", () => {
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType.FUTURE, future: { tick: 0.25, value: 12.5 } };
+      instrument = { type: InstrumentType2.FUTURE, future: { tick: 0.25, value: 12.5 } };
     });
     it("An even position should have no average cost", () => {
       expect(AveragePriceCalculator.calculate(instrument, 0, 0)).toEqual(null);
@@ -22321,7 +22817,7 @@
   describe("When calculating the value of a futures option (with a minimum tick of 0.125 tick, and each tick valued at $6.25 each)", () => {
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType.FUTURE_OPTION, option: { tick: 0.125, value: 6.25 } };
+      instrument = { type: InstrumentType2.FUTURE_OPTION, option: { tick: 0.125, value: 6.25 } };
     });
     it("An even position should have no average cost", () => {
       expect(AveragePriceCalculator.calculate(instrument, 0, 0)).toEqual(null);
@@ -22336,7 +22832,7 @@
   describe('When calculating the value of an "other" item"', () => {
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType.OTHER };
+      instrument = { type: InstrumentType2.OTHER };
     });
     it("An even position should have no average cost", () => {
       expect(AveragePriceCalculator.calculate(instrument, 0, 0)).toEqual(null);
@@ -22347,20 +22843,20 @@
   });
 
   // test/specs/calculators/ValuationCalculatorSpec.js
-  var Decimal2 = require_Decimal();
-  var InstrumentType2 = require_InstrumentType();
+  var Decimal3 = require_Decimal();
+  var InstrumentType3 = require_InstrumentType();
   var ValuationCalculator = require_ValuationCalculator();
   describe("When calculating the value of a cash", () => {
     "use strict";
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType2.CASH };
+      instrument = { type: InstrumentType3.CASH };
     });
     it("$100 should equal $100 (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 0, 100).toFloat()).toEqual(100);
     });
     it("$100 should equal $100 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, 0, new Decimal2(100)).toFloat()).toEqual(100);
+      expect(ValuationCalculator.calculate(instrument, 0, new Decimal3(100)).toFloat()).toEqual(100);
     });
     it("$100 valued at an undefined price should return null", () => {
       expect(ValuationCalculator.calculate(instrument, void 0, 100)).toBe(null);
@@ -22373,25 +22869,25 @@
     "use strict";
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType2.EQUITY };
+      instrument = { type: InstrumentType3.EQUITY };
     });
     it("100 shares (long) @ $17.50 should equal $1,750 (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 17.5, 100).toFloat()).toEqual(1750);
     });
     it("100 shares (long) @ $17.50 should equal $1,750 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(17.5), new Decimal2(100)).toFloat()).toEqual(1750);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(17.5), new Decimal3(100)).toFloat()).toEqual(1750);
     });
     it("100 shares (long) @ $0 should equal $0 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(0), new Decimal2(100)).toFloat()).toEqual(0);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(0), new Decimal3(100)).toFloat()).toEqual(0);
     });
     it("50 shares (short) @ $17.50 should equal ($875) (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 17.5, -50).toFloat()).toEqual(-875);
     });
     it("50 shares (short) @ $17.50 should equal ($875) (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(17.5), new Decimal2(-50)).toFloat()).toEqual(-875);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(17.5), new Decimal3(-50)).toFloat()).toEqual(-875);
     });
     it("50 shares (short) @ $0 should equal 0 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(0), new Decimal2(-50)).toFloat()).toEqual(0);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(0), new Decimal3(-50)).toFloat()).toEqual(0);
     });
     it("100 shares (long) valued at an undefined price should return null", () => {
       expect(ValuationCalculator.calculate(instrument, void 0, 100)).toBe(null);
@@ -22404,25 +22900,25 @@
     "use strict";
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType2.EQUITY_OPTION, option: { multiplier: 100 } };
+      instrument = { type: InstrumentType3.EQUITY_OPTION, option: { multiplier: 100 } };
     });
     it("2 contracts (long) @ $1.75 should equal $350 (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 1.75, 2).toFloat()).toEqual(350);
     });
     it("2 contracts (long) @ $1.75 should equal $350 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(1.75), new Decimal2(2)).toFloat()).toEqual(350);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(1.75), new Decimal3(2)).toFloat()).toEqual(350);
     });
     it("2 contracts (long) @ $0 should equal $0 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(0), new Decimal2(2)).toFloat()).toEqual(0);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(0), new Decimal3(2)).toFloat()).toEqual(0);
     });
     it("2 contracts (short) @ $1.75 should equal ($350) (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 1.75, -2).toFloat()).toEqual(-350);
     });
     it("2 contracts (short) @ $1.75 should equal ($350) (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(1.75), new Decimal2(-2)).toFloat()).toEqual(-350);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(1.75), new Decimal3(-2)).toFloat()).toEqual(-350);
     });
     it("2 contracts (short) @ $0 should equal $0 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(0), new Decimal2(-2)).toFloat()).toEqual(0);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(0), new Decimal3(-2)).toFloat()).toEqual(0);
     });
     it("2 contracts (long) valued at an undefined price should return null", () => {
       expect(ValuationCalculator.calculate(instrument, void 0, 2)).toBe(null);
@@ -22435,16 +22931,16 @@
     "use strict";
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType2.FUND };
+      instrument = { type: InstrumentType3.FUND };
     });
     it("100 units @ $17.50 should equal $1,750 (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 17.5, 100).toFloat()).toEqual(1750);
     });
     it("100 units @ $17.50 should equal $1,750 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(17.5), new Decimal2(100)).toFloat()).toEqual(1750);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(17.5), new Decimal3(100)).toFloat()).toEqual(1750);
     });
     it("100 units @ $0 should equal $0 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(0), new Decimal2(100)).toFloat()).toEqual(0);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(0), new Decimal3(100)).toFloat()).toEqual(0);
     });
     it("100 units valued at an undefined price should return null", () => {
       expect(ValuationCalculator.calculate(instrument, void 0, 100)).toBe(null);
@@ -22457,25 +22953,25 @@
     "use strict";
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType2.FUTURE, future: { tick: 0.25, value: 12.5 } };
+      instrument = { type: InstrumentType3.FUTURE, future: { tick: 0.25, value: 12.5 } };
     });
     it("3 contracts (long) @ $461.75 should equal $69,262.50 (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 461.75, 3).toFloat()).toEqual(69262.5);
     });
     it("3 contracts (long) @ $461.75 should equal $69,262.50 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(461.75), new Decimal2(3)).toFloat()).toEqual(69262.5);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(461.75), new Decimal3(3)).toFloat()).toEqual(69262.5);
     });
     it("3 contracts (long) @ $0 should equal $0 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(0), new Decimal2(3)).toFloat()).toEqual(0);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(0), new Decimal3(3)).toFloat()).toEqual(0);
     });
     it("3 contracts (short) @ $461.75 should equal ($69,262.50) (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 461.75, -3).toFloat()).toEqual(-69262.5);
     });
     it("3 contracts (short) @ $461.75 should equal ($69,262.50) (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(461.75), new Decimal2(-3)).toFloat()).toEqual(-69262.5);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(461.75), new Decimal3(-3)).toFloat()).toEqual(-69262.5);
     });
     it("3 contracts (short) @ $0 should equal $0 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(0), new Decimal2(-3)).toFloat()).toEqual(0);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(0), new Decimal3(-3)).toFloat()).toEqual(0);
     });
     it("3 contracts (long) valued at an undefined price should return null", () => {
       expect(ValuationCalculator.calculate(instrument, void 0, 3)).toBe(null);
@@ -22488,25 +22984,25 @@
     "use strict";
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType2.FUTURE_OPTION, option: { tick: 0.125, value: 6.5 } };
+      instrument = { type: InstrumentType3.FUTURE_OPTION, option: { tick: 0.125, value: 6.5 } };
     });
     it("5 contracts (long) @ $20.75 should equal $5,395.00 (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 20.75, 5).toFloat()).toEqual(5395);
     });
     it("5 contracts (long) @ $20.75 should equal $5,395.00 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(20.75), new Decimal2(5)).toFloat()).toEqual(5395);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(20.75), new Decimal3(5)).toFloat()).toEqual(5395);
     });
     it("5 contracts (long) @ $0 should equal $0 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(0), new Decimal2(5)).toFloat()).toEqual(0);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(0), new Decimal3(5)).toFloat()).toEqual(0);
     });
     it("5 contracts (short) @ $20.75 should equal ($5,395.00) (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 20.75, -5).toFloat()).toEqual(-5395);
     });
     it("5 contracts (short) @ $20.75 should equal ($5,395.00) (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(20.75), new Decimal2(-5)).toFloat()).toEqual(-5395);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(20.75), new Decimal3(-5)).toFloat()).toEqual(-5395);
     });
     it("5 contracts (short) @ $0 should equal $0 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(0), new Decimal2(-5)).toFloat()).toEqual(0);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(0), new Decimal3(-5)).toFloat()).toEqual(0);
     });
     it("5 contracts (long) valued at an undefined price should return null", () => {
       expect(ValuationCalculator.calculate(instrument, void 0, 5)).toBe(null);
@@ -22519,13 +23015,13 @@
     "use strict";
     let instrument;
     beforeEach(() => {
-      instrument = { type: InstrumentType2.OTHER };
+      instrument = { type: InstrumentType3.OTHER };
     });
     it("4 units @ $200,000 should equal $800,000 (using numbers)", () => {
       expect(ValuationCalculator.calculate(instrument, 2e5, 4).toFloat()).toEqual(8e5);
     });
     it("4 units @ $200,000 should equal $1,750 (using decimals)", () => {
-      expect(ValuationCalculator.calculate(instrument, new Decimal2(2e5), new Decimal2(4)).toFloat()).toEqual(8e5);
+      expect(ValuationCalculator.calculate(instrument, new Decimal3(2e5), new Decimal3(4)).toFloat()).toEqual(8e5);
     });
     it("4 units valued at an undefined price should return null", () => {
       expect(ValuationCalculator.calculate(instrument, void 0, 4)).toBe(null);
@@ -22536,10 +23032,10 @@
   });
 
   // test/specs/data/PositionSummaryFrameSpec.js
-  var Day = require_Day();
-  var Decimal3 = require_Decimal();
+  var Day2 = require_Day();
+  var Decimal4 = require_Decimal();
   var PositionSummaryFrame = require_PositionSummaryFrame();
-  var TransactionType = require_TransactionType();
+  var TransactionType2 = require_TransactionType();
   describe("After the PositionSummaryFrame enumeration is initialized", () => {
     "use strict";
     function formatRange(range) {
@@ -22557,18 +23053,18 @@
         };
         const transactions = [
           {
-            date: new Day(2015, 10, 20),
+            date: new Day2(2015, 10, 20),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           },
           {
-            date: new Day(2016, 11, 21),
+            date: new Day2(2016, 11, 21),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           }
         ];
         ranges = PositionSummaryFrame.YEARLY.getRanges(transactions);
@@ -22598,18 +23094,18 @@
       beforeEach(() => {
         const transactions = [
           {
-            date: new Day(2015, 10, 20),
+            date: new Day2(2015, 10, 20),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           },
           {
-            date: new Day(2015, 11, 21),
+            date: new Day2(2015, 11, 21),
             snapshot: {
-              open: new Decimal3(0)
+              open: new Decimal4(0)
             },
-            type: TransactionType.SELL
+            type: TransactionType2.SELL
           }
         ];
         ranges = PositionSummaryFrame.YEARLY.getRanges(transactions);
@@ -22626,18 +23122,18 @@
       beforeEach(() => {
         const transactions = [
           {
-            date: new Day(2015, 10, 20),
+            date: new Day2(2015, 10, 20),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           },
           {
-            date: new Day(2016, 11, 21),
+            date: new Day2(2016, 11, 21),
             snapshot: {
-              open: new Decimal3(0)
+              open: new Decimal4(0)
             },
-            type: TransactionType.SELL
+            type: TransactionType2.SELL
           }
         ];
         ranges = PositionSummaryFrame.YEARLY.getRanges(transactions);
@@ -22657,18 +23153,18 @@
       beforeEach(() => {
         const transactions = [
           {
-            date: new Day(2015, 10, 20),
+            date: new Day2(2015, 10, 20),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           },
           {
-            date: new Day(2017, 11, 21),
+            date: new Day2(2017, 11, 21),
             snapshot: {
-              open: new Decimal3(0)
+              open: new Decimal4(0)
             },
-            type: TransactionType.SELL
+            type: TransactionType2.SELL
           }
         ];
         ranges = PositionSummaryFrame.YEARLY.getRanges(transactions);
@@ -22691,32 +23187,32 @@
       beforeEach(() => {
         const transactions = [
           {
-            date: new Day(2015, 10, 20),
+            date: new Day2(2015, 10, 20),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           },
           {
-            date: new Day(2016, 11, 21),
+            date: new Day2(2016, 11, 21),
             snapshot: {
-              open: new Decimal3(0)
+              open: new Decimal4(0)
             },
-            type: TransactionType.SELL
+            type: TransactionType2.SELL
           },
           {
-            date: new Day(2017, 11, 21),
+            date: new Day2(2017, 11, 21),
             snapshot: {
-              open: new Decimal3(0)
+              open: new Decimal4(0)
             },
-            type: TransactionType.VALUATION
+            type: TransactionType2.VALUATION
           },
           {
-            date: new Day(2017, 11, 21),
+            date: new Day2(2017, 11, 21),
             snapshot: {
-              open: new Decimal3(0)
+              open: new Decimal4(0)
             },
-            type: TransactionType.VALUATION
+            type: TransactionType2.VALUATION
           }
         ];
         ranges = PositionSummaryFrame.YEARLY.getRanges(transactions);
@@ -22736,11 +23232,11 @@
       beforeEach(() => {
         const transactions = [
           {
-            date: Day.getToday(),
+            date: Day2.getToday(),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           }
         ];
         ranges = PositionSummaryFrame.YEARLY.getRanges(transactions);
@@ -22754,18 +23250,18 @@
       beforeEach(() => {
         const transactions = [
           {
-            date: new Day(2018, 12, 20),
+            date: new Day2(2018, 12, 20),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           },
           {
-            date: new Day(2019, 2, 21),
+            date: new Day2(2019, 2, 21),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           }
         ];
         ranges = PositionSummaryFrame.MONTHLY.getRanges(transactions);
@@ -22777,7 +23273,7 @@
         expect(formatRange(ranges[0])).toEqual({ end: "2018-12-31", start: "2018-11-30" });
       });
       it("the last range should be for the previous month", () => {
-        const today = Day.getToday();
+        const today = Day2.getToday();
         expect(formatRange(ranges[ranges.length - 1])).toEqual({
           end: today.subtractMonths(1).getEndOfMonth().format(),
           start: today.subtractMonths(2).getEndOfMonth().format()
@@ -22789,18 +23285,18 @@
       beforeEach(() => {
         const transactions = [
           {
-            date: new Day(2018, 12, 1),
+            date: new Day2(2018, 12, 1),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           },
           {
-            date: new Day(2018, 12, 31),
+            date: new Day2(2018, 12, 31),
             snapshot: {
-              open: new Decimal3(0)
+              open: new Decimal4(0)
             },
-            type: TransactionType.SELL
+            type: TransactionType2.SELL
           }
         ];
         ranges = PositionSummaryFrame.MONTHLY.getRanges(transactions);
@@ -22817,18 +23313,18 @@
       beforeEach(() => {
         const transactions = [
           {
-            date: new Day(2015, 10, 20),
+            date: new Day2(2015, 10, 20),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           },
           {
-            date: new Day(2015, 11, 20),
+            date: new Day2(2015, 11, 20),
             snapshot: {
-              open: new Decimal3(0)
+              open: new Decimal4(0)
             },
-            type: TransactionType.SELL
+            type: TransactionType2.SELL
           }
         ];
         ranges = PositionSummaryFrame.MONTHLY.getRanges(transactions);
@@ -22848,11 +23344,11 @@
       beforeEach(() => {
         const transactions = [
           {
-            date: Day.getToday(),
+            date: Day2.getToday(),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           }
         ];
         ranges = PositionSummaryFrame.MONTHLY.getRanges(transactions);
@@ -22866,18 +23362,18 @@
       beforeEach(() => {
         const transactions = [
           {
-            date: new Day(2017, 1, 1),
+            date: new Day2(2017, 1, 1),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           },
           {
-            date: new Day(2017, 1, 2),
+            date: new Day2(2017, 1, 2),
             snapshot: {
-              open: new Decimal3(0)
+              open: new Decimal4(0)
             },
-            type: TransactionType.SELL
+            type: TransactionType2.SELL
           }
         ];
         ranges = PositionSummaryFrame.YTD.getRanges(transactions);
@@ -22895,11 +23391,11 @@
         };
         const transactions = [
           {
-            date: new Day(2019, 1, 1),
+            date: new Day2(2019, 1, 1),
             snapshot: {
-              open: new Decimal3(100)
+              open: new Decimal4(100)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           }
         ];
         ranges = PositionSummaryFrame.YTD.getRanges(transactions);
@@ -22921,18 +23417,18 @@
         };
         const transactions = [
           {
-            date: new Day(2021, 1, 1),
+            date: new Day2(2021, 1, 1),
             snapshot: {
-              open: new Decimal3(1)
+              open: new Decimal4(1)
             },
-            type: TransactionType.BUY
+            type: TransactionType2.BUY
           },
           {
-            date: new Day(2021, 1, 2),
+            date: new Day2(2021, 1, 2),
             snapshot: {
-              open: new Decimal3(0)
+              open: new Decimal4(0)
             },
-            type: TransactionType.SELL
+            type: TransactionType2.SELL
           }
         ];
         ranges = PositionSummaryFrame.YTD.getRanges(transactions);
@@ -23035,17 +23531,17 @@
       });
     });
     describe("and current to-date frame boundaries are calculated", () => {
-      const thursday = new Day(2026, 7, 16);
+      const thursday = new Day2(2026, 7, 16);
       const createClosedTransactions = (closingDate) => [
         {
           date: closingDate.subtractDays(1),
-          snapshot: { open: Decimal3.ONE },
-          type: TransactionType.BUY
+          snapshot: { open: Decimal4.ONE },
+          type: TransactionType2.BUY
         },
         {
           date: closingDate,
-          snapshot: { open: Decimal3.ZERO },
-          type: TransactionType.SELL
+          snapshot: { open: Decimal4.ZERO },
+          type: TransactionType2.SELL
         }
       ];
       it("the WTD frame should use the prior Sunday as its opening boundary", () => {
@@ -23053,11 +23549,11 @@
         expect(start.format()).toEqual("2026-07-12");
       });
       it("the WTD frame should keep Sunday in the week that just ended", () => {
-        const start = PositionSummaryFrame.WTD.getStartDate(0, new Day(2026, 7, 19));
+        const start = PositionSummaryFrame.WTD.getStartDate(0, new Day2(2026, 7, 19));
         expect(start.format()).toEqual("2026-07-12");
       });
       it("the WTD range should cover Monday through Sunday", () => {
-        const today = Day.getToday();
+        const today = Day2.getToday();
         const ranges = PositionSummaryFrame.WTD.getRangesFromDate(today);
         const start = PositionSummaryFrame.WTD.getStartDate(0, today);
         expect(formatRange(ranges[0])).toEqual({ end: start.addDays(7).format(), start: start.format() });
@@ -23072,7 +23568,7 @@
         expect(start.format()).toEqual("2026-06-30");
       });
       it("the MTD range should end at the current month end", () => {
-        const today = Day.getToday();
+        const today = Day2.getToday();
         const ranges = PositionSummaryFrame.MTD.getRangesFromDate(today);
         const start = PositionSummaryFrame.MTD.getStartDate(0, today);
         expect(formatRange(ranges[0])).toEqual({ end: today.getEndOfMonth().format(), start: start.format() });
@@ -23097,22 +23593,22 @@
         describe("from 2017-10-10, including one previous ranges", () => {
           let ranges;
           beforeEach(() => {
-            ranges = PositionSummaryFrame.YEARLY.getPriorRanges(new Day(2015, 4, 20), 1);
+            ranges = PositionSummaryFrame.YEARLY.getPriorRanges(new Day2(2015, 4, 20), 1);
           });
           it("should return two ranges", () => {
             expect(ranges.length).toEqual(2);
           });
           it("the first range should begin on 2013-12-31", () => {
-            expect(ranges[0].start.getIsEqual(new Day(2013, 12, 31))).toEqual(true);
+            expect(ranges[0].start.getIsEqual(new Day2(2013, 12, 31))).toEqual(true);
           });
           it("the first range should end on 2014-12-31", () => {
-            expect(ranges[0].end.getIsEqual(new Day(2014, 12, 31))).toEqual(true);
+            expect(ranges[0].end.getIsEqual(new Day2(2014, 12, 31))).toEqual(true);
           });
           it("the second range should begin on 2014-12-31", () => {
-            expect(ranges[1].start.getIsEqual(new Day(2014, 12, 31))).toEqual(true);
+            expect(ranges[1].start.getIsEqual(new Day2(2014, 12, 31))).toEqual(true);
           });
           it("the second range should end on 2015-12-31", () => {
-            expect(ranges[1].end.getIsEqual(new Day(2015, 12, 31))).toEqual(true);
+            expect(ranges[1].end.getIsEqual(new Day2(2015, 12, 31))).toEqual(true);
           });
         });
       });
@@ -23120,39 +23616,39 @@
   });
 
   // test/specs/data/TransactionTypeSpec.js
-  var TransactionType2 = require_TransactionType();
+  var TransactionType3 = require_TransactionType();
   describe("When transaction types identify dividend income", () => {
     "use strict";
     it("cash dividends should be identified", () => {
-      expect(TransactionType2.DIVIDEND.dividend).toBe(true);
+      expect(TransactionType3.DIVIDEND.dividend).toBe(true);
     });
     it("reinvested dividends should be identified", () => {
-      expect(TransactionType2.DIVIDEND_REINVEST.dividend).toBe(true);
+      expect(TransactionType3.DIVIDEND_REINVEST.dividend).toBe(true);
     });
     it("cash distributions should be identified", () => {
-      expect(TransactionType2.DISTRIBUTION_CASH.dividend).toBe(true);
+      expect(TransactionType3.DISTRIBUTION_CASH.dividend).toBe(true);
     });
     it("reinvested distributions should be identified", () => {
-      expect(TransactionType2.DISTRIBUTION_REINVEST.dividend).toBe(true);
+      expect(TransactionType3.DISTRIBUTION_REINVEST.dividend).toBe(true);
     });
     it("stock dividends should not be identified as dividend income", () => {
-      expect(TransactionType2.DIVIDEND_STOCK.dividend).toBe(false);
+      expect(TransactionType3.DIVIDEND_STOCK.dividend).toBe(false);
     });
     it("unit distributions should not be identified as dividend income", () => {
-      expect(TransactionType2.DISTRIBUTION_FUND.dividend).toBe(false);
+      expect(TransactionType3.DISTRIBUTION_FUND.dividend).toBe(false);
     });
   });
 
   // test/specs/data/TransactionValidatorSpec.js
-  var Day2 = require_Day();
-  var Decimal4 = require_Decimal();
-  var TransactionType3 = require_TransactionType();
+  var Day3 = require_Day();
+  var Decimal5 = require_Decimal();
+  var TransactionType4 = require_TransactionType();
   var TransactionValidator = require_TransactionValidator();
-  var InstrumentType3 = require_InstrumentType();
+  var InstrumentType4 = require_InstrumentType();
   describe("When validating transaction order", () => {
     "use strict";
     const build = (sequence, day, type) => {
-      return { sequence, date: Day2.parse(day), type: type || TransactionType3.BUY };
+      return { sequence, date: Day3.parse(day), type: type || TransactionType4.BUY };
     };
     it("An array of zero transactions should be valid", () => {
       expect(TransactionValidator.validateOrder([])).toEqual(true);
@@ -23161,16 +23657,16 @@
       expect(TransactionValidator.validateOrder([build(1, "2018-04-30"), build(2, "2018-04-30"), build(3, "2018-04-30")])).toEqual(true);
     });
     it("An array of transactions with ordered sequences, on the same day should be valid, where a dividend occurs last, should be valid", () => {
-      expect(TransactionValidator.validateOrder([build(1, "2018-04-30"), build(2, "2018-04-30", TransactionType3.DIVIDEND)])).toEqual(true);
+      expect(TransactionValidator.validateOrder([build(1, "2018-04-30"), build(2, "2018-04-30", TransactionType4.DIVIDEND)])).toEqual(true);
     });
     it("An array of transactions with ordered sequences, on the same day should be valid, where a dividend occurs first, in strict mode, should not be valid", () => {
-      expect(TransactionValidator.validateOrder([build(1, "2018-04-30", TransactionType3.DIVIDEND), build(2, "2018-04-30")], true)).toEqual(false);
+      expect(TransactionValidator.validateOrder([build(1, "2018-04-30", TransactionType4.DIVIDEND), build(2, "2018-04-30")], true)).toEqual(false);
     });
     it("An array of transactions with ordered sequences, on the same day should be valid, where a dividend occurs first, in non-strict mode, should be valid", () => {
-      expect(TransactionValidator.validateOrder([build(1, "2018-04-30", TransactionType3.DIVIDEND), build(2, "2018-04-30")], false)).toEqual(true);
+      expect(TransactionValidator.validateOrder([build(1, "2018-04-30", TransactionType4.DIVIDEND), build(2, "2018-04-30")], false)).toEqual(true);
     });
     it("An array of transactions with ordered sequences, on the sequential days should be valid", () => {
-      expect(TransactionValidator.validateOrder([build(1, "2018-04-30"), build(2, "2018-05-01"), build(3, "2018-05-02", TransactionType3.DIVIDEND)])).toEqual(true);
+      expect(TransactionValidator.validateOrder([build(1, "2018-04-30"), build(2, "2018-05-01"), build(3, "2018-05-02", TransactionType4.DIVIDEND)])).toEqual(true);
     });
     it("An array of transactions with ordered sequences (starting after one), on the same day should not be valid", () => {
       expect(TransactionValidator.validateOrder([build(3, "2018-04-30"), build(4, "2018-04-30"), build(5, "2018-04-30")])).toEqual(false);
@@ -23218,14 +23714,14 @@
   });
   describe("When checking for a transaction that would switch position direction (without a position)", () => {
     "use strict";
-    const instrumentType = InstrumentType3.EQUITY;
+    const instrumentType = InstrumentType4.EQUITY;
     describe("Where the transaction list only contains BUY transactions", () => {
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.BUY, quantity: new Decimal4(1) },
-          { type: TransactionType3.BUY, quantity: new Decimal4(2) },
-          { type: TransactionType3.BUY, quantity: new Decimal4(3) }
+          { type: TransactionType4.BUY, quantity: new Decimal5(1) },
+          { type: TransactionType4.BUY, quantity: new Decimal5(2) },
+          { type: TransactionType4.BUY, quantity: new Decimal5(3) }
         ];
       });
       it("No transaction should be identified which switches the position direction", () => {
@@ -23236,9 +23732,9 @@
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.SELL, quantity: new Decimal4(1) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(2) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(3) }
+          { type: TransactionType4.SELL, quantity: new Decimal5(1) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(2) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(3) }
         ];
       });
       it("No transaction should be identified which switches the position direction", () => {
@@ -23249,9 +23745,9 @@
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.SELL_SHORT, quantity: new Decimal4(1) },
-          { type: TransactionType3.SELL_SHORT, quantity: new Decimal4(2) },
-          { type: TransactionType3.SELL_SHORT, quantity: new Decimal4(3) }
+          { type: TransactionType4.SELL_SHORT, quantity: new Decimal5(1) },
+          { type: TransactionType4.SELL_SHORT, quantity: new Decimal5(2) },
+          { type: TransactionType4.SELL_SHORT, quantity: new Decimal5(3) }
         ];
       });
       it("No transaction should be identified which switches the position direction", () => {
@@ -23262,8 +23758,8 @@
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.BUY, quantity: new Decimal4(100) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(50) }
+          { type: TransactionType4.BUY, quantity: new Decimal5(100) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(50) }
         ];
       });
       it("No transaction should be identified", () => {
@@ -23274,8 +23770,8 @@
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.SELL_SHORT, quantity: new Decimal4(100) },
-          { type: TransactionType3.BUY_SHORT, quantity: new Decimal4(50) }
+          { type: TransactionType4.SELL_SHORT, quantity: new Decimal5(100) },
+          { type: TransactionType4.BUY_SHORT, quantity: new Decimal5(50) }
         ];
       });
       it("No transaction should be identified", () => {
@@ -23286,9 +23782,9 @@
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.SELL_SHORT, quantity: new Decimal4(100) },
-          { type: TransactionType3.SELL_SHORT, quantity: new Decimal4(50) },
-          { type: TransactionType3.BUY_SHORT, quantity: new Decimal4(150) }
+          { type: TransactionType4.SELL_SHORT, quantity: new Decimal5(100) },
+          { type: TransactionType4.SELL_SHORT, quantity: new Decimal5(50) },
+          { type: TransactionType4.BUY_SHORT, quantity: new Decimal5(150) }
         ];
       });
       it("No transaction should be identified", () => {
@@ -23299,8 +23795,8 @@
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.BUY, quantity: new Decimal4(100) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(200) }
+          { type: TransactionType4.BUY, quantity: new Decimal5(100) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(200) }
         ];
       });
       it("The second transaction should be identified as switching the direction", () => {
@@ -23311,9 +23807,9 @@
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.SELL_SHORT, quantity: new Decimal4(100) },
-          { type: TransactionType3.SELL_SHORT, quantity: new Decimal4(50) },
-          { type: TransactionType3.BUY_SHORT, quantity: new Decimal4(151) }
+          { type: TransactionType4.SELL_SHORT, quantity: new Decimal5(100) },
+          { type: TransactionType4.SELL_SHORT, quantity: new Decimal5(50) },
+          { type: TransactionType4.BUY_SHORT, quantity: new Decimal5(151) }
         ];
       });
       it("The third transaction should be identified as switching the direction", () => {
@@ -23323,13 +23819,13 @@
   });
   describe("When validating position violations", () => {
     "use strict";
-    const instrumentType = InstrumentType3.EQUITY;
+    const instrumentType = InstrumentType4.EQUITY;
     describe("With all BUY transactions", () => {
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.BUY, quantity: new Decimal4(1) },
-          { type: TransactionType3.BUY, quantity: new Decimal4(2) }
+          { type: TransactionType4.BUY, quantity: new Decimal5(1) },
+          { type: TransactionType4.BUY, quantity: new Decimal5(2) }
         ];
       });
       it("Should return -1 (no violations)", () => {
@@ -23340,8 +23836,8 @@
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.SELL, quantity: new Decimal4(1) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(2) }
+          { type: TransactionType4.SELL, quantity: new Decimal5(1) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(2) }
         ];
       });
       it("Should detect violation at index 0", () => {
@@ -23352,8 +23848,8 @@
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.BUY, quantity: new Decimal4(10) },
-          { type: TransactionType3.SELL_SHORT, quantity: new Decimal4(5) }
+          { type: TransactionType4.BUY, quantity: new Decimal5(10) },
+          { type: TransactionType4.SELL_SHORT, quantity: new Decimal5(5) }
         ];
       });
       it("Should detect violation at index 1", () => {
@@ -23364,9 +23860,9 @@
       let transactions;
       beforeEach(() => {
         transactions = [
-          { type: TransactionType3.BUY, quantity: new Decimal4(10) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(10) },
-          { type: TransactionType3.SELL_SHORT, quantity: new Decimal4(5) }
+          { type: TransactionType4.BUY, quantity: new Decimal5(10) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(10) },
+          { type: TransactionType4.SELL_SHORT, quantity: new Decimal5(5) }
         ];
       });
       it("Should return -1 (no violations)", () => {
@@ -23379,12 +23875,12 @@
       beforeEach(() => {
         position = {
           snapshot: {
-            open: new Decimal4(100)
+            open: new Decimal5(100)
           }
         };
         transactions = [
-          { type: TransactionType3.BUY, quantity: new Decimal4(20) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(50) }
+          { type: TransactionType4.BUY, quantity: new Decimal5(20) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(50) }
         ];
       });
       it("Should return -1 (no violations)", () => {
@@ -23396,10 +23892,10 @@
       let position;
       beforeEach(() => {
         position = {
-          snapshot: { open: new Decimal4(-50) }
+          snapshot: { open: new Decimal5(-50) }
         };
         transactions = [
-          { type: TransactionType3.BUY, quantity: new Decimal4(10) }
+          { type: TransactionType4.BUY, quantity: new Decimal5(10) }
         ];
       });
       it("Should detect violation at index 0", () => {
@@ -23412,17 +23908,17 @@
       beforeEach(() => {
         position = {
           snapshot: {
-            open: new Decimal4(-5)
+            open: new Decimal5(-5)
           }
         };
         transactions = [
-          { type: TransactionType3.BUY_SHORT, quantity: new Decimal4(1) },
-          { type: TransactionType3.BUY_SHORT, quantity: new Decimal4(1) },
-          { type: TransactionType3.BUY_SHORT, quantity: new Decimal4(1) },
-          { type: TransactionType3.BUY_SHORT, quantity: new Decimal4(1) },
-          { type: TransactionType3.BUY_SHORT, quantity: new Decimal4(1) },
-          { type: TransactionType3.BUY_SHORT, quantity: new Decimal4(1) },
-          { type: TransactionType3.BUY_SHORT, quantity: new Decimal4(1) }
+          { type: TransactionType4.BUY_SHORT, quantity: new Decimal5(1) },
+          { type: TransactionType4.BUY_SHORT, quantity: new Decimal5(1) },
+          { type: TransactionType4.BUY_SHORT, quantity: new Decimal5(1) },
+          { type: TransactionType4.BUY_SHORT, quantity: new Decimal5(1) },
+          { type: TransactionType4.BUY_SHORT, quantity: new Decimal5(1) },
+          { type: TransactionType4.BUY_SHORT, quantity: new Decimal5(1) },
+          { type: TransactionType4.BUY_SHORT, quantity: new Decimal5(1) }
         ];
       });
       it("The sixth transaction should be identified as switching the direction", () => {
@@ -23435,17 +23931,17 @@
       beforeEach(() => {
         position = {
           snapshot: {
-            open: new Decimal4(5)
+            open: new Decimal5(5)
           }
         };
         transactions = [
-          { type: TransactionType3.SELL, quantity: new Decimal4(1) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(1) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(1) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(1) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(1) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(1) },
-          { type: TransactionType3.SELL, quantity: new Decimal4(1) }
+          { type: TransactionType4.SELL, quantity: new Decimal5(1) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(1) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(1) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(1) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(1) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(1) },
+          { type: TransactionType4.SELL, quantity: new Decimal5(1) }
         ];
       });
       it("The sixth transaction should be identified as switching the direction", () => {
@@ -23455,8 +23951,8 @@
   });
 
   // test/specs/processing/PositionContainerSpec.js
-  var Currency = require_Currency();
-  var InstrumentType4 = require_InstrumentType();
+  var Currency2 = require_Currency();
+  var InstrumentType5 = require_InstrumentType();
   var PositionSummaryFrame2 = require_PositionSummaryFrame();
   var PositionContainer = require_PositionContainer();
   var PositionLevelDefinition = require_PositionLevelDefinition();
@@ -23495,8 +23991,8 @@
         beforeEach(() => {
           definitions = [
             new PositionTreeDefinition(name = "the only tree", [
-              new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency.CAD),
-              new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency.CAD),
+              new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency2.CAD),
+              new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency2.CAD),
               new PositionLevelDefinition("Position", PositionLevelType.POSITION, (x) => x.position.position, (x) => x.position.instrument.symbol.barchart, (x) => x.position.instrument.currency)
             ])
           ];
@@ -23583,14 +24079,14 @@
     const treeName = "positions";
     const createPortfolioTreeDefinition = () => {
       return new PositionTreeDefinition(treeName, [
-        new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency.USD),
-        new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency.USD),
+        new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency2.USD),
+        new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency2.USD),
         new PositionLevelDefinition("Position", PositionLevelType.POSITION, (x) => x.position.position, (x) => x.position.instrument.symbol.barchart, (x) => x.position.instrument.currency)
       ]);
     };
     const createAssetTreeDefinition = () => {
       return new PositionTreeDefinition(treeName, [
-        new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency.USD),
+        new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency2.USD),
         new PositionLevelDefinition("Asset", PositionLevelType.OTHER, (x) => PositionLevelDefinition.getKeyForAssetClassGroup(x.position.instrument.type, x.position.instrument.currency), (x) => x.position.instrument.type.alternateDescription, (x) => x.position.instrument.currency),
         new PositionLevelDefinition("Position", PositionLevelType.POSITION, (x) => x.position.position, (x) => x.position.instrument.symbol.barchart, (x) => x.position.instrument.currency)
       ]);
@@ -23600,27 +24096,27 @@
     });
     it("should expose groups from the replacement definition", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
-      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency.USD);
+      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency2.USD);
       const container = new PositionContainer([createPortfolioTreeDefinition()], [portfolio], [position], []);
       container.replaceTree(createAssetTreeDefinition());
       const groups = container.getGroups(treeName, ["totals"]);
       expect(groups.map((group) => group.data.key)).toEqual([
-        PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType4.EQUITY, Currency.USD)
+        PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType5.EQUITY, Currency2.USD)
       ]);
     });
     it("should inject new positions into the replacement definition", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
-      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency.USD);
+      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency2.USD);
       const container = new PositionContainer([createPortfolioTreeDefinition()], [portfolio], [position], []);
       container.replaceTree(createAssetTreeDefinition());
-      const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType4.EQUITY, Currency.USD);
+      const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType5.EQUITY, Currency2.USD);
       const groups = container.getGroups(treeName, ["totals", assetKey]);
-      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "TSLA", Currency.USD), []);
+      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "TSLA", Currency2.USD), []);
       expect(groups.length).toEqual(2);
     });
     it("should dispose bindings from the replaced tree", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
-      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency.USD);
+      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency2.USD);
       const container = new PositionContainer([createPortfolioTreeDefinition()], [portfolio], [position], []);
       const group = container.getGroup(treeName, ["totals", portfolio.portfolio, position.position]);
       const currentPrice = group.data.currentPrice;
@@ -23630,11 +24126,11 @@
     });
     it("should preserve top-level group bindings when requested", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
-      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency.USD);
-      const totalDefinition = new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency.USD);
+      const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency2.USD);
+      const totalDefinition = new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency2.USD);
       const initialDefinition = new PositionTreeDefinition(treeName, [
         totalDefinition,
-        new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency.USD),
+        new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency2.USD),
         new PositionLevelDefinition("Position", PositionLevelType.POSITION, (x) => x.position.position, (x) => x.position.instrument.symbol.barchart, (x) => x.position.instrument.currency)
       ]);
       const replacementDefinition = new PositionTreeDefinition(treeName, [
@@ -23654,8 +24150,8 @@
     const createDefinitions = () => {
       return [
         new PositionTreeDefinition(treeName, [
-          new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency.USD),
-          new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency.USD),
+          new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency2.USD),
+          new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency2.USD),
           new PositionLevelDefinition("Position", PositionLevelType.POSITION, (x) => x.position.position, (x) => x.position.instrument.symbol.barchart, (x) => x.position.instrument.currency)
         ])
       ];
@@ -23663,8 +24159,8 @@
     const createAssetDefinitions = () => {
       return [
         new PositionTreeDefinition(treeName, [
-          new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency.USD),
-          new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency.USD),
+          new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency2.USD),
+          new PositionLevelDefinition("Portfolio", PositionLevelType.PORTFOLIO, (x) => x.portfolio.portfolio, (x) => x.portfolio.name, (x) => Currency2.USD),
           new PositionLevelDefinition("Asset", PositionLevelType.OTHER, (x) => PositionLevelDefinition.getKeyForAssetClassGroup(x.position.instrument.type, x.position.instrument.currency), (x) => `${x.position.instrument.type.alternateDescription} (${x.position.instrument.currency.code})`, (x) => x.position.instrument.currency),
           new PositionLevelDefinition("Position", PositionLevelType.POSITION, (x) => x.position.position, (x) => x.position.instrument.symbol.barchart, (x) => x.position.instrument.currency)
         ])
@@ -23675,7 +24171,7 @@
     });
     it("should register the forex symbol required by an initial ILS position", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
-      const position = positionTestFactory.createPosition(portfolio.portfolio, "ILS", Currency.ILS);
+      const position = positionTestFactory.createPosition(portfolio.portfolio, "ILS", Currency2.ILS);
       const container = new PositionContainer(createDefinitions(), [portfolio], [position], []);
       expect(container.getForexSymbols()).toContain("^USDILS");
     });
@@ -23684,43 +24180,43 @@
       const container = new PositionContainer(createDefinitions(), [portfolio], [], []);
       const symbols = [];
       container.registerForexSymbolAddedHandler((symbol) => symbols.push(symbol));
-      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "SGD", Currency.SGD), []);
+      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "SGD", Currency2.SGD), []);
       expect(symbols).toEqual(["^USDSGD"]);
     });
     it("should expose a new ILS asset group through existing bindings when a position is added", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
-      const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, "USD", Currency.USD);
+      const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, "USD", Currency2.USD);
       const container = new PositionContainer(createAssetDefinitions(), [portfolio], [initialPosition], []);
       const assetGroups = container.getGroups(treeName, ["totals", portfolio.portfolio]);
-      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "ILS", Currency.ILS), []);
+      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "ILS", Currency2.ILS), []);
       expect(assetGroups.map((group) => ({ key: group.data.key, description: group.data.description }))).toContain({
-        key: PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType4.EQUITY, Currency.ILS),
+        key: PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType5.EQUITY, Currency2.ILS),
         description: "Equities (ILS)"
       });
     });
     it("should sort asset groups when a position creates a group after construction", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
-      const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, "USD", Currency.USD);
+      const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, "USD", Currency2.USD);
       const container = new PositionContainer(createAssetDefinitions(), [portfolio], [initialPosition], []);
       const assetGroups = container.getGroups(treeName, ["totals", portfolio.portfolio]);
-      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "ILS", Currency.ILS), []);
+      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "ILS", Currency2.ILS), []);
       expect(assetGroups.map((group) => group.data.description)).toEqual(["Equities (ILS)", "Equities (USD)"]);
     });
     it("should sort position groups when a position is added after construction", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
-      const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, "USD", Currency.USD);
+      const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, "USD", Currency2.USD);
       const container = new PositionContainer(createAssetDefinitions(), [portfolio], [initialPosition], []);
-      const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType4.EQUITY, Currency.USD);
+      const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType5.EQUITY, Currency2.USD);
       const positionGroups = container.getGroups(treeName, ["totals", portfolio.portfolio, assetKey]);
-      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "AA", Currency.USD), []);
+      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "AA", Currency2.USD), []);
       expect(positionGroups.map((group) => group.data.description)).toEqual(["AA", "USD"]);
     });
     it("should preserve position group ordering when an existing position is updated", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
-      const firstPosition = positionTestFactory.createPosition(portfolio.portfolio, "AA", Currency.USD);
-      const secondPosition = positionTestFactory.createPosition(portfolio.portfolio, "USD", Currency.USD);
+      const firstPosition = positionTestFactory.createPosition(portfolio.portfolio, "AA", Currency2.USD);
+      const secondPosition = positionTestFactory.createPosition(portfolio.portfolio, "USD", Currency2.USD);
       const container = new PositionContainer(createAssetDefinitions(), [portfolio], [firstPosition, secondPosition], []);
-      const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType4.EQUITY, Currency.USD);
+      const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType5.EQUITY, Currency2.USD);
       const positionGroups = container.getGroups(treeName, ["totals", portfolio.portfolio, assetKey]);
       container.updatePosition(firstPosition, []);
       expect(positionGroups.map((group) => group.data.description)).toEqual(["AA", "USD"]);
@@ -23728,19 +24224,19 @@
     it("should preserve required group ordering when a position creates a group after construction", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
       const requiredGroups = [
-        { key: Currency.USD.code, description: "Z USD", currency: Currency.USD },
-        { key: Currency.CAD.code, description: "Y CAD", currency: Currency.CAD }
+        { key: Currency2.USD.code, description: "Z USD", currency: Currency2.USD },
+        { key: Currency2.CAD.code, description: "Y CAD", currency: Currency2.CAD }
       ];
       const definitions = [
         new PositionTreeDefinition(treeName, [
-          new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency.USD),
+          new PositionLevelDefinition("Total", PositionLevelType.OTHER, (x) => "totals", (x) => "Total", (x) => Currency2.USD),
           new PositionLevelDefinition("Currency", PositionLevelType.OTHER, (x) => x.position.instrument.currency.code, (x) => `Z ${x.position.instrument.currency.code}`, (x) => x.position.instrument.currency, requiredGroups)
         ])
       ];
-      const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, "USD", Currency.USD);
+      const initialPosition = positionTestFactory.createPosition(portfolio.portfolio, "USD", Currency2.USD);
       const container = new PositionContainer(definitions, [portfolio], [initialPosition], []);
       const groups = container.getGroups(treeName, ["totals"]);
-      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "ILS", Currency.ILS), []);
+      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "ILS", Currency2.ILS), []);
       expect(groups.map((group) => group.data.description)).toEqual(["Z USD", "Y CAD", "Z ILS"]);
     });
     it("should notify observers only once for multiple positions using the same new currency", () => {
@@ -23748,27 +24244,27 @@
       const container = new PositionContainer(createDefinitions(), [portfolio], [], []);
       const symbols = [];
       container.registerForexSymbolAddedHandler((symbol) => symbols.push(symbol));
-      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "SGD-1", Currency.SGD), []);
-      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "SGD-2", Currency.SGD), []);
+      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "SGD-1", Currency2.SGD), []);
+      container.updatePosition(positionTestFactory.createPosition(portfolio.portfolio, "SGD-2", Currency2.SGD), []);
       expect(symbols.length).toEqual(1);
     });
     it("should preserve known exchange rates when a new currency is registered", () => {
       const firstPortfolio = positionTestFactory.createPortfolio("first", "First");
       const secondPortfolio = positionTestFactory.createPortfolio("second", "Second");
-      const firstPosition = positionTestFactory.createPosition(firstPortfolio.portfolio, "ILS", Currency.ILS);
+      const firstPosition = positionTestFactory.createPosition(firstPortfolio.portfolio, "ILS", Currency2.ILS);
       const container = new PositionContainer(createDefinitions(), [firstPortfolio, secondPortfolio], [firstPosition], []);
       container.setQuotes([], [{ symbol: "^USDILS", lastPrice: 4 }]);
-      container.updatePosition(positionTestFactory.createPosition(secondPortfolio.portfolio, "SGD", Currency.SGD), []);
+      container.updatePosition(positionTestFactory.createPosition(secondPortfolio.portfolio, "SGD", Currency2.SGD), []);
       const firstPortfolioGroup = container.getGroup(treeName, ["totals", firstPortfolio.portfolio]);
       expect(firstPortfolioGroup.formatted.market).toEqual("114.00");
     });
   });
 
   // test/specs/processing/PositionGroupSpec.js
-  var Currency2 = require_Currency();
+  var Currency3 = require_Currency();
   var CurrencyTranslator = require_CurrencyTranslator();
-  var Decimal5 = require_Decimal();
-  var Day3 = require_Day();
+  var Decimal6 = require_Decimal();
+  var Day4 = require_Day();
   var FilterMode = require_FilterMode();
   var PositionSummaryFrame3 = require_PositionSummaryFrame();
   var PositionGroup = require_PositionGroup();
@@ -23786,27 +24282,27 @@
       return new PositionItem(portfolio, position, currentSummary, previousSummaries);
     }
     function createReturnItem(symbol, daysHeld, buys) {
-      const today = new Day3(2026, 7, 16);
+      const today = new Day4(2026, 7, 16);
       const portfolio = positionTestFactory2.createPortfolio(`${symbol} Portfolio`, `${symbol} Portfolio`);
       const position = positionTestFactory2.createPosition(portfolio.portfolio, symbol);
       const currentSummary = positionTestFactory2.createSummaries(position, PositionSummaryFrame3.YTD, 1)[0];
       const previousSummaries = positionTestFactory2.createSummaries(position, PositionSummaryFrame3.YEARLY, 3);
       const createCurrentPeriodSummary = (frame) => {
         const summary = positionTestFactory2.createSummaries(position, frame, 1)[0];
-        summary.start.value = new Decimal5(100);
-        summary.end.value = new Decimal5(100);
-        summary.end.basis = new Decimal5(-100);
+        summary.start.value = new Decimal6(100);
+        summary.end.value = new Decimal6(100);
+        summary.end.basis = new Decimal6(-100);
         return summary;
       };
       position.opening = { date: today.subtractDays(daysHeld) };
-      position.snapshot.basis = new Decimal5(-100);
-      position.snapshot.buys = buys || new Decimal5(-100);
-      position.snapshot.open = new Decimal5(1);
-      position.snapshot.value = new Decimal5(100);
-      currentSummary.start.value = new Decimal5(100);
-      currentSummary.end.value = new Decimal5(100);
-      currentSummary.end.basis = new Decimal5(-100);
-      currentSummary.end.open = new Decimal5(1);
+      position.snapshot.basis = new Decimal6(-100);
+      position.snapshot.buys = buys || new Decimal6(-100);
+      position.snapshot.open = new Decimal6(1);
+      position.snapshot.value = new Decimal6(100);
+      currentSummary.start.value = new Decimal6(100);
+      currentSummary.end.value = new Decimal6(100);
+      currentSummary.end.basis = new Decimal6(-100);
+      currentSummary.end.open = new Decimal6(1);
       const item = new PositionItem(portfolio, position, currentSummary, previousSummaries, false, today, {
         weekToDate: createCurrentPeriodSummary(PositionSummaryFrame3.WTD),
         monthToDate: createCurrentPeriodSummary(PositionSummaryFrame3.MTD)
@@ -23851,7 +24347,7 @@
       const firstItem = items[0] || null;
       const key = firstItem ? firstItem.position.position : "group";
       const description = firstItem ? firstItem.position.instrument.symbol.barchart : "Group";
-      return new PositionGroup(createDefinition(type), items, Currency2.USD, new CurrencyTranslator([]), key, description, false);
+      return new PositionGroup(createDefinition(type), items, Currency3.USD, new CurrencyTranslator([]), key, description, false);
     }
     beforeEach(() => {
       positionTestFactory2.resetPositionCounter();
@@ -23933,7 +24429,7 @@
       const firstItem = createItem("AAPL", "First Portfolio");
       const secondItem = createItem("AAPL", "Second Portfolio");
       const group = createGroup(PositionLevelType2.INSTRUMENT, [firstItem, secondItem]);
-      const today = Day3.getToday();
+      const today = Day4.getToday();
       const quote = {
         lastDay: today,
         lastPrice: 200,
@@ -24042,8 +24538,8 @@
     });
     it("should aggregate current and previous annual income", () => {
       const group = createGroup(PositionLevelType2.OTHER, [
-        createIncomeItem("AAPL", new Decimal5(10), new Decimal5(30)),
-        createIncomeItem("MSFT", new Decimal5(20), new Decimal5(40))
+        createIncomeItem("AAPL", new Decimal6(10), new Decimal6(30)),
+        createIncomeItem("MSFT", new Decimal6(20), new Decimal6(40))
       ]);
       expect({
         current: group.data.periodIncome,
@@ -24055,8 +24551,8 @@
     });
     it("should aggregate position and summary dividends", () => {
       const group = createGroup(PositionLevelType2.OTHER, [
-        createDividendItem("AAPL", new Decimal5(50), new Decimal5(10), new Decimal5(30)),
-        createDividendItem("MSFT", new Decimal5(70), new Decimal5(20), new Decimal5(40))
+        createDividendItem("AAPL", new Decimal6(50), new Decimal6(10), new Decimal6(30)),
+        createDividendItem("MSFT", new Decimal6(70), new Decimal6(20), new Decimal6(40))
       ]);
       expect({
         current: group.data.periodDividends,
@@ -24070,7 +24566,7 @@
     });
     it("should aggregate group dividends when a position is missing dividend data", () => {
       const group = createGroup(PositionLevelType2.OTHER, [
-        createDividendItem("AAPL", new Decimal5(50), new Decimal5(10), new Decimal5(30)),
+        createDividendItem("AAPL", new Decimal6(50), new Decimal6(10), new Decimal6(30)),
         createItem("MSFT")
       ]);
       expect({
@@ -24124,7 +24620,7 @@
     it("should not annualize group returns when all item annualized returns are unavailable", () => {
       const items = [
         createReturnItem("AAPL", 3),
-        createReturnItem("MSFT", 365, Decimal5.ZERO)
+        createReturnItem("MSFT", 365, Decimal6.ZERO)
       ];
       const group = createGroup(PositionLevelType2.OTHER, items);
       expect({
@@ -24140,9 +24636,9 @@
   });
 
   // test/specs/processing/PositionItemSpec.js
-  var Day4 = require_Day();
-  var Decimal6 = require_Decimal();
-  var InstrumentType5 = require_InstrumentType();
+  var Day5 = require_Day();
+  var Decimal7 = require_Decimal();
+  var InstrumentType6 = require_InstrumentType();
   var PositionDirection = require_PositionDirection();
   var PositionSummaryFrame4 = require_PositionSummaryFrame();
   var PositionItem2 = require_PositionItem();
@@ -24178,18 +24674,18 @@
       });
     });
     it("should expose position and summary dividend values", () => {
-      position.snapshot.dividends = new Decimal6(100);
-      currentSummary.period.dividends = new Decimal6(20);
-      previousSummaries[previousSummaries.length - 1].period.dividends = new Decimal6(30);
+      position.snapshot.dividends = new Decimal7(100);
+      currentSummary.period.dividends = new Decimal7(20);
+      previousSummaries[previousSummaries.length - 1].period.dividends = new Decimal7(30);
       item = new PositionItem2(portfolio, position, currentSummary, previousSummaries);
       expect({
         dividends: item.data.dividends,
         periodDividends: item.data.periodDividends,
         periodDividendsPrevious: item.data.periodDividendsPrevious
       }).toEqual({
-        dividends: new Decimal6(100),
-        periodDividends: new Decimal6(20),
-        periodDividendsPrevious: new Decimal6(30)
+        dividends: new Decimal7(100),
+        periodDividends: new Decimal7(20),
+        periodDividendsPrevious: new Decimal7(30)
       });
     });
     it("should expose zero dividend values when they are absent", () => {
@@ -24198,15 +24694,15 @@
         periodDividends: item.data.periodDividends,
         periodDividendsPrevious: item.data.periodDividendsPrevious
       }).toEqual({
-        dividends: Decimal6.ZERO,
-        periodDividends: Decimal6.ZERO,
-        periodDividendsPrevious: Decimal6.ZERO
+        dividends: Decimal7.ZERO,
+        periodDividends: Decimal7.ZERO,
+        periodDividendsPrevious: Decimal7.ZERO
       });
     });
     it("should expose summary dividends as position dividends while reporting", () => {
-      currentSummary.period.dividends = new Decimal6(20);
+      currentSummary.period.dividends = new Decimal7(20);
       item = new PositionItem2(portfolio, position, currentSummary, previousSummaries, true, currentSummary.end.date);
-      expect(item.data.dividends).toEqual(new Decimal6(20));
+      expect(item.data.dividends).toEqual(new Decimal7(20));
     });
     it("should update quote state and notify quote observers", () => {
       const changes = [];
@@ -24288,24 +24784,24 @@
       expect(() => item.updatePortfolio(positionTestFactory3.createPortfolio("Other Portfolio", "Other"))).toThrow();
     });
     it("should calculate holding-period and current-period return data", () => {
-      const today = new Day4(2026, 7, 16);
+      const today = new Day5(2026, 7, 16);
       const openingDate = today.subtractDays(365);
       const createCurrentPeriodSummary = (frame) => {
         const summary = positionTestFactory3.createSummaries(position, frame, 1)[0];
-        summary.start.value = new Decimal6(100);
-        summary.end.value = new Decimal6(100);
-        summary.end.basis = new Decimal6(-100);
+        summary.start.value = new Decimal7(100);
+        summary.end.value = new Decimal7(100);
+        summary.end.basis = new Decimal7(-100);
         return summary;
       };
       position.opening = { date: openingDate };
-      position.snapshot.basis = new Decimal6(-100);
-      position.snapshot.buys = new Decimal6(-100);
-      position.snapshot.open = new Decimal6(1);
-      position.snapshot.value = new Decimal6(100);
-      currentSummary.start.value = new Decimal6(100);
-      currentSummary.end.value = new Decimal6(100);
-      currentSummary.end.basis = new Decimal6(-100);
-      currentSummary.end.open = new Decimal6(1);
+      position.snapshot.basis = new Decimal7(-100);
+      position.snapshot.buys = new Decimal7(-100);
+      position.snapshot.open = new Decimal7(1);
+      position.snapshot.value = new Decimal7(100);
+      currentSummary.start.value = new Decimal7(100);
+      currentSummary.end.value = new Decimal7(100);
+      currentSummary.end.basis = new Decimal7(-100);
+      currentSummary.end.open = new Decimal7(1);
       item = new PositionItem2(portfolio, position, currentSummary, previousSummaries, false, today, {
         weekToDate: createCurrentPeriodSummary(PositionSummaryFrame4.WTD),
         monthToDate: createCurrentPeriodSummary(PositionSummaryFrame4.MTD)
@@ -24348,11 +24844,11 @@
       });
     });
     it("should calculate a closed position holding period through its closing date", () => {
-      const today = new Day4(2026, 7, 16);
+      const today = new Day5(2026, 7, 16);
       position.opening = { date: today.subtractDays(100) };
       position.closing = { date: today.subtractDays(40) };
-      position.snapshot.open = Decimal6.ZERO;
-      currentSummary.end.open = Decimal6.ZERO;
+      position.snapshot.open = Decimal7.ZERO;
+      currentSummary.end.open = Decimal7.ZERO;
       item = new PositionItem2(portfolio, position, currentSummary, previousSummaries, false, today);
       expect({
         daysHeld: item.data.daysHeld,
@@ -24363,10 +24859,10 @@
       });
     });
     it("should leave a closed position holding period unavailable without a reliable closing date", () => {
-      const today = new Day4(2026, 7, 16);
+      const today = new Day5(2026, 7, 16);
       position.opening = { date: today.subtractDays(100) };
-      position.snapshot.open = Decimal6.ZERO;
-      currentSummary.end.open = Decimal6.ZERO;
+      position.snapshot.open = Decimal7.ZERO;
+      currentSummary.end.open = Decimal7.ZERO;
       item = new PositionItem2(portfolio, position, currentSummary, previousSummaries, false, today);
       expect({
         daysHeld: item.data.daysHeld,
@@ -24377,10 +24873,10 @@
       });
     });
     it("should use the absolute previous value for short-position today returns", () => {
-      const today = new Day4(2026, 7, 16);
+      const today = new Day5(2026, 7, 16);
       position.snapshot.initial = PositionDirection.SHORT;
-      position.snapshot.open = new Decimal6(-1);
-      currentSummary.end.open = new Decimal6(-1);
+      position.snapshot.open = new Decimal7(-1);
+      currentSummary.end.open = new Decimal7(-1);
       item = new PositionItem2(portfolio, position, currentSummary, previousSummaries, false, today);
       item.setQuote({
         lastDay: today,
@@ -24391,10 +24887,10 @@
       expect(item.data.todaysGainLossPercent.toFloat()).toEqual(0.1);
     });
     it("should safely return zero for a closed position without a previous-value denominator", () => {
-      const today = new Day4(2026, 7, 16);
-      position.snapshot.open = Decimal6.ZERO;
-      position.latest = { date: today, gain: new Decimal6(10) };
-      currentSummary.end.open = Decimal6.ZERO;
+      const today = new Day5(2026, 7, 16);
+      position.snapshot.open = Decimal7.ZERO;
+      position.latest = { date: today, gain: new Decimal7(10) };
+      currentSummary.end.open = Decimal7.ZERO;
       item = new PositionItem2(portfolio, position, currentSummary, previousSummaries, false, today);
       item.setQuote({
         lastDay: today,
@@ -24405,9 +24901,9 @@
       expect(item.data.todaysGainLossPercent.toFloat()).toEqual(0);
     });
     it("should not annualize CASH positions", () => {
-      const today = new Day4(2026, 7, 16);
+      const today = new Day5(2026, 7, 16);
       position.opening = { date: today.subtractDays(365) };
-      position.instrument.type = InstrumentType5.CASH;
+      position.instrument.type = InstrumentType6.CASH;
       item = new PositionItem2(portfolio, position, currentSummary, previousSummaries, false, today);
       expect({
         annualizedReturnPercent: item.data.annualizedReturnPercent,
@@ -24418,14 +24914,14 @@
       });
     });
     it("should not annualize positions held for less than one year", () => {
-      const today = new Day4(2026, 7, 16);
+      const today = new Day5(2026, 7, 16);
       position.opening = { date: today.subtractDays(3) };
-      position.snapshot.basis = new Decimal6(-1);
-      position.snapshot.buys = new Decimal6(-1);
-      position.snapshot.value = new Decimal6(1);
-      currentSummary.end.basis = new Decimal6(-1);
-      currentSummary.end.open = Decimal6.ONE;
-      currentSummary.end.value = Decimal6.ONE;
+      position.snapshot.basis = new Decimal7(-1);
+      position.snapshot.buys = new Decimal7(-1);
+      position.snapshot.value = new Decimal7(1);
+      currentSummary.end.basis = new Decimal7(-1);
+      currentSummary.end.open = Decimal7.ONE;
+      currentSummary.end.value = Decimal7.ONE;
       item = new PositionItem2(portfolio, position, currentSummary, previousSummaries, false, today);
       item.setQuote({ lastDay: today, lastPrice: 48.04, symbol: "AAPL" });
       expect({
@@ -24439,9 +24935,9 @@
       });
     });
     it("should not annualize a return with a zero since-inception divisor", () => {
-      const today = new Day4(2026, 7, 16);
+      const today = new Day5(2026, 7, 16);
       position.opening = { date: today.subtractDays(365) };
-      position.snapshot.buys = Decimal6.ZERO;
+      position.snapshot.buys = Decimal7.ZERO;
       item = new PositionItem2(portfolio, position, currentSummary, previousSummaries, false, today);
       expect(item.data.annualizedReturnPercent).toEqual(null);
     });
@@ -24532,7 +25028,7 @@
   });
 
   // test/specs/processing/definitions/PositionLevelDefinitionSpec.js
-  var Currency3 = require_Currency();
+  var Currency4 = require_Currency();
   var PositionLevelDefinition3 = require_PositionLevelDefinition();
   var PositionLevelType3 = require_PositionLevelType();
   describe("When a position level definition is created", () => {
@@ -24554,7 +25050,7 @@
           {
             key: "totals",
             description: "Total",
-            currency: Currency3.USD
+            currency: Currency4.USD
           }
         ];
         expect(() => createDefinition(requiredGroups)).not.toThrow();
@@ -24563,7 +25059,7 @@
         const requiredGroups = [
           {
             description: "Total",
-            currency: Currency3.USD
+            currency: Currency4.USD
           }
         ];
         expect(() => createDefinition(requiredGroups)).toThrow();
@@ -24572,7 +25068,7 @@
         const requiredGroups = [
           {
             key: "totals",
-            currency: Currency3.USD
+            currency: Currency4.USD
           }
         ];
         expect(() => createDefinition(requiredGroups)).toThrow();
@@ -24593,7 +25089,7 @@
         const requiredGroup = {
           key: "totals",
           description: "Total",
-          currency: Currency3.USD
+          currency: Currency4.USD
         };
         const definition = createDefinition([], () => requiredGroup);
         expect({
@@ -24626,7 +25122,7 @@
   });
 
   // test/specs/processing/definitions/PositionTreeDefinitionSpec.js
-  var Currency4 = require_Currency();
+  var Currency5 = require_Currency();
   var PositionLevelDefinition4 = require_PositionLevelDefinition();
   var PositionLevelType4 = require_PositionLevelType();
   var PositionTreeDefinition2 = require_PositionTreeDefinition();
@@ -24638,7 +25134,7 @@
         PositionLevelType4.OTHER,
         (item) => item.key,
         (item) => item.description,
-        (item) => item.currency || Currency4.USD
+        (item) => item.currency || Currency5.USD
       );
     }
     it("should expose the configured name, level definitions, and exclusion dependencies", () => {
@@ -24759,9 +25255,9 @@
   });
 
   // test/specs/serialization/PositionSchemaSpec.js
-  var Day5 = require_Day();
+  var Day6 = require_Day();
   var PositionSchema = require_PositionSchema();
-  var InstrumentType6 = require_InstrumentType();
+  var InstrumentType7 = require_InstrumentType();
   describe("When positions are serialized", () => {
     "use strict";
     describe("for a read operation (user error #1)", () => {
@@ -24815,7 +25311,7 @@
       [PositionSchema.COMPLETE, PositionSchema.CLIENT].forEach((schema) => {
         it(`should preserve the option underlying through the ${schema.code} schema`, () => {
           const optionPosition = JSON.parse(serialized, PositionSchema.CLIENT.schema.getReviver());
-          optionPosition.instrument.type = InstrumentType6.EQUITY_OPTION;
+          optionPosition.instrument.type = InstrumentType7.EQUITY_OPTION;
           optionPosition.instrument.option = { underlying: "NVDA" };
           const formatted = schema.schema.format(optionPosition);
           const restored = JSON.parse(JSON.stringify(formatted), schema.schema.getReviver());
@@ -24823,8 +25319,8 @@
         });
         it(`should accept an older option without an underlying through the ${schema.code} schema`, () => {
           const optionPosition = JSON.parse(serialized, PositionSchema.CLIENT.schema.getReviver());
-          optionPosition.instrument.type = InstrumentType6.EQUITY_OPTION;
-          optionPosition.instrument.option = { expiration: new Day5(2026, 9, 18) };
+          optionPosition.instrument.type = InstrumentType7.EQUITY_OPTION;
+          optionPosition.instrument.option = { expiration: new Day6(2026, 9, 18) };
           const formatted = schema.schema.format(optionPosition);
           const restored = JSON.parse(JSON.stringify(formatted), schema.schema.getReviver());
           expect(restored.instrument.option).toEqual(optionPosition.instrument.option);
@@ -24845,8 +25341,8 @@
             openingDate: deserialized.opening.date,
             position: deserialized.position
           }).toEqual({
-            closingDate: new Day5(2020, 6, 11),
-            openingDate: new Day5(2019, 4, 15),
+            closingDate: new Day6(2020, 6, 11),
+            openingDate: new Day6(2019, 4, 15),
             position: position.position
           });
         });
@@ -24855,9 +25351,9 @@
   });
 
   // test/specs/serialization/TransactionSchemaSpec.js
-  var Day6 = require_Day();
-  var Decimal7 = require_Decimal();
-  var TransactionType4 = require_TransactionType();
+  var Day7 = require_Day();
+  var Decimal8 = require_Decimal();
+  var TransactionType5 = require_TransactionType();
   var TransactionSchema = require_TransactionSchema();
   describe("When transactions are serialized", () => {
     "use strict";
@@ -24893,11 +25389,11 @@
         transaction.portfolio = "063e00ea-8d1b-4faa-aedf-f43bdf23590e";
         transaction.position = "c2eefcde-f8d0-438d-9414-28f307d7b544";
         transaction.sequence = 1;
-        transaction.type = TransactionType4.BUY;
-        transaction.date = new Day6(2018, 7, 9);
-        transaction.price = new Decimal7(15.92);
-        transaction.quantity = new Decimal7(100);
-        transaction.fee = new Decimal7(9.95);
+        transaction.type = TransactionType5.BUY;
+        transaction.date = new Day7(2018, 7, 9);
+        transaction.price = new Decimal8(15.92);
+        transaction.quantity = new Decimal8(100);
+        transaction.fee = new Decimal8(9.95);
         transaction.reinvest = "default";
         transaction.cash = "default";
         const formatted = TransactionSchema.BUY.schema.format(transaction);

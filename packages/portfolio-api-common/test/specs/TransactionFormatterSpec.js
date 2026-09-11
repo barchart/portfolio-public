@@ -50,4 +50,26 @@ describe('When transactions are formatted', () => {
 
 		expect(formatted[0].userCreated).toBe(false);
 	});
+
+	it('should identify an edited broker-imported transaction', () => {
+		transaction.snaptrade = { instrument: 'instrument', transaction: 'broker-transaction', edited: true };
+
+		const formatted = TransactionFormatter.format([ transaction ], [ position ]);
+
+		expect(formatted[0].edited).toBe(true);
+	});
+
+	it('should identify an untouched broker-imported transaction as not edited', () => {
+		transaction.snaptrade = { instrument: 'instrument', transaction: 'broker-transaction' };
+
+		const formatted = TransactionFormatter.format([ transaction ], [ position ]);
+
+		expect(formatted[0].edited).toBe(false);
+	});
+
+	it('should identify a manually created transaction as not edited', () => {
+		const formatted = TransactionFormatter.format([ transaction ], [ position ]);
+
+		expect(formatted[0].edited).toBe(false);
+	});
 });

@@ -144,6 +144,7 @@ module.exports = (() => {
 		f.position = t.position;
 		f.open = t.snapshot.open;
 		f.transaction = t.transaction;
+		f.edited = is.object(t.snaptrade) && is.boolean(t.snaptrade.edited) && t.snaptrade.edited;
 		f.userCreated = !is.object(t.snaptrade);
 
 		f.raw.open = getRawForDecimal(f.open);
