@@ -114,6 +114,7 @@ module.exports = (() => {
 			this._dataFormat.quantityPrevious = null;
 			this._dataFormat.basisPrice = null;
 			this._dataFormat.unrealizedPrice = null;
+			this._dataFormat.unrealizedPricePercent = null;
 			this._dataFormat.unrealizedPricePositive = false;
 			this._dataFormat.unrealizedPriceNegative = false;
 			this._dataFormat.instrument = null;
@@ -126,6 +127,7 @@ module.exports = (() => {
 			this._dataActual.quantityPrevious = null;
 			this._dataActual.basisPrice = null;
 			this._dataActual.unrealizedPrice = null;
+			this._dataActual.unrealizedPricePercent = null;
 
 			if (this._single && items.length === 1) {
 				const item = items[0];
@@ -1299,6 +1301,8 @@ module.exports = (() => {
 
 			actual.unrealizedPrice = item.data.unrealizedPrice;
 			format.unrealizedPrice = formatFractionSpecial(actual.unrealizedPrice, currency, instrument);
+			actual.unrealizedPricePercent = calculateUnrealizedPricePercent(actual.unrealizedPrice, actual.basisPrice);
+			format.unrealizedPricePercent = formatPercent(actual.unrealizedPricePercent, 2);
 			format.unrealizedPricePositive = actual.unrealizedPrice !== null && actual.unrealizedPrice.getIsPositive();
 			format.unrealizedPriceNegative = actual.unrealizedPrice !== null && actual.unrealizedPrice.getIsNegative();
 
@@ -1525,6 +1529,8 @@ module.exports = (() => {
 		if (priceItem) {
 			actual.unrealizedPrice = priceItem.data.unrealizedPrice;
 			format.unrealizedPrice = formatFractionSpecial(actual.unrealizedPrice, currency, priceItem.position.instrument);
+			actual.unrealizedPricePercent = calculateUnrealizedPricePercent(actual.unrealizedPrice, priceItem.data.basisPrice);
+			format.unrealizedPricePercent = formatPercent(actual.unrealizedPricePercent, 2);
 
 			format.unrealizedPricePositive = actual.unrealizedPrice !== null && actual.unrealizedPrice.getIsPositive();
 			format.unrealizedPriceNegative = actual.unrealizedPrice !== null && actual.unrealizedPrice.getIsNegative();
@@ -1625,6 +1631,14 @@ module.exports = (() => {
 		}
 
 		format.unrealizedPercent = formatPercent(actual.unrealizedPercent, 2);
+	}
+
+	function calculateUnrealizedPricePercent(priceChange, basisPrice) {
+		if (priceChange === null || basisPrice === null || basisPrice.getIsApproximate(Decimal.ZERO, 4)) {
+			return null;
+		}
+
+		return priceChange.divide(basisPrice.absolute());
 	}
 
 	function calculateGainPercent(gain, basis) {
