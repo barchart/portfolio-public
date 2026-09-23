@@ -289,7 +289,9 @@ module.exports = (() => {
 			this._dataFormat.periodPercent = null;
 			this._dataFormat.periodPercentPrevious = null;
 			this._dataFormat.periodPercentPrevious2 = null;
+			this._dataFormat.weekToDateGain = null;
 			this._dataFormat.weekToDatePercent = null;
+			this._dataFormat.monthToDateGain = null;
 			this._dataFormat.monthToDatePercent = null;
 			this._dataFormat.daysHeld = null;
 			this._dataFormat.weeksHeld = null;
@@ -1274,7 +1276,9 @@ module.exports = (() => {
 		format.periodPercent = formatPercent(actual.periodPercent, 2);
 		format.periodPercentPrevious = formatPercent(actual.periodPercentPrevious, 2);
 		format.periodPercentPrevious2 = formatPercent(actual.periodPercentPrevious2, 2);
+		format.weekToDateGain = formatCurrency(actual.weekToDateComplete ? actual.weekToDateGain : null, currency);
 		format.weekToDatePercent = formatPercent(actual.weekToDatePercent, 2);
+		format.monthToDateGain = formatCurrency(actual.monthToDateComplete ? actual.monthToDateGain : null, currency);
 		format.monthToDatePercent = formatPercent(actual.monthToDatePercent, 2);
 
 		const groupItems = group._items;
@@ -1505,7 +1509,9 @@ module.exports = (() => {
 		format.totalPositive = actual.total.getIsPositive();
 		format.totalNegative = actual.total.getIsNegative();
 		format.totalPercent = formatPercent(actual.totalPercent, 2);
+		format.weekToDateGain = formatCurrency(actual.weekToDateComplete ? actual.weekToDateGain : null, currency);
 		format.weekToDatePercent = formatPercent(actual.weekToDatePercent, 2);
+		format.monthToDateGain = formatCurrency(actual.monthToDateComplete ? actual.monthToDateGain : null, currency);
 		format.monthToDatePercent = formatPercent(actual.monthToDatePercent, 2);
 		format.annualizedReturnPercent = formatPercent(actual.annualizedReturnPercent, 2);
 
