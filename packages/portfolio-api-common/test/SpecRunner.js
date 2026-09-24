@@ -8315,6 +8315,7 @@
             this._dataFormat.quantityPrevious = null;
             this._dataFormat.basisPrice = null;
             this._dataFormat.unrealizedPrice = null;
+            this._dataFormat.unrealizedPricePercent = null;
             this._dataFormat.unrealizedPricePositive = false;
             this._dataFormat.unrealizedPriceNegative = false;
             this._dataFormat.instrument = null;
@@ -8326,6 +8327,7 @@
             this._dataActual.quantityPrevious = null;
             this._dataActual.basisPrice = null;
             this._dataActual.unrealizedPrice = null;
+            this._dataActual.unrealizedPricePercent = null;
             if (this._single && items.length === 1) {
               const item = items[0];
               this._dataFormat.portfolio = item.portfolio.portfolio;
@@ -8472,7 +8474,9 @@
             this._dataFormat.periodPercent = null;
             this._dataFormat.periodPercentPrevious = null;
             this._dataFormat.periodPercentPrevious2 = null;
+            this._dataFormat.weekToDateGain = null;
             this._dataFormat.weekToDatePercent = null;
+            this._dataFormat.monthToDateGain = null;
             this._dataFormat.monthToDatePercent = null;
             this._dataFormat.daysHeld = null;
             this._dataFormat.weeksHeld = null;
@@ -9269,7 +9273,9 @@
           format.periodPercent = formatPercent(actual.periodPercent, 2);
           format.periodPercentPrevious = formatPercent(actual.periodPercentPrevious, 2);
           format.periodPercentPrevious2 = formatPercent(actual.periodPercentPrevious2, 2);
+          format.weekToDateGain = formatCurrency(actual.weekToDateComplete ? actual.weekToDateGain : null, currency);
           format.weekToDatePercent = formatPercent(actual.weekToDatePercent, 2);
+          format.monthToDateGain = formatCurrency(actual.monthToDateComplete ? actual.monthToDateGain : null, currency);
           format.monthToDatePercent = formatPercent(actual.monthToDatePercent, 2);
           const groupItems = group._items;
           if (group.single && groupItems.length === 1) {
@@ -9288,6 +9294,8 @@
             format.periodPricePrevious = formatCurrency(actual.periodPricePrevious, currency);
             actual.unrealizedPrice = item.data.unrealizedPrice;
             format.unrealizedPrice = formatFractionSpecial(actual.unrealizedPrice, currency, instrument);
+            actual.unrealizedPricePercent = calculateUnrealizedPricePercent(actual.unrealizedPrice, actual.basisPrice);
+            format.unrealizedPricePercent = formatPercent(actual.unrealizedPricePercent, 2);
             format.unrealizedPricePositive = actual.unrealizedPrice !== null && actual.unrealizedPrice.getIsPositive();
             format.unrealizedPriceNegative = actual.unrealizedPrice !== null && actual.unrealizedPrice.getIsNegative();
             format.invalid = definition.type === PositionLevelType5.POSITION && item.invalid;
@@ -9448,7 +9456,9 @@
           format.totalPositive = actual.total.getIsPositive();
           format.totalNegative = actual.total.getIsNegative();
           format.totalPercent = formatPercent(actual.totalPercent, 2);
+          format.weekToDateGain = formatCurrency(actual.weekToDateComplete ? actual.weekToDateGain : null, currency);
           format.weekToDatePercent = formatPercent(actual.weekToDatePercent, 2);
+          format.monthToDateGain = formatCurrency(actual.monthToDateComplete ? actual.monthToDateGain : null, currency);
           format.monthToDatePercent = formatPercent(actual.monthToDatePercent, 2);
           format.annualizedReturnPercent = formatPercent(actual.annualizedReturnPercent, 2);
           format.marketChange = formatCurrency(actual.marketChange, currency);
@@ -9466,6 +9476,8 @@
           if (priceItem) {
             actual.unrealizedPrice = priceItem.data.unrealizedPrice;
             format.unrealizedPrice = formatFractionSpecial(actual.unrealizedPrice, currency, priceItem.position.instrument);
+            actual.unrealizedPricePercent = calculateUnrealizedPricePercent(actual.unrealizedPrice, priceItem.data.basisPrice);
+            format.unrealizedPricePercent = formatPercent(actual.unrealizedPricePercent, 2);
             format.unrealizedPricePositive = actual.unrealizedPrice !== null && actual.unrealizedPrice.getIsPositive();
             format.unrealizedPriceNegative = actual.unrealizedPrice !== null && actual.unrealizedPrice.getIsNegative();
             actual.todayQuote = priceItem.data.todayQuote;
@@ -9540,6 +9552,12 @@
             actual.unrealizedPercent = numerator.divide(denominator);
           }
           format.unrealizedPercent = formatPercent(actual.unrealizedPercent, 2);
+        }
+        function calculateUnrealizedPricePercent(priceChange, basisPrice) {
+          if (priceChange === null || basisPrice === null || basisPrice.getIsApproximate(Decimal9.ZERO, 4)) {
+            return null;
+          }
+          return priceChange.divide(basisPrice.absolute());
         }
         function calculateGainPercent(gain, basis) {
           return basis.getIsApproximate(Decimal9.ZERO, 4) ? Decimal9.ZERO : gain.divide(basis);
