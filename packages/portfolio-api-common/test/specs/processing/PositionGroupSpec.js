@@ -169,6 +169,39 @@ describe('When a position group is used', () => {
 		});
 	});
 
+	for (const type of [ PositionLevelType.POSITION, PositionLevelType.INSTRUMENT ]) {
+		it(`should initialize cached quote fields for a ${type.code} group without replaying quotes`, () => {
+			const item = createItem('AAPL');
+			const quote = { symbol: 'AAPL', lastPrice: 200, previousPrice: 190, openPrice: 198, highPrice: 205, lowPrice: 195, priceChange: 10, percentChange: 0.05, timeDisplay: '10:30', volume: 5000 };
+
+			item.setQuote(quote);
+
+			const original = createGroup(type, [ item ]);
+			const fields = [ 'currentPrice', 'quoteLast', 'quoteOpen', 'quoteHigh', 'quoteLow', 'quoteChange', 'quoteChangePercent', 'quoteTime', 'quoteVolume' ];
+
+			item.setQuote(quote, true);
+
+			const changes = [ ];
+
+			item.registerQuoteChangeHandler(value => changes.push(value));
+
+			const rebuilt = createGroup(type, [ item ]);
+
+			expect({ values: fields.map(field => rebuilt.data[field]), changes }).toEqual({ values: fields.map(field => original.data[field]), changes: [ ] });
+		});
+	}
+
+	it('should restore cached quote fields when group calculations resume', () => {
+		const item = createItem('AAPL');
+		const group = createGroup(PositionLevelType.POSITION, [ item ]);
+
+		group.suspendCalculations();
+		item.setQuote({ symbol: 'AAPL', lastPrice: 200, openPrice: 198 });
+		group.resumeCalculations();
+
+		expect(group.data.quoteOpen).toEqual('198.00');
+	});
+
 	it('should update quote fields when an item quote changes', () => {
 		const item = createItem('AAPL');
 		const group = createGroup(PositionLevelType.POSITION, [ item ]);

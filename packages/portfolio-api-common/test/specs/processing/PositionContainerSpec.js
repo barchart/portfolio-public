@@ -177,6 +177,31 @@ describe('When an aggregation tree is replaced', () => {
 		positionTestFactory.resetPositionCounter();
 	});
 
+	for (const preserveTopLevelGroups of [ false, true ]) {
+		it(`should preserve cached quote fields after replacing a tree with preserveTopLevelGroups=${preserveTopLevelGroups}`, () => {
+			const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
+			const position = positionTestFactory.createPosition(portfolio.portfolio, 'AAPL', Currency.USD);
+			const initial = createPortfolioTreeDefinition();
+			const assets = createAssetTreeDefinition();
+			const replacement = new PositionTreeDefinition(treeName, [ initial.definitions[0], ...assets.definitions.slice(1) ]);
+			const container = new PositionContainer([ initial ], [ portfolio ], [ position ], [ ]);
+			const fields = [ 'currentPrice', 'quoteLast', 'quoteOpen', 'quoteHigh', 'quoteLow', 'quoteChange', 'quoteChangePercent', 'quoteTime', 'quoteVolume', 'quantity', 'market' ];
+
+			container.setQuotes([ { symbol: 'AAPL', lastPrice: 200, previousPrice: 190, openPrice: 198, highPrice: 205, lowPrice: 195, priceChange: 10, percentChange: 0.05, timeDisplay: '10:30', volume: 5000 } ], [ ]);
+
+			const original = container.getGroup(treeName, [ 'totals', portfolio.portfolio, position.position ]);
+			const before = fields.map(field => original.data[field]);
+
+			spyOn(container, 'setQuotes').and.callThrough();
+			container.replaceTree(replacement, preserveTopLevelGroups);
+
+			const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType.EQUITY, Currency.USD);
+			const rebuilt = container.getGroup(treeName, [ 'totals', assetKey, position.position ]);
+
+			expect({ values: fields.map(field => rebuilt.data[field]), replays: container.setQuotes.calls.count() }).toEqual({ values: before, replays: 0 });
+		});
+	}
+
 	it('should expose groups from the replacement definition', () => {
 		const portfolio = positionTestFactory.createPortfolio('portfolio', 'Portfolio');
 
