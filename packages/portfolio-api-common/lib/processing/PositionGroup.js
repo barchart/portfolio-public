@@ -647,6 +647,13 @@ module.exports = (() => {
 			}
 
 			calculateStaticData(this, this._definition);
+
+			const item = this._items[0];
+
+			if (item && item.quote !== null) {
+				refreshQuoteData.call(this, item.quote, item);
+			}
+
 			calculatePriceData(this,null, true);
 		}
 
@@ -746,48 +753,54 @@ module.exports = (() => {
 		}
 	}
 
+	function refreshQuoteData(quote, sender) {
+		if (!(this._single || (this._homogeneous && sender === this._items[0]))) {
+			return;
+		}
+
+		const instrument = sender.position.instrument;
+		const currency = instrument.currency;
+
+		this._dataActual.currentPrice = is.number(quote.lastPrice) ? quote.lastPrice : null;
+		this._dataActual.quoteLast = is.number(quote.previousPrice) ? quote.previousPrice : null;
+		this._dataActual.quoteOpen = is.number(quote.openPrice) ? quote.openPrice : null;
+		this._dataActual.quoteHigh = is.number(quote.highPrice) ? quote.highPrice : null;
+		this._dataActual.quoteLow = is.number(quote.lowPrice) ? quote.lowPrice : null;
+
+		this._dataFormat.currentPrice = formatFraction(this._dataActual.currentPrice, currency, instrument, this._useBarchartPriceFormattingRules);
+		this._dataFormat.quoteLast = formatFraction(this._dataActual.quoteLast, currency, instrument, this._useBarchartPriceFormattingRules);
+		this._dataFormat.quoteOpen = formatFraction(this._dataActual.quoteOpen, currency, instrument, this._useBarchartPriceFormattingRules);
+		this._dataFormat.quoteHigh = formatFraction(this._dataActual.quoteHigh, currency, instrument, this._useBarchartPriceFormattingRules);
+		this._dataFormat.quoteLow = formatFraction(this._dataActual.quoteLow, currency, instrument, this._useBarchartPriceFormattingRules);
+
+		this._dataActual.quoteChange = is.number(quote.priceChange) ? quote.priceChange : null;
+		this._dataActual.quoteChangePercent = is.number(quote.percentChange) ? quote.percentChange : null;
+
+		this._dataFormat.quoteChange = formatFraction(this._dataActual.quoteChange, currency, instrument, this._useBarchartPriceFormattingRules);
+		this._dataFormat.quoteChangePercent = formatPercent(new Decimal(this._dataActual.quoteChangePercent || 0), 2);
+
+		this._dataActual.quoteTime = quote.timeDisplay;
+		this._dataActual.quoteVolume = is.number(quote.volume) ? quote.volume : null;
+
+		this._dataFormat.quoteTime = formatString(this._dataActual.quoteTime);
+		this._dataFormat.quoteVolume = formatNumber(this._dataActual.quoteVolume, 0);
+
+		const quoteChangePositive = quote.lastPriceDirection === 'up';
+		const quoteChangeNegative = quote.lastPriceDirection === 'down';
+
+		setTimeout(() => this._dataFormat.quoteChangeDirection = formatDirection(quoteChangePositive, quoteChangeNegative), 0);
+
+		this._dataFormat.quoteChangePositive = is.number(this._dataActual.quoteChange) && this._dataActual.quoteChange > 0;
+		this._dataFormat.quoteChangeNegative = is.number(this._dataActual.quoteChange) && this._dataActual.quoteChange < 0;
+	}
+
 	function bindItem(item) {
 		const quoteBinding = item.registerQuoteChangeHandler((quote, sender) => {
 			if (this._calculationsSuspended) {
 				return;
 			}
 
-			if (this._single || (this._homogeneous && item === this._items[0])) {
-				const instrument = sender.position.instrument;
-				const currency = instrument.currency;
-
-				this._dataActual.currentPrice = is.number(quote.lastPrice) ? quote.lastPrice : null;
-				this._dataActual.quoteLast = is.number(quote.previousPrice) ? quote.previousPrice : null;
-				this._dataActual.quoteOpen = is.number(quote.openPrice) ? quote.openPrice : null;
-				this._dataActual.quoteHigh = is.number(quote.highPrice) ? quote.highPrice : null;
-				this._dataActual.quoteLow = is.number(quote.lowPrice) ? quote.lowPrice : null;
-
-				this._dataFormat.currentPrice = formatFraction(this._dataActual.currentPrice, currency, instrument, this._useBarchartPriceFormattingRules);
-				this._dataFormat.quoteLast = formatFraction(this._dataActual.quoteLast, currency, instrument, this._useBarchartPriceFormattingRules);
-				this._dataFormat.quoteOpen = formatFraction(this._dataActual.quoteOpen, currency, instrument, this._useBarchartPriceFormattingRules);
-				this._dataFormat.quoteHigh = formatFraction(this._dataActual.quoteHigh, currency, instrument, this._useBarchartPriceFormattingRules);
-				this._dataFormat.quoteLow = formatFraction(this._dataActual.quoteLow, currency, instrument, this._useBarchartPriceFormattingRules);
-
-				this._dataActual.quoteChange = is.number(quote.priceChange) ? quote.priceChange : null;
-				this._dataActual.quoteChangePercent = is.number(quote.percentChange) ? quote.percentChange : null;
-
-				this._dataFormat.quoteChange = formatFraction(this._dataActual.quoteChange, currency, instrument, this._useBarchartPriceFormattingRules);
-				this._dataFormat.quoteChangePercent = formatPercent(new Decimal(this._dataActual.quoteChangePercent || 0), 2);
-
-				this._dataActual.quoteTime = quote.timeDisplay;
-				this._dataActual.quoteVolume = is.number(quote.volume) ? quote.volume : null;
-
-				this._dataFormat.quoteTime = formatString(this._dataActual.quoteTime);
-				this._dataFormat.quoteVolume = formatNumber(this._dataActual.quoteVolume, 0);
-
-				const quoteChangePositive = quote.lastPriceDirection === 'up';
-				const quoteChangeNegative = quote.lastPriceDirection === 'down';
-
-				setTimeout(() => this._dataFormat.quoteChangeDirection = formatDirection(quoteChangePositive, quoteChangeNegative), 0);
-
-				this._dataFormat.quoteChangePositive = is.number(this._dataActual.quoteChange) && this._dataActual.quoteChange > 0;
-				this._dataFormat.quoteChangeNegative = is.number(this._dataActual.quoteChange) && this._dataActual.quoteChange < 0;
-			}
+			refreshQuoteData.call(this, quote, sender);
 
 			calculatePriceData(this, sender, false);
 		});
