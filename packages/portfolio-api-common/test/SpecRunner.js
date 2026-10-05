@@ -8771,6 +8771,10 @@
               return;
             }
             calculateStaticData(this, this._definition);
+            const item = this._items[0];
+            if (item && item.quote !== null) {
+              refreshQuoteData.call(this, item.quote, item);
+            }
             calculatePriceData(this, null, true);
           }
           /**
@@ -8853,38 +8857,42 @@
             return "[PositionGroup]";
           }
         }
+        function refreshQuoteData(quote, sender) {
+          if (!(this._single || this._homogeneous && sender === this._items[0])) {
+            return;
+          }
+          const instrument = sender.position.instrument;
+          const currency = instrument.currency;
+          this._dataActual.currentPrice = is.number(quote.lastPrice) ? quote.lastPrice : null;
+          this._dataActual.quoteLast = is.number(quote.previousPrice) ? quote.previousPrice : null;
+          this._dataActual.quoteOpen = is.number(quote.openPrice) ? quote.openPrice : null;
+          this._dataActual.quoteHigh = is.number(quote.highPrice) ? quote.highPrice : null;
+          this._dataActual.quoteLow = is.number(quote.lowPrice) ? quote.lowPrice : null;
+          this._dataFormat.currentPrice = formatFraction(this._dataActual.currentPrice, currency, instrument, this._useBarchartPriceFormattingRules);
+          this._dataFormat.quoteLast = formatFraction(this._dataActual.quoteLast, currency, instrument, this._useBarchartPriceFormattingRules);
+          this._dataFormat.quoteOpen = formatFraction(this._dataActual.quoteOpen, currency, instrument, this._useBarchartPriceFormattingRules);
+          this._dataFormat.quoteHigh = formatFraction(this._dataActual.quoteHigh, currency, instrument, this._useBarchartPriceFormattingRules);
+          this._dataFormat.quoteLow = formatFraction(this._dataActual.quoteLow, currency, instrument, this._useBarchartPriceFormattingRules);
+          this._dataActual.quoteChange = is.number(quote.priceChange) ? quote.priceChange : null;
+          this._dataActual.quoteChangePercent = is.number(quote.percentChange) ? quote.percentChange : null;
+          this._dataFormat.quoteChange = formatFraction(this._dataActual.quoteChange, currency, instrument, this._useBarchartPriceFormattingRules);
+          this._dataFormat.quoteChangePercent = formatPercent(new Decimal9(this._dataActual.quoteChangePercent || 0), 2);
+          this._dataActual.quoteTime = quote.timeDisplay;
+          this._dataActual.quoteVolume = is.number(quote.volume) ? quote.volume : null;
+          this._dataFormat.quoteTime = formatString(this._dataActual.quoteTime);
+          this._dataFormat.quoteVolume = formatNumber(this._dataActual.quoteVolume, 0);
+          const quoteChangePositive = quote.lastPriceDirection === "up";
+          const quoteChangeNegative = quote.lastPriceDirection === "down";
+          setTimeout(() => this._dataFormat.quoteChangeDirection = formatDirection(quoteChangePositive, quoteChangeNegative), 0);
+          this._dataFormat.quoteChangePositive = is.number(this._dataActual.quoteChange) && this._dataActual.quoteChange > 0;
+          this._dataFormat.quoteChangeNegative = is.number(this._dataActual.quoteChange) && this._dataActual.quoteChange < 0;
+        }
         function bindItem(item) {
           const quoteBinding = item.registerQuoteChangeHandler((quote, sender) => {
             if (this._calculationsSuspended) {
               return;
             }
-            if (this._single || this._homogeneous && item === this._items[0]) {
-              const instrument = sender.position.instrument;
-              const currency = instrument.currency;
-              this._dataActual.currentPrice = is.number(quote.lastPrice) ? quote.lastPrice : null;
-              this._dataActual.quoteLast = is.number(quote.previousPrice) ? quote.previousPrice : null;
-              this._dataActual.quoteOpen = is.number(quote.openPrice) ? quote.openPrice : null;
-              this._dataActual.quoteHigh = is.number(quote.highPrice) ? quote.highPrice : null;
-              this._dataActual.quoteLow = is.number(quote.lowPrice) ? quote.lowPrice : null;
-              this._dataFormat.currentPrice = formatFraction(this._dataActual.currentPrice, currency, instrument, this._useBarchartPriceFormattingRules);
-              this._dataFormat.quoteLast = formatFraction(this._dataActual.quoteLast, currency, instrument, this._useBarchartPriceFormattingRules);
-              this._dataFormat.quoteOpen = formatFraction(this._dataActual.quoteOpen, currency, instrument, this._useBarchartPriceFormattingRules);
-              this._dataFormat.quoteHigh = formatFraction(this._dataActual.quoteHigh, currency, instrument, this._useBarchartPriceFormattingRules);
-              this._dataFormat.quoteLow = formatFraction(this._dataActual.quoteLow, currency, instrument, this._useBarchartPriceFormattingRules);
-              this._dataActual.quoteChange = is.number(quote.priceChange) ? quote.priceChange : null;
-              this._dataActual.quoteChangePercent = is.number(quote.percentChange) ? quote.percentChange : null;
-              this._dataFormat.quoteChange = formatFraction(this._dataActual.quoteChange, currency, instrument, this._useBarchartPriceFormattingRules);
-              this._dataFormat.quoteChangePercent = formatPercent(new Decimal9(this._dataActual.quoteChangePercent || 0), 2);
-              this._dataActual.quoteTime = quote.timeDisplay;
-              this._dataActual.quoteVolume = is.number(quote.volume) ? quote.volume : null;
-              this._dataFormat.quoteTime = formatString(this._dataActual.quoteTime);
-              this._dataFormat.quoteVolume = formatNumber(this._dataActual.quoteVolume, 0);
-              const quoteChangePositive = quote.lastPriceDirection === "up";
-              const quoteChangeNegative = quote.lastPriceDirection === "down";
-              setTimeout(() => this._dataFormat.quoteChangeDirection = formatDirection(quoteChangePositive, quoteChangeNegative), 0);
-              this._dataFormat.quoteChangePositive = is.number(this._dataActual.quoteChange) && this._dataActual.quoteChange > 0;
-              this._dataFormat.quoteChangeNegative = is.number(this._dataActual.quoteChange) && this._dataActual.quoteChange < 0;
-            }
+            refreshQuoteData.call(this, quote, sender);
             calculatePriceData(this, sender, false);
           });
           const fundamentalBinding = item.registerFundamentalDataChangeHandler((data) => {
@@ -24112,6 +24120,25 @@
     beforeEach(() => {
       positionTestFactory.resetPositionCounter();
     });
+    for (const preserveTopLevelGroups of [false, true]) {
+      it(`should preserve cached quote fields after replacing a tree with preserveTopLevelGroups=${preserveTopLevelGroups}`, () => {
+        const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
+        const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency2.USD);
+        const initial = createPortfolioTreeDefinition();
+        const assets = createAssetTreeDefinition();
+        const replacement = new PositionTreeDefinition(treeName, [initial.definitions[0], ...assets.definitions.slice(1)]);
+        const container = new PositionContainer([initial], [portfolio], [position], []);
+        const fields = ["currentPrice", "quoteLast", "quoteOpen", "quoteHigh", "quoteLow", "quoteChange", "quoteChangePercent", "quoteTime", "quoteVolume", "quantity", "market"];
+        container.setQuotes([{ symbol: "AAPL", lastPrice: 200, previousPrice: 190, openPrice: 198, highPrice: 205, lowPrice: 195, priceChange: 10, percentChange: 0.05, timeDisplay: "10:30", volume: 5e3 }], []);
+        const original = container.getGroup(treeName, ["totals", portfolio.portfolio, position.position]);
+        const before = fields.map((field) => original.data[field]);
+        spyOn(container, "setQuotes").and.callThrough();
+        container.replaceTree(replacement, preserveTopLevelGroups);
+        const assetKey = PositionLevelDefinition.getKeyForAssetClassGroup(InstrumentType5.EQUITY, Currency2.USD);
+        const rebuilt = container.getGroup(treeName, ["totals", assetKey, position.position]);
+        expect({ values: fields.map((field) => rebuilt.data[field]), replays: container.setQuotes.calls.count() }).toEqual({ values: before, replays: 0 });
+      });
+    }
     it("should expose groups from the replacement definition", () => {
       const portfolio = positionTestFactory.createPortfolio("portfolio", "Portfolio");
       const position = positionTestFactory.createPosition(portfolio.portfolio, "AAPL", Currency2.USD);
@@ -24416,6 +24443,28 @@
         positions: [item.position.position],
         single: true
       });
+    });
+    for (const type of [PositionLevelType2.POSITION, PositionLevelType2.INSTRUMENT]) {
+      it(`should initialize cached quote fields for a ${type.code} group without replaying quotes`, () => {
+        const item = createItem("AAPL");
+        const quote = { symbol: "AAPL", lastPrice: 200, previousPrice: 190, openPrice: 198, highPrice: 205, lowPrice: 195, priceChange: 10, percentChange: 0.05, timeDisplay: "10:30", volume: 5e3 };
+        item.setQuote(quote);
+        const original = createGroup(type, [item]);
+        const fields = ["currentPrice", "quoteLast", "quoteOpen", "quoteHigh", "quoteLow", "quoteChange", "quoteChangePercent", "quoteTime", "quoteVolume"];
+        item.setQuote(quote, true);
+        const changes = [];
+        item.registerQuoteChangeHandler((value) => changes.push(value));
+        const rebuilt = createGroup(type, [item]);
+        expect({ values: fields.map((field) => rebuilt.data[field]), changes }).toEqual({ values: fields.map((field) => original.data[field]), changes: [] });
+      });
+    }
+    it("should restore cached quote fields when group calculations resume", () => {
+      const item = createItem("AAPL");
+      const group = createGroup(PositionLevelType2.POSITION, [item]);
+      group.suspendCalculations();
+      item.setQuote({ symbol: "AAPL", lastPrice: 200, openPrice: 198 });
+      group.resumeCalculations();
+      expect(group.data.quoteOpen).toEqual("198.00");
     });
     it("should update quote fields when an item quote changes", () => {
       const item = createItem("AAPL");
